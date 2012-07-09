@@ -2,7 +2,7 @@
 
 #permalink: :date
 # url: http://tinyfactory.github.com/
-# baseurl: Tiny-Factory-Docs/
+baseurl: /Tiny-Factory-Docs
 exclude: ['Rakefile', 'README.md', 'config.rb']
 
 # configuration required for some pages
