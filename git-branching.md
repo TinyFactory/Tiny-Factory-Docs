@@ -4,7 +4,7 @@
 
 To create a new branch locally
 
-```bash 
+```bash
 $ git checkout -b "new-branch-name"
 Switched to a new branch "new-branch-name"
 ```
