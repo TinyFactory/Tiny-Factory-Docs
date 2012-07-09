@@ -1,9 +1,3 @@
----
-layout: post
-title: Setup FTP on AWS CentOS
-tags: CentOS
----
-
 1. Install vsftpd
 yum install vsftpd - y
 

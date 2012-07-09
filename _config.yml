@@ -1,9 +1,7 @@
 # standard jekyll configuration
 
-permalink: :title
-pygments: true
+# permalink: :title
 exclude: ['Rakefile', 'README.md', 'config.rb']
-markdown: rdiscount
 
 # configuration required for some pages
 
