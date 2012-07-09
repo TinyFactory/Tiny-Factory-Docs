@@ -50,7 +50,7 @@ To push local changes for a specific repo
 git push origin master
 ```
 
-View graphical interface of merges
+View GUI of merges
 ```bash 
 gitk
 ```
