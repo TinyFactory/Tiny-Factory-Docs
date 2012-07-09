@@ -26,5 +26,5 @@ $ git branch -a
 
 To push *only* the current branch
 ```bash 
-$ git push origin [branchname]
+$ git push origin "branch-name"
 ```
