@@ -23,3 +23,8 @@ To view all remote branches
 ```bash 
 $ git branch -a
 ```
+
+To push *only* the current branch
+```bash 
+$ git push origin [branchname]
+```
