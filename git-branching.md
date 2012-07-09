@@ -29,3 +29,9 @@ To view all remote branches
 ```bash 
 $ git branch -r
 ```
+
+To merge a branch check out the branch you'd like to merge to and run
+```bash 
+$ git checkout master
+$ git merge new-branch-name
+```
