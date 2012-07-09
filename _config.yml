@@ -1,16 +1,16 @@
 # standard jekyll configuration
 
-permalink: date
+permalink: /:title
 pygments: true
 exclude: ['Rakefile', 'README.md', 'config.rb']
 markdown: rdiscount
 
 # configuration required for some pages
 
-domain: blog.example.com
-title: My Blog Title
-author: Me
-email: me@example.com
+# domain: blog.example.com
+# title: My Blog Title
+# author: Me
+# email: me@example.com
 
 # configuration for ehancements, uncomment to enable
 
