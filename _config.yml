@@ -1,6 +1,6 @@
 # standard jekyll configuration
 
-permalink: /:title
+# permalink: /:title
 pygments: true
 exclude: ['Rakefile', 'README.md', 'config.rb']
 markdown: rdiscount
