@@ -1,7 +1,7 @@
 # standard jekyll configuration
 
 #permalink: :date
-# url: http://tinyfactory.github.com/Tiny-Factory-Docs/
+url: http://tinyfactory.github.com/
 baseurl: Tiny-Factory-Docs/
 exclude: ['Rakefile', 'README.md', 'config.rb']
 
