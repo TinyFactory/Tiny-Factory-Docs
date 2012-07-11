@@ -20,6 +20,11 @@ $ git checkout -b new-branch-name origin/remote-branch-name
 Switched to a new branch "new-branch-name"
 ```
 
+Push a New Local Branch to a Remote Git Repo
+```bash
+git push origin new-branch-name
+```
+
 
 To view your local branches
 ```bash 
