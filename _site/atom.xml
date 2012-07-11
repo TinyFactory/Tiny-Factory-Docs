@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>Tiny Factory Docs</title>
+ <link href="http://http://tinyfactory.github.com/atom.xml" rel="self"/>
+ <link href="http://http://tinyfactory.github.com/"/>
+ <updated>2012-07-11T16:20:45-07:00</updated>
+ <id>http://http://tinyfactory.github.com/</id>
+ <author>
+   <name>Tiny Factory</name>
+   <email>hello@tinyfactory.co</email>
+ </author>
+
+ 
+ <entry>
+   <title>Compass Test</title>
+   <link href="http://http://tinyfactory.github.com/compass/2012/07/11/Compass-Test.html"/>
+   <updated>2012-07-11T00:00:00-07:00</updated>
+   <id>http://http://tinyfactory.github.com/compass/2012/07/11/Compass-Test</id>
+   <content type="html">&lt;p&gt;This is just a test to throw another category in the loop and test some highlighting&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='sass'&gt;&lt;span class='nt'&gt;body&lt;/span&gt;
+	&lt;span class='na'&gt;background&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='nv'&gt;$body&lt;/span&gt;
+	&lt;span class='nd'&gt;+regular&lt;/span&gt;
+	&lt;span class='na'&gt;font-size&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;13&lt;/span&gt;&lt;span class='kt'&gt;px&lt;/span&gt;
+	&lt;span class='na'&gt;line-height&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;1&lt;/span&gt;&lt;span class='mf'&gt;.5&lt;/span&gt;&lt;span class='kt'&gt;em&lt;/span&gt;
+	&lt;span class='na'&gt;color&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='nv'&gt;$text&lt;/span&gt;
+
+&lt;span class='nt'&gt;header&lt;/span&gt;
+	&lt;span class='na'&gt;max-width&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;790&lt;/span&gt;&lt;span class='kt'&gt;px&lt;/span&gt;
+	&lt;span class='na'&gt;margin&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;105&lt;/span&gt;&lt;span class='kt'&gt;px&lt;/span&gt; &lt;span class='no'&gt;auto&lt;/span&gt; &lt;span class='mi'&gt;0&lt;/span&gt;
+	&lt;span class='na'&gt;text-align&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='no'&gt;center&lt;/span&gt;
+
+&lt;span class='nt'&gt;h3&lt;/span&gt;
+	&lt;span class='na'&gt;font-family&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot;Gotham Book&amp;quot;&lt;/span&gt;&lt;span class='o'&gt;,&lt;/span&gt; &lt;span class='no'&gt;sans-serif&lt;/span&gt;
+	&lt;span class='na'&gt;font-weight&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='no'&gt;normal&lt;/span&gt;
+	&lt;span class='na'&gt;color&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='nv'&gt;$heading&lt;/span&gt;
+	&lt;span class='na'&gt;font-size&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;20&lt;/span&gt;&lt;span class='kt'&gt;px&lt;/span&gt;
+	&lt;span class='na'&gt;line-height&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;1&lt;/span&gt;&lt;span class='mf'&gt;.8&lt;/span&gt;&lt;span class='kt'&gt;em&lt;/span&gt;
+
+&lt;span class='nt'&gt;a&lt;/span&gt;
+	&lt;span class='na'&gt;text-decoration&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='no'&gt;none&lt;/span&gt;
+	&lt;span class='na'&gt;color&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='nv'&gt;$text&lt;/span&gt;
+	&lt;span class='nd'&gt;+transition&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='mi'&gt;0&lt;/span&gt;&lt;span class='mf'&gt;.1&lt;/span&gt;&lt;span class='kt'&gt;s&lt;/span&gt; &lt;span class='n'&gt;ease-in-out&lt;/span&gt; &lt;span class='n'&gt;all&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt;
+	&lt;span class='na'&gt;border-bottom&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;1&lt;/span&gt;&lt;span class='kt'&gt;px&lt;/span&gt; &lt;span class='no'&gt;solid&lt;/span&gt; &lt;span class='no'&gt;transparent&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Git Branching</title>
+   <link href="http://http://tinyfactory.github.com/git/2012/07/10/git-branching.html"/>
+   <updated>2012-07-10T00:00:00-07:00</updated>
+   <id>http://http://tinyfactory.github.com/git/2012/07/10/git-branching</id>
+   <content type="html">&lt;h3 id='basic_branching'&gt;Basic Branching&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;To create a new branch locally&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;&lt;span class='nv'&gt;$ &lt;/span&gt;git checkout -b &lt;span class='s2'&gt;&amp;quot;new-branch-name&amp;quot;&lt;/span&gt;
+Switched to a new branch &lt;span class='s2'&gt;&amp;quot;new-branch-name&amp;quot;&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;To view your local branches&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;&lt;span class='nv'&gt;$ &lt;/span&gt;git branch
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;To view all branches&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;&lt;span class='nv'&gt;$ &lt;/span&gt;git branch -a
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;To view all remote branches&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;&lt;span class='nv'&gt;$ &lt;/span&gt;git branch -r
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;To push &lt;strong&gt;only&lt;/strong&gt; the current branch&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;&lt;span class='nv'&gt;$ &lt;/span&gt;git push origin &lt;span class='s2'&gt;&amp;quot;branch-name&amp;quot;&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Changing the head on a Git Repo</title>
+   <link href="http://http://tinyfactory.github.com/git/2012/07/09/changing-the-head-pointer-on-a-git-repoistory.html"/>
+   <updated>2012-07-09T00:00:00-07:00</updated>
+   <id>http://http://tinyfactory.github.com/git/2012/07/09/changing-the-head-pointer-on-a-git-repoistory</id>
+   <content type="html">&lt;p&gt;If you want the default branch from a &lt;code&gt;git clone&lt;/code&gt; to be something besides &lt;code&gt;master&lt;/code&gt;, use the following steps:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Check what remote branches are available:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;git branch -r
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;The output will look like:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;origin/HEAD -&amp;gt; origin/master
+origin/dev
+origin/master
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Notice &lt;code&gt;origin/HEAD -&amp;gt; orgin/master&lt;/code&gt;. When you issue a &lt;code&gt;git clone&lt;/code&gt; on this repository you will get the master branch by default. If want to change this to the dev branch we also have in our remote repository, issue the following command:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;git remote &lt;span class='nb'&gt;set&lt;/span&gt;-head origin dev
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;To confirm the change took, run &lt;code&gt;git branch -r&lt;/code&gt; and review our output:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;origin/HEAD -&amp;gt; origin/dev
+origin/dev
+origin/master
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;origin/HEAD -&amp;gt; orgin/dev&lt;/code&gt; is pointing to our dev branch.&lt;/p&gt;
+
+&lt;h3 id='how_does_it_work'&gt;How does it work?&lt;/h3&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Setup Ftp On Aws Centos</title>
+   <link href="http://http://tinyfactory.github.com/centos/2012/07/08/setup-ftp-on-aws-centos.html"/>
+   <updated>2012-07-08T00:00:00-07:00</updated>
+   <id>http://http://tinyfactory.github.com/centos/2012/07/08/setup-ftp-on-aws-centos</id>
+   <content type="html">&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Install &lt;strong&gt;vsftpd&lt;/strong&gt;&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;yum install vsftpd - y
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Open up the config file&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;vim /etc/vsftpd/vsftpd.conf
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Add the following lines to the end of &lt;strong&gt;vsftpd.conf&lt;/strong&gt;&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;&lt;span class='nv'&gt;pasv_enable&lt;/span&gt;&lt;span class='o'&gt;=&lt;/span&gt;YES
+&lt;span class='nv'&gt;pasv_min_port&lt;/span&gt;&lt;span class='o'&gt;=&lt;/span&gt;1400 ← port range to be opened at the security group
+&lt;span class='nv'&gt;pasv_max_port&lt;/span&gt;&lt;span class='o'&gt;=&lt;/span&gt;1500
+&lt;span class='nv'&gt;pasv_address&lt;/span&gt;&lt;span class='o'&gt;=&lt;/span&gt;23.21.148.84 ← server IP
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Open up the following &lt;strong&gt;ports&lt;/strong&gt; at the security group within &lt;strong&gt;AWS&lt;/strong&gt;&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;21 ← default FTP connection port
+1400-1500 ← passive port range &lt;span class='nb'&gt;set &lt;/span&gt;in vsftpd.con
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Restart the &lt;strong&gt;vsftpd&lt;/strong&gt; server&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;sudo service vsftpd restart
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Add new user to server for login&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;sudo adduser &lt;span class='o'&gt;[&lt;/span&gt;username&lt;span class='o'&gt;]&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Give user a password so they can login&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;sudo passwd &lt;span class='o'&gt;[&lt;/span&gt;username&lt;span class='o'&gt;]&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Add entry to auto start &lt;strong&gt;vsftpd&lt;/strong&gt; on server restart&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;sudo chkconfig vsftpd on 
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Bonus - if you want to have a user’s files uploaded to an EBS mount, symlink from the FTP user’s directory to the EBS mount&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;ln -s &lt;span class='o'&gt;[&lt;/span&gt;&lt;span class='nb'&gt;source&lt;/span&gt;-file/folder&lt;span class='o'&gt;]&lt;/span&gt; &lt;span class='o'&gt;[&lt;/span&gt;link-name&lt;span class='o'&gt;]&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;</content>
+ </entry>
+ 
+
+</feed>

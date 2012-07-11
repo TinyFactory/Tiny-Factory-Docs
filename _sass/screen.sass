@@ -1,0 +1,325 @@
+@import compass/reset
+@import compass/css3
+@import compass/typography
+@import compass/utilities
+@import var
+@import queries
+@import mixins/syntax
+
++font-face("Sanuk Regular", font-files("SanukLF-Regular.eot", "SanukLF-Regular.svg", "SanukLF-Regular.woff"))
++font-face("Sanuk Bold", font-files("SanukTF-Bold.eot", "SanukTF-Bold.svg", "SanukTF-Bold.woff"))
++font-face("Gotham Light", font-files("Gotham-Light.eot", "Gotham-Light.svg", "Gotham-Light.woff"))
++font-face("Gotham Book", font-files("Gotham-Book.eot", "Gotham-Book.svg", "Gotham-Book.woff"))
++font-face("Gotham Book Italic", font-files("Gotham-BookItalic.eot", "Gotham-BookItalic.svg", "Gotham-BookItalic.woff"))
++font-face("Gotham Medium", font-files("Gotham-Medium.eot", "Gotham-Medium.svg", "Gotham-Medium.woff"))
++font-face("Gotham Bold", font-files("Gotham-Bold.eot", "Gotham-Bold.svg", "Gotham-Bold.woff"))
++font-face("Gotham Ultra", font-files("Gotham-Ultra.eot", "Gotham-Ultra.svg", "Gotham-Ultra.woff"))
+
+body
+	background: $body
+	+regular
+	font-size: 13px
+	line-height: 1.5em
+	color: $text
+
+header
+	max-width: 790px
+	margin: 105px auto 0
+	text-align: center
+
+	img
+		+transition(all 500ms cubic-bezier(0.250, 0.460, 0.450, 0.940))
+
+	a
+		border-bottom: none !important
+
+		&:hover img
+			+opacity(0.8)
+			+rotate(-12deg)
+
+
+h3
+	font-family: "Gotham Book", sans-serif
+	font-weight: normal
+	color: $heading
+	font-size: 22px
+	line-height: 1.8em
+
+h4
+	font-weight: 800
+	font-size: 18px
+	text-transform: capitalize
+	+gotham-bold
+	line-height: 1.4em
+
+a
+	text-decoration: none
+	color: $text
+	+transition(0.1s ease-in-out all)
+	border-bottom: 1px solid transparent
+
+	&:hover
+		color: $heading
+		border-bottom: 1px solid $text
+
+p
+	line-height: 1.7em
+
+	code
+		color: $red
+		padding: 4px
+
+strong
+	+bold
+
+.mobile-nav
+	display: none
+
+#container
+	max-width: 820px
+	margin: 80px auto 0
+
+	.sidebar
+		width: 25%
+		text-align: right
+		border-right: 1px solid darken($body, 8%)
+		padding-right: 30px
+		float: left
+		display: inline
+
+		.item	
+			margin: 20px 0 0
+
+			&:first-child
+				margin: -7px 0 0
+
+		ul li
+			margin: 3px 0
+
+	.articles
+		float: left
+		display: inline
+		padding-left: 30px
+		width: 67%
+
+		li
+			+gotham-book
+			font-size: 22px
+			line-height: 1.4em
+			width: 100%
+			margin: 15px 0
+			text-shadow: 0px 1px #fff
+
+			&:first-child
+				margin: 0 0
+
+			span
+				float: right
+				letter-spacing: 3px
+				font-size: 13px
+				padding: 0 15px
+				position: relative
+				left: 0
+				+transition(0.5s ease-in all)
+				+opacity(0)
+				+gotham-medium
+
+		a
+			border-bottom: none
+
+			&:hover
+				border-bottom: none
+				color: $red
+
+				span
+					+transition(0.1s ease-out all)
+					+opacity(1)
+					color: $text
+
+	.entry
+		padding-left: 30px
+		float: left
+		display: inline
+		width: 67%
+		color: #333
+		margin-bottom: 250px
+
+		p
+			margin: 20px 0
+
+		img
+			max-width: 100%
+			+border-radius(2px)
+
+		ol
+			list-style: decimal
+			margin-left: 18px
+
+			li
+				font-size: 15px
+				margin: 20px 0
+
+		h1
+			font-size: 32px
+			+gotham-light
+
+	.content
+		margin-top: 25px
+		line-height: 25px
+
+		a img
+			vertical-align: bottom
+
+	code, pre
+		font-size: 12px
+		font-family: "Monaco", "Courier New", monospace
+
+li div.highlight
+	padding: 20px 20px 0 !important
+
+.archive-list
+
+	ul
+		margin-bottom: 20px
+
+	.archive-date
+		position: relative
+		left: 15px
+		color: darken($body, 15%)
+
+// =============== Mobile =============== //
+
++mobile-only
+
+	header
+		margin: 55px auto 0 !important
+
+		#logo
+			width: 30%
+			margin: 0 auto 50px
+
+			img
+				max-width: 100%
+
+	.mobile-band
+		background: $red
+		color: #fff
+		+gotham-bold
+		font-size: 11px
+		text-transform: uppercase
+		display: block
+		padding: 24px 0 24px 10px
+
+		a
+			color: #fff
+			border-bottom: none !important
+			padding: 10px 0
+			margin-right: 8px
+
+			&:last-child
+				margin-right: 0 !important
+
+	.mobile-nav
+		display: block
+		text-align: left
+
+		div
+			margin-top: 25px
+
+			&:first-child
+				margin-top: 0
+
+		ul
+			display: none
+			margin-top: 20px
+
+		li
+			display: block
+			padding: 0 8px
+			background: darken($red, 10%)
+			+border-radius(2px)
+			margin: 5px 0
+			width: 91%
+
+			a
+				display: block
+				border-bottom: none !important
+
+				&:hover
+					border-bottom: none !important
+
+	#container
+		margin: 0 auto
+
+		&.single
+			margin-top: 25px
+
+		.sidebar
+			display: none
+
+		.entry
+			width: auto
+			padding: 15px !important
+
+			h1
+				line-height: 1.2em
+				font-size: 26px
+
+		.articles
+			padding: 10px !important
+			margin: 0
+			width: 95% !important
+			background: darken($body, 3%)
+
+			li
+				padding: 10px 0
+				margin: 10px 0
+				display: block
+				border-bottom: 1px solid darken($body, 5%)
+				+regular
+				font-size: 15px
+				
+
+				span
+					+opacity(1)
+					+transition(none)
+					font-size: 10px
+					color: darken($body, 20%)
+
+				a
+					border-bottom: none
+					display: block
+					color: darken($heading, 15%)
+
+					&:hover
+						border-bottom: none
+						color: $red
+
+						span
+							position: relative
+							left: 0 !important
+							+transition(0)
+							+opacity(1)
+
+
+// =============== Tablet Portrait =============== //
+
++tablet-portrait-only
+	
+	#container
+
+		.entry
+			width: 60%
+
+			h1
+				line-height: 1.2em
+
+::selection
+	background: $red
+	color: #fff
+	text-shadow: 0px 1px darken($red, 20%)
+
+::-moz-selection
+	background: $red
+	color: #fff
+	text-shadow: 0px 1px darken($red, 20%)

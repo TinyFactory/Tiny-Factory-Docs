@@ -1,5 +1,7 @@
 .highlight {
   background: #ffffff;
+  padding: 20px;
+  @include border-radius(4px);
   .c {
     color: #999988;
     font-style: italic; }

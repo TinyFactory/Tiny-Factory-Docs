@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+    {% if page.description %}
+    <meta name="description" content="{{ page.description }}" />
+    <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1"/>
+    {% endif %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" media="screen" href="css/screen.css" type="text/css" />
+    {% if site.feedburner %}
+    <link href="http://feeds.feedburner.com/{{ site.feedburner.id }}" rel="alternate" title="{{ site.title }}" type="application/atom+xml" />
+    <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1"/>
+    {% endif %}
+    {% if site.google_analytics %}
+    <!-- google analytics async -->
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', '{{ site.google_analytics.account }}']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    {% endif %}
+  </head>
+  <body>
+      <header>
+        <div id="logo">
+          <a href="{{site.url}}"><img src="images/logo.png" alt="Tiny Factory"/></a>
+        </div><!-- logo -->
+  
+        <nav class="mobile-nav">
+          <div class="mobile-band">
+            {% for page in site.html_pages %}
+            {% if page.title %}
+              <a href="{{site.baseurl}}{{page.url}}">{{ page.title }}</a>
+            {% endif %}
+          {% endfor %}
+            <a class="category" href="#">Categories</a>
+            <ul>
+              {% for category in site.categories %} 
+                <li><a href="{{ category | first }}.html">{{ category | first }}</a></li> 
+              {% endfor %} 
+            </ul>
+          </div>
+        </nav>
+      </header>
+
+      <div id="container">
+        <div class="sidebar">
+          <div class="item">
+            <h3>Documentation</h3>
+            <ul>
+              <li><a href="{{site.url}}">Home</a></li>
+              {% for page in site.html_pages %}
+              {% if page.title %}
+                <li><a href="{{site.baseurl}}{{page.url}}">{{ page.title }}</a></li>
+              {% endif %}
+              {% endfor %}
+            </ul>
+          </div><!-- item -->
+          <div class="item">
+            <h3>Categories</h3>
+            <ul> 
+                {% for category in site.categories %} 
+                  <li><a href="{{ page.url.archive }}#{{ category | first }}">{{ category | first }}</a></li> 
+                {% endfor %} 
+            </ul> 
+          </div><!-- item -->
+          <div class="item">
+            <h3>Newest Docs</h3>
+            <ul>
+              {% for post in site.posts limit:5 %}
+                <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+              {% endfor %}
+            </ul>
+          </div><!-- item -->
+        </div><!-- sidebar -->
+
+
+        <article>
+            <div class="entry">
+            {% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
+            
+            {{ content }}
+
+            {% if page.title == 'Archives' %}
+            <div class="archive-list">
+              {% for category in site.categories %} 
+                <h4 id="{{ category | first }}">{{ category | first }}</h4>
+                <ul>
+                  {% for posts in category %}
+                    {% for post in posts %} 
+                      <li><a href="{{ post.url }}">{{ post.title }}</a> <span class="archive-date">{{ post.date | date: "%m.%d.%y" }}</span></li>
+                    {% endfor %} 
+                  {% endfor %} 
+                </ul>
+              {% endfor %} 
+            {% endif %}
+            </div>
+          </div>
+        </article>
+      </div>
+  </body>
+</html>

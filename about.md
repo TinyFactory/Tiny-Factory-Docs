@@ -1,6 +1,7 @@
 ---
-layout: default
+layout: page
 title: About
+id: about
 ---
 
-All about me and my blog...
+Stay tuned until we can get this filled out entirely.

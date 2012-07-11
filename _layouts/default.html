@@ -3,12 +3,14 @@
   <head>
     <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
     {% if page.description %}
+    <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1;"/>
     <meta name="description" content="{{ page.description }}" />
     {% endif %}
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" media="screen" href="/stylesheets/screen.css" type="text/css" />
+    <link rel="stylesheet" media="screen" href="{{site.url}}css/screen.css" type="text/css" />
     {% if site.feedburner %}
     <link href="http://feeds.feedburner.com/{{ site.feedburner.id }}" rel="alternate" title="{{ site.title }}" type="application/atom+xml" />
+    
     {% endif %}
     {% if site.google_analytics %}
     <!-- google analytics async -->
@@ -25,18 +27,37 @@
     {% endif %}
   </head>
   <body>
-    <div id="page">
-      <div id="header">
-        <a href="/"><h1>{{ site.title }}</h1></a>
+      <header>
+        <div id="logo">
+          <a href="{{site.url}}"><img src="{{site.url}}images/logo.png" alt="Tiny Factory"/></a>
+        </div><!-- logo -->
+  
+        <nav class="mobile-nav">
+          <div class="mobile-band">
+            {% for page in site.html_pages %}
+            {% if page.title %}
+              <a href="{{site.baseurl}}{{page.url}}">{{ page.title }}</a>
+            {% endif %}
+          {% endfor %}
+            <a class="category" href="#">Categories</a>
+            <ul>
+              {% for category in site.categories %} 
+                <li><a href="{{ category | first }}.html">{{ category | first }}</a></li> 
+              {% endfor %} 
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <div id="container">
+            {{ content }}
       </div>
-      <div id="body">
-        {% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
-        {{ content }}
-      </div>
-    </div>
 
-  {% if site.github %}
-    <a href="http://github.com/{{ site.github.username }}"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" /></a>
-  {% endif %}
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+      <script type="text/javascript">
+        $('a.category').click( function() {
+          $('.mobile-band ul').slideToggle(350);
+          return false;
+        });
+      </script>
   </body>
 </html>

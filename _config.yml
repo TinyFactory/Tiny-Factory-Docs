@@ -1,16 +1,17 @@
 # standard jekyll configuration
 
-#permalink: :date
-# url: http://tinyfactory.github.com/
-baseurl: /Tiny-Factory-Docs
+permalink: :date
+# baseurl: /Tiny-Factory-Docs
+url: /
 exclude: ['Rakefile', 'README.md', 'config.rb']
+pygments: true
 
 # configuration required for some pages
 
-# domain: blog.example.com
-# title: My Blog Title
-# author: Me
-# email: me@example.com
+domain: http://tinyfactory.github.com
+title: Tiny Factory Docs
+author: Tiny Factory
+email: hello@tinyfactory.co
 
 # configuration for ehancements, uncomment to enable
 
@@ -25,3 +26,4 @@ exclude: ['Rakefile', 'README.md', 'config.rb']
 
 # disqus:
 #   id: disqusid
+

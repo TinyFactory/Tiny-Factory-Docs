@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Git Branching - Tiny Factory Docs</title>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" media="screen" href="/css/screen.css" type="text/css" />
+    
+    
+  </head>
+  <body>
+      <header>
+        <div id="logo">
+          <a href="/"><img src="/images/logo.png" alt="Tiny Factory"/></a>
+        </div><!-- logo -->
+  
+        <nav class="mobile-nav">
+          <div class="mobile-band">
+            
+            
+              <a href="/about.html">About</a>
+            
+          
+            
+              <a href="/arhcive.html">Archives</a>
+            
+          
+            
+              <a href="/contribute.html">Contribute</a>
+            
+          
+            
+          
+            <a class="category" href="#">Categories</a>
+            <ul>
+               
+                <li><a href="compass.html">compass</a></li> 
+               
+                <li><a href="git.html">git</a></li> 
+               
+                <li><a href="centos.html">centos</a></li> 
+               
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <div id="container">
+            <div id="container" class="single">
+  <div class="sidebar">
+      <div class="item">
+        <h3>Contribute</h3>
+        <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=TinyFactory&repo=Tiny-Factory-Docs&type=watch&count=true"
+  allowtransparency="true" frameborder="0" scrolling="0" width="90px" height="20px"></iframe>
+          <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=TinyFactory&repo=Tiny-Factory-Docs&type=fork"
+  allowtransparency="true" frameborder="0" scrolling="0" width="53px" height="20px"></iframe>
+      </div><!-- item -->
+      <div class="item">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="/">Home</a></li>
+          
+            
+              <li><a href="/about.html">About</a></li>
+            
+          
+            
+              <li><a href="/arhcive.html">Archives</a></li>
+            
+          
+            
+              <li><a href="/contribute.html">Contribute</a></li>
+            
+          
+            
+          
+        </ul>
+      </div><!-- item -->
+      <div class="item">
+        <h3>Related</h3>
+        <ul>
+        
+          
+          
+            
+          
+                                 
+        
+          
+          
+            
+              
+            
+          
+          
+            <li><a href="/git/2012/07/09/changing-the-head-pointer-on-a-git-repoistory.html">Changing the head on a Git Repo</a></li>
+                                 
+        
+          
+          
+            
+          
+                                 
+        
+         
+      </ul> 
+      </div><!-- item -->
+      <div class="item">
+        <h3>Most Recent</h3>
+        <ul class="posts">
+          
+            <li><a href="/compass/2012/07/11/Compass-Test.html">Compass Test</a></li>
+          
+            <li><a href="/git/2012/07/09/changing-the-head-pointer-on-a-git-repoistory.html">Changing the head on a Git Repo</a></li>
+          
+            <li><a href="/centos/2012/07/08/setup-ftp-on-aws-centos.html">Setup Ftp On Aws Centos</a></li>
+          
+        </ul>
+      </div>
+    </div><!-- sidebar -->
+
+      <article>
+          <div class="entry">
+            <h1>Git Branching</h1>
+            <h3 id='basic_branching'>Basic Branching</h3>
+
+<ul>
+<li>
+<p>To create a new branch locally</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>git checkout -b <span class='s2'>&quot;new-branch-name&quot;</span>
+Switched to a new branch <span class='s2'>&quot;new-branch-name&quot;</span>
+
+</code></pre>
+</div></li>
+
+<li>
+<p>To view your local branches</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>git branch
+
+</code></pre>
+</div></li>
+
+<li>
+<p>To view all branches</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>git branch -a
+
+</code></pre>
+</div></li>
+
+<li>
+<p>To view all remote branches</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>git branch -r
+
+</code></pre>
+</div></li>
+
+<li>
+<p>To push <strong>only</strong> the current branch</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>git push origin <span class='s2'>&quot;branch-name&quot;</span>
+
+</code></pre>
+</div></li>
+</ul>
+          </div>
+      </article>
+</div>
+
+      </div>
+
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+      <script type="text/javascript">
+        $('a.category').click( function() {
+          $('.mobile-band ul').slideToggle(350);
+          return false;
+        });
+      </script>
+  </body>
+</html>

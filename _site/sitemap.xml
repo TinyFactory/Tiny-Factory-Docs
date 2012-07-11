@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!--  Homepage -->
+  <url>
+    <loc>http://http://tinyfactory.github.com/</loc>
+    <lastmod>2012-07-11</lastmod>
+    <changefreq>daily</changefreq>
+		<priority>1.0</priority>
+  </url>
+
+  
+  <url>
+    <loc>http://http://tinyfactory.github.com/compass/2012/07/11/Compass-Test.html</loc>
+    
+    <lastmod>2012-07-11</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://http://tinyfactory.github.com/git/2012/07/10/git-branching.html</loc>
+    
+    <lastmod>2012-07-10</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://http://tinyfactory.github.com/git/2012/07/09/changing-the-head-pointer-on-a-git-repoistory.html</loc>
+    
+    <lastmod>2012-07-09</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://http://tinyfactory.github.com/centos/2012/07/08/setup-ftp-on-aws-centos.html</loc>
+    
+    <lastmod>2012-07-08</lastmod>
+    
+  </url>
+  
+
+  
+  <url>
+    <loc>http://http://tinyfactory.github.com/about.html</loc>
+    
+    <lastmod>2012-07-11</lastmod>
+    
+    
+    
+  </url>
+  
+  <url>
+    <loc>http://http://tinyfactory.github.com/arhcive.html</loc>
+    
+    <lastmod>2012-07-11</lastmod>
+    
+    
+    
+  </url>
+  
+  <url>
+    <loc>http://http://tinyfactory.github.com/contribute.html</loc>
+    
+    <lastmod>2012-07-11</lastmod>
+    
+    
+    
+  </url>
+  
+  <url>
+    <loc>http://http://tinyfactory.github.com/index.html</loc>
+    
+    <lastmod>2012-07-11</lastmod>
+    
+    
+    
+  </url>
+  
+
+</urlset>
