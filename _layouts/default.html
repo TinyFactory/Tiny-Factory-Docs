@@ -42,8 +42,8 @@
             <a class="category" href="#">Categories</a>
             <ul>
               {% for category in site.categories %} 
-                <li><a href="{{ category | first }}.html">{{ category | first }}</a></li> 
-              {% endfor %} 
+                <li><a href="{{site.url}}archive.html#{{ category | first }}">{{ category | first }}</a></li> 
+              {% endfor %}
             </ul>
           </div>
         </nav>

@@ -11,7 +11,7 @@
   <body>
       <header>
         <div id="logo">
-          <a href="/"><img src="images/logo.png" alt="Tiny Factory"/></a>
+          <a href="http://localhost:4000/"><img src="images/logo.png" alt="Tiny Factory"/></a>
         </div><!-- logo -->
   
         <nav class="mobile-nav">
@@ -22,7 +22,7 @@
             
           
             
-              <a href="/arhcive.html">Archives</a>
+              <a href="/archive.html">Archives</a>
             
           
             
@@ -34,11 +34,9 @@
             <a class="category" href="#">Categories</a>
             <ul>
                
-                <li><a href="compass.html">compass</a></li> 
+                <li><a href="http://localhost:4000/archive.html#git">git</a></li> 
                
-                <li><a href="git.html">git</a></li> 
-               
-                <li><a href="centos.html">centos</a></li> 
+                <li><a href="http://localhost:4000/archive.html#centos">centos</a></li> 
                
             </ul>
           </div>
@@ -50,14 +48,14 @@
           <div class="item">
             <h3>Documentation</h3>
             <ul>
-              <li><a href="/">Home</a></li>
+              <li><a href="http://localhost:4000/">Home</a></li>
               
               
                 <li><a href="/about.html">About</a></li>
               
               
               
-                <li><a href="/arhcive.html">Archives</a></li>
+                <li><a href="/archive.html">Archives</a></li>
               
               
               
@@ -68,23 +66,19 @@
               
             </ul>
           </div><!-- item -->
-          <div class="item">
+          <div class="item categories">
             <h3>Categories</h3>
             <ul> 
                  
-                  <li><a href="#compass">compass</a></li> 
+                  <li><a href="http://localhost:4000/archive.html#git">git</a></li> 
                  
-                  <li><a href="#git">git</a></li> 
-                 
-                  <li><a href="#centos">centos</a></li> 
+                  <li><a href="http://localhost:4000/archive.html#centos">centos</a></li> 
                  
             </ul> 
           </div><!-- item -->
           <div class="item">
             <h3>Newest Docs</h3>
             <ul>
-              
-                <li><a href="/compass/2012/07/11/Compass-Test.html">Compass Test</a></li>
               
                 <li><a href="/git/2012/07/10/git-branching.html">Git Branching</a></li>
               
@@ -105,19 +99,6 @@
 
             
             <div class="archive-list">
-               
-                <h4 id="compass">compass</h4>
-                <ul>
-                  
-                     
-                      <li><a href=""></a> <span class="archive-date"></span></li>
-                     
-                  
-                     
-                      <li><a href="/compass/2012/07/11/Compass-Test.html">Compass Test</a> <span class="archive-date">07.11.12</span></li>
-                     
-                   
-                </ul>
                
                 <h4 id="git">git</h4>
                 <ul>
@@ -152,5 +133,12 @@
           </div>
         </article>
       </div>
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+      <script type="text/javascript">
+        $('a.category').click( function() {
+          $('.mobile-band ul').slideToggle(350);
+          return false;
+        });
+      </script>
   </body>
 </html>

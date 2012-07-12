@@ -4,47 +4,13 @@
  <title>Tiny Factory Docs</title>
  <link href="http://http://tinyfactory.github.com/atom.xml" rel="self"/>
  <link href="http://http://tinyfactory.github.com/"/>
- <updated>2012-07-11T16:20:45-07:00</updated>
+ <updated>2012-07-11T17:27:57-07:00</updated>
  <id>http://http://tinyfactory.github.com/</id>
  <author>
    <name>Tiny Factory</name>
    <email>hello@tinyfactory.co</email>
  </author>
 
- 
- <entry>
-   <title>Compass Test</title>
-   <link href="http://http://tinyfactory.github.com/compass/2012/07/11/Compass-Test.html"/>
-   <updated>2012-07-11T00:00:00-07:00</updated>
-   <id>http://http://tinyfactory.github.com/compass/2012/07/11/Compass-Test</id>
-   <content type="html">&lt;p&gt;This is just a test to throw another category in the loop and test some highlighting&lt;/p&gt;
-&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='sass'&gt;&lt;span class='nt'&gt;body&lt;/span&gt;
-	&lt;span class='na'&gt;background&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='nv'&gt;$body&lt;/span&gt;
-	&lt;span class='nd'&gt;+regular&lt;/span&gt;
-	&lt;span class='na'&gt;font-size&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;13&lt;/span&gt;&lt;span class='kt'&gt;px&lt;/span&gt;
-	&lt;span class='na'&gt;line-height&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;1&lt;/span&gt;&lt;span class='mf'&gt;.5&lt;/span&gt;&lt;span class='kt'&gt;em&lt;/span&gt;
-	&lt;span class='na'&gt;color&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='nv'&gt;$text&lt;/span&gt;
-
-&lt;span class='nt'&gt;header&lt;/span&gt;
-	&lt;span class='na'&gt;max-width&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;790&lt;/span&gt;&lt;span class='kt'&gt;px&lt;/span&gt;
-	&lt;span class='na'&gt;margin&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;105&lt;/span&gt;&lt;span class='kt'&gt;px&lt;/span&gt; &lt;span class='no'&gt;auto&lt;/span&gt; &lt;span class='mi'&gt;0&lt;/span&gt;
-	&lt;span class='na'&gt;text-align&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='no'&gt;center&lt;/span&gt;
-
-&lt;span class='nt'&gt;h3&lt;/span&gt;
-	&lt;span class='na'&gt;font-family&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot;Gotham Book&amp;quot;&lt;/span&gt;&lt;span class='o'&gt;,&lt;/span&gt; &lt;span class='no'&gt;sans-serif&lt;/span&gt;
-	&lt;span class='na'&gt;font-weight&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='no'&gt;normal&lt;/span&gt;
-	&lt;span class='na'&gt;color&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='nv'&gt;$heading&lt;/span&gt;
-	&lt;span class='na'&gt;font-size&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;20&lt;/span&gt;&lt;span class='kt'&gt;px&lt;/span&gt;
-	&lt;span class='na'&gt;line-height&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;1&lt;/span&gt;&lt;span class='mf'&gt;.8&lt;/span&gt;&lt;span class='kt'&gt;em&lt;/span&gt;
-
-&lt;span class='nt'&gt;a&lt;/span&gt;
-	&lt;span class='na'&gt;text-decoration&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='no'&gt;none&lt;/span&gt;
-	&lt;span class='na'&gt;color&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='nv'&gt;$text&lt;/span&gt;
-	&lt;span class='nd'&gt;+transition&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='mi'&gt;0&lt;/span&gt;&lt;span class='mf'&gt;.1&lt;/span&gt;&lt;span class='kt'&gt;s&lt;/span&gt; &lt;span class='n'&gt;ease-in-out&lt;/span&gt; &lt;span class='n'&gt;all&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt;
-	&lt;span class='na'&gt;border-bottom&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;1&lt;/span&gt;&lt;span class='kt'&gt;px&lt;/span&gt; &lt;span class='no'&gt;solid&lt;/span&gt; &lt;span class='no'&gt;transparent&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;</content>
- </entry>
  
  <entry>
    <title>Git Branching</title>

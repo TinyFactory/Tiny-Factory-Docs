@@ -15,14 +15,14 @@ id: home
       {% endfor %}
     </ul>
   </div><!-- item -->
-  <!-- div class="item">
+  <div class="item categories">
     <h3>Categories</h3>
-    <ul>
-      {% for category in site.categories %} 
-        <li>{{ category | first }}</li> 
-      {% endfor %} 
+    <ul> 
+        {% for category in site.categories %} 
+          <li><a href="{{site.url}}archive.html#{{ category | first }}">{{ category | first }}</a></li> 
+        {% endfor %} 
     </ul> 
-  </div -->
+  </div><!-- item -->
   <div class="item">
     <h3>Newest Docs</h3>
     <ul>

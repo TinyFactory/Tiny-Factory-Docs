@@ -24,11 +24,15 @@ body
 
 header
 	max-width: 790px
-	margin: 105px auto 0
+	margin: 40px auto 0
 	text-align: center
 
+#logo
+	width: 25%
+	
 	img
 		+transition(all 500ms cubic-bezier(0.250, 0.460, 0.450, 0.940))
+		max-width: 70%
 
 	a
 		border-bottom: none !important
@@ -36,7 +40,14 @@ header
 		&:hover img
 			+opacity(0.8)
 			+rotate(-12deg)
+			+transform-style(preserve3d)
 
+h2
+	font-weight: 800
+	font-size: 24px
+	text-transform: capitalize
+	+gotham-bold
+	line-height: 1.6em
 
 h3
 	font-family: "Gotham Book", sans-serif
@@ -50,7 +61,7 @@ h4
 	font-size: 18px
 	text-transform: capitalize
 	+gotham-bold
-	line-height: 1.4em
+	line-height: 1.6em
 
 a
 	text-decoration: none
@@ -77,7 +88,7 @@ strong
 
 #container
 	max-width: 820px
-	margin: 80px auto 0
+	margin: 40px auto 0
 
 	.sidebar
 		width: 25%
@@ -92,6 +103,11 @@ strong
 
 			&:first-child
 				margin: -7px 0 0
+
+			&.categories
+	
+				ul li a
+					text-transform: capitalize
 
 		ul li
 			margin: 3px 0
@@ -156,7 +172,6 @@ strong
 			margin-left: 18px
 
 			li
-				font-size: 15px
 				margin: 20px 0
 
 		h1
@@ -180,7 +195,7 @@ li div.highlight
 .archive-list
 
 	ul
-		margin-bottom: 20px
+		margin-bottom: 30px
 
 	.archive-date
 		position: relative

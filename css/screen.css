@@ -255,20 +255,25 @@ body {
 
 header {
   max-width: 790px;
-  margin: 105px auto 0;
+  margin: 40px auto 0;
   text-align: center;
 }
-header img {
+
+#logo {
+  width: 25%;
+}
+#logo img {
   -webkit-transition: all 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -moz-transition: all 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -ms-transition: all 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   -o-transition: all 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transition: all 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  max-width: 70%;
 }
-header a {
+#logo a {
   border-bottom: none !important;
 }
-header a:hover img {
+#logo a:hover img {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   opacity: 0.8;
   -webkit-transform: rotate(-12deg);
@@ -276,6 +281,20 @@ header a:hover img {
   -ms-transform: rotate(-12deg);
   -o-transform: rotate(-12deg);
   transform: rotate(-12deg);
+  -webkit-transform-style: preserve3d;
+  -moz-transform-style: preserve3d;
+  -ms-transform-style: preserve3d;
+  -o-transform-style: preserve3d;
+  transform-style: preserve3d;
+}
+
+h2 {
+  font-weight: 800;
+  font-size: 24px;
+  text-transform: capitalize;
+  font-family: "Gotham Bold", sans-serif;
+  font-weight: normal;
+  line-height: 1.6em;
 }
 
 h3 {
@@ -292,7 +311,7 @@ h4 {
   text-transform: capitalize;
   font-family: "Gotham Bold", sans-serif;
   font-weight: normal;
-  line-height: 1.4em;
+  line-height: 1.6em;
 }
 
 a {
@@ -329,7 +348,7 @@ strong {
 
 #container {
   max-width: 820px;
-  margin: 80px auto 0;
+  margin: 40px auto 0;
 }
 #container .sidebar {
   width: 25%;
@@ -344,6 +363,9 @@ strong {
 }
 #container .sidebar .item:first-child {
   margin: -7px 0 0;
+}
+#container .sidebar .item.categories ul li a {
+  text-transform: capitalize;
 }
 #container .sidebar ul li {
   margin: 3px 0;
@@ -424,7 +446,6 @@ strong {
   margin-left: 18px;
 }
 #container .entry ol li {
-  font-size: 15px;
   margin: 20px 0;
 }
 #container .entry h1 {
@@ -449,7 +470,7 @@ li div.highlight {
 }
 
 .archive-list ul {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 .archive-list .archive-date {
   position: relative;

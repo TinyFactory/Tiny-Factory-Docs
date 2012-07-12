@@ -1,8 +1,13 @@
 # standard jekyll configuration
 
+# Development
+# url: http://localhost:4000/
+
+# Production
+baseurl: /Tiny-Factory-Docs
+url: http://tinyfactory.github.com/Tiny-Factory-Docs/
+
 permalink: :date
-# baseurl: /Tiny-Factory-Docs
-url: /
 exclude: ['Rakefile', 'README.md', 'config.rb']
 pygments: true
 
