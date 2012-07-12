@@ -4,7 +4,7 @@
  <title>Tiny Factory Docs</title>
  <link href="http://http://tinyfactory.github.com/atom.xml" rel="self"/>
  <link href="http://http://tinyfactory.github.com/"/>
- <updated>2012-07-11T17:27:57-07:00</updated>
+ <updated>2012-07-11T17:35:36-07:00</updated>
  <id>http://http://tinyfactory.github.com/</id>
  <author>
    <name>Tiny Factory</name>
@@ -17,45 +17,57 @@
    <link href="http://http://tinyfactory.github.com/git/2012/07/10/git-branching.html"/>
    <updated>2012-07-10T00:00:00-07:00</updated>
    <id>http://http://tinyfactory.github.com/git/2012/07/10/git-branching</id>
-   <content type="html">&lt;h3 id='basic_branching'&gt;Basic Branching&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;To create a new branch locally&lt;/p&gt;
+   <content type="html">&lt;p&gt;To create a new branch locally&lt;/p&gt;
 &lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;&lt;span class='nv'&gt;$ &lt;/span&gt;git checkout -b &lt;span class='s2'&gt;&amp;quot;new-branch-name&amp;quot;&lt;/span&gt;
 Switched to a new branch &lt;span class='s2'&gt;&amp;quot;new-branch-name&amp;quot;&lt;/span&gt;
-
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;&lt;/li&gt;
-
-&lt;li&gt;
+&lt;/div&gt;
+&lt;p&gt;To create a new local branch from a remote branch&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt; 
+&lt;span class='nv'&gt;$ &lt;/span&gt;git checkout -b new-branch-name origin/remote-branch-name
+Switched to a new branch &lt;span class='s2'&gt;&amp;quot;new-branch-name&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Push a New Local Branch to a Remote Git Repo&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;&lt;span class='nv'&gt;$ &lt;/span&gt;git push origin new-branch-name
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 &lt;p&gt;To view your local branches&lt;/p&gt;
-&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;&lt;span class='nv'&gt;$ &lt;/span&gt;git branch
-
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt; 
+&lt;span class='nv'&gt;$ &lt;/span&gt;git branch
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;&lt;/li&gt;
-
-&lt;li&gt;
-&lt;p&gt;To view all branches&lt;/p&gt;
-&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;&lt;span class='nv'&gt;$ &lt;/span&gt;git branch -a
-
+&lt;/div&gt;
+&lt;p&gt;To view all branches (local and remote)&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt; 
+&lt;span class='nv'&gt;$ &lt;/span&gt;git branch -a
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;&lt;/li&gt;
-
-&lt;li&gt;
+&lt;/div&gt;
 &lt;p&gt;To view all remote branches&lt;/p&gt;
-&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;&lt;span class='nv'&gt;$ &lt;/span&gt;git branch -r
-
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt; 
+&lt;span class='nv'&gt;$ &lt;/span&gt;git branch -r
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;&lt;/li&gt;
-
-&lt;li&gt;
-&lt;p&gt;To push &lt;strong&gt;only&lt;/strong&gt; the current branch&lt;/p&gt;
-&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;&lt;span class='nv'&gt;$ &lt;/span&gt;git push origin &lt;span class='s2'&gt;&amp;quot;branch-name&amp;quot;&lt;/span&gt;
-
+&lt;/div&gt;
+&lt;p&gt;To merge a branch check out the branch you&amp;#8217;d like to merge to and run&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt; 
+&lt;span class='nv'&gt;$ &lt;/span&gt;git checkout master
+&lt;span class='nv'&gt;$ &lt;/span&gt;git merge new-branch-name
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;/ul&gt;</content>
+&lt;/div&gt;
+&lt;p&gt;To push all local changes to remote&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt; 
+&lt;span class='nv'&gt;$ &lt;/span&gt;git push origin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;To push local changes for a specific repo&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt; 
+&lt;span class='nv'&gt;$ &lt;/span&gt;git push origin master
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;View GUI of merges&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt; 
+&lt;span class='nv'&gt;$ &lt;/span&gt;gitk
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content>
  </entry>
  
  <entry>

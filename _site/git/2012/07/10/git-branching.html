@@ -111,45 +111,57 @@
       <article>
           <div class="entry">
             <h1>Git Branching</h1>
-            <h3 id='basic_branching'>Basic Branching</h3>
-
-<ul>
-<li>
-<p>To create a new branch locally</p>
+            <p>To create a new branch locally</p>
 <div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>git checkout -b <span class='s2'>&quot;new-branch-name&quot;</span>
 Switched to a new branch <span class='s2'>&quot;new-branch-name&quot;</span>
-
 </code></pre>
-</div></li>
-
-<li>
+</div>
+<p>To create a new local branch from a remote branch</p>
+<div class='highlight'><pre><code class='bash'> 
+<span class='nv'>$ </span>git checkout -b new-branch-name origin/remote-branch-name
+Switched to a new branch <span class='s2'>&quot;new-branch-name&quot;</span>
+</code></pre>
+</div>
+<p>Push a New Local Branch to a Remote Git Repo</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>git push origin new-branch-name
+</code></pre>
+</div>
 <p>To view your local branches</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>git branch
-
+<div class='highlight'><pre><code class='bash'> 
+<span class='nv'>$ </span>git branch
 </code></pre>
-</div></li>
-
-<li>
-<p>To view all branches</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>git branch -a
-
+</div>
+<p>To view all branches (local and remote)</p>
+<div class='highlight'><pre><code class='bash'> 
+<span class='nv'>$ </span>git branch -a
 </code></pre>
-</div></li>
-
-<li>
+</div>
 <p>To view all remote branches</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>git branch -r
-
+<div class='highlight'><pre><code class='bash'> 
+<span class='nv'>$ </span>git branch -r
 </code></pre>
-</div></li>
-
-<li>
-<p>To push <strong>only</strong> the current branch</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>git push origin <span class='s2'>&quot;branch-name&quot;</span>
-
+</div>
+<p>To merge a branch check out the branch you&#8217;d like to merge to and run</p>
+<div class='highlight'><pre><code class='bash'> 
+<span class='nv'>$ </span>git checkout master
+<span class='nv'>$ </span>git merge new-branch-name
 </code></pre>
-</div></li>
-</ul>
+</div>
+<p>To push all local changes to remote</p>
+<div class='highlight'><pre><code class='bash'> 
+<span class='nv'>$ </span>git push origin
+</code></pre>
+</div>
+<p>To push local changes for a specific repo</p>
+<div class='highlight'><pre><code class='bash'> 
+<span class='nv'>$ </span>git push origin master
+</code></pre>
+</div>
+<p>View GUI of merges</p>
+<div class='highlight'><pre><code class='bash'> 
+<span class='nv'>$ </span>gitk
+</code></pre>
+</div>
           </div>
       </article>
 </div>
