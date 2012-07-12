@@ -4,29 +4,29 @@
     <title>Setup Ftp On Aws Centos - Tiny Factory Docs</title>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" media="screen" href="http://tinyfactory.github.com/Tiny-Factory-Docs/css/screen.css" type="text/css" />
+    <link rel="stylesheet" media="screen" href="/css/screen.css" type="text/css" />
     
     
   </head>
   <body>
       <header>
         <div id="logo">
-          <a href="http://tinyfactory.github.com/Tiny-Factory-Docs/"><img src="http://tinyfactory.github.com/Tiny-Factory-Docs/images/logo.png" alt="Tiny Factory"/></a>
+          <a href="/"><img src="/images/logo.png" alt="Tiny Factory"/></a>
         </div><!-- logo -->
   
         <nav class="mobile-nav">
           <div class="mobile-band">
             
             
-              <a href="/Tiny-Factory-Docs/about.html">About</a>
+              <a href="http://localhost:4000/about.html">About</a>
             
           
             
-              <a href="/Tiny-Factory-Docs/archive.html">Archives</a>
+              <a href="http://localhost:4000/archive.html">Archives</a>
             
           
             
-              <a href="/Tiny-Factory-Docs/contribute.html">Contribute</a>
+              <a href="http://localhost:4000/contribute.html">Contribute</a>
             
           
             
@@ -34,9 +34,9 @@
             <a class="category" href="#">Categories</a>
             <ul>
                
-                <li><a href="http://tinyfactory.github.com/Tiny-Factory-Docs/archive.html#centos">centos</a></li> 
+                <li><a href="http://localhost:4000/archive.html#git">git</a></li> 
                
-                <li><a href="http://tinyfactory.github.com/Tiny-Factory-Docs/archive.html#git">git</a></li> 
+                <li><a href="http://localhost:4000/archive.html#centos">centos</a></li> 
               
             </ul>
           </div>
@@ -44,29 +44,33 @@
       </header>
       <div id="container">
             <div id="container" class="single">
+
   <div class="sidebar">
+    <div class="side-logo"><a href="http://localhost:4000"><img src="http://localhost:4000/images/logo.png" alt=""></a></div>
       <div class="item">
         <h3>Contribute</h3>
-        <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=TinyFactory&repo=Tiny-Factory-Docs&type=watch&count=true"
-  allowtransparency="true" frameborder="0" scrolling="0" width="90px" height="20px"></iframe>
-          <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=TinyFactory&repo=Tiny-Factory-Docs&type=fork"
-  allowtransparency="true" frameborder="0" scrolling="0" width="53px" height="20px"></iframe>
+        <div class="github-buttons">
+          <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=TinyFactory&repo=Tiny-Factory-Docs&type=watch&count=true"
+            allowtransparency="true" frameborder="0" scrolling="0" width="90px" height="20px"></iframe>
+            <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=TinyFactory&repo=Tiny-Factory-Docs&type=fork"
+            allowtransparency="true" frameborder="0" scrolling="0" width="53px" height="20px"></iframe>
+        </div>
       </div><!-- item -->
       <div class="item">
         <h3>Documentation</h3>
         <ul>
-          <li><a href="http://tinyfactory.github.com/Tiny-Factory-Docs/">Home</a></li>
+          <li><a href="http://localhost:4000">Home</a></li>
           
             
-              <li><a href="/Tiny-Factory-Docs/about.html">About</a></li>
-            
-          
-            
-              <li><a href="/Tiny-Factory-Docs/archive.html">Archives</a></li>
+              <li><a href="http://localhost:4000/about.html">About</a></li>
             
           
             
-              <li><a href="/Tiny-Factory-Docs/contribute.html">Contribute</a></li>
+              <li><a href="http://localhost:4000/archive.html">Archives</a></li>
+            
+          
+            
+              <li><a href="http://localhost:4000/contribute.html">Contribute</a></li>
             
           
             
@@ -96,9 +100,9 @@
         <h3>Most Recent</h3>
         <ul class="posts">
           
-            <li><a href="http://tinyfactory.github.com/Tiny-Factory-Docs//git/2012/07/10/git-branching.html">Git Branching</a></li>
+            <li><a href="http://localhost:4000/git/2012/07/10/git-branching.html">Git Branching</a></li>
           
-            <li><a href="http://tinyfactory.github.com/Tiny-Factory-Docs//git/2012/07/09/changing-the-head-pointer-on-a-git-repoistory.html">Changing the head on a Git Repo</a></li>
+            <li><a href="http://localhost:4000/git/2012/07/09/changing-the-head-pointer-on-a-git-repoistory.html">Changing the head on a Git Repo</a></li>
           
         </ul>
       </div>
@@ -108,73 +112,81 @@
           <div class="entry">
             <h1>Setup Ftp On Aws Centos</h1>
             <ol>
-<li>
-<p>Install <strong>vsftpd</strong></p>
-<div class='highlight'><pre><code class='bash'>yum install vsftpd - y
-
-</code></pre>
-</div></li>
-
-<li>
-<p>Open up the config file</p>
-<div class='highlight'><pre><code class='bash'>vim /etc/vsftpd/vsftpd.conf
-
-</code></pre>
-</div></li>
-
-<li>
-<p>Add the following lines to the end of <strong>vsftpd.conf</strong></p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>pasv_enable</span><span class='o'>=</span>YES
-<span class='nv'>pasv_min_port</span><span class='o'>=</span>1400 ← port range to be opened at the security group
-<span class='nv'>pasv_max_port</span><span class='o'>=</span>1500
-<span class='nv'>pasv_address</span><span class='o'>=</span>23.21.148.84 ← server IP
-
-</code></pre>
-</div></li>
-
-<li>
-<p>Open up the following <strong>ports</strong> at the security group within <strong>AWS</strong></p>
-<div class='highlight'><pre><code class='bash'>21 ← default FTP connection port
-1400-1500 ← passive port range <span class='nb'>set </span>in vsftpd.con
-
-</code></pre>
-</div></li>
-
-<li>
-<p>Restart the <strong>vsftpd</strong> server</p>
-<div class='highlight'><pre><code class='bash'>sudo service vsftpd restart
-
-</code></pre>
-</div></li>
-
-<li>
-<p>Add new user to server for login</p>
-<div class='highlight'><pre><code class='bash'>sudo adduser <span class='o'>[</span>username<span class='o'>]</span>
-
-</code></pre>
-</div></li>
-
-<li>
-<p>Give user a password so they can login</p>
-<div class='highlight'><pre><code class='bash'>sudo passwd <span class='o'>[</span>username<span class='o'>]</span>
-
-</code></pre>
-</div></li>
-
-<li>
-<p>Add entry to auto start <strong>vsftpd</strong> on server restart</p>
-<div class='highlight'><pre><code class='bash'>sudo chkconfig vsftpd on 
-
-</code></pre>
-</div></li>
-
-<li>
-<p>Bonus - if you want to have a user’s files uploaded to an EBS mount, symlink from the FTP user’s directory to the EBS mount</p>
-<div class='highlight'><pre><code class='bash'>ln -s <span class='o'>[</span><span class='nb'>source</span>-file/folder<span class='o'>]</span> <span class='o'>[</span>link-name<span class='o'>]</span>
-
-</code></pre>
-</div></li>
+<li>Install <strong>vsftpd</strong></li>
 </ol>
+
+<p><code>bash
+yum install vsftpd - y
+</code></p>
+
+<ol>
+<li>Open up the config file</li>
+</ol>
+
+<p><code>bash
+vim /etc/vsftpd/vsftpd.conf
+</code></p>
+
+<ol>
+<li>Add the following lines to the end of <strong>vsftpd.conf</strong></li>
+</ol>
+
+<p><code>bash
+pasv_enable=YES
+pasv_min_port=1400 ← port range to be opened at the security group
+pasv_max_port=1500
+pasv_address=23.21.148.84 ← server IP
+</code></p>
+
+<ol>
+<li>Open up the following <strong>ports</strong> at the security group within <strong>AWS</strong></li>
+</ol>
+
+<p><code>bash
+21 ← default FTP connection port
+1400-1500 ← passive port range set in vsftpd.con
+</code></p>
+
+<ol>
+<li>Restart the <strong>vsftpd</strong> server</li>
+</ol>
+
+<p><code>bash
+sudo service vsftpd restart
+</code></p>
+
+<ol>
+<li>Add new user to server for login</li>
+</ol>
+
+<p><code>bash
+sudo adduser [username]
+</code></p>
+
+<ol>
+<li>Give user a password so they can login</li>
+</ol>
+
+<p><code>bash
+sudo passwd [username]
+</code></p>
+
+<ol>
+<li>Add entry to auto start <strong>vsftpd</strong> on server restart</li>
+</ol>
+
+<p><code>bash
+sudo chkconfig vsftpd on 
+</code></p>
+
+<ol>
+<li>Bonus - if you want to have a user’s files uploaded to an EBS mount, symlink from the FTP user’s directory to the EBS mount</li>
+</ol>
+
+<p><code>bash
+ln -s [source-file/folder] [link-name]
+</code></p>
+
           </div>
       </article>
 </div>

@@ -4,13 +4,14 @@ description: Tiny Factory Documentation
 id: home
 ---
 <div class="sidebar">
+  <div class="side-logo"><a href="{{site.url}}"><img src="{{site.url}}/images/logo.png" alt=""></a></div>
   <div class="item">
     <h3>Documentation</h3>
     <ul>
-      <li><a href="{{site.url}}">Home</a></li>
+      <li><a href="{{site.baseurl}}">Home</a></li>
       {% for page in site.html_pages %}
       {% if page.title %}
-        <li><a href="{{site.baseurl}}{{page.url}}">{{ page.title }}</a></li>
+        <li><a href="{{site.url}}{{page.url}}">{{ page.title }}</a></li>
       {% endif %}
       {% endfor %}
     </ul>
@@ -19,7 +20,7 @@ id: home
     <h3>Categories</h3>
     <ul> 
         {% for category in site.categories %} 
-          <li><a href="{{site.url}}archive.html#{{ category | first }}">{{ category | first }}</a></li> 
+          <li><a href="{{site.url}}/archive.html#{{ category | first }}">{{ category | first }}</a></li> 
         {% endfor %} 
     </ul> 
   </div><!-- item -->
@@ -27,7 +28,7 @@ id: home
     <h3>Newest Docs</h3>
     <ul>
       {% for post in site.posts limit:5 %}
-        <li><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a></li>
+        <li><a href="{{site.url}}{{ post.url }}">{{ post.title }}</a></li>
       {% endfor %}
     </ul>
   </div><!-- item -->
@@ -36,7 +37,7 @@ id: home
   <ul class="articles">
     {% for post in site.posts limit:8%}
       <li>
-        <a href="{{site.baseurl}}{{post.url}}">
+        <a href="{{site.url}}{{post.url}}">
           {{ post.title }} <span>{{ post.date | date: "%m.%d.%y" }}</span>
         </a>
       </li>

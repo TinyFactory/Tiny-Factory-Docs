@@ -36,13 +36,13 @@
           <div class="mobile-band">
             {% for page in site.html_pages %}
             {% if page.title %}
-              <a href="{{site.baseurl}}{{page.url}}">{{ page.title }}</a>
+              <a href="{{site.url}}{{page.url}}">{{ page.title }}</a>
             {% endif %}
           {% endfor %}
             <a class="category" href="#">Categories</a>
             <ul>
               {% for category in site.categories %} 
-                <li><a href="{{site.url}}archive.html#{{ category | first }}">{{ category | first }}</a></li> 
+                <li><a href="{{site.url}}/archive.html#{{ category | first }}">{{ category | first }}</a></li> 
               {% endfor %} 
             </ul>
           </div>
@@ -51,13 +51,14 @@
 
       <div id="container">
         <div class="sidebar">
+          <div class="side-logo"><a href="{{site.url}}"><img src="{{site.url}}/images/logo.png" alt=""></a></div>
           <div class="item">
             <h3>Documentation</h3>
             <ul>
               <li><a href="{{site.url}}">Home</a></li>
               {% for page in site.html_pages %}
               {% if page.title %}
-                <li><a href="{{site.baseurl}}{{page.url}}">{{ page.title }}</a></li>
+                <li><a href="{{site.url}}{{page.url}}">{{ page.title }}</a></li>
               {% endif %}
               {% endfor %}
             </ul>
@@ -66,7 +67,7 @@
             <h3>Categories</h3>
             <ul> 
                 {% for category in site.categories %} 
-                  <li><a href="{{ site.url }}archive.html#{{ category | first }}">{{ category | first }}</a></li> 
+                  <li><a href="{{ site.url }}/archive.html#{{ category | first }}">{{ category | first }}</a></li> 
                 {% endfor %} 
             </ul> 
           </div><!-- item -->

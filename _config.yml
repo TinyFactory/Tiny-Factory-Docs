@@ -1,15 +1,15 @@
-# standard jekyll configuration
-
 # Development
-# url: http://localhost:4000/
+# url: http://localhost:4000
+# baseurl: /
 
 # Production
 baseurl: /Tiny-Factory-Docs
 url: http://tinyfactory.github.com/Tiny-Factory-Docs/
 
+
 permalink: :date
 exclude: ['Rakefile', 'README.md', 'config.rb']
-pygments: true
+pygments: false
 
 # configuration required for some pages
 
@@ -18,17 +18,8 @@ title: Tiny Factory Docs
 author: Tiny Factory
 email: hello@tinyfactory.co
 
-# configuration for ehancements, uncomment to enable
-
-# feedburner:
-#   id: feedburnerid
-
 # google_analytics:
 #   account: UA-XXXXX-X
 
-# github:
-#   username: ghusername
-
-# disqus:
-#   id: disqusid
-
+prose:
+  rooturl: "_posts"

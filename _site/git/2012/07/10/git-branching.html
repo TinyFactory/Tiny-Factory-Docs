@@ -4,29 +4,29 @@
     <title>Git Branching - Tiny Factory Docs</title>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" media="screen" href="http://tinyfactory.github.com/Tiny-Factory-Docs/css/screen.css" type="text/css" />
+    <link rel="stylesheet" media="screen" href="/css/screen.css" type="text/css" />
     
     
   </head>
   <body>
       <header>
         <div id="logo">
-          <a href="http://tinyfactory.github.com/Tiny-Factory-Docs/"><img src="http://tinyfactory.github.com/Tiny-Factory-Docs/images/logo.png" alt="Tiny Factory"/></a>
+          <a href="/"><img src="/images/logo.png" alt="Tiny Factory"/></a>
         </div><!-- logo -->
   
         <nav class="mobile-nav">
           <div class="mobile-band">
             
             
-              <a href="/Tiny-Factory-Docs/about.html">About</a>
+              <a href="http://localhost:4000/about.html">About</a>
             
           
             
-              <a href="/Tiny-Factory-Docs/archive.html">Archives</a>
+              <a href="http://localhost:4000/archive.html">Archives</a>
             
           
             
-              <a href="/Tiny-Factory-Docs/contribute.html">Contribute</a>
+              <a href="http://localhost:4000/contribute.html">Contribute</a>
             
           
             
@@ -34,9 +34,9 @@
             <a class="category" href="#">Categories</a>
             <ul>
                
-                <li><a href="http://tinyfactory.github.com/Tiny-Factory-Docs/archive.html#centos">centos</a></li> 
+                <li><a href="http://localhost:4000/archive.html#git">git</a></li> 
                
-                <li><a href="http://tinyfactory.github.com/Tiny-Factory-Docs/archive.html#git">git</a></li> 
+                <li><a href="http://localhost:4000/archive.html#centos">centos</a></li> 
               
             </ul>
           </div>
@@ -44,29 +44,33 @@
       </header>
       <div id="container">
             <div id="container" class="single">
+
   <div class="sidebar">
+    <div class="side-logo"><a href="http://localhost:4000"><img src="http://localhost:4000/images/logo.png" alt=""></a></div>
       <div class="item">
         <h3>Contribute</h3>
-        <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=TinyFactory&repo=Tiny-Factory-Docs&type=watch&count=true"
-  allowtransparency="true" frameborder="0" scrolling="0" width="90px" height="20px"></iframe>
-          <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=TinyFactory&repo=Tiny-Factory-Docs&type=fork"
-  allowtransparency="true" frameborder="0" scrolling="0" width="53px" height="20px"></iframe>
+        <div class="github-buttons">
+          <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=TinyFactory&repo=Tiny-Factory-Docs&type=watch&count=true"
+            allowtransparency="true" frameborder="0" scrolling="0" width="90px" height="20px"></iframe>
+            <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=TinyFactory&repo=Tiny-Factory-Docs&type=fork"
+            allowtransparency="true" frameborder="0" scrolling="0" width="53px" height="20px"></iframe>
+        </div>
       </div><!-- item -->
       <div class="item">
         <h3>Documentation</h3>
         <ul>
-          <li><a href="http://tinyfactory.github.com/Tiny-Factory-Docs/">Home</a></li>
+          <li><a href="http://localhost:4000">Home</a></li>
           
             
-              <li><a href="/Tiny-Factory-Docs/about.html">About</a></li>
-            
-          
-            
-              <li><a href="/Tiny-Factory-Docs/archive.html">Archives</a></li>
+              <li><a href="http://localhost:4000/about.html">About</a></li>
             
           
             
-              <li><a href="/Tiny-Factory-Docs/contribute.html">Contribute</a></li>
+              <li><a href="http://localhost:4000/archive.html">Archives</a></li>
+            
+          
+            
+              <li><a href="http://localhost:4000/contribute.html">Contribute</a></li>
             
           
             
@@ -100,9 +104,9 @@
         <h3>Most Recent</h3>
         <ul class="posts">
           
-            <li><a href="http://tinyfactory.github.com/Tiny-Factory-Docs//git/2012/07/09/changing-the-head-pointer-on-a-git-repoistory.html">Changing the head on a Git Repo</a></li>
+            <li><a href="http://localhost:4000/git/2012/07/09/changing-the-head-pointer-on-a-git-repoistory.html">Changing the head on a Git Repo</a></li>
           
-            <li><a href="http://tinyfactory.github.com/Tiny-Factory-Docs//centos/2012/07/08/setup-ftp-on-aws-centos.html">Setup Ftp On Aws Centos</a></li>
+            <li><a href="http://localhost:4000/centos/2012/07/08/setup-ftp-on-aws-centos.html">Setup Ftp On Aws Centos</a></li>
           
         </ul>
       </div>
@@ -112,56 +116,68 @@
           <div class="entry">
             <h1>Git Branching</h1>
             <p>To create a new branch locally</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>git checkout -b <span class='s2'>&quot;new-branch-name&quot;</span>
-Switched to a new branch <span class='s2'>&quot;new-branch-name&quot;</span>
-</code></pre>
-</div>
+
+<p><code>bash
+$ git checkout -b &quot;new-branch-name&quot;
+Switched to a new branch &quot;new-branch-name&quot;
+</code></p>
+
 <p>To create a new local branch from a remote branch</p>
-<div class='highlight'><pre><code class='bash'> 
-<span class='nv'>$ </span>git checkout -b new-branch-name origin/remote-branch-name
-Switched to a new branch <span class='s2'>&quot;new-branch-name&quot;</span>
-</code></pre>
-</div>
+
+<p><code>bash
+$ git checkout -b new-branch-name origin/remote-branch-name
+Switched to a new branch &quot;new-branch-name&quot;
+</code></p>
+
 <p>Push a New Local Branch to a Remote Git Repo</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>git push origin new-branch-name
-</code></pre>
-</div>
+
+<p><code>bash
+$ git push origin new-branch-name
+</code></p>
+
 <p>To view your local branches</p>
-<div class='highlight'><pre><code class='bash'> 
-<span class='nv'>$ </span>git branch
-</code></pre>
-</div>
+
+<p><code>bash
+$ git branch
+</code></p>
+
 <p>To view all branches (local and remote)</p>
-<div class='highlight'><pre><code class='bash'> 
-<span class='nv'>$ </span>git branch -a
-</code></pre>
-</div>
-<p>To view all remote branches</p>
-<div class='highlight'><pre><code class='bash'> 
-<span class='nv'>$ </span>git branch -r
-</code></pre>
-</div>
-<p>To merge a branch check out the branch you&#8217;d like to merge to and run</p>
-<div class='highlight'><pre><code class='bash'> 
-<span class='nv'>$ </span>git checkout master
-<span class='nv'>$ </span>git merge new-branch-name
-</code></pre>
-</div>
+
+<p><code>bash
+$ git branch -a
+</code></p>
+
+<p>To view all remote branches </p>
+
+<p><code>bash
+$ git branch -r
+</code></p>
+
+<p>To merge a branch check out the branch you'd like to merge to and run</p>
+
+<p><code>bash
+$ git checkout master
+$ git merge new-branch-name
+</code></p>
+
 <p>To push all local changes to remote</p>
-<div class='highlight'><pre><code class='bash'> 
-<span class='nv'>$ </span>git push origin
-</code></pre>
-</div>
+
+<p><code>bash
+$ git push origin
+</code></p>
+
 <p>To push local changes for a specific repo</p>
-<div class='highlight'><pre><code class='bash'> 
-<span class='nv'>$ </span>git push origin master
-</code></pre>
-</div>
+
+<p><code>bash
+$ git push origin master
+</code></p>
+
 <p>View GUI of merges</p>
-<div class='highlight'><pre><code class='bash'> 
-<span class='nv'>$ </span>gitk
-</code></pre>
-</div>
+
+<p><code>bash
+$ gitk
+</code></p>
+
           </div>
       </article>
 </div>

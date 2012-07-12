@@ -27,6 +27,12 @@ header
 	margin: 40px auto 0
 	text-align: center
 
+	+desktop-and-up
+		z-index: 3
+		position: fixed
+		left: 0
+		top: 0			
+
 #logo
 	width: 25%
 	
@@ -41,6 +47,16 @@ header
 			+opacity(0.8)
 			+rotate(-12deg)
 			+transform-style(preserve3d)
+	
+	+mobile-only
+		width: 30%
+		margin: 0 auto 50px
+
+		img
+			max-width: 100%
+
+	+desktop-and-up
+		display: none
 
 h2
 	font-weight: 800
@@ -87,8 +103,25 @@ strong
 	display: none
 
 #container
-	max-width: 820px
 	margin: 40px auto 0
+
+	+desktop-and-up
+		width: 72%
+		margin-left: 25%
+
+		&.single
+			width: 90% !important
+			margin-left: 0 !important
+
+	+tablet-only
+		max-width: 820px
+
+	+mobile-only
+		margin: 0 auto
+
+		&.single
+			margin-top: 25px
+
 
 	.sidebar
 		width: 25%
@@ -97,6 +130,69 @@ strong
 		padding-right: 30px
 		float: left
 		display: inline
+
+		+desktop-and-up
+			float: none
+			display: inline
+			position: fixed
+			left: 0
+			top: 0
+			height: 100%
+			width: 22%
+			padding-right: 0
+			background: darken($body, 3%)
+			color: #fff
+			overflow-y: scroll
+
+			.side-logo
+				margin: 30px 30px 0 0
+
+				img
+					+transition(all 500ms cubic-bezier(0.250, 0.460, 0.450, 0.940))
+
+				a
+					border-bottom: none !important
+
+					&:hover img
+						+opacity(0.8)
+						+rotate(-12deg)
+						+transform-style(preserve3d)
+				
+			h3
+				color: $red
+				padding: 0 30px 0 0
+
+			.item
+
+				a
+					display: block
+					height: 100%
+					border-bottom: none
+					padding: 5px 30px 5px 0
+
+					&:hover
+						border-bottom: none
+						background: darken($body, 5%)
+						color: $red
+
+				&:first-child
+					margin-top: 200px !important
+
+			.github-buttons
+				margin-right: 30px
+
+		+mobile-only
+			display: none
+
+		+tablet-portrait-and-below
+
+			.side-logo
+				display: none
+
+		+tablet-landscape-and-below
+
+			.side-logo
+				display: none
 
 		.item	
 			margin: 20px 0 0
@@ -118,6 +214,25 @@ strong
 		padding-left: 30px
 		width: 67%
 
+		+desktop-and-up
+			margin-left: 15%
+			float: none
+			display: static
+			padding-left: none
+			width: auto
+			position: relative
+			top: 50px
+
+			a
+				font-size: 27px
+				line-height: 1.5em
+
+		+mobile-only
+			padding: 10px !important
+			margin: 0
+			width: 95% !important
+			background: darken($body, 3%)
+
 		li
 			+gotham-book
 			font-size: 22px
@@ -125,6 +240,14 @@ strong
 			width: 100%
 			margin: 15px 0
 			text-shadow: 0px 1px #fff
+
+			+mobile-only
+				padding: 10px 0
+				margin: 10px 0
+				display: block
+				border-bottom: 1px solid darken($body, 5%)
+				+regular
+				font-size: 15px
 
 			&:first-child
 				margin: 0 0
@@ -140,8 +263,15 @@ strong
 				+opacity(0)
 				+gotham-medium
 
+				+mobile-only
+					+opacity(1)
+					+transition(none)
+					font-size: 10px
+					color: darken($body, 20%)
+
 		a
 			border-bottom: none
+
 
 			&:hover
 				border-bottom: none
@@ -152,6 +282,21 @@ strong
 					+opacity(1)
 					color: $text
 
+			+mobile-only
+				border-bottom: none
+				display: block
+				color: darken($heading, 15%)
+
+				&:hover
+					border-bottom: none
+					color: $red
+
+					span
+						position: relative
+						left: 0 !important
+						+transition(0)
+						+opacity(1)
+
 	.entry
 		padding-left: 30px
 		float: left
@@ -159,6 +304,17 @@ strong
 		width: 67%
 		color: #333
 		margin-bottom: 250px
+
+		+desktop-and-up
+			width: 100%
+			margin-top: 50px
+
+		+tablet-portrait-only
+			width: 60%
+
+		+mobile-only
+			width: auto
+			padding: 15px !important
 
 		p
 			margin: 20px 0
@@ -178,6 +334,13 @@ strong
 			font-size: 32px
 			+gotham-light
 
+			+mobile-only
+				line-height: 1.2em
+				font-size: 26px
+
+			+tablet-portrait-only
+				line-height: 1.2em
+
 	.content
 		margin-top: 25px
 		line-height: 25px
@@ -185,7 +348,7 @@ strong
 		a img
 			vertical-align: bottom
 
-	code, pre
+	code
 		font-size: 12px
 		font-family: "Monaco", "Courier New", monospace
 
@@ -205,16 +368,6 @@ li div.highlight
 // =============== Mobile =============== //
 
 +mobile-only
-
-	header
-		margin: 55px auto 0 !important
-
-		#logo
-			width: 30%
-			margin: 0 auto 50px
-
-			img
-				max-width: 100%
 
 	.mobile-band
 		background: $red
@@ -263,71 +416,6 @@ li div.highlight
 				&:hover
 					border-bottom: none !important
 
-	#container
-		margin: 0 auto
-
-		&.single
-			margin-top: 25px
-
-		.sidebar
-			display: none
-
-		.entry
-			width: auto
-			padding: 15px !important
-
-			h1
-				line-height: 1.2em
-				font-size: 26px
-
-		.articles
-			padding: 10px !important
-			margin: 0
-			width: 95% !important
-			background: darken($body, 3%)
-
-			li
-				padding: 10px 0
-				margin: 10px 0
-				display: block
-				border-bottom: 1px solid darken($body, 5%)
-				+regular
-				font-size: 15px
-				
-
-				span
-					+opacity(1)
-					+transition(none)
-					font-size: 10px
-					color: darken($body, 20%)
-
-				a
-					border-bottom: none
-					display: block
-					color: darken($heading, 15%)
-
-					&:hover
-						border-bottom: none
-						color: $red
-
-						span
-							position: relative
-							left: 0 !important
-							+transition(0)
-							+opacity(1)
-
-
-// =============== Tablet Portrait =============== //
-
-+tablet-portrait-only
-	
-	#container
-
-		.entry
-			width: 60%
-
-			h1
-				line-height: 1.2em
 
 ::selection
 	background: $red
