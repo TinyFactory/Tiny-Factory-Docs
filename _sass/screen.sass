@@ -3,7 +3,7 @@
 @import compass/typography
 @import compass/utilities
 @import var
-@import queries
+@import mixins/queries
 @import mixins/syntax
 
 +font-face("Sanuk Regular", font-files("SanukLF-Regular.eot", "SanukLF-Regular.svg", "SanukLF-Regular.woff"))
@@ -142,7 +142,9 @@ strong
 			padding-right: 0
 			background: darken($body, 3%)
 			color: #fff
-			overflow-y: scroll
+			
+			&:hover
+				overflow-y: scroll
 
 			.side-logo
 				margin: 30px 30px 0 0

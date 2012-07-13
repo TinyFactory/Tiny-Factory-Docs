@@ -114,78 +114,61 @@
             <ol>
 <li>Install <strong>vsftpd</strong></li>
 </ol>
-
-<p><code>bash
-yum install vsftpd - y
-</code></p>
-
+<div class='highlight'><pre><code class='bash'>yum install vsftpd - y
+</code></pre>
+</div>
 <ol>
 <li>Open up the config file</li>
 </ol>
-
-<p><code>bash
-vim /etc/vsftpd/vsftpd.conf
-</code></p>
-
+<div class='highlight'><pre><code class='bash'>vim /etc/vsftpd/vsftpd.conf
+</code></pre>
+</div>
 <ol>
 <li>Add the following lines to the end of <strong>vsftpd.conf</strong></li>
 </ol>
-
-<p><code>bash
-pasv_enable=YES
-pasv_min_port=1400 ← port range to be opened at the security group
-pasv_max_port=1500
-pasv_address=23.21.148.84 ← server IP
-</code></p>
-
+<div class='highlight'><pre><code class='bash'><span class='nv'>pasv_enable</span><span class='o'>=</span>YES
+<span class='nv'>pasv_min_port</span><span class='o'>=</span>1400 ← port range to be opened at the security group
+<span class='nv'>pasv_max_port</span><span class='o'>=</span>1500
+<span class='nv'>pasv_address</span><span class='o'>=</span>23.21.148.84 ← server IP
+</code></pre>
+</div>
 <ol>
 <li>Open up the following <strong>ports</strong> at the security group within <strong>AWS</strong></li>
 </ol>
-
-<p><code>bash
-21 ← default FTP connection port
-1400-1500 ← passive port range set in vsftpd.con
-</code></p>
-
+<div class='highlight'><pre><code class='bash'>21 ← default FTP connection port
+1400-1500 ← passive port range <span class='nb'>set </span>in vsftpd.con
+</code></pre>
+</div>
 <ol>
 <li>Restart the <strong>vsftpd</strong> server</li>
 </ol>
-
-<p><code>bash
-sudo service vsftpd restart
-</code></p>
-
+<div class='highlight'><pre><code class='bash'>sudo service vsftpd restart
+</code></pre>
+</div>
 <ol>
 <li>Add new user to server for login</li>
 </ol>
-
-<p><code>bash
-sudo adduser [username]
-</code></p>
-
+<div class='highlight'><pre><code class='bash'>sudo adduser <span class='o'>[</span>username<span class='o'>]</span>
+</code></pre>
+</div>
 <ol>
 <li>Give user a password so they can login</li>
 </ol>
-
-<p><code>bash
-sudo passwd [username]
-</code></p>
-
+<div class='highlight'><pre><code class='bash'>sudo passwd <span class='o'>[</span>username<span class='o'>]</span>
+</code></pre>
+</div>
 <ol>
 <li>Add entry to auto start <strong>vsftpd</strong> on server restart</li>
 </ol>
-
-<p><code>bash
-sudo chkconfig vsftpd on 
-</code></p>
-
+<div class='highlight'><pre><code class='bash'>sudo chkconfig vsftpd on 
+</code></pre>
+</div>
 <ol>
 <li>Bonus - if you want to have a user’s files uploaded to an EBS mount, symlink from the FTP user’s directory to the EBS mount</li>
 </ol>
-
-<p><code>bash
-ln -s [source-file/folder] [link-name]
-</code></p>
+<div class='highlight'><pre><code class='bash'>ln -s <span class='o'>[</span><span class='nb'>source</span>-file/folder<span class='o'>]</span> <span class='o'>[</span>link-name<span class='o'>]</span>
+</code></pre>
+</div>
           </div>
       </article>
 </div>

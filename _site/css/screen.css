@@ -414,6 +414,8 @@ strong {
     padding-right: 0;
     background: #ebebeb;
     color: white;
+  }
+  #container .sidebar:hover {
     overflow-y: scroll;
   }
   #container .sidebar .side-logo {
