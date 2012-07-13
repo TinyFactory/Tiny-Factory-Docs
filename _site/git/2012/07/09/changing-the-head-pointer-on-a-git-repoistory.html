@@ -120,39 +120,42 @@
 <ul>
 <li>Check what remote branches are available:</li>
 </ul>
-<div class="highlight"><pre><code class="bash">git branch -r
-</code></pre>
-</div>
+
+<p><code>bash
+git branch -r
+</code></p>
 
 <ul>
 <li>The output will look like:</li>
 </ul>
-<div class="highlight"><pre><code class="bash">origin/HEAD -&gt; origin/master
+
+<p><code>bash
+origin/HEAD -&gt; origin/master
 origin/dev
 origin/master
-</code></pre>
-</div>
+</code></p>
 
 <ul>
-<li>Notice <code>origin/HEAD -&gt; orgin/master</code>.  When you issue a <code>git clone</code> on this repository you will get the master branch by default.  If want to change this to the dev branch we also have in our remote repository, issue the following command</li>
+<li>Notice <code>origin/HEAD -&gt; orgin/master</code>. When you issue a <code>git clone</code> on this repository you will get the master branch by default. If want to change this to the dev branch we also have in our remote repository, issue the following command</li>
 </ul>
-<div class="highlight"><pre><code class="bash">git remote <span class="nb">set</span>-head origin dev
-</code></pre>
-</div>
+
+<p><code>bash
+git remote set-head origin dev
+</code></p>
 
 <ul>
 <li>To confirm the change took, run <code>git branch -r</code> and review our output:</li>
 </ul>
-<div class="highlight"><pre><code class="bash">origin/HEAD -&gt; origin/dev
+
+<p><code>bash
+origin/HEAD -&gt; origin/dev
 origin/dev
 origin/master
-</code></pre>
-</div>
+</code></p>
 
 <p><code>origin/HEAD -&gt; orgin/dev</code> is pointing to our dev branch.</p>
 
-<h3 id="toc_4">How does it work?</h3>
-
+<h3 id='how_does_it_work'>How does it work?</h3>
           </div>
       </article>
 </div>

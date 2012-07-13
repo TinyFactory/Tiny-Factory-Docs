@@ -4,7 +4,7 @@
  <title>Tiny Factory Docs</title>
  <link href="http://http://tinyfactory.github.com/atom.xml" rel="self"/>
  <link href="http://http://tinyfactory.github.com/"/>
- <updated>2012-07-13T13:24:18-07:00</updated>
+ <updated>2012-07-13T13:34:05-07:00</updated>
  <id>http://http://tinyfactory.github.com/</id>
  <author>
    <name>Tiny Factory</name>
@@ -18,58 +18,67 @@
    <updated>2012-07-10T00:00:00-07:00</updated>
    <id>http://http://tinyfactory.github.com/git/2012/07/10/git-branching</id>
    <content type="html">&lt;p&gt;To create a new branch locally&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git checkout -b &lt;span class=&quot;s2&quot;&gt;&amp;quot;new-branch-name&amp;quot;&lt;/span&gt;
-Switched to a new branch &lt;span class=&quot;s2&quot;&gt;&amp;quot;new-branch-name&amp;quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;bash
+$ git checkout -b &amp;quot;new-branch-name&amp;quot;
+Switched to a new branch &amp;quot;new-branch-name&amp;quot;
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;To create a new local branch from a remote branch&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git checkout -b new-branch-name origin/remote-branch-name
-Switched to a new branch &lt;span class=&quot;s2&quot;&gt;&amp;quot;new-branch-name&amp;quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;bash
+$ git checkout -b new-branch-name origin/remote-branch-name
+Switched to a new branch &amp;quot;new-branch-name&amp;quot;
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;Push a New Local Branch to a Remote Git Repo&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git push origin new-branch-name
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;bash
+$ git push origin new-branch-name
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;To view your local branches&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git branch
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;bash
+$ git branch
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;To view all branches (local and remote)&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git branch -a
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
-&lt;p&gt;To view all remote branches &lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git branch -r
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;bash
+$ git branch -a
+&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;To merge a branch check out the branch you&amp;#39;d like to merge to and run&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git checkout master
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git merge new-branch-name
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;p&gt;To view all remote branches&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;bash
+$ git branch -r
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;To merge a branch check out the branch you&amp;#8217;d like to merge to and run&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;bash
+$ git checkout master
+$ git merge new-branch-name
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;To push all local changes to remote&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git push origin
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;bash
+$ git push origin
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;To push local changes for a specific repo&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git push origin master
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;bash
+$ git push origin master
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;View GUI of merges&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;gitk
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</content>
+
+&lt;p&gt;&lt;code&gt;bash
+$ gitk
+&lt;/code&gt;&lt;/p&gt;</content>
  </entry>
  
  <entry>
@@ -82,39 +91,42 @@ Switched to a new branch &lt;span class=&quot;s2&quot;&gt;&amp;quot;new-branch-n
 &lt;ul&gt;
 &lt;li&gt;Check what remote branches are available:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;git branch -r
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;bash
+git branch -r
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;The output will look like:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;origin/HEAD -&amp;gt; origin/master
+
+&lt;p&gt;&lt;code&gt;bash
+origin/HEAD -&amp;gt; origin/master
 origin/dev
 origin/master
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Notice &lt;code&gt;origin/HEAD -&amp;gt; orgin/master&lt;/code&gt;.  When you issue a &lt;code&gt;git clone&lt;/code&gt; on this repository you will get the master branch by default.  If want to change this to the dev branch we also have in our remote repository, issue the following command&lt;/li&gt;
+&lt;li&gt;Notice &lt;code&gt;origin/HEAD -&amp;gt; orgin/master&lt;/code&gt;. When you issue a &lt;code&gt;git clone&lt;/code&gt; on this repository you will get the master branch by default. If want to change this to the dev branch we also have in our remote repository, issue the following command&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;git remote &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;-head origin dev
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;bash
+git remote set-head origin dev
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;To confirm the change took, run &lt;code&gt;git branch -r&lt;/code&gt; and review our output:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;origin/HEAD -&amp;gt; origin/dev
+
+&lt;p&gt;&lt;code&gt;bash
+origin/HEAD -&amp;gt; origin/dev
 origin/dev
 origin/master
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;origin/HEAD -&amp;gt; orgin/dev&lt;/code&gt; is pointing to our dev branch.&lt;/p&gt;
 
-&lt;h3 id=&quot;toc_4&quot;&gt;How does it work?&lt;/h3&gt;
-</content>
+&lt;h3 id='how_does_it_work'&gt;How does it work?&lt;/h3&gt;</content>
  </entry>
  
  <entry>
@@ -125,70 +137,78 @@ origin/master
    <content type="html">&lt;ol&gt;
 &lt;li&gt;Install &lt;strong&gt;vsftpd&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;yum install vsftpd - y
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;bash
+yum install vsftpd - y
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;ol&gt;
 &lt;li&gt;Open up the config file&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;vim /etc/vsftpd/vsftpd.conf
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;bash
+vim /etc/vsftpd/vsftpd.conf
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;ol&gt;
 &lt;li&gt;Add the following lines to the end of &lt;strong&gt;vsftpd.conf&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;pasv_enable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;YES
-&lt;span class=&quot;nv&quot;&gt;pasv_min_port&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1400 ← port range to be opened at the security group
-&lt;span class=&quot;nv&quot;&gt;pasv_max_port&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1500
-&lt;span class=&quot;nv&quot;&gt;pasv_address&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;23.21.148.84 ← server IP
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;bash
+pasv_enable=YES
+pasv_min_port=1400 ← port range to be opened at the security group
+pasv_max_port=1500
+pasv_address=23.21.148.84 ← server IP
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;ol&gt;
 &lt;li&gt;Open up the following &lt;strong&gt;ports&lt;/strong&gt; at the security group within &lt;strong&gt;AWS&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;21 ← default FTP connection port
-1400-1500 ← passive port range &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;in vsftpd.con
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;bash
+21 ← default FTP connection port
+1400-1500 ← passive port range set in vsftpd.con
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;ol&gt;
 &lt;li&gt;Restart the &lt;strong&gt;vsftpd&lt;/strong&gt; server&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;sudo service vsftpd restart
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;bash
+sudo service vsftpd restart
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;ol&gt;
 &lt;li&gt;Add new user to server for login&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;sudo adduser &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;username&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;bash
+sudo adduser [username]
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;ol&gt;
 &lt;li&gt;Give user a password so they can login&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;sudo passwd &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;username&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;bash
+sudo passwd [username]
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;ol&gt;
 &lt;li&gt;Add entry to auto start &lt;strong&gt;vsftpd&lt;/strong&gt; on server restart&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;sudo chkconfig vsftpd on 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;bash
+sudo chkconfig vsftpd on 
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;ol&gt;
 &lt;li&gt;Bonus - if you want to have a user’s files uploaded to an EBS mount, symlink from the FTP user’s directory to the EBS mount&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;ln -s &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt;-file/folder&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;link-name&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</content>
+
+&lt;p&gt;&lt;code&gt;bash
+ln -s [source-file/folder] [link-name]
+&lt;/code&gt;&lt;/p&gt;</content>
  </entry>
  
 
