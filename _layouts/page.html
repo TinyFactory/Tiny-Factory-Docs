@@ -29,7 +29,7 @@
   <body>
       <header>
         <div id="logo">
-          <a href="{{site.url}}"><img src="images/logo.png" alt="Tiny Factory"/></a>
+          <a href="{{site.url}}"><img src="{{site.baseurl}}images/logo.png" alt="Tiny Factory"/></a>
         </div><!-- logo -->
   
         <nav class="mobile-nav">
@@ -95,7 +95,7 @@
                 <ul>
                   {% for posts in category %}
                     {% for post in posts %} 
-                      <li><a href="{{site.url}}{{ post.url }}">{{ post.title }}</a> <span class="archive-date">{{ post.date | date: "%m.%d.%y" }}</span></li>
+                      <li><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a> <span class="archive-date">{{ post.date | date: "%m.%d.%y" }}</span></li>
                     {% endfor %} 
                   {% endfor %} 
                 </ul>
