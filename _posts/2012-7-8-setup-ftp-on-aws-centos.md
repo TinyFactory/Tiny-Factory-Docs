@@ -1,13 +1,14 @@
 ---
 layout: post
 category: centos
+published: false
 ---
 
 1. Install **vsftpd**
 
-{% highlight bash %}
+```bash
 yum install vsftpd - y
-{% endhighlight %}
+```
 
 2. Open up the config file
  
