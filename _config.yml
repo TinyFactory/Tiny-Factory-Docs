@@ -5,7 +5,6 @@
 # Production
 url: http://tinyfactory.github.com/Tiny-Factory-Docs/
 # baseurl: /Tiny-Factory-Docs
-markdown: redcarpet
 
 
 permalink: :date
