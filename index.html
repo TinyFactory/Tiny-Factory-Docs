@@ -20,7 +20,7 @@ id: home
     <h3>Categories</h3>
     <ul> 
         {% for category in site.categories %} 
-          <li><a href="{{site.url}}archive.html#{{ category | first }}">{{ category | first }}</a></li> 
+          <li><a href="{{site.url}}/archive.html#{{ category | first }}">{{ category | first }}</a></li> 
         {% endfor %} 
     </ul> 
   </div><!-- item -->

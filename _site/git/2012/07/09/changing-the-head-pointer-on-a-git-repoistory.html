@@ -4,29 +4,29 @@
     <title>Changing the head on a Git Repo - Tiny Factory Docs</title>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" media="screen" href="http://tinyfactory.github.com/Tiny-Factory-Docs/css/screen.css" type="text/css" />
+    <link rel="stylesheet" media="screen" href="http://localhost:4000/css/screen.css" type="text/css" />
     
     
   </head>
   <body>
       <header>
         <div id="logo">
-          <a href="http://tinyfactory.github.com/Tiny-Factory-Docs/"><img src="http://tinyfactory.github.com/Tiny-Factory-Docs/images/logo.png" alt="Tiny Factory"/></a>
+          <a href="http://localhost:4000"><img src="http://localhost:4000/images/logo.png" alt="Tiny Factory"/></a>
         </div><!-- logo -->
   
         <nav class="mobile-nav">
           <div class="mobile-band">
             
             
-              <a href="http://tinyfactory.github.com/Tiny-Factory-Docs//about.html">About</a>
+              <a href="http://localhost:4000/about.html">About</a>
             
           
             
-              <a href="http://tinyfactory.github.com/Tiny-Factory-Docs//archive.html">Archives</a>
+              <a href="http://localhost:4000/archive.html">Archives</a>
             
           
             
-              <a href="http://tinyfactory.github.com/Tiny-Factory-Docs//contribute.html">Contribute</a>
+              <a href="http://localhost:4000/contribute.html">Contribute</a>
             
           
             
@@ -34,9 +34,9 @@
             <a class="category" href="#">Categories</a>
             <ul>
                
-                <li><a href="http://tinyfactory.github.com/Tiny-Factory-Docs/archive.html#centos">centos</a></li> 
+                <li><a href="http://localhost:4000/archive.html#centos">centos</a></li> 
                
-                <li><a href="http://tinyfactory.github.com/Tiny-Factory-Docs/archive.html#git">git</a></li> 
+                <li><a href="http://localhost:4000/archive.html#git">git</a></li> 
               
             </ul>
           </div>
@@ -46,7 +46,7 @@
             <div id="container" class="single">
 
   <div class="sidebar">
-    <div class="side-logo"><a href="http://tinyfactory.github.com/Tiny-Factory-Docs/"><img src="http://tinyfactory.github.com/Tiny-Factory-Docs//images/logo.png" alt=""></a></div>
+    <div class="side-logo"><a href="http://localhost:4000"><img src="http://localhost:4000/images/logo.png" alt=""></a></div>
       <div class="item">
         <h3>Contribute</h3>
         <div class="github-buttons">
@@ -59,18 +59,18 @@
       <div class="item">
         <h3>Documentation</h3>
         <ul>
-          <li><a href="http://tinyfactory.github.com/Tiny-Factory-Docs/">Home</a></li>
+          <li><a href="http://localhost:4000">Home</a></li>
           
             
-              <li><a href="http://tinyfactory.github.com/Tiny-Factory-Docs//about.html">About</a></li>
-            
-          
-            
-              <li><a href="http://tinyfactory.github.com/Tiny-Factory-Docs//archive.html">Archives</a></li>
+              <li><a href="http://localhost:4000/about.html">About</a></li>
             
           
             
-              <li><a href="http://tinyfactory.github.com/Tiny-Factory-Docs//contribute.html">Contribute</a></li>
+              <li><a href="http://localhost:4000/archive.html">Archives</a></li>
+            
+          
+            
+              <li><a href="http://localhost:4000/contribute.html">Contribute</a></li>
             
           
             
@@ -88,7 +88,7 @@
             
           
           
-            <li><a href="http://tinyfactory.github.com/Tiny-Factory-Docs//git/2012/07/10/git-branching.html">Git Branching</a></li>
+            <li><a href="http://localhost:4000/git/2012/07/10/git-branching.html">Git Branching</a></li>
                                  
         
           
@@ -104,9 +104,9 @@
         <h3>Most Recent</h3>
         <ul class="posts">
           
-            <li><a href="http://tinyfactory.github.com/Tiny-Factory-Docs//git/2012/07/10/git-branching.html">Git Branching</a></li>
+            <li><a href="http://localhost:4000/git/2012/07/10/git-branching.html">Git Branching</a></li>
           
-            <li><a href="http://tinyfactory.github.com/Tiny-Factory-Docs//centos/2012/07/08/setup-ftp-on-aws-centos.html">Setup Ftp On Aws Centos</a></li>
+            <li><a href="http://localhost:4000/centos/2012/07/08/setup-ftp-on-aws-centos.html">Setup Ftp On Aws Centos</a></li>
           
         </ul>
       </div>
@@ -120,42 +120,38 @@
 <ul>
 <li>Check what remote branches are available:</li>
 </ul>
-
-<p><code>bash
-git branch -r
-</code></p>
+<div class="highlight"><pre><code class="bash">git branch -r
+</code></pre>
+</div>
 
 <ul>
 <li>The output will look like:</li>
 </ul>
-
-<p><code>bash
-origin/HEAD -&gt; origin/master
+<div class="highlight"><pre><code class="bash">origin/HEAD -&gt; origin/master
 origin/dev
 origin/master
-</code></p>
+</code></pre>
+</div>
 
 <ul>
 <li>Notice <code>origin/HEAD -&gt; orgin/master</code>.  When you issue a <code>git clone</code> on this repository you will get the master branch by default.  If want to change this to the dev branch we also have in our remote repository, issue the following command</li>
 </ul>
-
-<p><code>bash
-git remote set-head origin dev
-</code></p>
+<div class="highlight"><pre><code class="bash">git remote <span class="nb">set</span>-head origin dev
+</code></pre>
+</div>
 
 <ul>
 <li>To confirm the change took, run <code>git branch -r</code> and review our output:</li>
 </ul>
-
-<p><code>bash
-origin/HEAD -&gt; origin/dev
+<div class="highlight"><pre><code class="bash">origin/HEAD -&gt; origin/dev
 origin/dev
 origin/master
-</code></p>
+</code></pre>
+</div>
 
 <p><code>origin/HEAD -&gt; orgin/dev</code> is pointing to our dev branch.</p>
 
-<h3>How does it work?</h3>
+<h3 id="toc_4">How does it work?</h3>
 
           </div>
       </article>
