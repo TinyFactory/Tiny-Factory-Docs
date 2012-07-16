@@ -4,7 +4,7 @@
     <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
     {% if page.description %}
     <meta name="description" content="{{ page.description }}" />
-    <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1"/>
+    <meta name="viewport" content="width=device-width; initial-scale=1 maximum-scale=1"/>
     {% endif %}
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" media="screen" href="css/screen.css" type="text/css" />
@@ -50,35 +50,35 @@
       </header>
 
       <div id="container">
-        <div class="sidebar">
-          <div class="side-logo"><a href="{{site.url}}"><img src="{{site.url}}/images/logo.png" alt=""></a></div>
-          <div class="item">
-            <h3>Documentation</h3>
-            <ul>
-              <li><a href="{{site.url}}">Home</a></li>
-              {% for page in site.html_pages %}
-              {% if page.title %}
-                <li><a href="{{site.url}}{{page.url}}">{{ page.title }}</a></li>
-              {% endif %}
-              {% endfor %}
-            </ul>
-          </div><!-- item -->
-          <div class="item categories">
-            <h3>Categories</h3>
-            <ul> 
-                {% for category in site.categories %} 
-                  <li><a href="{{ site.url }}/archive.html#{{ category | first }}">{{ category | first }}</a></li> 
-                {% endfor %} 
-            </ul> 
-          </div><!-- item -->
-          <div class="item">
-            <h3>Newest Docs</h3>
-            <ul>
-              {% for post in site.posts limit:5 %}
-                <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-              {% endfor %}
-            </ul>
-          </div><!-- item -->
+        <div id="sidebar" class="mousescroll">
+            <div class="side-logo"><a href="{{site.url}}"><img src="{{site.url}}/images/logo.png" alt=""></a></div>
+            <div class="item">
+              <h3>Documentation</h3>
+              <ul>
+                <li><a href="{{site.url}}">Home</a></li>
+                {% for page in site.html_pages %}
+                {% if page.title %}
+                  <li><a href="{{site.url}}{{page.url}}">{{ page.title }}</a></li>
+                {% endif %}
+                {% endfor %}
+              </ul>
+            </div><!-- item -->
+            <div class="item categories">
+              <h3>Categories</h3>
+              <ul> 
+                  {% for category in site.categories %} 
+                    <li><a href="{{ site.url }}/archive.html#{{ category | first }}">{{ category | first }}</a></li> 
+                  {% endfor %} 
+              </ul> 
+            </div><!-- item -->
+            <div class="item">
+              <h3>Newest Docs</h3>
+              <ul>
+                {% for post in site.posts limit:5 %}
+                  <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+                {% endfor %}
+              </ul>
+            </div><!-- item -->
         </div><!-- sidebar -->
 
 
@@ -106,11 +106,8 @@
         </article>
       </div>
       <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-      <script type="text/javascript">
-        $('a.category').click( function() {
-          $('.mobile-band ul').slideToggle(350);
-          return false;
-        });
-      </script>
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
+      <script type="text/javascript" src="{{site.url}}/js/slimScroll.min.js"></script>
+      <script type="text/javascript" src="{{site.url}}/js/web.js"></script>
   </body>
 </html>

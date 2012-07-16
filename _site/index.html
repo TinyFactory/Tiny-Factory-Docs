@@ -3,7 +3,7 @@
   <head>
     <title>Tiny Factory Docs</title>
     
-    <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1;"/>
+    <meta name="viewport" content="width=device-width; initial-scale=1 maximum-scale=1"/>
     <meta name="description" content="Tiny Factory Documentation" />
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -46,7 +46,7 @@
         </nav>
       </header>
       <div id="container">
-            <div class="sidebar">
+            <div id="sidebar" class="mousescroll">
   <div class="side-logo"><a href="http://localhost:4000"><img src="http://localhost:4000/images/logo.png" alt=""></a></div>
   <div class="item">
     <h3>Documentation</h3>
@@ -117,11 +117,8 @@
       </div>
 
       <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-      <script type="text/javascript">
-        $('a.category').click( function() {
-          $('.mobile-band ul').slideToggle(350);
-          return false;
-        });
-      </script>
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
+      <script type="text/javascript" src="http://localhost:4000/js/slimScroll.min.js"></script>
+      <script type="text/javascript" src="http://localhost:4000/js/web.js"></script>
   </body>
 </html>

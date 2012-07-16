@@ -394,7 +394,7 @@ strong {
     margin-top: 25px;
   }
 }
-#container .sidebar {
+#container #sidebar {
   width: 25%;
   text-align: right;
   border-right: 1px solid #dfdfdf;
@@ -403,7 +403,7 @@ strong {
   display: inline;
 }
 @media only screen and (min-width: 1025px) {
-  #container .sidebar {
+  #container #sidebar {
     float: none;
     display: inline;
     position: fixed;
@@ -415,23 +415,26 @@ strong {
     background: #ebebeb;
     color: white;
   }
-  #container .sidebar:hover {
+  #container #sidebar.mousescroll {
+    overflow: hidden;
+  }
+  #container #sidebar.mousescroll:hover {
     overflow-y: scroll;
   }
-  #container .sidebar .side-logo {
+  #container #sidebar .side-logo {
     margin: 30px 30px 0 0;
   }
-  #container .sidebar .side-logo img {
+  #container #sidebar .side-logo img {
     -webkit-transition: all 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
     -moz-transition: all 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
     -ms-transition: all 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
     -o-transition: all 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
     transition: all 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
-  #container .sidebar .side-logo a {
+  #container #sidebar .side-logo a {
     border-bottom: none !important;
   }
-  #container .sidebar .side-logo a:hover img {
+  #container #sidebar .side-logo a:hover img {
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
     opacity: 0.8;
     -webkit-transform: rotate(-12deg);
@@ -445,53 +448,53 @@ strong {
     -o-transform-style: preserve3d;
     transform-style: preserve3d;
   }
-  #container .sidebar h3 {
+  #container #sidebar h3 {
     color: #be2d1f;
     padding: 0 30px 0 0;
   }
-  #container .sidebar .item a {
+  #container #sidebar .item a {
     display: block;
     height: 100%;
     border-bottom: none;
     padding: 5px 30px 5px 0;
   }
-  #container .sidebar .item a:hover {
+  #container #sidebar .item a:hover {
     border-bottom: none;
     background: #e6e6e6;
     color: #be2d1f;
   }
-  #container .sidebar .item:first-child {
+  #container #sidebar .item:first-child {
     margin-top: 200px !important;
   }
-  #container .sidebar .github-buttons {
+  #container #sidebar .github-buttons {
     margin-right: 30px;
   }
 }
 @media (max-width: 480px) {
-  #container .sidebar {
+  #container #sidebar {
     display: none;
   }
 }
 @media only screen and (max-width: 768px) {
-  #container .sidebar .side-logo {
+  #container #sidebar .side-logo {
     display: none;
   }
 }
 @media only screen and (max-width: 1024px) {
-  #container .sidebar .side-logo {
+  #container #sidebar .side-logo {
     display: none;
   }
 }
-#container .sidebar .item {
+#container #sidebar .item {
   margin: 20px 0 0;
 }
-#container .sidebar .item:first-child {
+#container #sidebar .item:first-child {
   margin: -7px 0 0;
 }
-#container .sidebar .item.categories ul li a {
+#container #sidebar .item.categories ul li a {
   text-transform: capitalize;
 }
-#container .sidebar ul li {
+#container #sidebar ul li {
   margin: 3px 0;
 }
 #container .articles {
