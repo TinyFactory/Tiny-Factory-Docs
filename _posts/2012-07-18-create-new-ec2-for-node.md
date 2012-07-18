@@ -1,7 +1,7 @@
 ---
 layout: default
 published: true
-category: ec2
+category: node.js
 ---
 # Create the EC2 Instance
 
