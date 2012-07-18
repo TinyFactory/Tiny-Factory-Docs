@@ -3,7 +3,7 @@ layout: post
 published: true
 category: node.js
 ---
-# Create the EC2 Instance
+## Create the EC2 Instance
 
 1. Login to [aws.amazon.com](http://aws.amazon.com/)
 2. Pulldown **My Account/Console** and select **AWS Management Console**
@@ -28,7 +28,7 @@ category: node.js
     * Port 31337 for Twilio (If using)
 14. Launch the instance
 
-# Give it an IP
+## Give it an IP
 
 1. Under **Networking and Security** select **Elastic IPs**
 2. Click the **Allocate New Address** button
@@ -37,7 +37,7 @@ category: node.js
 5. Select the EC2 instance
 6. Copy the IP Address (You'll need it later)
 
-# Connect to the New Instance
+## Connect to the New Instance
 
 1. Connect with: `ssh -i ~/.ssh/keyname.pem ec2-user@[ip-add]`
 2. Allow other users on server (if applicable)
