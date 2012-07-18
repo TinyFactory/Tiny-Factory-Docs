@@ -1,6 +1,6 @@
 ---
 layout: post
-category: centos, compass
+category: ['centos','compass']
 published: true
 ---
 
