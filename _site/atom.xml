@@ -4,13 +4,181 @@
  <title>Tiny Factory Docs</title>
  <link href="http://http://tinyfactory.github.com/atom.xml" rel="self"/>
  <link href="http://http://tinyfactory.github.com/"/>
- <updated>2012-07-16T14:01:24-07:00</updated>
+ <updated>2012-07-18T12:42:34-07:00</updated>
  <id>http://http://tinyfactory.github.com/</id>
  <author>
    <name>Tiny Factory</name>
    <email>hello@tinyfactory.co</email>
  </author>
 
+ 
+ <entry>
+   <title>Create New Ec2 For Node</title>
+   <link href="http://http://tinyfactory.github.com/node.js/2012/07/18/create-new-ec2-for-node.html"/>
+   <updated>2012-07-18T00:00:00-07:00</updated>
+   <id>http://http://tinyfactory.github.com/node.js/2012/07/18/create-new-ec2-for-node</id>
+   <content type="html">&lt;h2 id='create_the_ec2_instance'&gt;Create the EC2 Instance&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Login to &lt;a href='http://aws.amazon.com/'&gt;aws.amazon.com&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Pulldown &lt;strong&gt;My Account/Console&lt;/strong&gt; and select &lt;strong&gt;AWS Management Console&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Select &lt;strong&gt;EC2&lt;/strong&gt; under &lt;strong&gt;Compute and Networking&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Click the &lt;strong&gt;Launch Instance&lt;/strong&gt; button&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Select the Classic Interface&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Select &lt;strong&gt;64 bit Amazon Linux AMI&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Select &lt;strong&gt;Micro&lt;/strong&gt; (unless for high traffic site)&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Set zone to &lt;strong&gt;us-east-1a&lt;/strong&gt; (or make a note if selecting another zone)&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Give the instance a name&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Download the ssh key&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Move key to local .ssh directory&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Change permissions on key to 600 in Terminal with: &lt;code&gt;chmod 600 ~/.ssh/[filename].pem&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Under the ports open the following:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Port 22 for ssh&lt;/li&gt;
+
+&lt;li&gt;Port 80 for live&lt;/li&gt;
+
+&lt;li&gt;Port 81 for live socket&lt;/li&gt;
+
+&lt;li&gt;Port 8080 for dev&lt;/li&gt;
+
+&lt;li&gt;Port 8081 for dev socket&lt;/li&gt;
+
+&lt;li&gt;Port 8090 for stage&lt;/li&gt;
+
+&lt;li&gt;Port 8091 for stage socket&lt;/li&gt;
+
+&lt;li&gt;Port 31337 for Twilio (If using)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Launch the instance&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id='give_it_an_ip'&gt;Give it an IP&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Under &lt;strong&gt;Networking and Security&lt;/strong&gt; select &lt;strong&gt;Elastic IPs&lt;/strong&gt;&lt;/li&gt;
+
+&lt;li&gt;Click the &lt;strong&gt;Allocate New Address&lt;/strong&gt; button&lt;/li&gt;
+
+&lt;li&gt;Ensure EC2 is selected and click &lt;strong&gt;Yes&lt;/strong&gt;&lt;/li&gt;
+
+&lt;li&gt;Select the newly created IP and click on the &lt;strong&gt;Associate Address&lt;/strong&gt; button&lt;/li&gt;
+
+&lt;li&gt;Select the EC2 instance&lt;/li&gt;
+
+&lt;li&gt;Copy the IP Address (You&amp;#8217;ll need it later)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id='connect_to_the_new_instance'&gt;Connect to the New Instance&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Connect with: &lt;code&gt;ssh -i ~/.ssh/keyname.pem ec2-user@[ip-add]&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Allow other users on server (if applicable)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Open authorized_keys with: &lt;code&gt;sudo vim ~/.ssh/authorized_keys&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;Copy and paste user hashes into keys file from another server&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Install screen with: &lt;code&gt;sudo yum install screen&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Install git with: &lt;code&gt;sudo yum install git&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Install compiler software with: &lt;code&gt;sudo yum groupinstall &amp;quot;Development Tools&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Install ssl support for node with: &lt;code&gt;sudo yum install openssl-devel&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Install Node&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Create a directory for the node download file with: &lt;code&gt;sudo mkdir /downloads&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;Go into newly created directory with: &lt;code&gt;cd /downloads&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;Get the node repo with: &lt;code&gt;sudo git clone --depth 1 git://github.com/joyent/node.git&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;Go into node directory with: &lt;code&gt;cd node&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;Checkout a stable branch: &lt;code&gt;sudo git checkout v0.6.10&lt;/code&gt; (replace version with most recent stable version)&lt;/li&gt;
+
+&lt;li&gt;Configure install with: &lt;code&gt;sudo ./configure --prefix=/opt/node&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;Make j2 portion of install with: &lt;code&gt;sudo make -j2&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;Finish installation with: &lt;code&gt;sudo make install&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;Open .bash_profile with: &lt;code&gt;sudo vim ~/.bash_profile&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;Add this line: &lt;code&gt;export PATH=$PATH:/opt/node/bin&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;Reload the bash profile with: &lt;code&gt;source ~/.bash_profile&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;Change permissions on node directory with: &lt;code&gt;sudo chown -R ec2-user:ec2-user /opt/node&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Congrats! Node is installed! What&amp;#8217;s next? You can install mongodb or setup a git repo on the server to really get developing.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</content>
+ </entry>
  
  <entry>
    <title>Git Branching</title>

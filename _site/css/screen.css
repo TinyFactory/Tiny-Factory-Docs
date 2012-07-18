@@ -374,7 +374,7 @@ strong {
 @media only screen and (min-width: 1025px) {
   #container {
     width: 72%;
-    margin-left: 25%;
+    margin-left: 26%;
   }
   #container.single {
     width: 90% !important;
@@ -394,7 +394,7 @@ strong {
     margin-top: 25px;
   }
 }
-#container #sidebar {
+#container #sidebar, #container #sidebar_ns {
   width: 25%;
   text-align: right;
   border-right: 1px solid #dfdfdf;
@@ -402,8 +402,23 @@ strong {
   float: left;
   display: inline;
 }
+@media (max-width: 480px) {
+  #container #sidebar, #container #sidebar_ns {
+    display: none !important;
+  }
+}
+@media only screen and (max-width: 768px) {
+  #container #sidebar .side-logo, #container #sidebar_ns .side-logo {
+    display: none;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  #container #sidebar .side-logo, #container #sidebar_ns .side-logo {
+    display: none;
+  }
+}
 @media only screen and (min-width: 1025px) {
-  #container #sidebar {
+  #container #sidebar, #container #sidebar_ns {
     float: none;
     display: inline;
     position: fixed;
@@ -415,26 +430,26 @@ strong {
     background: #ebebeb;
     color: white;
   }
-  #container #sidebar.mousescroll {
+  #container #sidebar.mousescroll, #container #sidebar_ns.mousescroll {
     overflow: hidden;
   }
-  #container #sidebar.mousescroll:hover {
+  #container #sidebar.mousescroll:hover, #container #sidebar_ns.mousescroll:hover {
     overflow-y: scroll;
   }
-  #container #sidebar .side-logo {
+  #container #sidebar .side-logo, #container #sidebar_ns .side-logo {
     margin: 30px 30px 0 0;
   }
-  #container #sidebar .side-logo img {
+  #container #sidebar .side-logo img, #container #sidebar_ns .side-logo img {
     -webkit-transition: all 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
     -moz-transition: all 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
     -ms-transition: all 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
     -o-transition: all 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
     transition: all 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
-  #container #sidebar .side-logo a {
+  #container #sidebar .side-logo a, #container #sidebar_ns .side-logo a {
     border-bottom: none !important;
   }
-  #container #sidebar .side-logo a:hover img {
+  #container #sidebar .side-logo a:hover img, #container #sidebar_ns .side-logo a:hover img {
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
     opacity: 0.8;
     -webkit-transform: rotate(-12deg);
@@ -448,53 +463,38 @@ strong {
     -o-transform-style: preserve3d;
     transform-style: preserve3d;
   }
-  #container #sidebar h3 {
+  #container #sidebar h3, #container #sidebar_ns h3 {
     color: #be2d1f;
     padding: 0 30px 0 0;
   }
-  #container #sidebar .item a {
+  #container #sidebar .item a, #container #sidebar_ns .item a {
     display: block;
     height: 100%;
     border-bottom: none;
     padding: 5px 30px 5px 0;
   }
-  #container #sidebar .item a:hover {
+  #container #sidebar .item a:hover, #container #sidebar_ns .item a:hover {
     border-bottom: none;
     background: #e6e6e6;
     color: #be2d1f;
   }
-  #container #sidebar .item:first-child {
+  #container #sidebar .item:first-child, #container #sidebar_ns .item:first-child {
     margin-top: 200px !important;
   }
-  #container #sidebar .github-buttons {
+  #container #sidebar .github-buttons, #container #sidebar_ns .github-buttons {
     margin-right: 30px;
   }
 }
-@media (max-width: 480px) {
-  #container #sidebar {
-    display: none;
-  }
-}
-@media only screen and (max-width: 768px) {
-  #container #sidebar .side-logo {
-    display: none;
-  }
-}
-@media only screen and (max-width: 1024px) {
-  #container #sidebar .side-logo {
-    display: none;
-  }
-}
-#container #sidebar .item {
+#container #sidebar .item, #container #sidebar_ns .item {
   margin: 20px 0 0;
 }
-#container #sidebar .item:first-child {
+#container #sidebar .item:first-child, #container #sidebar_ns .item:first-child {
   margin: -7px 0 0;
 }
-#container #sidebar .item.categories ul li a {
+#container #sidebar .item.categories ul li a, #container #sidebar_ns .item.categories ul li a {
   text-transform: capitalize;
 }
-#container #sidebar ul li {
+#container #sidebar ul li, #container #sidebar_ns ul li {
   margin: 3px 0;
 }
 #container .articles {
@@ -531,7 +531,7 @@ strong {
   font-weight: normal;
   font-size: 22px;
   line-height: 1.4em;
-  width: 100%;
+  width: 95%;
   margin: 15px 0;
   text-shadow: 0px 1px white;
 }
@@ -665,6 +665,7 @@ strong {
   font-size: 32px;
   font-family: "Gotham Light", sans-serif;
   font-weight: normal;
+  margin-bottom: 20px;
 }
 @media (max-width: 480px) {
   #container .entry h1 {

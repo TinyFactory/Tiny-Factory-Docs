@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Git Branching - Tiny Factory Docs</title>
+    <title>Create New Ec2 For Node - Tiny Factory Docs</title>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" media="screen" href="http://localhost:4000/css/screen.css" type="text/css" />
@@ -92,11 +92,7 @@
           
           
             
-              
-            
           
-          
-            <li><a href="http://localhost:4000/git/2012/07/09/changing-the-head-pointer-on-a-git-repoistory.html">Changing the head on a Git Repo</a></li>
                                  
         
           
@@ -112,7 +108,7 @@
         <h3>Most Recent</h3>
         <ul class="posts">
           
-            <li><a href="http://localhost:4000/node.js/2012/07/18/create-new-ec2-for-node.html">Create New Ec2 For Node</a></li>
+            <li><a href="http://localhost:4000/git/2012/07/10/git-branching.html">Git Branching</a></li>
           
             <li><a href="http://localhost:4000/git/2012/07/09/changing-the-head-pointer-on-a-git-repoistory.html">Changing the head on a Git Repo</a></li>
           
@@ -124,50 +120,168 @@
 
       <article>
           <div class="entry">
-            <h1>Git Branching</h1>
-            <p>To create a new branch locally</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>git checkout -b <span class='s2'>&quot;new-branch-name&quot;</span>
-Switched to a new branch <span class='s2'>&quot;new-branch-name&quot;</span>
-</code></pre>
-</div>
-<p>To create a new local branch from a remote branch</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>git checkout -b new-branch-name origin/remote-branch-name
-Switched to a new branch <span class='s2'>&quot;new-branch-name&quot;</span>
-</code></pre>
-</div>
-<p>Push a New Local Branch to a Remote Git Repo</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>git push origin new-branch-name
-</code></pre>
-</div>
-<p>To view your local branches</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>git branch
-</code></pre>
-</div>
-<p>To view all branches (local and remote)</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>git branch -a
-</code></pre>
-</div>
-<p>To view all remote branches</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>git branch -r
-</code></pre>
-</div>
-<p>To merge a branch check out the branch you&#8217;d like to merge to and run</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>git checkout master
-<span class='nv'>$ </span>git merge new-branch-name
-</code></pre>
-</div>
-<p>To push all local changes to remote</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>git push origin
-</code></pre>
-</div>
-<p>To push local changes for a specific repo</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>git push origin master
-</code></pre>
-</div>
-<p>View GUI of merges</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>gitk
-</code></pre>
-</div>
+            <h1>Create New Ec2 For Node</h1>
+            <h2 id='create_the_ec2_instance'>Create the EC2 Instance</h2>
+
+<ol>
+<li>
+<p>Login to <a href='http://aws.amazon.com/'>aws.amazon.com</a></p>
+</li>
+
+<li>
+<p>Pulldown <strong>My Account/Console</strong> and select <strong>AWS Management Console</strong></p>
+</li>
+
+<li>
+<p>Select <strong>EC2</strong> under <strong>Compute and Networking</strong></p>
+</li>
+
+<li>
+<p>Click the <strong>Launch Instance</strong> button</p>
+</li>
+
+<li>
+<p>Select the Classic Interface</p>
+</li>
+
+<li>
+<p>Select <strong>64 bit Amazon Linux AMI</strong></p>
+</li>
+
+<li>
+<p>Select <strong>Micro</strong> (unless for high traffic site)</p>
+</li>
+
+<li>
+<p>Set zone to <strong>us-east-1a</strong> (or make a note if selecting another zone)</p>
+</li>
+
+<li>
+<p>Give the instance a name</p>
+</li>
+
+<li>
+<p>Download the ssh key</p>
+</li>
+
+<li>
+<p>Move key to local .ssh directory</p>
+</li>
+
+<li>
+<p>Change permissions on key to 600 in Terminal with: <code>chmod 600 ~/.ssh/[filename].pem</code></p>
+</li>
+
+<li>
+<p>Under the ports open the following:</p>
+
+<ul>
+<li>Port 22 for ssh</li>
+
+<li>Port 80 for live</li>
+
+<li>Port 81 for live socket</li>
+
+<li>Port 8080 for dev</li>
+
+<li>Port 8081 for dev socket</li>
+
+<li>Port 8090 for stage</li>
+
+<li>Port 8091 for stage socket</li>
+
+<li>Port 31337 for Twilio (If using)</li>
+</ul>
+</li>
+
+<li>
+<p>Launch the instance</p>
+</li>
+</ol>
+
+<h2 id='give_it_an_ip'>Give it an IP</h2>
+
+<ol>
+<li>Under <strong>Networking and Security</strong> select <strong>Elastic IPs</strong></li>
+
+<li>Click the <strong>Allocate New Address</strong> button</li>
+
+<li>Ensure EC2 is selected and click <strong>Yes</strong></li>
+
+<li>Select the newly created IP and click on the <strong>Associate Address</strong> button</li>
+
+<li>Select the EC2 instance</li>
+
+<li>Copy the IP Address (You&#8217;ll need it later)</li>
+</ol>
+
+<h2 id='connect_to_the_new_instance'>Connect to the New Instance</h2>
+
+<ol>
+<li>
+<p>Connect with: <code>ssh -i ~/.ssh/keyname.pem ec2-user@[ip-add]</code></p>
+</li>
+
+<li>
+<p>Allow other users on server (if applicable)</p>
+
+<ul>
+<li>Open authorized_keys with: <code>sudo vim ~/.ssh/authorized_keys</code></li>
+
+<li>Copy and paste user hashes into keys file from another server</li>
+</ul>
+</li>
+
+<li>
+<p>Install screen with: <code>sudo yum install screen</code></p>
+</li>
+
+<li>
+<p>Install git with: <code>sudo yum install git</code></p>
+</li>
+
+<li>
+<p>Install compiler software with: <code>sudo yum groupinstall &quot;Development Tools&quot;</code></p>
+</li>
+
+<li>
+<p>Install ssl support for node with: <code>sudo yum install openssl-devel</code></p>
+</li>
+
+<li>
+<p>Install Node</p>
+
+<ul>
+<li>Create a directory for the node download file with: <code>sudo mkdir /downloads</code></li>
+
+<li>Go into newly created directory with: <code>cd /downloads</code></li>
+
+<li>Get the node repo with: <code>sudo git clone --depth 1 git://github.com/joyent/node.git</code></li>
+
+<li>Go into node directory with: <code>cd node</code></li>
+
+<li>Checkout a stable branch: <code>sudo git checkout v0.6.10</code> (replace version with most recent stable version)</li>
+
+<li>Configure install with: <code>sudo ./configure --prefix=/opt/node</code></li>
+
+<li>Make j2 portion of install with: <code>sudo make -j2</code></li>
+
+<li>Finish installation with: <code>sudo make install</code></li>
+
+<li>Open .bash_profile with: <code>sudo vim ~/.bash_profile</code></li>
+
+<li>Add this line: <code>export PATH=$PATH:/opt/node/bin</code></li>
+
+<li>Reload the bash profile with: <code>source ~/.bash_profile</code></li>
+
+<li>Change permissions on node directory with: <code>sudo chown -R ec2-user:ec2-user /opt/node</code></li>
+</ul>
+</li>
+
+<li>
+<p>Congrats! Node is installed! What&#8217;s next? You can install mongodb or setup a git repo on the server to really get developing.</p>
+</li>
+</ol>
           </div>
       </article>
 </div>

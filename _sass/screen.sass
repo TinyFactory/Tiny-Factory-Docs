@@ -107,7 +107,7 @@ strong
 
 	+desktop-and-up
 		width: 72%
-		margin-left: 25%
+		margin-left: 26%
 
 		&.single
 			width: 90% !important
@@ -122,13 +122,26 @@ strong
 		&.single
 			margin-top: 25px
 
-	#sidebar
+	#sidebar, #sidebar_ns
 		width: 25%
 		text-align: right
 		border-right: 1px solid darken($body, 8%)
 		padding-right: 30px
 		float: left
 		display: inline
+
+		+mobile-only
+			display: none !important
+
+		+tablet-portrait-and-below
+
+			.side-logo
+				display: none
+
+		+tablet-landscape-and-below
+
+			.side-logo
+				display: none
 
 		+desktop-and-up
 			float: none
@@ -147,7 +160,6 @@ strong
 
 				&:hover
 					overflow-y: scroll
-
 
 			.side-logo
 				margin: 30px 30px 0 0
@@ -185,19 +197,6 @@ strong
 
 			.github-buttons
 				margin-right: 30px
-
-		+mobile-only
-			display: none
-
-		+tablet-portrait-and-below
-
-			.side-logo
-				display: none
-
-		+tablet-landscape-and-below
-
-			.side-logo
-				display: none
 
 		.item	
 			margin: 20px 0 0
@@ -242,7 +241,7 @@ strong
 			+gotham-book
 			font-size: 22px
 			line-height: 1.4em
-			width: 100%
+			width: 95%
 			margin: 15px 0
 			text-shadow: 0px 1px #fff
 
@@ -338,6 +337,7 @@ strong
 		h1
 			font-size: 32px
 			+gotham-light
+			margin-bottom: 20px
 
 			+mobile-only
 				line-height: 1.2em
