@@ -2,7 +2,6 @@
 layout: default
 published: true
 category: amazon ec2
-title: Create Amazon EC2 instance for Node.js (from MacOSX)
 ---
 # Create the EC2 Instance
 
