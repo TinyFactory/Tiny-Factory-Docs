@@ -1,7 +1,7 @@
 ---
 layout: default
 published: true
-category: amazon ec2
+category: ec2
 ---
 # Create the EC2 Instance
 
