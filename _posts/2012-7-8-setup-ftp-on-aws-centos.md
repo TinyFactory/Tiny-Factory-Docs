@@ -1,6 +1,6 @@
 ---
 layout: post
-category: centos
+category: centos, compass
 published: true
 ---
 
