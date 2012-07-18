@@ -6,15 +6,15 @@ published: true
 
 1. Install **vsftpd**
 
-{% highlight bash %}
-yum install vsftpd - y
-{% endhighlight %}
+	{% highlight bash %}
+	yum install vsftpd - y
+	{% endhighlight %}
 
 2. Open up the config file
  
-{% highlight bash %}
-vim /etc/vsftpd/vsftpd.conf
-{% endhighlight %}
+	{% highlight bash %}
+	vim /etc/vsftpd/vsftpd.conf
+	{% endhighlight %}
 
 3. Add the following lines to the end of **vsftpd.conf**
  
