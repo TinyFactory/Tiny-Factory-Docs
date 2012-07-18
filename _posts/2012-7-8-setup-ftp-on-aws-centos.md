@@ -6,9 +6,9 @@ published: true
 
 1. Install **vsftpd**
 
-
-    yum install vsftpd - y
-
+{% highlight bash %}
+yum install vsftpd - y
+{% endhighlight %}
 
 2. Open up the config file
  
