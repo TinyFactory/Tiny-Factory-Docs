@@ -2,7 +2,7 @@
 # url: http://localhost:4000
 
 # Production
-url: http://tinyfactory.github.com/Tiny-Factory-Docs
+url: http://docs.tinyfactory.co
 
 
 permalink: :date
