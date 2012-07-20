@@ -581,6 +581,7 @@ strong {
 }
 #container .articles a {
   border-bottom: none;
+  display: block;
 }
 #container .articles a:hover {
   border-bottom: none;
