@@ -20,8 +20,7 @@ category: node.js
 12. Change permissions on key to 600: 
 	{% highlight bash %}chmod 600 ~/.ssh/(filename).pem{% endhighlight %}
 13. In EC2 setup a security group with the following open ports:
-	{% highlight bash %}
-	Port 22 for ssh
+	{% highlight bash %}Port 22 for ssh
     Port 80 for http traffic
     Port 8080 for socket traffic
     {% endhighlight %}
