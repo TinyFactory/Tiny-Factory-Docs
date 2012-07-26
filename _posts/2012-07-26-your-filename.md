@@ -4,7 +4,7 @@ category: node
 published: false
 ---
 
-# Node Forever
+# Setting Up Node Forever
 
 Keep a node server running
 
