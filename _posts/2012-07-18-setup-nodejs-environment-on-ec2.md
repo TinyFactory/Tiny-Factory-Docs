@@ -67,7 +67,9 @@ category: node.js
 	source ~/.bash_profile
 	{% endhighlight %}   
 8.  Change permissions on node directory
-    {% highlight bash %}sudo chown -R ec2-user:ec2-user /opt/node
+    {% highlight bash %}$ sudo chown -R ec2-user:ec2-user /opt/node
 	{% endhighlight %}   
-
-###Congrats!  Node is installed!  What's next?  You can install mongodb or setup a git repo on the server to really get developing.
+9.  Confirm we have a successfull install:
+    {% highlight bash %}$ node -v
+	{% endhighlight %}   
+###Congrats!  Node.js is installed!  What's next?  You can install mongodb or setup a git repo on the server to really get developing.
