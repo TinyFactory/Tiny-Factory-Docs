@@ -7,6 +7,18 @@
     <link rel="stylesheet" media="screen" href="http://localhost:4000/css/screen.css" type="text/css" />
     
     
+    <!-- google analytics async -->
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-20145334-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    
   </head>
   <body>
       <header>
@@ -36,9 +48,9 @@
                
                 <li><a href="http://localhost:4000/archive.html#node.js">node.js</a></li> 
                
-                <li><a href="http://localhost:4000/archive.html#git">git</a></li> 
-               
                 <li><a href="http://localhost:4000/archive.html#centos">centos</a></li> 
+               
+                <li><a href="http://localhost:4000/archive.html#git">git</a></li> 
               
             </ul>
           </div>
@@ -122,63 +134,73 @@
           <div class="entry">
             <h1>Setup Ftp On Aws Centos</h1>
             <ol>
-<li>Install <strong>vsftpd</strong></li>
-</ol>
+<li>
+<p>Install <strong>vsftpd</strong></p>
 <div class='highlight'><pre><code class='bash'>yum install vsftpd - y
+
 </code></pre>
-</div>
-<ol>
-<li>Open up the config file</li>
-</ol>
+</div></li>
+
+<li>
+<p>Open up the config file</p>
 <div class='highlight'><pre><code class='bash'>vim /etc/vsftpd/vsftpd.conf
+
 </code></pre>
-</div>
-<ol>
-<li>Add the following lines to the end of <strong>vsftpd.conf</strong></li>
-</ol>
+</div></li>
+
+<li>
+<p>Add the following lines to the end of <strong>vsftpd.conf</strong></p>
 <div class='highlight'><pre><code class='bash'><span class='nv'>pasv_enable</span><span class='o'>=</span>YES
 <span class='nv'>pasv_min_port</span><span class='o'>=</span>1400 ← port range to be opened at the security group
 <span class='nv'>pasv_max_port</span><span class='o'>=</span>1500
 <span class='nv'>pasv_address</span><span class='o'>=</span>23.21.148.84 ← server IP
+
 </code></pre>
-</div>
-<ol>
-<li>Open up the following <strong>ports</strong> at the security group within <strong>AWS</strong></li>
-</ol>
+</div></li>
+
+<li>
+<p>Open up the following <strong>ports</strong> at the security group within <strong>AWS</strong></p>
 <div class='highlight'><pre><code class='bash'>21 ← default FTP connection port
 1400-1500 ← passive port range <span class='nb'>set </span>in vsftpd.con
+
 </code></pre>
-</div>
-<ol>
-<li>Restart the <strong>vsftpd</strong> server</li>
-</ol>
+</div></li>
+
+<li>
+<p>Restart the <strong>vsftpd</strong> server</p>
 <div class='highlight'><pre><code class='bash'>sudo service vsftpd restart
+
 </code></pre>
-</div>
-<ol>
-<li>Add new user to server for login</li>
-</ol>
+</div></li>
+
+<li>
+<p>Add new user to server for login</p>
 <div class='highlight'><pre><code class='bash'>sudo adduser <span class='o'>[</span>username<span class='o'>]</span>
+
 </code></pre>
-</div>
-<ol>
-<li>Give user a password so they can login</li>
-</ol>
+</div></li>
+
+<li>
+<p>Give user a password so they can login</p>
 <div class='highlight'><pre><code class='bash'>sudo passwd <span class='o'>[</span>username<span class='o'>]</span>
+
 </code></pre>
-</div>
-<ol>
-<li>Add entry to auto start <strong>vsftpd</strong> on server restart</li>
-</ol>
+</div></li>
+
+<li>
+<p>Add entry to auto start <strong>vsftpd</strong> on server restart</p>
 <div class='highlight'><pre><code class='bash'>sudo chkconfig vsftpd on 
+
 </code></pre>
-</div>
-<ol>
-<li>Bonus - if you want to have a user’s files uploaded to an EBS mount, symlink from the FTP user’s directory to the EBS mount</li>
-</ol>
+</div></li>
+
+<li>
+<p>Bonus - if you want to have a user’s files uploaded to an EBS mount, symlink from the FTP user’s directory to the EBS mount</p>
 <div class='highlight'><pre><code class='bash'>ln -s <span class='o'>[</span><span class='nb'>source</span>-file/folder<span class='o'>]</span> <span class='o'>[</span>link-name<span class='o'>]</span>
+
 </code></pre>
-</div>
+</div></li>
+</ol>
           </div>
       </article>
 </div>

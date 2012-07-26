@@ -94,7 +94,10 @@ p
 
 	code
 		color: $red
-		padding: 4px
+		padding: 4px 6px
+		border: 1px solid darken($body, 8%)
+		+border-radius(2px)
+		background: darken($body, 2%)
 
 strong
 	+bold
@@ -335,6 +338,23 @@ strong
 			li
 				margin: 20px 0
 
+			ul
+				margin-left: 15px
+
+				li
+					list-style: disc
+					color: lighten($text, 1%)
+
+					code
+						font-size: 12px
+						font-family: "Monaco", "Courier New", monospace
+						color: $red
+						padding: 4px 6px
+						border: 1px solid darken($body, 15%)
+						+border-radius(2px)
+						background: darken($body, 2%)
+
+
 		h1
 			font-size: 32px
 			+gotham-light
@@ -353,10 +373,6 @@ strong
 
 		a img
 			vertical-align: bottom
-
-	code
-		font-size: 12px
-		font-family: "Monaco", "Courier New", monospace
 
 li div.highlight
 	padding: 20px 20px 0 !important
