@@ -51,7 +51,6 @@ category: node.js
 	{% highlight bash %}sudo yum install openssl-devel
     {% endhighlight %} 
 5. Download Node.js repo and checkout a version to install
-	Create a directory for the node download file with:
 	{% highlight bash %}sudo mkdir /downloads
 	cd /downloads
 	sudo git clone --depth 1 git://github.com/joyent/node.git
@@ -65,14 +64,11 @@ category: node.js
 	{% endhighlight %}
 7.	Setup Node.js environment varibales
     {% highlight bash %}sudo vim ~/.bash_profile
-	{% endhighlight %}
     Add this line: 
-    {% highlight bash %}export PATH=$PATH:/opt/node/bin
-	{% endhighlight %}    
+	export PATH=$PATH:/opt/node/bin
     Reload the bash profile with:
-    {% highlight bash %}source ~/.bash_profile
-	{% endhighlight %}    
+	source ~/.bash_profile
     Change permissions on node directory with: 
-    {% highlight bash %}sudo chown -R ec2-user:ec2-user /opt/node
+	sudo chown -R ec2-user:ec2-user /opt/node
 	{% endhighlight %}   
 6. Congrats!  Node is installed!  What's next?  You can install mongodb or setup a git repo on the server to really get developing.
