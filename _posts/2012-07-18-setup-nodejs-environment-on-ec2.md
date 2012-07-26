@@ -18,7 +18,7 @@ category: node.js
 10. Download the ssh key
 11. Move key to your local ~/.ssh/ directory
 12. Change permissions on key to 600: 
-	{% highlight bash %}chmod 600 ~/.ssh/(filename).pem
+	{% highlight bash %}$ chmod 600 ~/.ssh/(filename).pem
     {% endhighlight %}
 13. In EC2 setup a security group with the following open ports:
 	{% highlight bash %}Port 22 for ssh
@@ -39,31 +39,31 @@ category: node.js
 ## Connect to the New Instance
 
 1. Connect with:
-    {% highlight bash %}ssh -i ~/.ssh/keyname.pem ec2-user@the-ip-address-for-the-instance
+    {% highlight bash %}$ ssh -i ~/.ssh/keyname.pem ec2-user@the-ip-address-for-the-instance
     {% endhighlight %}
 2. Add public key to to the authorized_keys file for passwordless ssh login 
-    {% highlight bash %}sudo vim ~/.ssh/authorized_keys
+    {% highlight bash %}$ sudo vim ~/.ssh/authorized_keys
     {% endhighlight %}    
 3. Install development tools group for compiling:
-	{% highlight bash %}sudo yum groupinstall "Development Tools"
+	{% highlight bash %}$ sudo yum groupinstall "Development Tools"
     {% endhighlight %} 
 4. Install ssl support for node with: 
-	{% highlight bash %}sudo yum install openssl-devel
+	{% highlight bash %}$ sudo yum install openssl-devel
     {% endhighlight %} 
 5. Download Node.js repo and checkout a version to install
-	{% highlight bash %}sudo mkdir /downloads
-	cd /downloads
-	sudo git clone --depth 1 git://github.com/joyent/node.git
-	cd node
-	sudo git checkout v0.6.10 //replace version with most recent stable version
+	{% highlight bash %}$ sudo mkdir /downloads
+	$ cd /downloads
+	$ sudo git clone --depth 1 git://github.com/joyent/node.git
+	$ cd node
+	$ sudo git checkout v0.6.10 //replace version with most recent stable version
 	{% endhighlight %}
 6.  Install Node.js
-    {% highlight bash %}sudo ./configure --prefix=/opt/node
-	sudo make -j2
-	sudo make install
+    {% highlight bash %}$ sudo ./configure --prefix=/opt/node
+	$ sudo make -j2
+	$ sudo make install
 	{% endhighlight %}
 7.	Setup Node.js environment varibales
-    {% highlight bash %}echo export PATH=$PATH:/opt/node/bin >> ~/.bash_profile
+    {% highlight bash %}$ echo export PATH=$PATH:/opt/node/bin >> ~/.bash_profile
 	source ~/.bash_profile
 	{% endhighlight %}   
 8.  Change permissions on node directory
