@@ -57,7 +57,7 @@ category: node.js
 	$ cd node
 	$ sudo git checkout v0.6.10 //replace version with most recent stable version
 	{% endhighlight %}
-6.  Install Node.js
+6.  Configure, make and install Node.js
     {% highlight bash %}$ sudo ./configure --prefix=/opt/node
 	$ sudo make -j2
 	$ sudo make install
