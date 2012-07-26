@@ -18,9 +18,7 @@ category: node.js
 10. Download the ssh key
 11. Move key to your local ~/.ssh/ directory
 12. Change permissions on key to 600: 
-	{% highlight bash %}
-	chmod 600 ~/.ssh/(filename).pem
-	{% endhighlight %}
+	{% highlight bash %}chmod 600 ~/.ssh/(filename).pem{% endhighlight %}
 13. In EC2 setup a security group with the following open ports:
 	* Port 22 for ssh
     * Port 80 for http traffic
@@ -39,19 +37,13 @@ category: node.js
 ## Connect to the New Instance
 
 1. Connect with: 
-   {% highlight bash %}
-   ssh -i ~/.ssh/keyname.pem ec2-user@the-ip-address-for-the-instance
-   {% endhighlight %}
+   {% highlight bash %}ssh -i ~/.ssh/keyname.pem ec2-user@the-ip-address-for-the-instance{% endhighlight %}
 2. Allow other users on server (if applicable)
 	* Open authorized_keys with: 
-	{% highlight bash %}
-    sudo vim ~/.ssh/authorized_keys
-	{% endhighlight %}    
+	{% highlight bash %}sudo vim ~/.ssh/authorized_keys{% endhighlight %}    
     * Copy and paste user public keys into authorized_keys file for passwordless ssh login.
 3. Install compiler software with: 
-	{% highlight bash %}
-	sudo yum groupinstall "Development Tools"
-	{% endhighlight %} 
+	{% highlight bash %}sudo yum groupinstall "Development Tools"{% endhighlight %} 
 4. Install ssl support for node with: 
 	{% highlight bash %}
 	sudo yum install openssl-devel
