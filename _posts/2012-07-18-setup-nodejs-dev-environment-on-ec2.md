@@ -67,22 +67,22 @@ category: node.js
     Configure install with: 
     {% highlight bash %}sudo ./configure --prefix=/opt/node
     {% endhighlight %}      
-    * Make j2 portion of install with:
+    Make j2 portion of install with:
     {% highlight bash %}sudo make -j2
 	{% endhighlight %}  
-    * Finish installation with:
+    Finish installation with:
     {% highlight bash %}sudo make install
 	{% endhighlight %}
-    * Open ~/.bash_profile with: 
+    Open ~/.bash_profile with: 
     {% highlight bash %}sudo vim ~/.bash_profile
 	{% endhighlight %}
-    * Add this line: 
+    Add this line: 
     {% highlight bash %}export PATH=$PATH:/opt/node/bin
 	{% endhighlight %}    
-    * Reload the bash profile with:
+    Reload the bash profile with:
     {% highlight bash %}source ~/.bash_profile
 	{% endhighlight %}    
-    * Change permissions on node directory with: 
+    Change permissions on node directory with: 
     {% highlight bash %}sudo chown -R ec2-user:ec2-user /opt/node
 	{% endhighlight %}   
 6. Congrats!  Node is installed!  What's next?  You can install mongodb or setup a git repo on the server to really get developing.
