@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Create New Ec2 For Node - Tiny Factory Docs</title>
+    <title>Setup Nodejs Environment On Ec2 - Tiny Factory Docs</title>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" media="screen" href="http://localhost:4000/css/screen.css" type="text/css" />
@@ -30,17 +30,13 @@
           <div class="mobile-band">
             
             
-              <a href="http://localhost:4000/about.html">About</a>
-            
-          
-            
               <a href="http://localhost:4000/archive.html">Archives</a>
             
           
             
-              <a href="http://localhost:4000/contribute.html">Contribute</a>
-            
           
+            
+              <a href="http://localhost:4000/jobs.html">Jobs</a>
             
           
             <a class="category" href="#">Categories</a>
@@ -76,17 +72,13 @@
           <li><a href="http://localhost:4000">Home</a></li>
           
             
-              <li><a href="http://localhost:4000/about.html">About</a></li>
-            
-          
-            
               <li><a href="http://localhost:4000/archive.html">Archives</a></li>
             
           
             
-              <li><a href="http://localhost:4000/contribute.html">Contribute</a></li>
-            
           
+            
+              <li><a href="http://localhost:4000/jobs.html">Jobs</a></li>
             
           
         </ul>
@@ -132,7 +124,7 @@
 
       <article>
           <div class="entry">
-            <h1>Create New Ec2 For Node</h1>
+            <h1>Setup Nodejs Environment On Ec2</h1>
             <h2 id='create_the_ec2_instance'>Create the EC2 Instance</h2>
 
 <ol>
@@ -177,41 +169,31 @@
 </li>
 
 <li>
-<p>Move key to local .ssh directory</p>
+<p>Move key to your local ~/.ssh/ directory</p>
 </li>
 
 <li>
-<p>Change permissions on key to 600 in Terminal with: <code>chmod 600 ~/.ssh/[filename].pem</code></p>
-</li>
+<p>Change permissions on key to 600:</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>chmod 600 ~/.ssh/<span class='o'>(</span>filename<span class='o'>)</span>.pem
+
+</code></pre>
+</div></li>
 
 <li>
-<p>Under the ports open the following:</p>
+<p>In EC2 setup a security group with the following open ports:</p>
+<div class='highlight'><pre><code class='bash'>Port 22 <span class='k'>for </span>ssh
+Port 80 <span class='k'>for </span>http traffic
+Port 8080 <span class='k'>for </span>socket traffic
 
-<ul>
-<li>Port 22 for ssh</li>
-
-<li>Port 80 for live</li>
-
-<li>Port 81 for live socket</li>
-
-<li>Port 8080 for dev</li>
-
-<li>Port 8081 for dev socket</li>
-
-<li>Port 8090 for stage</li>
-
-<li>Port 8091 for stage socket</li>
-
-<li>Port 31337 for Twilio (If using)</li>
-</ul>
-</li>
+</code></pre>
+</div></li>
 
 <li>
 <p>Launch the instance</p>
 </li>
 </ol>
 
-<h2 id='give_it_an_ip'>Give it an IP</h2>
+<h2 id='associate_an_ip_with_your_ec2_instance'>Associate an IP with your EC2 instance</h2>
 
 <ol>
 <li>Under <strong>Networking and Security</strong> select <strong>Elastic IPs</strong></li>
@@ -231,69 +213,77 @@
 
 <ol>
 <li>
-<p>Connect with: <code>ssh -i ~/.ssh/keyname.pem ec2-user@[ip-add]</code></p>
-</li>
+<p>Connect with:</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>ssh -i ~/.ssh/keyname.pem ec2-user@the-ip-address-for-the-instance
+ 
+</code></pre>
+</div></li>
 
 <li>
-<p>Allow other users on server (if applicable)</p>
-
-<ul>
-<li>Open authorized_keys with: <code>sudo vim ~/.ssh/authorized_keys</code></li>
-
-<li>Copy and paste user hashes into keys file from another server</li>
-</ul>
-</li>
+<p>Add public key to to the authorized_keys file for passwordless ssh login</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>sudo vim ~/.ssh/authorized_keys
+ 
+</code></pre>
+</div></li>
 
 <li>
-<p>Install screen with: <code>sudo yum install screen</code></p>
-</li>
+<p>Install development tools group for compiling:</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>sudo yum groupinstall <span class='s2'>&quot;Development Tools&quot;</span>
+ 
+</code></pre>
+</div></li>
 
 <li>
-<p>Install git with: <code>sudo yum install git</code></p>
-</li>
+<p>Install ssl support for node with:</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>sudo yum install openssl-devel
+ 
+</code></pre>
+</div></li>
 
 <li>
-<p>Install compiler software with: <code>sudo yum groupinstall &quot;Development Tools&quot;</code></p>
-</li>
+<p>Download Node.js repo and checkout a version to install</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>sudo mkdir /downloads
+<span class='nv'>$ </span><span class='nb'>cd</span> /downloads
+<span class='nv'>$ </span>sudo git clone --depth 1 git://github.com/joyent/node.git
+<span class='nv'>$ </span><span class='nb'>cd </span>node
+<span class='nv'>$ </span>sudo git checkout v0.6.10 //replace version with most recent stable version
+
+</code></pre>
+</div></li>
 
 <li>
-<p>Install ssl support for node with: <code>sudo yum install openssl-devel</code></p>
-</li>
+<p>Configure, make and install Node.js</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>sudo ./configure --prefix<span class='o'>=</span>/opt/node
+<span class='nv'>$ </span>sudo make -j2
+<span class='nv'>$ </span>sudo make install
+
+</code></pre>
+</div></li>
 
 <li>
-<p>Install Node</p>
+<p>Setup Node.js environment varibales</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span><span class='nb'>echo export </span><span class='nv'>PATH</span><span class='o'>=</span><span class='nv'>$PATH</span>:/opt/node/bin &gt;&gt; ~/.bash_profile
+<span class='nv'>$ </span><span class='nb'>source</span> ~/.bash_profile
 
-<ul>
-<li>Create a directory for the node download file with: <code>sudo mkdir /downloads</code></li>
-
-<li>Go into newly created directory with: <code>cd /downloads</code></li>
-
-<li>Get the node repo with: <code>sudo git clone --depth 1 git://github.com/joyent/node.git</code></li>
-
-<li>Go into node directory with: <code>cd node</code></li>
-
-<li>Checkout a stable branch: <code>sudo git checkout v0.6.10</code> (replace version with most recent stable version)</li>
-
-<li>Configure install with: <code>sudo ./configure --prefix=/opt/node</code></li>
-
-<li>Make j2 portion of install with: <code>sudo make -j2</code></li>
-
-<li>Finish installation with: <code>sudo make install</code></li>
-
-<li>Open .bash_profile with: <code>sudo vim ~/.bash_profile</code></li>
-
-<li>Add this line: <code>export PATH=$PATH:/opt/node/bin</code></li>
-
-<li>Reload the bash profile with: <code>source ~/.bash_profile</code></li>
-
-<li>Change permissions on node directory with: <code>sudo chown -R ec2-user:ec2-user /opt/node</code></li>
-</ul>
-</li>
+</code></pre>
+</div></li>
 
 <li>
-<p>Congrats! Node is installed! What&#8217;s next? You can install mongodb or setup a git repo on the server to really get developing.</p>
-</li>
+<p>Change permissions on node directory</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>sudo chown -R ec2-user:ec2-user /opt/node
+
+</code></pre>
+</div></li>
+
+<li>
+<p>Confirm we have a successfull install:</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>node -v
+
+</code></pre>
+</div></li>
 </ol>
+
+<h3 id='congrats_nodejs_is_installed_whats_next_you_can_install_mongodb_or_setup_a_git_repo_on_the_server_to_really_get_developing'>Congrats! Node.js is installed! What&#8217;s next? You can install mongodb or setup a git repo on the server to really get developing.</h3>
           </div>
       </article>
 </div>

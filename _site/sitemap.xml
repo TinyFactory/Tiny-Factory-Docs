@@ -4,14 +4,14 @@
   <!--  Homepage -->
   <url>
     <loc>http://http://tinyfactory.github.com/</loc>
-    <lastmod>2012-07-25</lastmod>
+    <lastmod>2012-07-26</lastmod>
     <changefreq>daily</changefreq>
 		<priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>http://http://tinyfactory.github.com/node.js/2012/07/18/create-new-ec2-for-node.html</loc>
+    <loc>http://http://tinyfactory.github.com/node.js/2012/07/18/setup-nodejs-environment-on-ec2.html</loc>
     
     <lastmod>2012-07-18</lastmod>
     
@@ -41,27 +41,9 @@
 
   
   <url>
-    <loc>http://http://tinyfactory.github.com/about.html</loc>
-    
-    <lastmod>2012-07-25</lastmod>
-    
-    
-    
-  </url>
-  
-  <url>
     <loc>http://http://tinyfactory.github.com/archive.html</loc>
     
-    <lastmod>2012-07-25</lastmod>
-    
-    
-    
-  </url>
-  
-  <url>
-    <loc>http://http://tinyfactory.github.com/contribute.html</loc>
-    
-    <lastmod>2012-07-25</lastmod>
+    <lastmod>2012-07-26</lastmod>
     
     
     
@@ -70,7 +52,16 @@
   <url>
     <loc>http://http://tinyfactory.github.com/index.html</loc>
     
-    <lastmod>2012-07-25</lastmod>
+    <lastmod>2012-07-26</lastmod>
+    
+    
+    
+  </url>
+  
+  <url>
+    <loc>http://http://tinyfactory.github.com/jobs.html</loc>
+    
+    <lastmod>2012-07-26</lastmod>
     
     
     

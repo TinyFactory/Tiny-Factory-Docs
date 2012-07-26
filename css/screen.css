@@ -387,6 +387,9 @@ strong {
     width: 90% !important;
     margin-left: 0 !important;
   }
+  #container.page .entry {
+    width: 90%;
+  }
 }
 @media only screen and (min-width: 481px) and (max-width: 1024px) {
   #container {
@@ -699,6 +702,8 @@ strong {
   font-family: "Gotham Light", sans-serif;
   font-weight: normal;
   margin-bottom: 20px;
+  border-bottom: 1px solid #dfdfdf;
+  line-height: 1.6em;
 }
 @media (max-width: 480px) {
   #container .entry h1 {
