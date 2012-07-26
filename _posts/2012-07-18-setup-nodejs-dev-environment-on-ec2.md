@@ -50,32 +50,20 @@ category: node.js
 4. Install ssl support for node with: 
 	{% highlight bash %}sudo yum install openssl-devel
     {% endhighlight %} 
-5. Install Node
+5. Download Node.js repo and checkout a version to install
 	Create a directory for the node download file with:
 	{% highlight bash %}sudo mkdir /downloads
-    {% endhighlight %} 
-    Go into newly created directory:
-	{% highlight bash %}cd /downloads
-    {% endhighlight %}  
-    Get the node repo:
-	{% highlight bash %}sudo git clone --depth 1 git://github.com/joyent/node.git
-    {% endhighlight %}
-    Go into node directory:
-	{% highlight bash %}cd node
-    {% endhighlight %}    
-    Checkout a stable branch:
-	{% highlight bash %}sudo git checkout v0.6.10 //replace version with most recent stable version
-    {% endhighlight %}          
-    Configure install with: 
-    {% highlight bash %}sudo ./configure --prefix=/opt/node
-    {% endhighlight %}      
-    Make j2 portion of install with:
-    {% highlight bash %}sudo make -j2
-	{% endhighlight %}  
-    Finish installation with:
-    {% highlight bash %}sudo make install
+	cd /downloads
+	sudo git clone --depth 1 git://github.com/joyent/node.git
+	cd node
+	sudo git checkout v0.6.10 //replace version with most recent stable version
 	{% endhighlight %}
-    Open ~/.bash_profile with: 
+6.  Install Node.js
+    {% highlight bash %}sudo ./configure --prefix=/opt/node
+	sudo make -j2
+	sudo make install
+	{% endhighlight %}
+7.	Setup Node.js environment varibales
     {% highlight bash %}sudo vim ~/.bash_profile
 	{% endhighlight %}
     Add this line: 
