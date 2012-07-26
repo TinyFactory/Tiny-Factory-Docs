@@ -634,6 +634,11 @@ strong {
   color: #333333;
   margin-bottom: 250px;
 }
+#container .entry a {
+  color: #de4132;
+  font-family: "Sanuk Bold", "Georgia", sans-serif;
+  font-weight: normal;
+}
 @media only screen and (min-width: 1025px) {
   #container .entry {
     width: 100%;
