@@ -27,7 +27,7 @@ category: node.js
     * Port 8080 for socket traffic
 14. Launch the instance
 
-## Give it an IP
+## Associate an IP with your EC2 instance
 
 1. Under **Networking and Security** select **Elastic IPs**
 2. Click the **Allocate New Address** button
