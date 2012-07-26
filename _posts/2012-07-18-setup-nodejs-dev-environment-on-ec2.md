@@ -39,10 +39,11 @@ category: node.js
 ## Connect to the New Instance
 
 1. Connect with:
-{% highlight bash %}ssh -i ~/.ssh/keyname.pem ec2-user@the-ip-address-for-the-instance{% endhighlight %}
+   {% highlight bash %}ssh -i ~/.ssh/keyname.pem ec2-user@the-ip-address-for-the-instance
+   {% endhighlight %}
 2. Add public key to to the authorized_keys file for passwordless ssh login 
-{% highlight bash %}sudo vim ~/.ssh/authorized_keys
-{% endhighlight %}    
+   {% highlight bash %}sudo vim ~/.ssh/authorized_keys
+   {% endhighlight %}    
 3. Install development tools group for compiling:
 	{% highlight bash %}sudo yum groupinstall "Development Tools"
     {% endhighlight %} 
