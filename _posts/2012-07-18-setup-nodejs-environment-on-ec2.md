@@ -63,13 +63,11 @@ category: node.js
 	sudo make install
 	{% endhighlight %}
 7.	Setup Node.js environment varibales
-    {% highlight bash %}sudo vim ~/.bash_profile
-	Add this line: 
-	export PATH=$PATH:/opt/node/bin
-	Reload the bash profile with:
+    {% highlight bash %}echo export PATH=$PATH:/opt/node/bin >> ~/.bash_profile
 	source ~/.bash_profile
-	Change permissions on node directory: 
-	sudo chown -R ec2-user:ec2-user /opt/node
+	{% endhighlight %}   
+8.  Change permissions on node directory
+    {% highlight bash %}sudo chown -R ec2-user:ec2-user /opt/node
 	{% endhighlight %}   
 
-#Congrats!  Node is installed!  What's next?  You can install mongodb or setup a git repo on the server to really get developing.
+###Congrats!  Node is installed!  What's next?  You can install mongodb or setup a git repo on the server to really get developing.
