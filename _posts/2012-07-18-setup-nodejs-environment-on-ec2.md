@@ -64,7 +64,7 @@ category: node.js
 	{% endhighlight %}
 7.	Setup Node.js environment varibales
     {% highlight bash %}$ echo export PATH=$PATH:/opt/node/bin >> ~/.bash_profile
-	source ~/.bash_profile
+	$ source ~/.bash_profile
 	{% endhighlight %}   
 8.  Change permissions on node directory
     {% highlight bash %}$ sudo chown -R ec2-user:ec2-user /opt/node
