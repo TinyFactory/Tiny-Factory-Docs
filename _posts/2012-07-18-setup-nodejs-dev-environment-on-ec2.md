@@ -39,32 +39,22 @@ category: node.js
 1. Connect with: 
    {% highlight bash %}ssh -i ~/.ssh/keyname.pem ec2-user@the-ip-address-for-the-instance{% endhighlight %}
 2. Allow other users on server (if applicable)
-	* Open authorized_keys with: 
+	Add public to to the authorized_keys fiel for passwordless ssh login 
 	{% highlight bash %}sudo vim ~/.ssh/authorized_keys{% endhighlight %}    
-    * Copy and paste user public keys into authorized_keys file for passwordless ssh login.
-3. Install compiler software with: 
+3. Install development tools group for compiling:
 	{% highlight bash %}sudo yum groupinstall "Development Tools"{% endhighlight %} 
 4. Install ssl support for node with: 
-	{% highlight bash %}
-	sudo yum install openssl-devel
-	{% endhighlight %} 
+	{% highlight bash %}sudo yum install openssl-devel{% endhighlight %} 
 5. Install Node
-	* Create a directory for the node download file with: 
-	{% highlight bash %}
-    sudo mkdir /downloads
-	{% endhighlight %} 
-    * Go into newly created directory:
-	{% highlight bash %}
-    cd /downloads
-	{% endhighlight %}     
-    * Get the node repo with:
-	{% highlight bash %}
-    sudo git clone --depth 1 git://github.com/joyent/node.git
-	{% endhighlight %}         
-    * Go into node directory:
-	{% highlight bash %}
-    cd node
-	{% endhighlight %}      
+	Create a directory for the node download file with: 
+	{% highlight bash %}sudo mkdir /downloads{% endhighlight %} 
+    Go into newly created directory:
+	{% highlight bash %}cd /downloads{% endhighlight %}  
+    Get the node repo with:
+	{% highlight bash %}sudo git clone --depth 1 git://github.com/joyent/node.git
+	{% endhighlight %}        
+    Go into node directory:
+	{% highlight bash %}cd node{% endhighlight %}    
     * Checkout a stable branch:
 	{% highlight bash %}
     sudo git checkout v0.6.10 //replace version with most recent stable version
