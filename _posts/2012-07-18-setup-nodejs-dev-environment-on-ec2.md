@@ -52,17 +52,13 @@ category: node.js
 	{% highlight bash %}cd /downloads{% endhighlight %}  
     Get the node repo with:
 	{% highlight bash %}sudo git clone --depth 1 git://github.com/joyent/node.git
-	{% endhighlight %}        
+	{% endhighlight %}
     Go into node directory:
 	{% highlight bash %}cd node{% endhighlight %}    
-    * Checkout a stable branch:
-	{% highlight bash %}
-    sudo git checkout v0.6.10 //replace version with most recent stable version
-	{% endhighlight %}          
-    * Configure install with: 
-    {% highlight bash %}
-    sudo ./configure --prefix=/opt/node
-	{% endhighlight %}          
+    Checkout a stable branch:
+	{% highlight bash %}sudo git checkout v0.6.10 //replace version with most recent stable version{% endhighlight %}          
+    Configure install with: 
+    {% highlight bash %}sudo ./configure --prefix=/opt/node{% endhighlight %}      
     * Make j2 portion of install with:
     {% highlight bash %}
 	sudo make -j2
