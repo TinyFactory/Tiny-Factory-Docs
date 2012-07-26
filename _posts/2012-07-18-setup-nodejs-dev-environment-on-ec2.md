@@ -39,9 +39,9 @@ category: node.js
 ## Connect to the New Instance
 
 1. Connect with: 
-	{% highlight bash %}
-	ssh -i ~/.ssh/keyname.pem ec2-user@(the-ip-address-for-the-instance)
-	{% endhighlight %}
+   {% highlight bash %}
+   ssh -i ~/.ssh/keyname.pem ec2-user@(the-ip-address-for-the-instance)
+   {% endhighlight %}
 2. Allow other users on server (if applicable)
 	* Open authorized_keys with: 
 	{% highlight bash %}
