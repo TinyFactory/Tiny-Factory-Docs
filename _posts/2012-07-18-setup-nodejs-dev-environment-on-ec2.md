@@ -18,7 +18,8 @@ category: node.js
 10. Download the ssh key
 11. Move key to your local ~/.ssh/ directory
 12. Change permissions on key to 600: 
-	{% highlight bash %}chmod 600 ~/.ssh/(filename).pem{% endhighlight %}
+	{% highlight bash %}chmod 600 ~/.ssh/(filename).pem
+    {% endhighlight %}
 13. In EC2 setup a security group with the following open ports:
 	{% highlight bash %}Port 22 for ssh
     Port 80 for http traffic
@@ -41,16 +42,21 @@ category: node.js
    {% highlight bash %}ssh -i ~/.ssh/keyname.pem ec2-user@the-ip-address-for-the-instance{% endhighlight %}
 2. Allow other users on server (if applicable)
 	Add public to to the authorized_keys fiel for passwordless ssh login 
-	{% highlight bash %}sudo vim ~/.ssh/authorized_keys{% endhighlight %}    
+	{% highlight bash %}sudo vim ~/.ssh/authorized_keys
+    {% endhighlight %}    
 3. Install development tools group for compiling:
-	{% highlight bash %}sudo yum groupinstall "Development Tools"{% endhighlight %} 
+	{% highlight bash %}sudo yum groupinstall "Development Tools"
+    {% endhighlight %} 
 4. Install ssl support for node with: 
-	{% highlight bash %}sudo yum install openssl-devel{% endhighlight %} 
+	{% highlight bash %}sudo yum install openssl-devel
+    {% endhighlight %} 
 5. Install Node
 	Create a directory for the node download file with: 
-	{% highlight bash %}sudo mkdir /downloads{% endhighlight %} 
+	{% highlight bash %}sudo mkdir /downloads
+    {% endhighlight %} 
     Go into newly created directory:
-	{% highlight bash %}cd /downloads{% endhighlight %}  
+	{% highlight bash %}cd /downloads
+    {% endhighlight %}  
     Get the node repo with:
 	{% highlight bash %}sudo git clone --depth 1 git://github.com/joyent/node.git
 	{% endhighlight %}
@@ -59,29 +65,24 @@ category: node.js
     Checkout a stable branch:
 	{% highlight bash %}sudo git checkout v0.6.10 //replace version with most recent stable version{% endhighlight %}          
     Configure install with: 
-    {% highlight bash %}sudo ./configure --prefix=/opt/node{% endhighlight %}      
+    {% highlight bash %}sudo ./configure --prefix=/opt/node
+    {% endhighlight %}      
     * Make j2 portion of install with:
-    {% highlight bash %}
-	sudo make -j2
+    {% highlight bash %}sudo make -j2
 	{% endhighlight %}  
     * Finish installation with:
-    {% highlight bash %}
-    sudo make install
+    {% highlight bash %}sudo make install
 	{% endhighlight %}
     * Open ~/.bash_profile with: 
-    {% highlight bash %}
-    sudo vim ~/.bash_profile
+    {% highlight bash %}sudo vim ~/.bash_profile
 	{% endhighlight %}
     * Add this line: 
-    {% highlight bash %}
-    export PATH=$PATH:/opt/node/bin
+    {% highlight bash %}export PATH=$PATH:/opt/node/bin
 	{% endhighlight %}    
     * Reload the bash profile with:
-    {% highlight bash %}
-	source ~/.bash_profile
+    {% highlight bash %}source ~/.bash_profile
 	{% endhighlight %}    
     * Change permissions on node directory with: 
-    {% highlight bash %}
-    sudo chown -R ec2-user:ec2-user /opt/node
+    {% highlight bash %}sudo chown -R ec2-user:ec2-user /opt/node
 	{% endhighlight %}   
 6. Congrats!  Node is installed!  What's next?  You can install mongodb or setup a git repo on the server to really get developing.
