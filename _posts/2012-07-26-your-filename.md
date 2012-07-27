@@ -1,7 +1,7 @@
 ---
 layout: post
 category: node
-published: false
+published: true
 ---
 
 # Setting Up Node Forever
