@@ -6,6 +6,7 @@ published: true
 
 ###Keep a node server running
 
+Download the CLI tool from: 
 [https://github.com/nodejitsu/forever/](https://github.com/nodejitsu/forever/)
 
 Use
