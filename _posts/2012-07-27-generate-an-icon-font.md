@@ -1,9 +1,8 @@
 ---
-layout: default
+layout: post
 category: design
 published: true
 ---
-
 
 Icon fonts are the new hotness. There are pros & cons, and if you want to waste your time reading terrible opinion pieces on all those reasons, Google away.
 
