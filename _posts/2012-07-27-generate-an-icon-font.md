@@ -1,7 +1,7 @@
 ---
 layout: default
 category: design
-published: false
+published: true
 ---
 
 
