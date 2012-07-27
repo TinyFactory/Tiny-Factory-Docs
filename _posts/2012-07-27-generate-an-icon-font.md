@@ -4,8 +4,6 @@ category: design
 published: true
 ---
 
-Icon fonts are the new hotness. There are pros & cons, and if you want to waste your time reading terrible opinion pieces on all those reasons, Google away.
-
 We're going to use an awesome tool called [Hieroglyph](https://github.com/averyvery/hieroglyph). There's already a pretty intuitive readme file in the repo, but I hope to elaborate a little more on what was provided.
 
 #### Installing Hieroglyph
@@ -27,7 +25,7 @@ Done!
   Unicode characters: 
 {% endhighlight %}
 
-Then just delete the generated SVG, in my case, on my Desktop.
+Then just delete the dummy SVG file, in my case, on my Desktop.
 
 #### Getting your icons ready
 Open up Illustrator and create a new document sized **1000pt x 1000pt**. We need to make sure that the icons are centered, and relatively the same size. Drag a horizontal guide so it sits **250 points** from the top of the canvas. You can set this easily by dragging out a guide, then in your Illustrator toolbar setting the **Y value** to 250. You should also drag out a vertical rule with the **X value** of 500 so you have a vertical center showing.
@@ -44,7 +42,7 @@ Open up Illustrator and create a new document sized **1000pt x 1000pt**. We need
 Save your files as SVGs. Name them *[key]-icon-name.svg*. If you downloaded the template, you'll notice it's named [t]-twitter.svg. This will map the icon to the T key when our font is generated.
 
 #### Font Generation
-Let's get this thing generated. I've saved all my icons into a folder on my Desktop called **glyphs**. Go back into Terminal and browse to your Desktop by typing `cd ~/Desktop`.
+I've saved all my icons into a folder on my Desktop called **glyphs**. Go back into Terminal and browse to your Desktop by typing `cd ~/Desktop`.
 
 Once we're there we can run `hieroglyph -n FontName -g path/to/glyphs -o destination/path`.<br>
 Or if you've setup everything the way I have `hieroglyph -n Icons -g glyphs` will generate the font on your desktop.
