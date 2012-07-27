@@ -6,7 +6,7 @@ published: true
 
 Icon fonts are the new hotness. There are pros & cons, and if you want to waste your time reading terrible opinion pieces on all those reasons, Google away.
 
-We're going to use a lovely tool called [Hieroglyph](https://github.com/averyvery/hieroglyph). There's already a pretty intuitive readme file in the repo, but I hope to elaborate a little more on what was provided.
+We're going to use an awesome tool called [Hieroglyph](https://github.com/averyvery/hieroglyph). There's already a pretty intuitive readme file in the repo, but I hope to elaborate a little more on what was provided.
 
 #### Installing Hieroglyph
 Open up **Terminal** and type `gem install hieroglyph`. If for some reason you get an error and/or the install fails, update RubyGems by entering `sudo gem update --system` into Terminal, then give it another shot. You can test to see if it works by simply entering `hieroglyph` in terminal to generate an empty, dummy font.
