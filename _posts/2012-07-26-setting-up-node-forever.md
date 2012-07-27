@@ -1,6 +1,6 @@
 ---
 layout: post
-category: node
+category: Node.Js
 published: true
 ---
 
