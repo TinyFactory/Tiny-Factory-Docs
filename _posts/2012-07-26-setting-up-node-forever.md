@@ -4,9 +4,7 @@ category: node
 published: true
 ---
 
-# Setting Up Node Forever
-
-Keep a node server running
+###Keep a node server running
 
 [https://github.com/nodejitsu/forever/](https://github.com/nodejitsu/forever/)
 
@@ -26,7 +24,7 @@ cd /servers/live (Or path to server.js)
 forever start server.js
 {% endhighlight %}
 
-## Installation
+### Installation
 
 {% highlight bash %}
 sudo su
