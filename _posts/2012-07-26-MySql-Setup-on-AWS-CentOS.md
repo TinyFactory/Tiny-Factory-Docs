@@ -1,5 +1,6 @@
 ---
 layout: post
+category: Centos
 published: true
 ---
 
