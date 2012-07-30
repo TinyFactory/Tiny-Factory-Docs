@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Setup Nodejs Environment On Ec2 - Tiny Factory Docs</title>
+    <title>Mysql Setup On Aws Centos - Tiny Factory Docs</title>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" media="screen" href="http://docs.tinyfactory.co/css/screen.css" type="text/css" />
@@ -90,35 +90,35 @@
           
           
             
+          
+                                 
+        
+          
+          
+            
+          
+                                 
+        
+          
+          
+            
+          
+                                 
+        
+          
+          
+            
+          
+                                 
+        
+          
+          
+            
               
             
           
           
-            <li><a href="http://docs.tinyfactory.co/node.js/2012/07/26/setting-up-node-forever.html">Setting Up Node Forever</a></li>
-                                 
-        
-          
-          
-            
-          
-                                 
-        
-          
-          
-            
-          
-                                 
-        
-          
-          
-            
-          
-                                 
-        
-          
-          
-            
-          
+            <li><a href="http://docs.tinyfactory.co/centos/2012/07/08/setup-ftp-on-aws-centos.html">Setup Ftp On Aws Centos</a></li>
                                  
         
          
@@ -130,7 +130,7 @@
           
             <li><a href="http://docs.tinyfactory.co/node.js/2012/07/26/setting-up-node-forever.html">Setting Up Node Forever</a></li>
           
-            <li><a href="http://docs.tinyfactory.co/centos/2012/07/26/MySql-Setup-on-AWS-CentOS.html">Mysql Setup On Aws Centos</a></li>
+            <li><a href="http://docs.tinyfactory.co/node.js/2012/07/18/setup-nodejs-environment-on-ec2.html">Setup Nodejs Environment On Ec2</a></li>
           
             <li><a href="http://docs.tinyfactory.co/git/2012/07/10/git-branching.html">Git Branching</a></li>
           
@@ -144,166 +144,45 @@
 
       <article>
           <div class="entry">
-            <h1>Setup Nodejs Environment On Ec2</h1>
-            <h2 id='create_the_ec2_instance'>Create the EC2 Instance</h2>
-
+            <h1>Mysql Setup On Aws Centos</h1>
+            <ol>
+<li>Install mysql and the server</li>
+</ol>
+<div class='highlight'><pre><code class='bash'>yum install -y mysql mysql-server
+</code></pre>
+</div>
 <ol>
-<li>
-<p>Login to <a href='http://aws.amazon.com/'>aws.amazon.com</a></p>
-</li>
-
-<li>
-<p>Pulldown <strong>My Account/Console</strong> and select <strong>AWS Management Console</strong></p>
-</li>
-
-<li>
-<p>Select <strong>EC2</strong> under <strong>Compute and Networking</strong></p>
-</li>
-
-<li>
-<p>Click the <strong>Launch Instance</strong> button</p>
-</li>
-
-<li>
-<p>Select the Classic Interface</p>
-</li>
-
-<li>
-<p>Select <strong>64 bit Amazon Linux AMI</strong></p>
-</li>
-
-<li>
-<p>Select <strong>Micro</strong> (unless for high traffic site)</p>
-</li>
-
-<li>
-<p>Set zone to <strong>us-east-1a</strong> (or make a note if selecting another zone)</p>
-</li>
-
-<li>
-<p>Give the instance a name</p>
-</li>
-
-<li>
-<p>Download the ssh key</p>
-</li>
-
-<li>
-<p>Move key to your local ~/.ssh/ directory</p>
-</li>
-
-<li>
-<p>Change permissions on key to 600:</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>chmod 600 ~/.ssh/<span class='o'>(</span>filename<span class='o'>)</span>.pem
-
+<li>Start the mysql server</li>
+</ol>
+<div class='highlight'><pre><code class='bash'>service mysqld start
 </code></pre>
-</div></li>
-
-<li>
-<p>In EC2 setup a security group with the following open ports:</p>
-<div class='highlight'><pre><code class='bash'>Port 22 <span class='k'>for </span>ssh
-Port 80 <span class='k'>for </span>http traffic
-Port 8080 <span class='k'>for </span>socket traffic
-
+</div>
+<ol>
+<li>Set the initial root password</li>
+</ol>
+<div class='highlight'><pre><code class='bash'>/usr/bin/mysqladmin -u root password <span class='s1'>&#39;new-password&#39;</span>
 </code></pre>
-</div></li>
-
-<li>
-<p>Launch the instance</p>
-</li>
+</div>
+<ol>
+<li>Login to MySQL as root</li>
+</ol>
+<div class='highlight'><pre><code class='bash'>mysql -u root -p
+</code></pre>
+</div>
+<ol>
+<li>Create new MySQL user and grant them permissions on all databases</li>
 </ol>
 
-<h2 id='associate_an_ip_with_your_ec2_instance'>Associate an IP with your EC2 instance</h2>
+<p><div class='highlight'><pre><code class='bash'>GRANT ALL PRIVILEGES ON *.* TO <span class='s1'>&#39;monty&#39;</span>@<span class='s1'>&#39;localhost&#39;</span> IDENTIFIED BY <span class='s1'>&#39;some_pass&#39;</span> WITH GRANT OPTION;
+</code></pre>
+</div></p>
 
 <ol>
-<li>Under <strong>Networking and Security</strong> select <strong>Elastic IPs</strong></li>
-
-<li>Click the <strong>Allocate New Address</strong> button</li>
-
-<li>Ensure EC2 is selected and click <strong>Yes</strong></li>
-
-<li>Select the newly created IP and click on the <strong>Associate Address</strong> button</li>
-
-<li>Select the EC2 instance</li>
-
-<li>Copy the IP Address (You&#8217;ll need it later)</li>
+<li>Create a new database</li>
 </ol>
-
-<h2 id='connect_to_the_new_instance'>Connect to the New Instance</h2>
-
-<ol>
-<li>
-<p>Connect with:</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>ssh -i ~/.ssh/keyname.pem ec2-user@the-ip-address-for-the-instance
- 
+<div class='highlight'><pre><code class='bash'>create database database_name
 </code></pre>
-</div></li>
-
-<li>
-<p>Add public key to to the authorized_keys file for passwordless ssh login</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>sudo vim ~/.ssh/authorized_keys
- 
-</code></pre>
-</div></li>
-
-<li>
-<p>Install development tools group for compiling:</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>sudo yum groupinstall <span class='s2'>&quot;Development Tools&quot;</span>
- 
-</code></pre>
-</div></li>
-
-<li>
-<p>Install ssl support for node with:</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>sudo yum install openssl-devel
- 
-</code></pre>
-</div></li>
-
-<li>
-<p>Download Node.js repo and checkout a version to install</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>sudo mkdir /downloads
-<span class='nv'>$ </span><span class='nb'>cd</span> /downloads
-<span class='nv'>$ </span>sudo git clone --depth 1 git://github.com/joyent/node.git
-<span class='nv'>$ </span><span class='nb'>cd </span>node
-<span class='nv'>$ </span>sudo git checkout v0.6.10 //replace version with most recent stable version
-
-</code></pre>
-</div></li>
-
-<li>
-<p>Configure, make and install Node.js</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>sudo ./configure --prefix<span class='o'>=</span>/opt/node
-<span class='nv'>$ </span>sudo make -j2
-<span class='nv'>$ </span>sudo make install
-
-</code></pre>
-</div></li>
-
-<li>
-<p>Setup Node.js environment varibales</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span><span class='nb'>echo export </span><span class='nv'>PATH</span><span class='o'>=</span><span class='nv'>$PATH</span>:/opt/node/bin &gt;&gt; ~/.bash_profile
-<span class='nv'>$ </span><span class='nb'>source</span> ~/.bash_profile
-
-</code></pre>
-</div></li>
-
-<li>
-<p>Change permissions on node directory</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>sudo chown -R ec2-user:ec2-user /opt/node
-
-</code></pre>
-</div></li>
-
-<li>
-<p>Confirm we have a successfull install:</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>node -v
-
-</code></pre>
-</div></li>
-</ol>
-
-<h3 id='congrats_nodejs_is_installed_whats_next_you_can_install_mongodb_or_setup_a_git_repo_on_the_server_to_really_get_developing'>Congrats! Node.js is installed! What&#8217;s next? You can install mongodb or setup a git repo on the server to really get developing.</h3>
+</div>
           </div>
       </article>
 </div>

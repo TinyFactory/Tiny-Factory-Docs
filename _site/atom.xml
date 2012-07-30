@@ -4,13 +4,97 @@
  <title>Tiny Factory Docs</title>
  <link href="http://http://tinyfactory.github.com/atom.xml" rel="self"/>
  <link href="http://http://tinyfactory.github.com/"/>
- <updated>2012-07-26T15:14:31-07:00</updated>
+ <updated>2012-07-30T09:55:29-07:00</updated>
  <id>http://http://tinyfactory.github.com/</id>
  <author>
    <name>Tiny Factory</name>
    <email>hello@tinyfactory.co</email>
  </author>
 
+ 
+ <entry>
+   <title>Setting Up Node Forever</title>
+   <link href="http://http://tinyfactory.github.com/node.js/2012/07/26/setting-up-node-forever.html"/>
+   <updated>2012-07-26T00:00:00-07:00</updated>
+   <id>http://http://tinyfactory.github.com/node.js/2012/07/26/setting-up-node-forever</id>
+   <content type="html">&lt;h3 id='keep_a_node_server_running'&gt;Keep a node server running&lt;/h3&gt;
+
+&lt;p&gt;Download the CLI tool from: &lt;a href='https://github.com/nodejitsu/forever/'&gt;https://github.com/nodejitsu/forever/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Use&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;sudo su
+
+&lt;span class='nb'&gt;source&lt;/span&gt; ~/.bash_profile
+
+forever list
+
+forever stopall
+
+&lt;span class='nb'&gt;cd&lt;/span&gt; /servers/live &lt;span class='o'&gt;(&lt;/span&gt;Or path to server.js&lt;span class='o'&gt;)&lt;/span&gt;
+
+forever start server.js
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h3 id='installation'&gt;Installation&lt;/h3&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;sudo su
+
+vim ~/.bash_profile
+
+insert into .bash_profile
+
+&lt;span class='nb'&gt;export &lt;/span&gt;&lt;span class='nv'&gt;PATH&lt;/span&gt;&lt;span class='o'&gt;=&lt;/span&gt;&lt;span class='nv'&gt;$PATH&lt;/span&gt;:/opt/node/bin
+
+&lt;span class='nb'&gt;source&lt;/span&gt; ~/.bash_profile
+
+npm install forever -g
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Mysql Setup On Aws Centos</title>
+   <link href="http://http://tinyfactory.github.com/centos/2012/07/26/MySql-Setup-on-AWS-CentOS.html"/>
+   <updated>2012-07-26T00:00:00-07:00</updated>
+   <id>http://http://tinyfactory.github.com/centos/2012/07/26/MySql-Setup-on-AWS-CentOS</id>
+   <content type="html">&lt;ol&gt;
+&lt;li&gt;Install mysql and the server&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;yum install -y mysql mysql-server
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;Start the mysql server&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;service mysqld start
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;Set the initial root password&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;/usr/bin/mysqladmin -u root password &lt;span class='s1'&gt;&amp;#39;new-password&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;Login to MySQL as root&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;mysql -u root -p
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;Create new MySQL user and grant them permissions on all databases&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;GRANT ALL PRIVILEGES ON *.* TO &lt;span class='s1'&gt;&amp;#39;monty&amp;#39;&lt;/span&gt;@&lt;span class='s1'&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt; IDENTIFIED BY &lt;span class='s1'&gt;&amp;#39;some_pass&amp;#39;&lt;/span&gt; WITH GRANT OPTION;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Create a new database&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;create database database_name
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content>
+ </entry>
  
  <entry>
    <title>Setup Nodejs Environment On Ec2</title>

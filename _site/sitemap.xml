@@ -4,11 +4,25 @@
   <!--  Homepage -->
   <url>
     <loc>http://http://tinyfactory.github.com/</loc>
-    <lastmod>2012-07-26</lastmod>
+    <lastmod>2012-07-30</lastmod>
     <changefreq>daily</changefreq>
 		<priority>1.0</priority>
   </url>
 
+  
+  <url>
+    <loc>http://http://tinyfactory.github.com/node.js/2012/07/26/setting-up-node-forever.html</loc>
+    
+    <lastmod>2012-07-26</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://http://tinyfactory.github.com/centos/2012/07/26/MySql-Setup-on-AWS-CentOS.html</loc>
+    
+    <lastmod>2012-07-26</lastmod>
+    
+  </url>
   
   <url>
     <loc>http://http://tinyfactory.github.com/node.js/2012/07/18/setup-nodejs-environment-on-ec2.html</loc>
@@ -43,7 +57,7 @@
   <url>
     <loc>http://http://tinyfactory.github.com/archive.html</loc>
     
-    <lastmod>2012-07-26</lastmod>
+    <lastmod>2012-07-30</lastmod>
     
     
     
@@ -52,7 +66,7 @@
   <url>
     <loc>http://http://tinyfactory.github.com/index.html</loc>
     
-    <lastmod>2012-07-26</lastmod>
+    <lastmod>2012-07-30</lastmod>
     
     
     
@@ -61,7 +75,7 @@
   <url>
     <loc>http://http://tinyfactory.github.com/jobs.html</loc>
     
-    <lastmod>2012-07-26</lastmod>
+    <lastmod>2012-07-30</lastmod>
     
     
     

@@ -4,7 +4,6 @@ title: Jobs
 id: jobs
 ---
 
-#### Care At Hand
 It’s time to take health care real time. Node.js, MongoDB, Socket.io.
 
 Core server tech stack:

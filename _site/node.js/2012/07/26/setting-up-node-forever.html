@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Changing the head on a Git Repo - Tiny Factory Docs</title>
+    <title>Setting Up Node Forever - Tiny Factory Docs</title>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" media="screen" href="http://docs.tinyfactory.co/css/screen.css" type="text/css" />
@@ -96,23 +96,23 @@
           
           
             
-          
-                                 
-        
-          
-          
-            
-          
-                                 
-        
-          
-          
-            
               
             
           
           
-            <li><a href="http://docs.tinyfactory.co/git/2012/07/10/git-branching.html">Git Branching</a></li>
+            <li><a href="http://docs.tinyfactory.co/node.js/2012/07/18/setup-nodejs-environment-on-ec2.html">Setup Nodejs Environment On Ec2</a></li>
+                                 
+        
+          
+          
+            
+          
+                                 
+        
+          
+          
+            
+          
                                  
         
           
@@ -128,13 +128,13 @@
         <h3>Most Recent</h3>
         <ul class="posts">
           
-            <li><a href="http://docs.tinyfactory.co/node.js/2012/07/26/setting-up-node-forever.html">Setting Up Node Forever</a></li>
-          
             <li><a href="http://docs.tinyfactory.co/centos/2012/07/26/MySql-Setup-on-AWS-CentOS.html">Mysql Setup On Aws Centos</a></li>
           
             <li><a href="http://docs.tinyfactory.co/node.js/2012/07/18/setup-nodejs-environment-on-ec2.html">Setup Nodejs Environment On Ec2</a></li>
           
             <li><a href="http://docs.tinyfactory.co/git/2012/07/10/git-branching.html">Git Branching</a></li>
+          
+            <li><a href="http://docs.tinyfactory.co/git/2012/07/09/changing-the-head-pointer-on-a-git-repoistory.html">Changing the head on a Git Repo</a></li>
           
             <li><a href="http://docs.tinyfactory.co/centos/2012/07/08/setup-ftp-on-aws-centos.html">Setup Ftp On Aws Centos</a></li>
           
@@ -144,32 +144,39 @@
 
       <article>
           <div class="entry">
-            <h1>Changing the head on a Git Repo</h1>
-            <p>If you want the default branch from a <code>git clone</code> to be something besides <code>master</code>, use the following steps:</p>
+            <h1>Setting Up Node Forever</h1>
+            <h3 id='keep_a_node_server_running'>Keep a node server running</h3>
 
-<p>Check what remote branches are available:</p>
-<div class='highlight'><pre><code class='bash'>git branch -r
-</code></pre>
-</div>
-<p>The output will look like:</p>
-<div class='highlight'><pre><code class='bash'>origin/HEAD -&gt; origin/master
-origin/dev
-origin/master
-</code></pre>
-</div>
-<p>Notice <code>origin/HEAD -&gt; orgin/master</code>. When you issue a <code>git clone</code> on this repository you will get the master branch by default. If want to change this to the dev branch we also have in our remote repository, issue the following command</p>
-<div class='highlight'><pre><code class='bash'>git remote <span class='nb'>set</span>-head origin dev
-</code></pre>
-</div>
-<p>To confirm the change took, run <code>git branch -r</code> and review our output:</p>
-<div class='highlight'><pre><code class='bash'>origin/HEAD -&gt; origin/dev
-origin/dev
-origin/master
-</code></pre>
-</div>
-<p><code>origin/HEAD -&gt; orgin/dev</code> is pointing to our dev branch.</p>
+<p>Download the CLI tool from: <a href='https://github.com/nodejitsu/forever/'>https://github.com/nodejitsu/forever/</a></p>
 
-<h3 id='how_does_it_work'>How does it work?</h3>
+<p>Use</p>
+<div class='highlight'><pre><code class='bash'>sudo su
+
+<span class='nb'>source</span> ~/.bash_profile
+
+forever list
+
+forever stopall
+
+<span class='nb'>cd</span> /servers/live <span class='o'>(</span>Or path to server.js<span class='o'>)</span>
+
+forever start server.js
+</code></pre>
+</div>
+<h3 id='installation'>Installation</h3>
+<div class='highlight'><pre><code class='bash'>sudo su
+
+vim ~/.bash_profile
+
+insert into .bash_profile
+
+<span class='nb'>export </span><span class='nv'>PATH</span><span class='o'>=</span><span class='nv'>$PATH</span>:/opt/node/bin
+
+<span class='nb'>source</span> ~/.bash_profile
+
+npm install forever -g
+</code></pre>
+</div>
           </div>
       </article>
 </div>
