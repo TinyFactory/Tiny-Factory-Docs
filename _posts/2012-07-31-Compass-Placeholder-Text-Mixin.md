@@ -1,7 +1,7 @@
 ---
 layout: post
 category: compass
-published: false
+published: true
 ---
 
 Simple Mixin For Compass Placeholder Text
