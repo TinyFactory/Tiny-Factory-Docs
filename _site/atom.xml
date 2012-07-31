@@ -4,13 +4,98 @@
  <title>Tiny Factory Docs</title>
  <link href="http://http://tinyfactory.github.com/atom.xml" rel="self"/>
  <link href="http://http://tinyfactory.github.com/"/>
- <updated>2012-07-30T09:55:29-07:00</updated>
+ <updated>2012-07-31T09:28:55-07:00</updated>
  <id>http://http://tinyfactory.github.com/</id>
  <author>
    <name>Tiny Factory</name>
    <email>hello@tinyfactory.co</email>
  </author>
 
+ 
+ <entry>
+   <title>Generate An Icon Font</title>
+   <link href="http://http://tinyfactory.github.com/design/2012/07/27/generate-an-icon-font.html"/>
+   <updated>2012-07-27T00:00:00-07:00</updated>
+   <id>http://http://tinyfactory.github.com/design/2012/07/27/generate-an-icon-font</id>
+   <content type="html">&lt;p&gt;We&amp;#8217;re going to use an awesome tool called &lt;a href='https://github.com/averyvery/hieroglyph'&gt;Hieroglyph&lt;/a&gt;. There&amp;#8217;s already a pretty intuitive readme file in the repo, but I hope to elaborate a little more on what was provided.&lt;/p&gt;
+
+&lt;h4 id='installing_hieroglyph'&gt;Installing Hieroglyph&lt;/h4&gt;
+
+&lt;p&gt;Open up &lt;strong&gt;Terminal&lt;/strong&gt; and type &lt;code&gt;gem install hieroglyph&lt;/code&gt;. If for some reason you get an error and/or the install fails, update RubyGems by entering &lt;code&gt;sudo gem update --system&lt;/code&gt; into Terminal, then give it another shot. You can test to see if it works by simply entering &lt;code&gt;hieroglyph&lt;/code&gt; in terminal to generate an empty, dummy font.&lt;/p&gt;
+
+&lt;p&gt;You should get output similar to this:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='console'&gt;&lt;span class='go'&gt;~/Desktop » hieroglyph&lt;/span&gt;
+&lt;span class='go'&gt;  &lt;/span&gt;
+&lt;span class='go'&gt;Setup:&lt;/span&gt;
+&lt;span class='go'&gt;  ImageMagick not detected - skipping character sheet&lt;/span&gt;
+&lt;span class='go'&gt;  &lt;/span&gt;
+&lt;span class='go'&gt;Reading glyphs:&lt;/span&gt;
+&lt;span class='go'&gt;  &lt;/span&gt;
+&lt;span class='go'&gt;Done!&lt;/span&gt;
+&lt;span class='go'&gt;  MyFont generated saved to /Users/Aaron/Desktop/MyFont.svg&lt;/span&gt;
+&lt;span class='go'&gt;  Single characters: &lt;/span&gt;
+&lt;span class='go'&gt;  Unicode characters: &lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Then just delete the dummy SVG file, in my case, on my Desktop.&lt;/p&gt;
+
+&lt;h4 id='getting_your_icons_ready'&gt;Getting your icons ready&lt;/h4&gt;
+
+&lt;p&gt;Open up Illustrator and create a new document sized &lt;strong&gt;1000pt x 1000pt&lt;/strong&gt;. We need to make sure that the icons are centered, and relatively the same size. Drag a horizontal guide so it sits &lt;strong&gt;250 points&lt;/strong&gt; from the top of the canvas. You can set this easily by dragging out a guide, then in your Illustrator toolbar setting the &lt;strong&gt;Y value&lt;/strong&gt; to 250. You should also drag out a vertical rule with the &lt;strong&gt;X value&lt;/strong&gt; of 500 so you have a vertical center showing.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src='http://docs.tinyfactory.co/images/assets/toolbar.png' alt='Illustrator Toolbar' /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src='http://docs.tinyfactory.co/images/assets/twitter-ss.png' alt='Twitter icon mapped to T key' /&gt;&lt;/p&gt;
+&lt;a href='http://docs.tinyfactory.co/images/downloads/icon.zip' class='button'&gt;Download Icon Template&lt;/a&gt;
+&lt;p&gt;&lt;strong&gt;Important:&lt;/strong&gt; Make sure your icon is a compound path. If your canvas has more than one shape, it will cause issues with the font generation. You can make it a compound path by selecting all the shapes in the icon, and pressing &lt;strong&gt;CMD + 8&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h4 id='saving__naming_convetion'&gt;Saving &amp;amp; Naming Convetion&lt;/h4&gt;
+
+&lt;p&gt;Save your files as SVGs. Name them &lt;em&gt;&lt;span&gt;key&lt;/span&gt;-icon-name.svg&lt;/em&gt;. If you downloaded the template, you&amp;#8217;ll notice it&amp;#8217;s named &lt;span&gt;t&lt;/span&gt;-twitter.svg. This will map the icon to the T key when our font is generated.&lt;/p&gt;
+
+&lt;h4 id='font_generation'&gt;Font Generation&lt;/h4&gt;
+
+&lt;p&gt;I&amp;#8217;ve saved all my icons into a folder on my Desktop called &lt;strong&gt;glyphs&lt;/strong&gt;. Go back into Terminal and browse to your Desktop by typing &lt;code&gt;cd ~/Desktop&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Once we&amp;#8217;re there we can run &lt;code&gt;hieroglyph -n FontName -g path/to/glyphs -o destination/path&lt;/code&gt;.&lt;br /&gt; Or if you&amp;#8217;ve setup everything the way I have &lt;code&gt;hieroglyph -n Icons -g glyphs&lt;/code&gt; will generate the font on your desktop.&lt;/p&gt;
+
+&lt;p&gt;Your output will change depending on how many icons you&amp;#8217;ve generated, but mine reads:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='console'&gt;&lt;span class='go'&gt;~/Desktop » hieroglyph -n Icons -g glyphs/&lt;/span&gt;
+&lt;span class='go'&gt;  &lt;/span&gt;
+&lt;span class='go'&gt;Setup:&lt;/span&gt;
+&lt;span class='go'&gt;  ImageMagick not detected - skipping character sheet&lt;/span&gt;
+&lt;span class='go'&gt;  &lt;/span&gt;
+&lt;span class='go'&gt;Reading glyphs:&lt;/span&gt;
+&lt;span class='go'&gt;  Parsing 1&lt;/span&gt;
+&lt;span class='go'&gt;  Parsing 2&lt;/span&gt;
+&lt;span class='go'&gt;  Parsing 3&lt;/span&gt;
+&lt;span class='go'&gt;  Parsing 4&lt;/span&gt;
+&lt;span class='go'&gt;  Parsing 5&lt;/span&gt;
+&lt;span class='go'&gt;  Parsing 6&lt;/span&gt;
+&lt;span class='go'&gt;  Parsing 7&lt;/span&gt;
+&lt;span class='go'&gt;  Parsing 8&lt;/span&gt;
+&lt;span class='go'&gt;  Parsing 9&lt;/span&gt;
+&lt;span class='go'&gt;  &lt;/span&gt;
+&lt;span class='go'&gt;Done!&lt;/span&gt;
+&lt;span class='go'&gt;  Icons generated saved to /Users/Aaron/Desktop/Icons.svg&lt;/span&gt;
+&lt;span class='go'&gt;  Single characters: 1,2,3,4,5,6,7,8,9&lt;/span&gt;
+&lt;span class='go'&gt;  Unicode characters: &lt;/span&gt;
+&lt;span class='go'&gt;  &lt;/span&gt;
+&lt;span class='go'&gt;  To create a full set of webfonts, upload to http://www.fontsquirrel.com/fontface/generator&lt;/span&gt;
+&lt;span class='go'&gt;  If you&amp;#39;re having trouble uploading SVGs, try converting to a TTF first using &lt;/span&gt;
+&lt;span class='go'&gt;  http://www.freefontconverter.com&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Now that you&amp;#8217;ve got your font in an SVG format, go ahead and run your new font through &lt;a href='http://www.fontsquirrel.com/fontface/generator'&gt;this font-face generator&lt;/a&gt; to get the other @font-face formats. Also make sure that you&amp;#8217;ve clicked &lt;strong&gt;Expert&lt;/strong&gt; and selected the custom subsetting option in the font-squirrel interface. If you&amp;#8217;re ballin&amp;#8217; out of control, you might use &lt;a href='http://www.fontgear.net/fontxchange.html'&gt;FontXChange&lt;/a&gt; to generate the different formats instead.&lt;/p&gt;
+
+&lt;h4 id='in_conclusion'&gt;In Conclusion&lt;/h4&gt;
+
+&lt;p&gt;Now you&amp;#8217;re ready to embed those files into your stylesheet and start serving some icons!&lt;/p&gt;
+
+&lt;p&gt;If you really want to do it up proper, &lt;a href='https://github.com/blog/1135-the-making-of-octicons'&gt;GitHub&amp;#8217;s post about Octicons&lt;/a&gt; goes through their process in great detail.&lt;/p&gt;
+
+&lt;p&gt;If this is too much for you, fortunately there are tons of great services out there right now that really make this easier. There is the newly created &lt;a href='http://symbolset.com/'&gt;Symbolset&lt;/a&gt;, which is a font of icons that advocates way better semantics than I&amp;#8217;ve shown above. The &lt;a href='http://pictos.cc/font/'&gt;Pictos font&lt;/a&gt; has a pretty wide array of icons, &lt;a href='http://pictos.cc/server/'&gt;Pictos Server&lt;/a&gt; and &lt;a href='https://www.shifticons.com/'&gt;Shifticons&lt;/a&gt; which are both damn fine services for doing this a lot faster.&lt;/p&gt;</content>
+ </entry>
  
  <entry>
    <title>Setting Up Node Forever</title>
