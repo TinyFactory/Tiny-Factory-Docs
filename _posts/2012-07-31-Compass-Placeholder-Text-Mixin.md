@@ -31,9 +31,11 @@ Steps:
             .inputCls {
               @include input-placeholder(#ccc); 
             } 
+{% endhighlight %}
 
     Will compile to: 
     
+{% highlight scss %}
               .inputCls.placeholder {
                 color: #cccccc;
               }
