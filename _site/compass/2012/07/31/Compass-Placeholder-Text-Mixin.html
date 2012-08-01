@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Setting Up Node Forever - Tiny Factory Docs</title>
+    <title>Compass Placeholder Text Mixin - Tiny Factory Docs</title>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" media="screen" href="http://localhost:4000/css/screen.css" type="text/css" />
@@ -123,11 +123,7 @@
           
           
             
-              
-            
           
-          
-            <li><a href="http://localhost:4000/node.js/2012/07/18/setup-nodejs-environment-on-ec2.html">Setup Nodejs Environment On Ec2</a></li>
                                  
         
           
@@ -157,9 +153,9 @@
           
             <li><a href="http://localhost:4000/sass/2012/07/31/sass-sticky-footer-mixin.html">Sass Sticky Footer Mixin</a></li>
           
-            <li><a href="http://localhost:4000/compass/2012/07/31/Compass-Placeholder-Text-Mixin.html">Compass Placeholder Text Mixin</a></li>
-          
             <li><a href="http://localhost:4000/design/2012/07/27/generate-an-icon-font.html">Generate An Icon Font</a></li>
+          
+            <li><a href="http://localhost:4000/node.js/2012/07/26/setting-up-node-forever.html">Setting Up Node Forever</a></li>
           
             <li><a href="http://localhost:4000/centos/2012/07/26/MySql-Setup-on-AWS-CentOS.html">Mysql Setup On Aws Centos</a></li>
           
@@ -171,37 +167,44 @@
 
       <article>
           <div class="entry">
-            <h1>Setting Up Node Forever</h1>
-            <h3 id='keep_a_node_server_running'>Keep a node server running</h3>
+            <h1>Compass Placeholder Text Mixin</h1>
+            <p>Simple Mixin For Compass Placeholder Text</p>
 
-<p>Download the CLI tool from: <a href='https://github.com/nodejitsu/forever/'>https://github.com/nodejitsu/forever/</a></p>
+<p>Syntax:</p>
 
-<p>Use</p>
-<div class='highlight'><pre><code class='bash'>sudo su
+<p><div class='highlight'><pre><code class='scss'>    <span class='k'>@mixin</span><span class='nf'> input-placeholder</span><span class='p'>(</span><span class='nv'>$color</span><span class='p'>)</span> <span class='p'>{</span>
+      <span class='k'>&amp;</span><span class='nc'>.placeholder</span> <span class='p'>{</span>
+        <span class='na'>color</span><span class='o'>:</span> <span class='nv'>$color</span><span class='p'>;</span> 
+        <span class='p'>}</span>
+      <span class='na'>&amp;</span><span class='o'>:-</span><span class='n'>moz-placeholder</span> <span class='p'>{</span>
+        <span class='na'>color</span><span class='o'>:</span> <span class='nv'>$color</span><span class='p'>;</span> 
+        <span class='p'>}</span>
+      <span class='na'>&amp;</span><span class='o'>::-</span><span class='n'>webkit-input-placeholder</span> <span class='p'>{</span>
+        <span class='na'>color</span><span class='o'>:</span> <span class='nv'>$color</span><span class='p'>;</span> 
+        <span class='p'>}</span> 
+    <span class='p'>}</span>
+</code></pre>
+</div></p>
 
-<span class='nb'>source</span> ~/.bash_profile
+<p>Steps:</p>
 
-forever list
-
-forever stopall
-
-<span class='nb'>cd</span> /servers/live <span class='o'>(</span>Or path to server.js<span class='o'>)</span>
-
-forever start server.js
+<pre><code>1.  Add the .input-placeholder() mixin from _placeholderText.scss to your compass stylesheet (or reference it in an @import statement)
+2.  In your stylesheet, call the .input-placeholder() mixin anywhere you want to style your placeholder text</code></pre>
+<div class='highlight'><pre><code class='scss'>            <span class='nc'>.inputCls</span> <span class='p'>{</span>
+              <span class='k'>@include</span><span class='nd'> input-placeholder</span><span class='p'>(</span><span class='mh'>#ccc</span><span class='p'>);</span> 
+            <span class='p'>}</span> 
 </code></pre>
 </div>
-<h3 id='installation'>Installation</h3>
-<div class='highlight'><pre><code class='bash'>sudo su
-
-vim ~/.bash_profile
-
-insert into .bash_profile
-
-<span class='nb'>export </span><span class='nv'>PATH</span><span class='o'>=</span><span class='nv'>$PATH</span>:/opt/node/bin
-
-<span class='nb'>source</span> ~/.bash_profile
-
-npm install forever -g
+<pre><code>Will compile to: </code></pre>
+<div class='highlight'><pre><code class='scss'>              <span class='nc'>.inputCls.placeholder</span> <span class='p'>{</span>
+                <span class='na'>color</span><span class='o'>:</span> <span class='mh'>#cccccc</span><span class='p'>;</span>
+              <span class='p'>}</span>
+              <span class='na'>.inputCls</span><span class='o'>:-</span><span class='n'>moz-placeholder</span> <span class='p'>{</span>
+                <span class='na'>color</span><span class='o'>:</span> <span class='mh'>#cccccc</span><span class='p'>;</span>
+              <span class='p'>}</span>
+              <span class='na'>.inputCls</span><span class='o'>::-</span><span class='n'>webkit-input-placeholder</span> <span class='p'>{</span>
+                <span class='na'>color</span><span class='o'>:</span> <span class='mh'>#cccccc</span><span class='p'>;</span>
+              <span class='p'>}</span>
 </code></pre>
 </div>
           </div>

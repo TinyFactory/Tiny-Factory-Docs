@@ -4,13 +4,83 @@
  <title>Tiny Factory Docs</title>
  <link href="http://http://tinyfactory.github.com/atom.xml" rel="self"/>
  <link href="http://http://tinyfactory.github.com/"/>
- <updated>2012-07-31T18:00:52-07:00</updated>
+ <updated>2012-07-31T18:25:33-07:00</updated>
  <id>http://http://tinyfactory.github.com/</id>
  <author>
    <name>Tiny Factory</name>
    <email>hello@tinyfactory.co</email>
  </author>
 
+ 
+ <entry>
+   <title>Sass Sticky Footer Mixin</title>
+   <link href="http://http://tinyfactory.github.com/sass/2012/07/31/sass-sticky-footer-mixin.html"/>
+   <updated>2012-07-31T00:00:00-07:00</updated>
+   <id>http://http://tinyfactory.github.com/sass/2012/07/31/sass-sticky-footer-mixin</id>
+   <content type="html">&lt;p&gt;Compass has a really nice &lt;a href='http://compass-style.org/reference/compass/layout/sticky_footer/'&gt;sticky footer&lt;/a&gt; mixin built into the library but we&amp;#8217;ve been writing our own site in vanilla SASS so I converted an out of date SASS mixin to it&amp;#8217;s current syntax.&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='sass'&gt;&lt;span class='nf'&gt;=sticky-footer&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nv'&gt;$footer_height&lt;/span&gt;&lt;span class='o'&gt;,&lt;/span&gt; &lt;span class='nv'&gt;$root_selector&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;#root&amp;quot;&lt;/span&gt;&lt;span class='o'&gt;,&lt;/span&gt; &lt;span class='nv'&gt;$root_footer_selector&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;#root_footer&amp;quot;&lt;/span&gt;&lt;span class='o'&gt;,&lt;/span&gt; &lt;span class='nv'&gt;$footer_selector&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;#footer&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt;
+  &lt;span class='nt'&gt;html&lt;/span&gt;
+    &lt;span class='na'&gt;:height&lt;/span&gt; &lt;span class='mi'&gt;100&lt;/span&gt;&lt;span class='kt'&gt;%&lt;/span&gt;
+  &lt;span class='nt'&gt;body&lt;/span&gt;
+    &lt;span class='na'&gt;:height&lt;/span&gt; &lt;span class='mi'&gt;100&lt;/span&gt;&lt;span class='kt'&gt;%&lt;/span&gt;
+  &lt;span class='nn'&gt;#&lt;/span&gt;&lt;span class='err'&gt;{$&lt;/span&gt;&lt;span class='nt'&gt;root_selector&lt;/span&gt;&lt;span class='err'&gt;}&lt;/span&gt;
+    &lt;span class='na'&gt;:min-height&lt;/span&gt; &lt;span class='mi'&gt;100&lt;/span&gt;&lt;span class='kt'&gt;%&lt;/span&gt;
+    &lt;span class='na'&gt;:margin-bottom&lt;/span&gt; &lt;span class='o'&gt;-&lt;/span&gt;&lt;span class='si'&gt;#{&lt;/span&gt;&lt;span class='nv'&gt;$footer_height&lt;/span&gt;&lt;span class='si'&gt;}&lt;/span&gt;
+    &lt;span class='nn'&gt;#&lt;/span&gt;&lt;span class='err'&gt;{$&lt;/span&gt;&lt;span class='nt'&gt;root_footer_selector&lt;/span&gt;&lt;span class='err'&gt;}&lt;/span&gt;
+      &lt;span class='na'&gt;:height&lt;/span&gt; &lt;span class='si'&gt;#{&lt;/span&gt;&lt;span class='nv'&gt;$footer_height&lt;/span&gt;&lt;span class='si'&gt;}&lt;/span&gt;
+  &lt;span class='nn'&gt;#&lt;/span&gt;&lt;span class='err'&gt;{$&lt;/span&gt;&lt;span class='nt'&gt;footer_selector&lt;/span&gt;&lt;span class='err'&gt;}&lt;/span&gt;
+    &lt;span class='na'&gt;:clear&lt;/span&gt;            &lt;span class='no'&gt;both&lt;/span&gt;
+    &lt;span class='na'&gt;:position&lt;/span&gt;         &lt;span class='no'&gt;relative&lt;/span&gt;
+    &lt;span class='na'&gt;:height&lt;/span&gt;          &lt;span class='si'&gt;#{&lt;/span&gt;&lt;span class='nv'&gt;$footer_height&lt;/span&gt;&lt;span class='si'&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Compass Placeholder Text Mixin</title>
+   <link href="http://http://tinyfactory.github.com/compass/2012/07/31/Compass-Placeholder-Text-Mixin.html"/>
+   <updated>2012-07-31T00:00:00-07:00</updated>
+   <id>http://http://tinyfactory.github.com/compass/2012/07/31/Compass-Placeholder-Text-Mixin</id>
+   <content type="html">&lt;p&gt;Simple Mixin For Compass Placeholder Text&lt;/p&gt;
+
+&lt;p&gt;Syntax:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='scss'&gt;    &lt;span class='k'&gt;@mixin&lt;/span&gt;&lt;span class='nf'&gt; input-placeholder&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nv'&gt;$color&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+      &lt;span class='k'&gt;&amp;amp;&lt;/span&gt;&lt;span class='nc'&gt;.placeholder&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+        &lt;span class='na'&gt;color&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='nv'&gt;$color&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt; 
+        &lt;span class='p'&gt;}&lt;/span&gt;
+      &lt;span class='na'&gt;&amp;amp;&lt;/span&gt;&lt;span class='o'&gt;:-&lt;/span&gt;&lt;span class='n'&gt;moz-placeholder&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+        &lt;span class='na'&gt;color&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='nv'&gt;$color&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt; 
+        &lt;span class='p'&gt;}&lt;/span&gt;
+      &lt;span class='na'&gt;&amp;amp;&lt;/span&gt;&lt;span class='o'&gt;::-&lt;/span&gt;&lt;span class='n'&gt;webkit-input-placeholder&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+        &lt;span class='na'&gt;color&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='nv'&gt;$color&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt; 
+        &lt;span class='p'&gt;}&lt;/span&gt; 
+    &lt;span class='p'&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;Steps:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;1.  Add the .input-placeholder() mixin from _placeholderText.scss to your compass stylesheet (or reference it in an @import statement)
+2.  In your stylesheet, call the .input-placeholder() mixin anywhere you want to style your placeholder text&lt;/code&gt;&lt;/pre&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='scss'&gt;            &lt;span class='nc'&gt;.inputCls&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+              &lt;span class='k'&gt;@include&lt;/span&gt;&lt;span class='nd'&gt; input-placeholder&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='mh'&gt;#ccc&lt;/span&gt;&lt;span class='p'&gt;);&lt;/span&gt; 
+            &lt;span class='p'&gt;}&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;pre&gt;&lt;code&gt;Will compile to: &lt;/code&gt;&lt;/pre&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='scss'&gt;              &lt;span class='nc'&gt;.inputCls.placeholder&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+                &lt;span class='na'&gt;color&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mh'&gt;#cccccc&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt;
+              &lt;span class='p'&gt;}&lt;/span&gt;
+              &lt;span class='na'&gt;.inputCls&lt;/span&gt;&lt;span class='o'&gt;:-&lt;/span&gt;&lt;span class='n'&gt;moz-placeholder&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+                &lt;span class='na'&gt;color&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mh'&gt;#cccccc&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt;
+              &lt;span class='p'&gt;}&lt;/span&gt;
+              &lt;span class='na'&gt;.inputCls&lt;/span&gt;&lt;span class='o'&gt;::-&lt;/span&gt;&lt;span class='n'&gt;webkit-input-placeholder&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+                &lt;span class='na'&gt;color&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mh'&gt;#cccccc&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt;
+              &lt;span class='p'&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content>
+ </entry>
  
  <entry>
    <title>Generate An Icon Font</title>
@@ -46,7 +116,7 @@
 &lt;p&gt;&lt;img alt='Illustrator Toolbar' src='http://docs.tinyfactory.co/images/assets/toolbar.png' /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img alt='Twitter icon mapped to T key' src='http://docs.tinyfactory.co/images/assets/twitter-ss.png' /&gt;&lt;/p&gt;
-&lt;a href='http://docs.tinyfactory.co/images/downloads/icon.zip' class='button'&gt;Download Icon Template&lt;/a&gt;
+&lt;a class='button' href='http://docs.tinyfactory.co/images/downloads/icon.zip'&gt;Download Icon Template&lt;/a&gt;
 &lt;p&gt;&lt;strong&gt;Important:&lt;/strong&gt; Make sure your icon is a compound path. If your canvas has more than one shape, it will cause issues with the font generation. You can make it a compound path by selecting all the shapes in the icon, and pressing &lt;strong&gt;CMD + 8&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;h4 id='saving__naming_convetion'&gt;Saving &amp;amp; Naming Convetion&lt;/h4&gt;
