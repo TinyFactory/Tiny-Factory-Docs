@@ -8,12 +8,17 @@
 
 +font-face("Sanuk Regular", font-files("SanukLF-Regular.eot", "SanukLF-Regular.svg", "SanukLF-Regular.woff"))
 +font-face("Sanuk Bold", font-files("SanukTF-Bold.eot", "SanukTF-Bold.svg", "SanukTF-Bold.woff"))
-+font-face("Gotham Light", font-files("Gotham-Light.eot", "Gotham-Light.svg", "Gotham-Light.woff"))
-+font-face("Gotham Book", font-files("Gotham-Book.eot", "Gotham-Book.svg", "Gotham-Book.woff"))
-+font-face("Gotham Book Italic", font-files("Gotham-BookItalic.eot", "Gotham-BookItalic.svg", "Gotham-BookItalic.woff"))
-+font-face("Gotham Medium", font-files("Gotham-Medium.eot", "Gotham-Medium.svg", "Gotham-Medium.woff"))
-+font-face("Gotham Bold", font-files("Gotham-Bold.eot", "Gotham-Bold.svg", "Gotham-Bold.woff"))
-+font-face("Gotham Ultra", font-files("Gotham-Ultra.eot", "Gotham-Ultra.svg", "Gotham-Ultra.woff"))
+@font-face
+	font-family: "Gotham Light"
+	src: $gotham-light-eot, $gotham-light-svg, $gotham-light-woff
+
+@font-face
+	font-family: "Gotham Medium"
+	src: $gotham-medium-eot, $gotham-medium-svg, $gotham-medium-woff
+
+@font-face
+	font-family: "Gotham Bold"
+	src: $gotham-bold-eot, $gotham-bold-svg, $gotham-bold-woff
 
 body
 	background: $body
@@ -66,7 +71,7 @@ h2
 	line-height: 1.6em
 
 h3
-	font-family: "Gotham Book", sans-serif
+	+gotham-light
 	font-weight: normal
 	color: $heading
 	font-size: 22px
@@ -244,7 +249,7 @@ strong
 			background: darken($body, 3%)
 
 		li
-			+gotham-book
+			+gotham-medium
 			font-size: 22px
 			line-height: 1.4em
 			width: 95%

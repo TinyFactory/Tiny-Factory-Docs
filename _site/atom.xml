@@ -4,7 +4,7 @@
  <title>Tiny Factory Docs</title>
  <link href="http://http://tinyfactory.github.com/atom.xml" rel="self"/>
  <link href="http://http://tinyfactory.github.com/"/>
- <updated>2012-07-31T09:28:55-07:00</updated>
+ <updated>2012-07-31T18:00:52-07:00</updated>
  <id>http://http://tinyfactory.github.com/</id>
  <author>
    <name>Tiny Factory</name>
@@ -43,9 +43,9 @@
 
 &lt;p&gt;Open up Illustrator and create a new document sized &lt;strong&gt;1000pt x 1000pt&lt;/strong&gt;. We need to make sure that the icons are centered, and relatively the same size. Drag a horizontal guide so it sits &lt;strong&gt;250 points&lt;/strong&gt; from the top of the canvas. You can set this easily by dragging out a guide, then in your Illustrator toolbar setting the &lt;strong&gt;Y value&lt;/strong&gt; to 250. You should also drag out a vertical rule with the &lt;strong&gt;X value&lt;/strong&gt; of 500 so you have a vertical center showing.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src='http://docs.tinyfactory.co/images/assets/toolbar.png' alt='Illustrator Toolbar' /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt='Illustrator Toolbar' src='http://docs.tinyfactory.co/images/assets/toolbar.png' /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src='http://docs.tinyfactory.co/images/assets/twitter-ss.png' alt='Twitter icon mapped to T key' /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt='Twitter icon mapped to T key' src='http://docs.tinyfactory.co/images/assets/twitter-ss.png' /&gt;&lt;/p&gt;
 &lt;a href='http://docs.tinyfactory.co/images/downloads/icon.zip' class='button'&gt;Download Icon Template&lt;/a&gt;
 &lt;p&gt;&lt;strong&gt;Important:&lt;/strong&gt; Make sure your icon is a compound path. If your canvas has more than one shape, it will cause issues with the font generation. You can make it a compound path by selecting all the shapes in the icon, and pressing &lt;strong&gt;CMD + 8&lt;/strong&gt;.&lt;/p&gt;
 
