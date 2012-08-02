@@ -4,7 +4,7 @@
  <title>Tiny Factory Docs</title>
  <link href="http://http://tinyfactory.github.com/atom.xml" rel="self"/>
  <link href="http://http://tinyfactory.github.com/"/>
- <updated>2012-07-31T18:25:33-07:00</updated>
+ <updated>2012-08-02T12:18:05-07:00</updated>
  <id>http://http://tinyfactory.github.com/</id>
  <author>
    <name>Tiny Factory</name>
@@ -13,10 +13,110 @@
 
  
  <entry>
-   <title>Sass Sticky Footer Mixin</title>
-   <link href="http://http://tinyfactory.github.com/sass/2012/07/31/sass-sticky-footer-mixin.html"/>
+   <title>Sass Inline Media Queries</title>
+   <link href="http://http://tinyfactory.github.com/sass/2012/08/02/sass-inline-media-queries.html"/>
+   <updated>2012-08-02T00:00:00-07:00</updated>
+   <id>http://http://tinyfactory.github.com/sass/2012/08/02/sass-inline-media-queries</id>
+   <content type="html">&lt;p&gt;With SASS 3.2 we get inline media queries. Compass allows this if you&amp;#8217;re using the alpha build. At of the date of this doc, &lt;code&gt;0.12.2&lt;/code&gt; is the current version.&lt;/p&gt;
+
+&lt;p&gt;We can install Compass alpha &lt;code&gt;0.13.0&lt;/code&gt; by running &lt;code&gt;sudo gem install compass --pre&lt;/code&gt;. This is a prerelease build, so if you&amp;#8217;re worried about things not working, hold out until &lt;code&gt;0.13.x&lt;/code&gt; is released.&lt;/p&gt;
+
+&lt;p&gt;Before inline media queries, we&amp;#8217;d throw all of our device arguments in a section at the bottom of our stylesheets. Inline media queries allow me to do something like this:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='sass'&gt;&lt;span class='nt'&gt;header&lt;/span&gt;
+	&lt;span class='na'&gt;background&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='nf'&gt;rgba&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='mi'&gt;0&lt;/span&gt;&lt;span class='o'&gt;,&lt;/span&gt;&lt;span class='mi'&gt;0&lt;/span&gt;&lt;span class='o'&gt;,&lt;/span&gt;&lt;span class='mi'&gt;0&lt;/span&gt;&lt;span class='o'&gt;,&lt;/span&gt;&lt;span class='mi'&gt;0&lt;/span&gt;&lt;span class='mf'&gt;.5&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt;
+	&lt;span class='na'&gt;color&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mh'&gt;#fff&lt;/span&gt;
+	&lt;span class='nd'&gt;+mobile-landscape-and-up&lt;/span&gt;
+		&lt;span class='na'&gt;background&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='nf'&gt;rgba&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='mi'&gt;0&lt;/span&gt;&lt;span class='o'&gt;,&lt;/span&gt;&lt;span class='mi'&gt;0&lt;/span&gt;&lt;span class='o'&gt;,&lt;/span&gt;&lt;span class='mi'&gt;0&lt;/span&gt;&lt;span class='o'&gt;,&lt;/span&gt;&lt;span class='mi'&gt;1&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt;
+		&lt;span class='na'&gt;color&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mh'&gt;#fff&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;The mixins below will allow you to do what I&amp;#8217;ve demonstrated above. This is a port to the old SASS syntax from the amazing base the Anthony Short developed. You&amp;#8217;re able to use any of the @mixin properties inline throughout your stylesheet. No more scrolling top to bottom to see what you need to override.&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='sass'&gt;&lt;span class='na'&gt;$mq-mobile-portrait&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;320&lt;/span&gt;&lt;span class='kt'&gt;px&lt;/span&gt; &lt;span class='nv'&gt;!default&lt;/span&gt;
+&lt;span class='na'&gt;$mq-mobile-landscape&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;480&lt;/span&gt;&lt;span class='kt'&gt;px&lt;/span&gt; &lt;span class='nv'&gt;!default&lt;/span&gt;
+&lt;span class='na'&gt;$mq-tablet-portrait&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;768&lt;/span&gt;&lt;span class='kt'&gt;px&lt;/span&gt; &lt;span class='nv'&gt;!default&lt;/span&gt;
+&lt;span class='na'&gt;$mq-tablet-landscape&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;1024&lt;/span&gt;&lt;span class='kt'&gt;px&lt;/span&gt; &lt;span class='nv'&gt;!default&lt;/span&gt;
+&lt;span class='na'&gt;$mq-desktop&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;1382&lt;/span&gt;&lt;span class='kt'&gt;px&lt;/span&gt; &lt;span class='nv'&gt;!default&lt;/span&gt;
+
+&lt;span class='k'&gt;@mixin&lt;/span&gt;&lt;span class='nf'&gt; mobile-only&lt;/span&gt;
+	&lt;span class='k'&gt;@media&lt;/span&gt; &lt;span class='o'&gt;(&lt;/span&gt;&lt;span class='nt'&gt;max-width&lt;/span&gt; &lt;span class='nd'&gt;:&lt;/span&gt; &lt;span class='err'&gt;$&lt;/span&gt;&lt;span class='nt'&gt;mq-mobile-landscape&lt;/span&gt;&lt;span class='o'&gt;)&lt;/span&gt;
+		&lt;span class='k'&gt;@content&lt;/span&gt;
+
+&lt;span class='k'&gt;@mixin&lt;/span&gt;&lt;span class='nf'&gt; mobile-portrait-only&lt;/span&gt;
+	&lt;span class='k'&gt;@media&lt;/span&gt; &lt;span class='o'&gt;(&lt;/span&gt;&lt;span class='nt'&gt;max-width&lt;/span&gt; &lt;span class='nd'&gt;:&lt;/span&gt; &lt;span class='err'&gt;$&lt;/span&gt;&lt;span class='nt'&gt;mq-mobile-portrait&lt;/span&gt;&lt;span class='o'&gt;)&lt;/span&gt;
+		&lt;span class='k'&gt;@content&lt;/span&gt;
+
+&lt;span class='k'&gt;@mixin&lt;/span&gt;&lt;span class='nf'&gt; mobile-portrait-and-below&lt;/span&gt;
+	&lt;span class='k'&gt;@media&lt;/span&gt; &lt;span class='o'&gt;(&lt;/span&gt;&lt;span class='nt'&gt;max-width&lt;/span&gt; &lt;span class='nd'&gt;:&lt;/span&gt; &lt;span class='err'&gt;$&lt;/span&gt;&lt;span class='nt'&gt;mq-mobile-portrait&lt;/span&gt;&lt;span class='o'&gt;)&lt;/span&gt;
+		&lt;span class='k'&gt;@content&lt;/span&gt;
+
+&lt;span class='k'&gt;@mixin&lt;/span&gt;&lt;span class='nf'&gt; mobile-portrait-and-up&lt;/span&gt;
+	&lt;span class='k'&gt;@media&lt;/span&gt; &lt;span class='o'&gt;(&lt;/span&gt;&lt;span class='nt'&gt;min-width&lt;/span&gt; &lt;span class='nd'&gt;:&lt;/span&gt; &lt;span class='err'&gt;$&lt;/span&gt;&lt;span class='nt'&gt;mq-mobile-portrait&lt;/span&gt;&lt;span class='o'&gt;)&lt;/span&gt;
+		&lt;span class='k'&gt;@content&lt;/span&gt;
+
+&lt;span class='k'&gt;@mixin&lt;/span&gt;&lt;span class='nf'&gt; mobile-landscape-only&lt;/span&gt;
+	&lt;span class='k'&gt;@media&lt;/span&gt; &lt;span class='nt'&gt;only&lt;/span&gt; &lt;span class='nt'&gt;screen&lt;/span&gt; &lt;span class='nt'&gt;and&lt;/span&gt; &lt;span class='o'&gt;(&lt;/span&gt;&lt;span class='nt'&gt;min-width&lt;/span&gt; &lt;span class='nd'&gt;:&lt;/span&gt; &lt;span class='err'&gt;$&lt;/span&gt;&lt;span class='nt'&gt;mq-mobile-portrait&lt;/span&gt; &lt;span class='o'&gt;+&lt;/span&gt; &lt;span class='nt'&gt;1&lt;/span&gt;&lt;span class='o'&gt;)&lt;/span&gt; &lt;span class='nt'&gt;and&lt;/span&gt; &lt;span class='o'&gt;(&lt;/span&gt;&lt;span class='nt'&gt;max-width&lt;/span&gt; &lt;span class='nd'&gt;:&lt;/span&gt; &lt;span class='err'&gt;$&lt;/span&gt;&lt;span class='nt'&gt;mq-mobile-landscape&lt;/span&gt;&lt;span class='o'&gt;)&lt;/span&gt;
+		&lt;span class='k'&gt;@content&lt;/span&gt;
+
+&lt;span class='k'&gt;@mixin&lt;/span&gt;&lt;span class='nf'&gt; mobile-landscape-and-below&lt;/span&gt;
+	&lt;span class='k'&gt;@media&lt;/span&gt; &lt;span class='nt'&gt;only&lt;/span&gt; &lt;span class='nt'&gt;screen&lt;/span&gt; &lt;span class='nt'&gt;and&lt;/span&gt; &lt;span class='o'&gt;(&lt;/span&gt;&lt;span class='nt'&gt;max-width&lt;/span&gt; &lt;span class='nd'&gt;:&lt;/span&gt; &lt;span class='err'&gt;$&lt;/span&gt;&lt;span class='nt'&gt;mq-mobile-landscape&lt;/span&gt;&lt;span class='o'&gt;)&lt;/span&gt;
+		&lt;span class='k'&gt;@content&lt;/span&gt;
+
+&lt;span class='k'&gt;@mixin&lt;/span&gt;&lt;span class='nf'&gt; mobile-landscape-and-up&lt;/span&gt;
+	&lt;span class='k'&gt;@media&lt;/span&gt; &lt;span class='nt'&gt;only&lt;/span&gt; &lt;span class='nt'&gt;screen&lt;/span&gt; &lt;span class='nt'&gt;and&lt;/span&gt; &lt;span class='o'&gt;(&lt;/span&gt;&lt;span class='nt'&gt;min-width&lt;/span&gt; &lt;span class='nd'&gt;:&lt;/span&gt; &lt;span class='err'&gt;$&lt;/span&gt;&lt;span class='nt'&gt;mq-mobile-portrait&lt;/span&gt; &lt;span class='o'&gt;+&lt;/span&gt; &lt;span class='nt'&gt;1&lt;/span&gt;&lt;span class='o'&gt;)&lt;/span&gt;
+		&lt;span class='k'&gt;@content&lt;/span&gt;
+
+&lt;span class='k'&gt;@mixin&lt;/span&gt;&lt;span class='nf'&gt; tablet-only&lt;/span&gt;
+	&lt;span class='k'&gt;@media&lt;/span&gt; &lt;span class='nt'&gt;only&lt;/span&gt; &lt;span class='nt'&gt;screen&lt;/span&gt; &lt;span class='nt'&gt;and&lt;/span&gt; &lt;span class='o'&gt;(&lt;/span&gt;&lt;span class='nt'&gt;min-width&lt;/span&gt; &lt;span class='nd'&gt;:&lt;/span&gt; &lt;span class='err'&gt;$&lt;/span&gt;&lt;span class='nt'&gt;mq-mobile-landscape&lt;/span&gt; &lt;span class='o'&gt;+&lt;/span&gt; &lt;span class='nt'&gt;1&lt;/span&gt;&lt;span class='o'&gt;)&lt;/span&gt; &lt;span class='nt'&gt;and&lt;/span&gt; &lt;span class='o'&gt;(&lt;/span&gt;&lt;span class='nt'&gt;max-width&lt;/span&gt; &lt;span class='nd'&gt;:&lt;/span&gt; &lt;span class='err'&gt;$&lt;/span&gt;&lt;span class='nt'&gt;mq-tablet-landscape&lt;/span&gt;&lt;span class='o'&gt;)&lt;/span&gt;
+		&lt;span class='k'&gt;@content&lt;/span&gt;
+
+&lt;span class='k'&gt;@mixin&lt;/span&gt;&lt;span class='nf'&gt; tablet-portrait-only&lt;/span&gt;
+	&lt;span class='k'&gt;@media&lt;/span&gt; &lt;span class='nt'&gt;only&lt;/span&gt; &lt;span class='nt'&gt;screen&lt;/span&gt; &lt;span class='nt'&gt;and&lt;/span&gt; &lt;span class='o'&gt;(&lt;/span&gt;&lt;span class='nt'&gt;min-width&lt;/span&gt; &lt;span class='nd'&gt;:&lt;/span&gt; &lt;span class='err'&gt;$&lt;/span&gt;&lt;span class='nt'&gt;mq-mobile-landscape&lt;/span&gt; &lt;span class='o'&gt;+&lt;/span&gt; &lt;span class='nt'&gt;1&lt;/span&gt;&lt;span class='o'&gt;)&lt;/span&gt; &lt;span class='nt'&gt;and&lt;/span&gt; &lt;span class='o'&gt;(&lt;/span&gt;&lt;span class='nt'&gt;max-width&lt;/span&gt; &lt;span class='nd'&gt;:&lt;/span&gt; &lt;span class='err'&gt;$&lt;/span&gt;&lt;span class='nt'&gt;mq-tablet-portrait&lt;/span&gt;&lt;span class='o'&gt;)&lt;/span&gt;
+		&lt;span class='k'&gt;@content&lt;/span&gt;
+
+&lt;span class='k'&gt;@mixin&lt;/span&gt;&lt;span class='nf'&gt; tablet-portrait-and-below&lt;/span&gt;
+	&lt;span class='k'&gt;@media&lt;/span&gt; &lt;span class='nt'&gt;only&lt;/span&gt; &lt;span class='nt'&gt;screen&lt;/span&gt; &lt;span class='nt'&gt;and&lt;/span&gt; &lt;span class='o'&gt;(&lt;/span&gt;&lt;span class='nt'&gt;max-width&lt;/span&gt; &lt;span class='nd'&gt;:&lt;/span&gt; &lt;span class='err'&gt;$&lt;/span&gt;&lt;span class='nt'&gt;mq-tablet-portrait&lt;/span&gt;&lt;span class='o'&gt;)&lt;/span&gt;
+		&lt;span class='k'&gt;@content&lt;/span&gt;
+
+&lt;span class='k'&gt;@mixin&lt;/span&gt;&lt;span class='nf'&gt; tablet-portrait-and-up&lt;/span&gt;
+	&lt;span class='k'&gt;@media&lt;/span&gt; &lt;span class='nt'&gt;only&lt;/span&gt; &lt;span class='nt'&gt;screen&lt;/span&gt; &lt;span class='nt'&gt;and&lt;/span&gt; &lt;span class='o'&gt;(&lt;/span&gt;&lt;span class='nt'&gt;min-width&lt;/span&gt; &lt;span class='nd'&gt;:&lt;/span&gt; &lt;span class='err'&gt;$&lt;/span&gt;&lt;span class='nt'&gt;mq-mobile-landscape&lt;/span&gt; &lt;span class='o'&gt;+&lt;/span&gt; &lt;span class='nt'&gt;1&lt;/span&gt;&lt;span class='o'&gt;)&lt;/span&gt;
+		&lt;span class='k'&gt;@content&lt;/span&gt;
+
+&lt;span class='k'&gt;@mixin&lt;/span&gt;&lt;span class='nf'&gt; tablet-landscape-only&lt;/span&gt;
+	&lt;span class='k'&gt;@media&lt;/span&gt; &lt;span class='nt'&gt;only&lt;/span&gt; &lt;span class='nt'&gt;screen&lt;/span&gt; &lt;span class='nt'&gt;and&lt;/span&gt; &lt;span class='o'&gt;(&lt;/span&gt;&lt;span class='nt'&gt;min-width&lt;/span&gt; &lt;span class='nd'&gt;:&lt;/span&gt; &lt;span class='err'&gt;$&lt;/span&gt;&lt;span class='nt'&gt;mq-tablet-portrait&lt;/span&gt; &lt;span class='o'&gt;+&lt;/span&gt; &lt;span class='nt'&gt;1&lt;/span&gt;&lt;span class='o'&gt;)&lt;/span&gt; &lt;span class='nt'&gt;and&lt;/span&gt; &lt;span class='o'&gt;(&lt;/span&gt;&lt;span class='nt'&gt;max-width&lt;/span&gt; &lt;span class='nd'&gt;:&lt;/span&gt; &lt;span class='err'&gt;$&lt;/span&gt;&lt;span class='nt'&gt;mq-tablet-landscape&lt;/span&gt;&lt;span class='o'&gt;)&lt;/span&gt;
+		&lt;span class='k'&gt;@content&lt;/span&gt;
+
+&lt;span class='k'&gt;@mixin&lt;/span&gt;&lt;span class='nf'&gt; tablet-landscape-and-below&lt;/span&gt;
+	&lt;span class='k'&gt;@media&lt;/span&gt; &lt;span class='nt'&gt;only&lt;/span&gt; &lt;span class='nt'&gt;screen&lt;/span&gt; &lt;span class='nt'&gt;and&lt;/span&gt; &lt;span class='o'&gt;(&lt;/span&gt;&lt;span class='nt'&gt;max-width&lt;/span&gt; &lt;span class='nd'&gt;:&lt;/span&gt; &lt;span class='err'&gt;$&lt;/span&gt;&lt;span class='nt'&gt;mq-tablet-landscape&lt;/span&gt;&lt;span class='o'&gt;)&lt;/span&gt;
+		&lt;span class='k'&gt;@content&lt;/span&gt;
+
+&lt;span class='k'&gt;@mixin&lt;/span&gt;&lt;span class='nf'&gt; tablet-landscape-and-up&lt;/span&gt;
+	&lt;span class='k'&gt;@media&lt;/span&gt; &lt;span class='nt'&gt;only&lt;/span&gt; &lt;span class='nt'&gt;screen&lt;/span&gt; &lt;span class='nt'&gt;and&lt;/span&gt; &lt;span class='o'&gt;(&lt;/span&gt;&lt;span class='nt'&gt;min-width&lt;/span&gt; &lt;span class='nd'&gt;:&lt;/span&gt; &lt;span class='err'&gt;$&lt;/span&gt;&lt;span class='nt'&gt;mq-tablet-portrait&lt;/span&gt; &lt;span class='o'&gt;+&lt;/span&gt; &lt;span class='nt'&gt;1&lt;/span&gt;&lt;span class='o'&gt;)&lt;/span&gt;
+		&lt;span class='k'&gt;@content&lt;/span&gt;
+
+&lt;span class='k'&gt;@mixin&lt;/span&gt;&lt;span class='nf'&gt; desktop-and-up&lt;/span&gt;
+	&lt;span class='k'&gt;@media&lt;/span&gt; &lt;span class='nt'&gt;only&lt;/span&gt; &lt;span class='nt'&gt;screen&lt;/span&gt; &lt;span class='nt'&gt;and&lt;/span&gt; &lt;span class='o'&gt;(&lt;/span&gt;&lt;span class='nt'&gt;min-width&lt;/span&gt; &lt;span class='nd'&gt;:&lt;/span&gt; &lt;span class='err'&gt;$&lt;/span&gt;&lt;span class='nt'&gt;mq-tablet-landscape&lt;/span&gt; &lt;span class='o'&gt;+&lt;/span&gt; &lt;span class='nt'&gt;1&lt;/span&gt;&lt;span class='o'&gt;)&lt;/span&gt;
+		&lt;span class='k'&gt;@content&lt;/span&gt;
+
+&lt;span class='k'&gt;@mixin&lt;/span&gt;&lt;span class='nf'&gt; desktop-and-below&lt;/span&gt;
+	&lt;span class='k'&gt;@media&lt;/span&gt; &lt;span class='nt'&gt;only&lt;/span&gt; &lt;span class='nt'&gt;screen&lt;/span&gt; &lt;span class='nt'&gt;and&lt;/span&gt; &lt;span class='o'&gt;(&lt;/span&gt;&lt;span class='nt'&gt;max-width&lt;/span&gt; &lt;span class='nd'&gt;:&lt;/span&gt; &lt;span class='err'&gt;$&lt;/span&gt;&lt;span class='nt'&gt;mq-desktop&lt;/span&gt;&lt;span class='o'&gt;)&lt;/span&gt;
+		&lt;span class='k'&gt;@content&lt;/span&gt;
+
+&lt;span class='k'&gt;@mixin&lt;/span&gt;&lt;span class='nf'&gt; desktop-only&lt;/span&gt;
+	&lt;span class='k'&gt;@media&lt;/span&gt; &lt;span class='nt'&gt;only&lt;/span&gt; &lt;span class='nt'&gt;screen&lt;/span&gt; &lt;span class='nt'&gt;and&lt;/span&gt; &lt;span class='o'&gt;(&lt;/span&gt;&lt;span class='nt'&gt;min-width&lt;/span&gt; &lt;span class='nd'&gt;:&lt;/span&gt; &lt;span class='err'&gt;$&lt;/span&gt;&lt;span class='nt'&gt;mq-tablet-landscape&lt;/span&gt; &lt;span class='o'&gt;+&lt;/span&gt; &lt;span class='nt'&gt;1&lt;/span&gt;&lt;span class='o'&gt;)&lt;/span&gt; &lt;span class='nt'&gt;and&lt;/span&gt; &lt;span class='o'&gt;(&lt;/span&gt;&lt;span class='nt'&gt;max-width&lt;/span&gt; &lt;span class='nd'&gt;:&lt;/span&gt; &lt;span class='err'&gt;$&lt;/span&gt;&lt;span class='nt'&gt;mq-desktop&lt;/span&gt;&lt;span class='o'&gt;)&lt;/span&gt;
+		&lt;span class='k'&gt;@content&lt;/span&gt;
+
+&lt;span class='k'&gt;@mixin&lt;/span&gt;&lt;span class='nf'&gt; retina&lt;/span&gt;
+	&lt;span class='k'&gt;@media&lt;/span&gt; &lt;span class='nt'&gt;only&lt;/span&gt; &lt;span class='nt'&gt;screen&lt;/span&gt; &lt;span class='nt'&gt;and&lt;/span&gt; &lt;span class='o'&gt;(&lt;/span&gt;&lt;span class='nt'&gt;-webkit-min-device-pixel-ratio&lt;/span&gt; &lt;span class='nd'&gt;:&lt;/span&gt; &lt;span class='nt'&gt;1&lt;/span&gt;&lt;span class='nc'&gt;.5&lt;/span&gt;&lt;span class='o'&gt;),&lt;/span&gt; &lt;span class='nt'&gt;only&lt;/span&gt; &lt;span class='nt'&gt;screen&lt;/span&gt; &lt;span class='nt'&gt;and&lt;/span&gt; &lt;span class='o'&gt;(&lt;/span&gt;&lt;span class='nt'&gt;min-device-pixel-ratio&lt;/span&gt; &lt;span class='nd'&gt;:&lt;/span&gt; &lt;span class='nt'&gt;1&lt;/span&gt;&lt;span class='nc'&gt;.5&lt;/span&gt;&lt;span class='o'&gt;)&lt;/span&gt;
+		&lt;span class='k'&gt;@content&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Sass Sticky Footer Mixin copy</title>
+   <link href="http://http://tinyfactory.github.com/sass/2012/07/31/sass-sticky-footer-mixin+copy.html"/>
    <updated>2012-07-31T00:00:00-07:00</updated>
-   <id>http://http://tinyfactory.github.com/sass/2012/07/31/sass-sticky-footer-mixin</id>
+   <id>http://http://tinyfactory.github.com/sass/2012/07/31/sass-sticky-footer-mixin copy</id>
    <content type="html">&lt;p&gt;Compass has a really nice &lt;a href='http://compass-style.org/reference/compass/layout/sticky_footer/'&gt;sticky footer&lt;/a&gt; mixin built into the library but we&amp;#8217;ve been writing our own site in vanilla SASS so I converted an out of date SASS mixin to it&amp;#8217;s current syntax.&lt;/p&gt;
 &lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='sass'&gt;&lt;span class='nf'&gt;=sticky-footer&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nv'&gt;$footer_height&lt;/span&gt;&lt;span class='o'&gt;,&lt;/span&gt; &lt;span class='nv'&gt;$root_selector&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;#root&amp;quot;&lt;/span&gt;&lt;span class='o'&gt;,&lt;/span&gt; &lt;span class='nv'&gt;$root_footer_selector&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;#root_footer&amp;quot;&lt;/span&gt;&lt;span class='o'&gt;,&lt;/span&gt; &lt;span class='nv'&gt;$footer_selector&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;#footer&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt;
   &lt;span class='nt'&gt;html&lt;/span&gt;
