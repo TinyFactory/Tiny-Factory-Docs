@@ -4,7 +4,7 @@
  <title>Tiny Factory Docs</title>
  <link href="http://http://tinyfactory.github.com/atom.xml" rel="self"/>
  <link href="http://http://tinyfactory.github.com/"/>
- <updated>2012-08-02T12:21:37-07:00</updated>
+ <updated>2012-08-02T12:22:15-07:00</updated>
  <id>http://http://tinyfactory.github.com/</id>
  <author>
    <name>Tiny Factory</name>
@@ -108,6 +108,48 @@
 &lt;span class='k'&gt;@mixin&lt;/span&gt;&lt;span class='nf'&gt; retina&lt;/span&gt;
 	&lt;span class='k'&gt;@media&lt;/span&gt; &lt;span class='nt'&gt;only&lt;/span&gt; &lt;span class='nt'&gt;screen&lt;/span&gt; &lt;span class='nt'&gt;and&lt;/span&gt; &lt;span class='o'&gt;(&lt;/span&gt;&lt;span class='nt'&gt;-webkit-min-device-pixel-ratio&lt;/span&gt; &lt;span class='nd'&gt;:&lt;/span&gt; &lt;span class='nt'&gt;1&lt;/span&gt;&lt;span class='nc'&gt;.5&lt;/span&gt;&lt;span class='o'&gt;),&lt;/span&gt; &lt;span class='nt'&gt;only&lt;/span&gt; &lt;span class='nt'&gt;screen&lt;/span&gt; &lt;span class='nt'&gt;and&lt;/span&gt; &lt;span class='o'&gt;(&lt;/span&gt;&lt;span class='nt'&gt;min-device-pixel-ratio&lt;/span&gt; &lt;span class='nd'&gt;:&lt;/span&gt; &lt;span class='nt'&gt;1&lt;/span&gt;&lt;span class='nc'&gt;.5&lt;/span&gt;&lt;span class='o'&gt;)&lt;/span&gt;
 		&lt;span class='k'&gt;@content&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Compass Retina Display Mixin</title>
+   <link href="http://http://tinyfactory.github.com/compass/2012/08/01/compass-retina-display-mixin.html"/>
+   <updated>2012-08-01T00:00:00-07:00</updated>
+   <id>http://http://tinyfactory.github.com/compass/2012/08/01/compass-retina-display-mixin</id>
+   <content type="html">&lt;p&gt;This compass mixin helps for applying high-resolution background images in your stylesheet. You provide it with an image path and the dimensions of the original-resolution image. The mixin creates a media query spefically for Retina displays, changes the background image for the selector elements to use the high-resolution (@2x) variant and applies a background-size of the original image in order to maintain proper dimensions. To use it, download the mixin, import or include it in your SASS stylesheet, and apply it to elements of your choice.&lt;/p&gt;
+
+&lt;p&gt;Syntax:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='scss'&gt;    &lt;span class='k'&gt;@mixin&lt;/span&gt;&lt;span class='nf'&gt; at2x&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nv'&gt;$image_name&lt;/span&gt;&lt;span class='o'&gt;,&lt;/span&gt; &lt;span class='nv'&gt;$w&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='no'&gt;auto&lt;/span&gt;&lt;span class='o'&gt;,&lt;/span&gt; &lt;span class='nv'&gt;$h&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='no'&gt;auto&lt;/span&gt;&lt;span class='o'&gt;,&lt;/span&gt; &lt;span class='nv'&gt;$extention&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;&lt;/span&gt;&lt;span class='s2'&gt;.png&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The extention defaults to PNG. To change this - define $extention when calling (ie jpg);&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Steps:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Add the .at2x() mixin from retina.scss to your compass stylesheet (or reference it in an @import statement)&lt;/li&gt;
+
+&lt;li&gt;In your stylesheet, call the .at2x() mixin anywhere instead of using background-image&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='scss'&gt;&lt;span class='nn'&gt;#logo&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+   &lt;span class='k'&gt;@include&lt;/span&gt;&lt;span class='nd'&gt; at2x&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s1'&gt;&amp;#39;&lt;/span&gt;&lt;span class='s2'&gt;example&amp;#39;&lt;/span&gt;&lt;span class='o'&gt;,&lt;/span&gt; &lt;span class='mi'&gt;200&lt;/span&gt;&lt;span class='kt'&gt;px&lt;/span&gt;&lt;span class='o'&gt;,&lt;/span&gt; &lt;span class='mi'&gt;100&lt;/span&gt;&lt;span class='kt'&gt;px&lt;/span&gt;&lt;span class='o'&gt;,&lt;/span&gt; &lt;span class='o'&gt;.&lt;/span&gt;&lt;span class='n'&gt;jpg&lt;/span&gt;&lt;span class='p'&gt;);&lt;/span&gt;
+&lt;span class='p'&gt;}&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Will compile to:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='scss'&gt;&lt;span class='nn'&gt;#logo&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+   &lt;span class='na'&gt;background-image&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='sx'&gt;url(&amp;#39;/images/example.jpg&amp;#39;)&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt;
+&lt;span class='p'&gt;}&lt;/span&gt;
+
+&lt;span class='k'&gt;@media&lt;/span&gt; &lt;span class='nt'&gt;all&lt;/span&gt; &lt;span class='nt'&gt;and&lt;/span&gt; &lt;span class='o'&gt;(&lt;/span&gt;&lt;span class='nt'&gt;-webkit-min-device-pixel-ratio&lt;/span&gt;&lt;span class='nd'&gt;:&lt;/span&gt; &lt;span class='nt'&gt;1&lt;/span&gt;&lt;span class='nc'&gt;.5&lt;/span&gt;&lt;span class='o'&gt;)&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+   &lt;span class='nn'&gt;#logo&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+      &lt;span class='na'&gt;background-image&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='sx'&gt;url(&amp;#39;/images/exampe@2x.jpg&amp;#39;)&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt;
+      &lt;span class='na'&gt;background-size&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;200&lt;/span&gt;&lt;span class='kt'&gt;px&lt;/span&gt; &lt;span class='mi'&gt;100&lt;/span&gt;&lt;span class='kt'&gt;px&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt;
+   &lt;span class='p'&gt;}&lt;/span&gt;
+&lt;span class='p'&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;</content>
  </entry>

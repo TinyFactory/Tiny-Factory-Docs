@@ -325,6 +325,8 @@ p code {
   -o-border-radius: 2px;
   border-radius: 2px;
   background: #eeeeee;
+  font-family: monospace;
+  font-size: 11px;
 }
 
 strong {
