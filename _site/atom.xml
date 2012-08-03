@@ -4,7 +4,7 @@
  <title>Tiny Factory Docs</title>
  <link href="http://http://tinyfactory.github.com/atom.xml" rel="self"/>
  <link href="http://http://tinyfactory.github.com/"/>
- <updated>2012-08-02T12:22:15-07:00</updated>
+ <updated>2012-08-03T16:07:56-07:00</updated>
  <id>http://http://tinyfactory.github.com/</id>
  <author>
    <name>Tiny Factory</name>
@@ -113,6 +113,84 @@
  </entry>
  
  <entry>
+   <title>Sencha Touch 2 Jsonp Xml Reader Jsonpx</title>
+   <link href="http://http://tinyfactory.github.com/sencha touch 2/2012/08/02/Sencha-Touch-2-JSONP-XML-Reader-JSONPX.html"/>
+   <updated>2012-08-02T00:00:00-07:00</updated>
+   <id>http://http://tinyfactory.github.com/sencha touch 2/2012/08/02/Sencha-Touch-2-JSONP-XML-Reader-JSONPX</id>
+   <content type="html">&lt;p&gt;I was integrating with a client&amp;#8217;s API which used a blend of JSONP and XML. Sencha Touch 2 does not have a native way to parse this, so I extended XML reader to make a &amp;#8216;jsonpx&amp;#8217; reader. Hopefully this will help someone who might run into the same situation.&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='javascript'&gt;&lt;span class='nx'&gt;Ext&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;define&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s1'&gt;&amp;#39;app.util.JsonpX&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+    &lt;span class='nx'&gt;extend&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;Ext.data.reader.Xml&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;
+
+    &lt;span class='c1'&gt;// Set the proxy alias&lt;/span&gt;
+    &lt;span class='nx'&gt;alias&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;reader.jsonpx&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;
+
+	&lt;span class='nx'&gt;parseXmlString&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='kd'&gt;function&lt;/span&gt; &lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;sXml&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+		&lt;span class='c1'&gt;// If the specified XML document content is a string...&lt;/span&gt;
+		&lt;span class='k'&gt;if&lt;/span&gt; &lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='k'&gt;typeof&lt;/span&gt; &lt;span class='nx'&gt;sXml&lt;/span&gt; &lt;span class='o'&gt;==&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot;string&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+
+			&lt;span class='c1'&gt;// Create a reference to the XML document parser.&lt;/span&gt;
+			&lt;span class='kd'&gt;var&lt;/span&gt; &lt;span class='nx'&gt;oParser&lt;/span&gt; &lt;span class='o'&gt;=&lt;/span&gt; &lt;span class='k'&gt;new&lt;/span&gt; &lt;span class='nx'&gt;DOMParser&lt;/span&gt;&lt;span class='p'&gt;();&lt;/span&gt;
+
+			&lt;span class='c1'&gt;// Return the reference to the XML document.&lt;/span&gt;
+			&lt;span class='k'&gt;return&lt;/span&gt; &lt;span class='nx'&gt;oParser&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;parseFromString&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;sXml&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot;text/xml&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;);&lt;/span&gt;
+		&lt;span class='p'&gt;}&lt;/span&gt;
+		&lt;span class='k'&gt;else&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt; &lt;span class='c1'&gt;// XML document content is NOT a string...&lt;/span&gt;
+			&lt;span class='c1'&gt;// Return the specified XML document since it has already been parsed.&lt;/span&gt;
+			&lt;span class='k'&gt;return&lt;/span&gt; &lt;span class='nx'&gt;sXml&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt;
+		&lt;span class='p'&gt;}&lt;/span&gt;
+	&lt;span class='p'&gt;},&lt;/span&gt;
+
+	&lt;span class='cm'&gt;/*&lt;/span&gt;
+&lt;span class='cm'&gt;	* override&lt;/span&gt;
+&lt;span class='cm'&gt;	* @param {string} response the response to parse&lt;/span&gt;
+&lt;span class='cm'&gt;	* @return {xml} the XML data that has been parsed&lt;/span&gt;
+&lt;span class='cm'&gt;	*/&lt;/span&gt;
+	&lt;span class='nx'&gt;getResponseData&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='kd'&gt;function&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;response&lt;/span&gt;&lt;span class='p'&gt;){&lt;/span&gt;
+		&lt;span class='nx'&gt;response&lt;/span&gt; &lt;span class='o'&gt;=&lt;/span&gt; &lt;span class='k'&gt;this&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;parseXmlString&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;response&lt;/span&gt;&lt;span class='p'&gt;);&lt;/span&gt;
+		&lt;span class='k'&gt;return&lt;/span&gt; &lt;span class='nx'&gt;response&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt;
+	&lt;span class='p'&gt;}&lt;/span&gt;
+&lt;span class='p'&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;To use, place create a file &lt;span&gt;app root&lt;/span&gt;/util/jsonpX.js&lt;/p&gt;
+
+&lt;p&gt;Inside of the store you are using, make sure to include and declare it as the reader. For example:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='javascript'&gt;&lt;span class='nx'&gt;Ext&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;define&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s1'&gt;&amp;#39;Year&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+    &lt;span class='nx'&gt;extend&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;Ext.data.Model&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;
+    &lt;span class='nx'&gt;config&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+        &lt;span class='nx'&gt;fields&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='p'&gt;[&lt;/span&gt;
+            &lt;span class='p'&gt;{&lt;/span&gt;&lt;span class='nx'&gt;name&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;  &lt;span class='nx'&gt;type&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;number&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;}&lt;/span&gt;
+        &lt;span class='p'&gt;]&lt;/span&gt;
+    &lt;span class='p'&gt;}&lt;/span&gt;
+&lt;span class='p'&gt;});&lt;/span&gt;
+
+&lt;span class='nx'&gt;Ext&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;define&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s1'&gt;&amp;#39;smtp.store.PartsFilterYear&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+	&lt;span class='nx'&gt;extend&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;Ext.data.Store&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;
+	&lt;span class='nx'&gt;requires&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='p'&gt;[&lt;/span&gt;
+		&lt;span class='s1'&gt;&amp;#39;Ext.data.proxy.JsonP&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;
+		&lt;span class='s1'&gt;&amp;#39;app.util.JsonpX&amp;#39;&lt;/span&gt;
+	&lt;span class='p'&gt;],&lt;/span&gt;
+	&lt;span class='nx'&gt;config&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+		&lt;span class='nx'&gt;autoLoad&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='kc'&gt;true&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;
+		&lt;span class='nx'&gt;storeId&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;PartsFilterYear&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;	&lt;span class='c1'&gt;//	ref to bind inside views&lt;/span&gt;
+		&lt;span class='nx'&gt;model&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;Year&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;
+		&lt;span class='nx'&gt;fields&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='p'&gt;[&lt;/span&gt;&lt;span class='s1'&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;],&lt;/span&gt;
+		&lt;span class='nx'&gt;pageSize&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;100&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;
+		&lt;span class='nx'&gt;proxy&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+			&lt;span class='nx'&gt;type&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;jsonp&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;
+			&lt;span class='nx'&gt;url&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;http://somedomain.com/someapi&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;
+			&lt;span class='nx'&gt;reader&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+				&lt;span class='nx'&gt;type&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;jsonpx&amp;#39;&lt;/span&gt;   &lt;span class='c1'&gt;//declare reader&lt;/span&gt;
+			&lt;span class='p'&gt;}&lt;/span&gt;
+		&lt;span class='p'&gt;}&lt;/span&gt;
+	&lt;span class='p'&gt;}&lt;/span&gt;
+&lt;span class='p'&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;This code was inspired by a piece a found for Sencha Touch 1 &lt;a href='http://www.sencha.com/forum/showthread.php?12852-ScriptTagProxy-and-XML'&gt;here&lt;/a&gt;&lt;/p&gt;</content>
+ </entry>
+ 
+ <entry>
    <title>Compass Retina Display Mixin</title>
    <link href="http://http://tinyfactory.github.com/compass/2012/08/01/compass-retina-display-mixin.html"/>
    <updated>2012-08-01T00:00:00-07:00</updated>
@@ -155,10 +233,10 @@
  </entry>
  
  <entry>
-   <title>Sass Sticky Footer Mixin copy</title>
-   <link href="http://http://tinyfactory.github.com/sass/2012/07/31/sass-sticky-footer-mixin+copy.html"/>
+   <title>Sass Sticky Footer Mixin</title>
+   <link href="http://http://tinyfactory.github.com/sass/2012/07/31/sass-sticky-footer-mixin.html"/>
    <updated>2012-07-31T00:00:00-07:00</updated>
-   <id>http://http://tinyfactory.github.com/sass/2012/07/31/sass-sticky-footer-mixin copy</id>
+   <id>http://http://tinyfactory.github.com/sass/2012/07/31/sass-sticky-footer-mixin</id>
    <content type="html">&lt;p&gt;Compass has a really nice &lt;a href='http://compass-style.org/reference/compass/layout/sticky_footer/'&gt;sticky footer&lt;/a&gt; mixin built into the library but we&amp;#8217;ve been writing our own site in vanilla SASS so I converted an out of date SASS mixin to it&amp;#8217;s current syntax.&lt;/p&gt;
 &lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='sass'&gt;&lt;span class='nf'&gt;=sticky-footer&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nv'&gt;$footer_height&lt;/span&gt;&lt;span class='o'&gt;,&lt;/span&gt; &lt;span class='nv'&gt;$root_selector&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;#root&amp;quot;&lt;/span&gt;&lt;span class='o'&gt;,&lt;/span&gt; &lt;span class='nv'&gt;$root_footer_selector&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;#root_footer&amp;quot;&lt;/span&gt;&lt;span class='o'&gt;,&lt;/span&gt; &lt;span class='nv'&gt;$footer_selector&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;#footer&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt;
   &lt;span class='nt'&gt;html&lt;/span&gt;

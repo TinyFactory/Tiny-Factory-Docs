@@ -697,8 +697,31 @@ li div.highlight {
   padding: 20px 20px 0 !important;
 }
 
-.archive-list ul {
-  margin-bottom: 30px;
+.archive-list .col {
+  width: 30%;
+  margin-right: 5%;
+  float: left;
+  display: inline;
+  padding-bottom: 50px;
+}
+@media only screen and (max-width: 1024px) {
+  .archive-list .col {
+    width: 45%;
+    margin-right: 5%;
+  }
+}
+@media (max-width: 480px) {
+  .archive-list .col {
+    width: 100%;
+  }
+}
+.archive-list .col:nth-child(3n+1) {
+  margin-right: 0 !important;
+}
+@media only screen and (max-width: 1024px) {
+  .archive-list .col:nth-child(3n+1) {
+    margin-right: 0 !important;
+  }
 }
 .archive-list .archive-date {
   position: relative;

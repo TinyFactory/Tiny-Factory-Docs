@@ -93,14 +93,16 @@
             {% if page.title == 'Archives' %}
             <div class="archive-list">
               {% for category in site.categories %} 
-                <h4 id="{{ category | first }}">{{ category | first }}</h4>
-                <ul>
-                  {% for posts in category %}
-                    {% for post in posts %} 
-                      <li><a href="{{site.url}}{{ post.url }}">{{ post.title }}</a> <span class="archive-date">{{ post.date | date: "%m.%d.%y" }}</span></li>
+              <div class="col">
+                <h2 id="{{ category | first }}">{{ category | first }}</h2>
+                  <ul>
+                    {% for posts in category %}
+                      {% for post in posts %} 
+                        <li><a href="{{site.url}}{{ post.url }}">{{ post.title }}</a> </li>
+                      {% endfor %} 
                     {% endfor %} 
-                  {% endfor %} 
-                </ul>
+                  </ul>
+              </div>
               {% endfor %} 
             {% endif %}
             </div>

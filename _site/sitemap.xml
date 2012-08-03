@@ -4,7 +4,7 @@
   <!--  Homepage -->
   <url>
     <loc>http://http://tinyfactory.github.com/</loc>
-    <lastmod>2012-08-02</lastmod>
+    <lastmod>2012-08-03</lastmod>
     <changefreq>daily</changefreq>
 		<priority>1.0</priority>
   </url>
@@ -18,6 +18,13 @@
   </url>
   
   <url>
+    <loc>http://http://tinyfactory.github.com/sencha touch 2/2012/08/02/Sencha-Touch-2-JSONP-XML-Reader-JSONPX.html</loc>
+    
+    <lastmod>2012-08-02</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://http://tinyfactory.github.com/compass/2012/08/01/compass-retina-display-mixin.html</loc>
     
     <lastmod>2012-08-01</lastmod>
@@ -25,7 +32,7 @@
   </url>
   
   <url>
-    <loc>http://http://tinyfactory.github.com/sass/2012/07/31/sass-sticky-footer-mixin+copy.html</loc>
+    <loc>http://http://tinyfactory.github.com/sass/2012/07/31/sass-sticky-footer-mixin.html</loc>
     
     <lastmod>2012-07-31</lastmod>
     
@@ -92,7 +99,7 @@
   <url>
     <loc>http://http://tinyfactory.github.com/archive.html</loc>
     
-    <lastmod>2012-08-02</lastmod>
+    <lastmod>2012-08-03</lastmod>
     
     
     
@@ -101,7 +108,7 @@
   <url>
     <loc>http://http://tinyfactory.github.com/index.html</loc>
     
-    <lastmod>2012-08-02</lastmod>
+    <lastmod>2012-08-03</lastmod>
     
     
     
@@ -110,7 +117,7 @@
   <url>
     <loc>http://http://tinyfactory.github.com/jobs.html</loc>
     
-    <lastmod>2012-08-02</lastmod>
+    <lastmod>2012-08-03</lastmod>
     
     
     

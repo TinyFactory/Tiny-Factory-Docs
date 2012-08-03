@@ -386,8 +386,25 @@ li div.highlight
 
 .archive-list
 
-	ul
-		margin-bottom: 30px
+	.col
+		width: 30%
+		margin-right: 5%
+		float: left
+		display: inline
+		padding-bottom: 50px
+		
+		+tablet-landscape-and-below
+			width: 45%
+			margin-right: 5%
+
+		+mobile-only
+			width: 100%
+
+		&:nth-child(3n+1)
+			margin-right: 0 !important
+
+			+tablet-landscape-and-below
+				margin-right: 0 !important
 
 	.archive-date
 		position: relative

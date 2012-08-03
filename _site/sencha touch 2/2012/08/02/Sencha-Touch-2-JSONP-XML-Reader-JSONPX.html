@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sencha Touch 2 Jsonp Xml Reader Jsonpx - Tiny Factory Docs</title>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" media="screen" href="http://localhost:4000/css/screen.css" type="text/css" />
+    
+    
+    <!-- google analytics async -->
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-20145334-1']);
+      _gaq.push(['_setDomainName', 'tinyfactory.co']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    
+    <script type="text/javascript" src="//use.typekit.net/xkw5qeu.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  </head>
+  <body>
+      <header>
+        <div id="logo">
+          <a href="http://localhost:4000"><img src="http://localhost:4000/images/logo.png" alt="Tiny Factory"/></a>
+        </div><!-- logo -->
+  
+        <nav class="mobile-nav">
+          <div class="mobile-band">
+            
+            
+              <a href="http://localhost:4000/archive.html">Archives</a>
+            
+          
+            
+          
+            
+              <a href="http://localhost:4000/jobs.html">Jobs</a>
+            
+          
+            <a class="category" href="#">Categories</a>
+            <ul>
+               
+                <li><a href="http://localhost:4000/archive.html#node.js">node.js</a></li> 
+               
+                <li><a href="http://localhost:4000/archive.html#git">git</a></li> 
+               
+                <li><a href="http://localhost:4000/archive.html#compass">compass</a></li> 
+               
+                <li><a href="http://localhost:4000/archive.html#centos">centos</a></li> 
+               
+                <li><a href="http://localhost:4000/archive.html#sencha touch 2">sencha touch 2</a></li> 
+               
+                <li><a href="http://localhost:4000/archive.html#sass">sass</a></li> 
+               
+                <li><a href="http://localhost:4000/archive.html#design">design</a></li> 
+              
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <div id="container">
+            <div id="container" class="single">
+
+  <div id="sidebar">
+    <div class="side-logo"><a href="http://localhost:4000"><img src="http://localhost:4000/images/logo.png" alt=""></a></div>
+      <div class="item">
+        <h3>Contribute</h3>
+        <div class="github-buttons">
+          <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=TinyFactory&repo=Tiny-Factory-Docs&type=watch&count=true"
+            allowtransparency="true" frameborder="0" scrolling="0" width="90px" height="20px"></iframe>
+            <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=TinyFactory&repo=Tiny-Factory-Docs&type=fork"
+            allowtransparency="true" frameborder="0" scrolling="0" width="53px" height="20px"></iframe>
+        </div>
+      </div><!-- item -->
+      <div class="item">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://localhost:4000">Home</a></li>
+          
+            
+              <li><a href="http://localhost:4000/archive.html">Archives</a></li>
+            
+          
+            
+          
+            
+              <li><a href="http://localhost:4000/jobs.html">Jobs</a></li>
+            
+          
+        </ul>
+      </div><!-- item -->
+      <div class="item">
+        <h3>Related</h3>
+        <ul>
+        
+          
+          
+            
+          
+                                 
+        
+          
+          
+            
+          
+                                 
+        
+          
+          
+            
+          
+                                 
+        
+          
+          
+            
+          
+                                 
+        
+          
+          
+            
+          
+                                 
+        
+          
+          
+            
+          
+                                 
+        
+          
+          
+            
+          
+                                 
+        
+          
+          
+            
+          
+                                 
+        
+          
+          
+            
+          
+                                 
+        
+          
+          
+            
+          
+                                 
+        
+         
+      </ul> 
+      </div><!-- item -->
+      <div class="item">
+        <h3>Most Recent</h3>
+        <ul class="posts">
+          
+            <li><a href="http://localhost:4000/sass/2012/08/02/sass-inline-media-queries.html">Sass Inline Media Queries</a></li>
+          
+            <li><a href="http://localhost:4000/compass/2012/08/01/compass-retina-display-mixin.html">Compass Retina Display Mixin</a></li>
+          
+            <li><a href="http://localhost:4000/sass/2012/07/31/sass-sticky-footer-mixin.html">Sass Sticky Footer Mixin</a></li>
+          
+            <li><a href="http://localhost:4000/compass/2012/07/31/Compass-Placeholder-Text-Mixin.html">Compass Placeholder Text Mixin</a></li>
+          
+            <li><a href="http://localhost:4000/design/2012/07/27/generate-an-icon-font.html">Generate An Icon Font</a></li>
+          
+        </ul>
+      </div>
+    </div><!-- sidebar -->
+
+      <article>
+          <div class="entry">
+            <h1>Sencha Touch 2 Jsonp Xml Reader Jsonpx</h1>
+            <p>I was integrating with a client&#8217;s API which used a blend of JSONP and XML. Sencha Touch 2 does not have a native way to parse this, so I extended XML reader to make a &#8216;jsonpx&#8217; reader. Hopefully this will help someone who might run into the same situation.</p>
+<div class='highlight'><pre><code class='javascript'><span class='nx'>Ext</span><span class='p'>.</span><span class='nx'>define</span><span class='p'>(</span><span class='s1'>&#39;app.util.JsonpX&#39;</span><span class='p'>,</span> <span class='p'>{</span>
+    <span class='nx'>extend</span><span class='o'>:</span> <span class='s1'>&#39;Ext.data.reader.Xml&#39;</span><span class='p'>,</span>
+
+    <span class='c1'>// Set the proxy alias</span>
+    <span class='nx'>alias</span><span class='o'>:</span> <span class='s1'>&#39;reader.jsonpx&#39;</span><span class='p'>,</span>
+
+	<span class='nx'>parseXmlString</span><span class='o'>:</span> <span class='kd'>function</span> <span class='p'>(</span><span class='nx'>sXml</span><span class='p'>)</span> <span class='p'>{</span>
+		<span class='c1'>// If the specified XML document content is a string...</span>
+		<span class='k'>if</span> <span class='p'>(</span><span class='k'>typeof</span> <span class='nx'>sXml</span> <span class='o'>==</span> <span class='s2'>&quot;string&quot;</span><span class='p'>)</span> <span class='p'>{</span>
+
+			<span class='c1'>// Create a reference to the XML document parser.</span>
+			<span class='kd'>var</span> <span class='nx'>oParser</span> <span class='o'>=</span> <span class='k'>new</span> <span class='nx'>DOMParser</span><span class='p'>();</span>
+
+			<span class='c1'>// Return the reference to the XML document.</span>
+			<span class='k'>return</span> <span class='nx'>oParser</span><span class='p'>.</span><span class='nx'>parseFromString</span><span class='p'>(</span><span class='nx'>sXml</span><span class='p'>,</span> <span class='s2'>&quot;text/xml&quot;</span><span class='p'>);</span>
+		<span class='p'>}</span>
+		<span class='k'>else</span> <span class='p'>{</span> <span class='c1'>// XML document content is NOT a string...</span>
+			<span class='c1'>// Return the specified XML document since it has already been parsed.</span>
+			<span class='k'>return</span> <span class='nx'>sXml</span><span class='p'>;</span>
+		<span class='p'>}</span>
+	<span class='p'>},</span>
+
+	<span class='cm'>/*</span>
+<span class='cm'>	* override</span>
+<span class='cm'>	* @param {string} response the response to parse</span>
+<span class='cm'>	* @return {xml} the XML data that has been parsed</span>
+<span class='cm'>	*/</span>
+	<span class='nx'>getResponseData</span><span class='o'>:</span> <span class='kd'>function</span><span class='p'>(</span><span class='nx'>response</span><span class='p'>){</span>
+		<span class='nx'>response</span> <span class='o'>=</span> <span class='k'>this</span><span class='p'>.</span><span class='nx'>parseXmlString</span><span class='p'>(</span><span class='nx'>response</span><span class='p'>);</span>
+		<span class='k'>return</span> <span class='nx'>response</span><span class='p'>;</span>
+	<span class='p'>}</span>
+<span class='p'>});</span>
+</code></pre>
+</div>
+<p>To use, place create a file <span>app root</span>/util/jsonpX.js</p>
+
+<p>Inside of the store you are using, make sure to include and declare it as the reader. For example:</p>
+<div class='highlight'><pre><code class='javascript'><span class='nx'>Ext</span><span class='p'>.</span><span class='nx'>define</span><span class='p'>(</span><span class='s1'>&#39;Year&#39;</span><span class='p'>,</span> <span class='p'>{</span>
+    <span class='nx'>extend</span><span class='o'>:</span> <span class='s1'>&#39;Ext.data.Model&#39;</span><span class='p'>,</span>
+    <span class='nx'>config</span><span class='o'>:</span> <span class='p'>{</span>
+        <span class='nx'>fields</span><span class='o'>:</span> <span class='p'>[</span>
+            <span class='p'>{</span><span class='nx'>name</span><span class='o'>:</span> <span class='s1'>&#39;id&#39;</span><span class='p'>,</span>  <span class='nx'>type</span><span class='o'>:</span> <span class='s1'>&#39;number&#39;</span><span class='p'>}</span>
+        <span class='p'>]</span>
+    <span class='p'>}</span>
+<span class='p'>});</span>
+
+<span class='nx'>Ext</span><span class='p'>.</span><span class='nx'>define</span><span class='p'>(</span><span class='s1'>&#39;smtp.store.PartsFilterYear&#39;</span><span class='p'>,</span> <span class='p'>{</span>
+	<span class='nx'>extend</span><span class='o'>:</span> <span class='s1'>&#39;Ext.data.Store&#39;</span><span class='p'>,</span>
+	<span class='nx'>requires</span><span class='o'>:</span> <span class='p'>[</span>
+		<span class='s1'>&#39;Ext.data.proxy.JsonP&#39;</span><span class='p'>,</span>
+		<span class='s1'>&#39;app.util.JsonpX&#39;</span>
+	<span class='p'>],</span>
+	<span class='nx'>config</span><span class='o'>:</span> <span class='p'>{</span>
+		<span class='nx'>autoLoad</span><span class='o'>:</span> <span class='kc'>true</span><span class='p'>,</span>
+		<span class='nx'>storeId</span><span class='o'>:</span> <span class='s1'>&#39;PartsFilterYear&#39;</span><span class='p'>,</span>	<span class='c1'>//	ref to bind inside views</span>
+		<span class='nx'>model</span><span class='o'>:</span> <span class='s1'>&#39;Year&#39;</span><span class='p'>,</span>
+		<span class='nx'>fields</span><span class='o'>:</span> <span class='p'>[</span><span class='s1'>&#39;id&#39;</span><span class='p'>],</span>
+		<span class='nx'>pageSize</span><span class='o'>:</span> <span class='mi'>100</span><span class='p'>,</span>
+		<span class='nx'>proxy</span><span class='o'>:</span> <span class='p'>{</span>
+			<span class='nx'>type</span><span class='o'>:</span> <span class='s1'>&#39;jsonp&#39;</span><span class='p'>,</span>
+			<span class='nx'>url</span><span class='o'>:</span> <span class='s1'>&#39;http://somedomain.com/someapi&#39;</span><span class='p'>,</span>
+			<span class='nx'>reader</span><span class='o'>:</span> <span class='p'>{</span>
+				<span class='nx'>type</span><span class='o'>:</span> <span class='s1'>&#39;jsonpx&#39;</span>   <span class='c1'>//declare reader</span>
+			<span class='p'>}</span>
+		<span class='p'>}</span>
+	<span class='p'>}</span>
+<span class='p'>});</span>
+</code></pre>
+</div>
+<p>This code was inspired by a piece a found for Sencha Touch 1 <a href='http://www.sencha.com/forum/showthread.php?12852-ScriptTagProxy-and-XML'>here</a></p>
+          </div>
+      </article>
+</div>
+
+      </div>
+
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
+      <script type="text/javascript" src="http://localhost:4000/js/slimScroll.min.js"></script>
+      <script type="text/javascript" src="http://localhost:4000/js/web.js"></script>
+  </body>
+</html>
