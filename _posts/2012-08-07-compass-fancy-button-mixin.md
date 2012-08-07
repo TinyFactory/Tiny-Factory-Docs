@@ -4,12 +4,7 @@ category: compass
 published: true
 ---
 
-Fancy-Compass-Button-Mixin
-==========================
-
-##Compass Button Mixin
-
-This mixin will create an animated hover and active state for your button ([View Example Here](##)).  Feel free to replace the variables or add them to a variable sheet inside of your project.  Add this mixin to your Compass project: 
+This mixin will create an animated hover and active state for your button ([View Example Here](##)) using css3 transitions.  Feel free to replace the variables or add them to a variable sheet inside of your project.  Add this mixin to your Compass project: 
 
 {% highlight scss %}
     /* =======================
