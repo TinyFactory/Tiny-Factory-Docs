@@ -4,7 +4,7 @@ category: compass
 published: true
 ---
 
-This mixin will create an animated hover and active state for your button ([View Example Here](##)) using css3 transitions.  Feel free to replace the variables or add them to a variable sheet inside of your project.  Add this mixin to your Compass project: 
+This mixin will create an animated hover and active state for your button ([View Example Here](http://dribbble.com/shots/678970-Compass-CSS3-Button-Mixin)) using css3 transitions.  Feel free to replace the variables or add them to a variable sheet inside of your project.  Add this mixin to your Compass project: 
 
 {% highlight scss %}
     /* =======================
