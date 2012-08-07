@@ -9,7 +9,19 @@ This compass mixin helps for applying high-resolution background images in your 
 Syntax:
 
 {% highlight scss %}
-    @mixin at2x($image_name, $w: auto, $h: auto, $extention: '.png') 
+// retina.scss
+// Defaults to png but can be overwritten to jpg or gif
+//$image name is equal to the image name with out it's extention - 'example.png' would be defined as 'example'
+
+@mixin at2x($image_name, $w: auto, $h: auto, $extention: '.png') {
+  background-image: image_url($image_name + $extention);
+  $x2img : $image_name + '@2x' + $extention;
+
+  @media all and (-webkit-min-device-pixel-ratio : 1.5) {
+    background-image: image_url($x2img);
+    background-size: $w $h;
+  }  
+}
 {% endhighlight %}
     
 **The extention defaults to PNG. To change this - define $extention when calling (ie jpg);**
