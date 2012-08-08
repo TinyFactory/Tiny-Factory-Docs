@@ -41,12 +41,12 @@
               <a href="{{site.url}}{{page.url}}">{{ page.title }}</a>
             {% endif %}
           {% endfor %}
-            <a class="category" href="#">Categories</a>
+            <!--a class="category" href="#">Categories</a>
             <ul>
               {% for category in site.categories %} 
                 <li><a href="{{site.url}}/archive.html#{{ category | first }}">{{ category | first }}</a></li> 
               {% endfor %} 
-            </ul>
+            </ul -->
           </div>
         </nav>
       </header>
@@ -65,14 +65,14 @@
                 {% endfor %}
               </ul>
             </div><!-- item -->
-            <div class="item categories">
+            <!--div class="item categories">
               <h3>Categories</h3>
               <ul> 
                   {% for category in site.categories %} 
                     <li><a href="{{ site.url }}/archive.html#{{ category | first }}">{{ category | first }}</a></li> 
                   {% endfor %} 
               </ul> 
-            </div><!-- item -->
+            </div -->
             <div class="item">
               <h3>Newest Docs</h3>
               <ul>

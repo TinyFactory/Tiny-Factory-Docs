@@ -42,13 +42,13 @@
               <a href="{{site.url}}{{page.url}}">{{ page.title }}</a>
             {% endif %}
           {% endfor %}
-            <a class="category" href="#">Categories</a>
+            <!--a class="category" href="#">Categories</a>
             <ul>
               {% for category in site.categories %} 
                 <li><a href="{{site.url}}/archive.html#{{ category | first }}">{{ category | first }}</a></li> 
               {% endfor %}
             </ul>
-          </div>
+          </div -->
         </nav>
       </header>
       <div id="container">
@@ -58,6 +58,7 @@
       <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
       <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
       <script type="text/javascript" src="{{site.url}}/js/slimScroll.min.js"></script>
+      <script type="text/javascript" src="{{site.url}}/js/masonry.js"></script>
       <script type="text/javascript" src="{{site.url}}/js/web.js"></script>
   </body>
 </html>

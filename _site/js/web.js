@@ -36,3 +36,10 @@ $(window).resize(function(){
 // Fire resize event to prevent duplicate
 // sidebars from showing.
 $(window).trigger('resize');
+
+$(function(){
+  $('.archive-list').masonry({
+    itemSelector : '.col',
+    columnWidth : 35
+  });
+});

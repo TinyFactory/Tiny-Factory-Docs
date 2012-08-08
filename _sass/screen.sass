@@ -321,8 +321,8 @@ strong
 			width: 60%
 
 		+mobile-only
-			width: auto
-			padding: 15px !important
+			width: 100%
+			padding: 10px !important
 
 		p
 			margin: 20px 0
@@ -385,26 +385,30 @@ li div.highlight
 	padding: 20px 20px 0 !important
 
 .archive-list
+	overflow: hidden
 
 	.col
-		width: 30%
-		margin-right: 5%
+		margin-bottom: 20px
 		float: left
-		display: inline
-		padding-bottom: 50px
+		width: 265px
+		padding: 15px
+		background: darken($body, 4%)
+		+border-radius(3px)
+
+		+tablet-landscape-only
+			width: 465px
 		
 		+tablet-landscape-and-below
-			width: 45%
-			margin-right: 5%
+			width: 95%
+			margin-right: 10px
 
 		+mobile-only
-			width: 100%
+			width: 350px
 
-		&:nth-child(3n+1)
-			margin-right: 0 !important
-
-			+tablet-landscape-and-below
-				margin-right: 0 !important
+		h2
+			border-bottom: 1px solid lighten($text, 35%)
+			line-height: 1em
+			margin-bottom: 10px
 
 	.archive-date
 		position: relative
@@ -461,6 +465,23 @@ li div.highlight
 
 				&:hover
 					border-bottom: none !important
+
+.masonry, .masonry .masonry-brick
+	+transition(all 500ms cubic-bezier(0.000, 0.160, 0.070, 0.995))
+
+.masonry
+	-webkit-transition-property: height, width
+	-moz-transition-property: height, width
+	-ms-transition-property: height, width
+	-o-transition-property: height, width
+	transition-property: height, width
+
+.masonry, .masonry-brick
+	-webkit-transition-property: left, right, top
+	-moz-transition-property: left, right, top
+	-ms-transition-property: left, right, top
+	-o-transition-property: left, right, top
+	transition-property: left, right, top
 
 ::selection
 	background: $red

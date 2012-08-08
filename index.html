@@ -16,30 +16,39 @@ id: home
       {% endfor %}
     </ul>
   </div><!-- item -->
-  <div class="item categories">
+  <!--div class="item categories">
     <h3>Categories</h3>
     <ul> 
         {% for category in site.categories %} 
           <li><a href="{{site.url}}/archive.html#{{ category | first }}">{{ category | first }}</a></li> 
         {% endfor %} 
     </ul> 
-  </div><!-- item -->
+  </div -->
   <div class="item">
     <h3>Newest Docs</h3>
     <ul>
-      {% for post in site.posts limit:5 %}
+      {% for post in site.posts limit:8 %}
         <li><a href="{{site.url}}{{ post.url }}">{{ post.title }}</a></li>
       {% endfor %}
     </ul>
   </div><!-- item -->
 </div><!-- sidebar -->
 
-  <ul class="articles">
-    {% for post in site.posts limit:8%}
-      <li>
-        <a href="{{site.url}}{{post.url}}">
-          {{ post.title }} <span>{{ post.date | date: "%m.%d.%y" }}</span>
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
+  <article>
+      <div class="entry">
+      <div class="archive-list">
+        {% for category in site.categories %} 
+        <div class="col">
+          <h2 id="{{ category | first }}">{{ category | first }}</h2>
+            <ul>
+              {% for posts in category %}
+                {% for post in posts %} 
+                  <li><a href="{{site.url}}{{ post.url }}">{{ post.title }}</a> </li>
+                {% endfor %} 
+              {% endfor %} 
+            </ul>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </article>

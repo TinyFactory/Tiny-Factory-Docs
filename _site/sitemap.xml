@@ -4,7 +4,7 @@
   <!--  Homepage -->
   <url>
     <loc>http://http://tinyfactory.github.com/</loc>
-    <lastmod>2012-08-03</lastmod>
+    <lastmod>2012-08-08</lastmod>
     <changefreq>daily</changefreq>
 		<priority>1.0</priority>
   </url>
@@ -97,18 +97,9 @@
 
   
   <url>
-    <loc>http://http://tinyfactory.github.com/archive.html</loc>
-    
-    <lastmod>2012-08-03</lastmod>
-    
-    
-    
-  </url>
-  
-  <url>
     <loc>http://http://tinyfactory.github.com/index.html</loc>
     
-    <lastmod>2012-08-03</lastmod>
+    <lastmod>2012-08-08</lastmod>
     
     
     
@@ -117,7 +108,7 @@
   <url>
     <loc>http://http://tinyfactory.github.com/jobs.html</loc>
     
-    <lastmod>2012-08-03</lastmod>
+    <lastmod>2012-08-08</lastmod>
     
     
     
