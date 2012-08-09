@@ -2,6 +2,7 @@
 layout: post
 category: compass
 published: true
+author: michael
 ---
 
 Simple Mixin For Compass Placeholder Text

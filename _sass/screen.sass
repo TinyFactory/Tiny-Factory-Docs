@@ -6,6 +6,12 @@
 @import mixins/queries
 @import mixins/syntax
 
+@font-face
+	font-family: "Icons"
+	src: $icon-eot, $icon-woff, $icon-svg, $icon-ttf 
+	font-weight: normal
+	font-style: normal
+
 body
 	background: $body
 	+regular
@@ -414,6 +420,94 @@ li div.highlight
 		position: relative
 		left: 15px
 		color: darken($body, 15%)
+
+.meta
+	margin-top: 50px
+	+gotham-medium
+
+	a
+		font-family: "proxima-nova", sans-serif !important
+
+		&::before
+			font-family: "Icons" !important
+			font-weight: normal
+
+	h1
+		+gotham-light
+		font-size: 35px
+		border-bottom: 1px solid $text
+		line-height: 1.2em
+		margin-bottom: 20px
+
+	.gravatar
+		float: left
+		diplay: inline
+		margin-right: 15px
+		+border-radius(5px !important)
+
+	.author
+		font-size: 20px
+		+gotham-medium
+		display: block
+
+	.website
+		border-bottom: none
+		position: relative !important
+		top: 2px !important
+		font-size: 14px !important
+
+		&:hover
+			border-bottom: none !important
+			color: darken($red, 15%) !important
+
+	.profiles
+		margin-top: 7px
+	
+		li
+			+inline-block
+			margin-right: 20px
+			color: #333333
+			
+			a
+				font-size: 15px !important
+				font-weight: 400 !important
+				color: #333 !important
+				border-bottom: none
+
+				&:hover
+					border-bottom: none !important
+					color: $red !important
+	
+			&.twitter::before
+				content: "4"
+				font-family: "Icons" !important
+				font-weight: normal
+				font-size: 22px
+				color: #333333
+				position: relative
+				top: 2px
+				padding-right: 2px
+
+			&.dribbble::before
+				content: "3"
+				font-family: "Icons" !important
+				font-weight: normal
+				font-size: 22px
+				color: #333333
+				position: relative
+				top: 2px
+				padding-right: 2px
+
+			&.github::before
+				content: "2"
+				font-family: "Icons" !important
+				font-weight: normal
+				font-size: 22px
+				color: #333333
+				position: relative
+				top: 2px
+				padding-right: 2px
+	
 
 // =============== Mobile =============== //
 

@@ -2,6 +2,7 @@
 layout: post
 title: Changing the head on a Git Repo
 category: git
+author: michael
 ---
 
 If you want the default branch from a `git clone` to be something besides `master`, use the following steps:

@@ -2,6 +2,7 @@
 layout: post
 category: sass
 published: true
+author: aaron
 ---
 
 With SASS 3.2 we get inline media queries. Compass allows this if you're using the alpha build. At of the date of this doc, `0.12.2` is the current version.

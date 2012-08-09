@@ -2,6 +2,7 @@
 layout: post
 published: true
 category: node.js
+author: justen
 ---
 
 ## Create the EC2 Instance

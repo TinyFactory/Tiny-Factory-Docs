@@ -2,6 +2,7 @@
 layout: post
 category: centos
 published: true
+author: alex
 ---
 
 1. Install **vsftpd**

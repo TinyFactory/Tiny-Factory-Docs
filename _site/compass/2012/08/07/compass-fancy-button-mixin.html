@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Compass Fancy Button Mixin - Tiny Factory Docs</title>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" media="screen" href="http://localhost:4000/css/screen.css" type="text/css" />
+    
+    
+    <!-- google analytics async -->
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-20145334-1']);
+      _gaq.push(['_setDomainName', 'tinyfactory.co']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    
+    <script type="text/javascript" src="//use.typekit.net/xkw5qeu.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  </head>
+  <body>
+      <header>
+        <div id="logo">
+          <a href="http://localhost:4000"><img src="http://localhost:4000/images/logo.png" alt="Tiny Factory"/></a>
+        </div><!-- logo -->
+  
+        <nav class="mobile-nav">
+          <div class="mobile-band">
+            
+            
+          
+            
+              <a href="http://localhost:4000/jobs.html">Jobs</a>
+            
+          
+            <!--a class="category" href="#">Categories</a>
+            <ul>
+               
+                <li><a href="http://localhost:4000/archive.html#compass">compass</a></li> 
+               
+                <li><a href="http://localhost:4000/archive.html#sencha touch 2">sencha touch 2</a></li> 
+               
+                <li><a href="http://localhost:4000/archive.html#node.js">node.js</a></li> 
+               
+                <li><a href="http://localhost:4000/archive.html#centos">centos</a></li> 
+               
+                <li><a href="http://localhost:4000/archive.html#design">design</a></li> 
+               
+                <li><a href="http://localhost:4000/archive.html#sass">sass</a></li> 
+               
+                <li><a href="http://localhost:4000/archive.html#git">git</a></li> 
+              
+            </ul>
+          </div -->
+        </nav>
+      </header>
+      <div id="container">
+            <div id="container" class="single">
+
+  <div id="sidebar">
+    <div class="side-logo"><a href="http://localhost:4000"><img src="http://localhost:4000/images/logo.png" alt=""></a></div>
+      <div class="item">
+        <h3>Contribute</h3>
+        <div class="github-buttons">
+          <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=TinyFactory&repo=Tiny-Factory-Docs&type=watch&count=true"
+            allowtransparency="true" frameborder="0" scrolling="0" width="90px" height="20px"></iframe>
+            <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=TinyFactory&repo=Tiny-Factory-Docs&type=fork"
+            allowtransparency="true" frameborder="0" scrolling="0" width="53px" height="20px"></iframe>
+        </div>
+      </div><!-- item -->
+      <div class="item">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://localhost:4000">Home</a></li>
+          
+            
+          
+            
+              <li><a href="http://localhost:4000/jobs.html">Jobs</a></li>
+            
+          
+        </ul>
+      </div><!-- item -->
+      <div class="item">
+        <h3>Related</h3>
+        <ul>
+        
+          
+          
+            
+          
+                                 
+        
+          
+          
+            
+          
+                                 
+        
+          
+          
+            
+              
+            
+          
+          
+            <li><a href="http://localhost:4000/compass/2012/08/01/compass-retina-display-mixin.html">Compass Retina Display Mixin</a></li>
+                                 
+        
+          
+          
+            
+          
+                                 
+        
+          
+          
+            
+              
+            
+          
+          
+            <li><a href="http://localhost:4000/compass/2012/07/31/Compass-Placeholder-Text-Mixin.html">Compass Placeholder Text Mixin</a></li>
+                                 
+        
+          
+          
+            
+          
+                                 
+        
+          
+          
+            
+          
+                                 
+        
+          
+          
+            
+          
+                                 
+        
+          
+          
+            
+          
+                                 
+        
+          
+          
+            
+          
+                                 
+        
+         
+      </ul> 
+      </div><!-- item -->
+      <div class="item">
+        <h3>Most Recent</h3>
+        <ul class="posts">
+          
+            <li><a href="http://localhost:4000/sass/2012/08/02/sass-inline-media-queries.html">Sass Inline Media Queries</a></li>
+          
+            <li><a href="http://localhost:4000/sencha touch 2/2012/08/02/Sencha-Touch-2-JSONP-XML-Reader-JSONPX.html">Sencha Touch 2 Jsonp Xml Reader Jsonpx</a></li>
+          
+            <li><a href="http://localhost:4000/compass/2012/08/01/compass-retina-display-mixin.html">Compass Retina Display Mixin</a></li>
+          
+            <li><a href="http://localhost:4000/sass/2012/07/31/sass-sticky-footer-mixin.html">Sass Sticky Footer Mixin</a></li>
+          
+            <li><a href="http://localhost:4000/compass/2012/07/31/Compass-Placeholder-Text-Mixin.html">Compass Placeholder Text Mixin</a></li>
+          
+        </ul>
+      </div>
+    </div><!-- sidebar -->
+
+      <article>
+          <div class="entry">
+            <h1>Compass Fancy Button Mixin</h1>
+            <p>This mixin will create an animated hover and active state for your button (<a href='http://dribbble.com/shots/678970-Compass-CSS3-Button-Mixin'>View Example Here</a>) using css3 transitions. Feel free to replace the variables or add them to a variable sheet inside of your project. Add this mixin to your Compass project:</p>
+<div class='highlight'><pre><code class='scss'>    <span class='cm'>/* =======================</span>
+<span class='cm'>    Variables</span>
+<span class='cm'>    ========================*/</span>
+    <span class='nv'>$baseColor</span><span class='o'>:</span>    <span class='mh'>#E0E0E0</span><span class='p'>;</span>
+    <span class='nv'>$textColor</span><span class='o'>:</span>    <span class='nf'>darken</span><span class='p'>(</span><span class='nv'>$baseColor</span><span class='o'>,</span> <span class='mi'>50</span><span class='kt'>%</span><span class='p'>);</span>
+    <span class='nv'>$fontSize</span><span class='o'>:</span>     <span class='mf'>.8</span><span class='kt'>em</span><span class='p'>;</span>
+
+    <span class='k'>@mixin</span><span class='nf'> btn</span><span class='p'>()</span> <span class='p'>{</span>
+		<span class='na'>cursor</span><span class='o'>:</span> <span class='no'>pointer</span><span class='p'>;</span>
+		<span class='nt'>display</span><span class='nd'>:inline-block</span><span class='o'>;</span>
+		<span class='nt'>padding</span><span class='nd'>:</span> <span class='err'>$</span><span class='nt'>fontSize</span> <span class='err'>$</span><span class='nt'>fontSize</span> <span class='o'>+</span> <span class='o'>(</span><span class='err'>$</span><span class='nt'>fontSize</span> <span class='o'>/</span> <span class='nt'>3</span><span class='o'>);</span>
+		<span class='nt'>font-size</span><span class='nd'>:</span> <span class='err'>$</span><span class='nt'>fontSize</span><span class='o'>;</span>
+		<span class='nt'>border</span><span class='nd'>:1px</span> <span class='nt'>solid</span> <span class='nt'>darken</span><span class='o'>(</span><span class='err'>$</span><span class='nt'>baseColor</span><span class='o'>,</span> <span class='nt'>20</span><span class='err'>%</span><span class='o'>);</span>
+		<span class='o'>@</span><span class='nt'>include</span> <span class='nt'>border-radius</span><span class='o'>(</span><span class='nt'>2px</span><span class='o'>);</span>
+		<span class='o'>@</span><span class='nt'>include</span> <span class='nt'>box-shadow</span><span class='o'>(</span><span class='nt'>0</span> <span class='nt'>1px</span> <span class='nt'>0</span> <span class='nn'>#fff</span><span class='o'>);</span>
+		<span class='o'>@</span><span class='nt'>include</span> <span class='nt'>text-shadow</span><span class='o'>(</span><span class='nt'>0</span> <span class='nt'>1px</span> <span class='nt'>0</span> <span class='nn'>#fff</span><span class='o'>);</span>
+		<span class='o'>@</span><span class='nt'>include</span> <span class='nt'>transition</span><span class='o'>(</span><span class='nt'>all</span> <span class='nc'>.1s</span> <span class='nt'>ease-in-out</span><span class='o'>);</span>
+		<span class='nt'>color</span><span class='nd'>:</span><span class='err'>$</span><span class='nt'>textColor</span><span class='o'>;</span>
+		<span class='k'>&amp;</span><span class='nd'>:hover</span> <span class='p'>{</span>
+				<span class='na'>border-color</span><span class='o'>:</span> <span class='nf'>darken</span><span class='p'>(</span><span class='nv'>$baseColor</span><span class='o'>,</span> <span class='mi'>30</span><span class='kt'>%</span><span class='p'>);</span>
+				<span class='k'>@include</span><span class='nd'> background</span><span class='p'>(</span><span class='nf'>linear-gradient</span><span class='p'>(</span><span class='no'>top</span><span class='o'>,</span> <span class='nb'>white</span><span class='o'>,</span> <span class='nf'>darken</span><span class='p'>(</span><span class='nv'>$baseColor</span><span class='o'>,</span> <span class='mi'>10</span><span class='kt'>%</span><span class='p'>)));</span>
+				<span class='k'>@include</span><span class='nd'> box-shadow</span><span class='p'>(</span><span class='mi'>0</span> <span class='mi'>1</span><span class='kt'>px</span> <span class='mi'>2</span><span class='kt'>px</span> <span class='nf'>rgba</span><span class='p'>(</span><span class='mi'>0</span><span class='o'>,</span> <span class='mi'>0</span><span class='o'>,</span> <span class='mi'>0</span><span class='o'>,</span> <span class='mi'>0</span><span class='mf'>.25</span><span class='p'>)</span><span class='o'>,</span> <span class='no'>inset</span> <span class='mi'>0</span> <span class='mi'>0</span> <span class='mi'>2</span><span class='kt'>px</span> <span class='nb'>white</span><span class='p'>);</span>
+				<span class='na'>text-decoration</span><span class='o'>:</span> <span class='no'>none</span><span class='p'>;</span>
+		<span class='p'>}</span>
+		<span class='k'>&amp;</span><span class='nd'>:active</span> <span class='p'>{</span> <span class='c1'>// Adds Styles When Button Is Pushed</span>
+				<span class='k'>@include</span><span class='nd'> background</span><span class='p'>(</span><span class='nf'>linear-gradient</span><span class='p'>(</span><span class='no'>top</span><span class='o'>,</span> <span class='nf'>darken</span><span class='p'>(</span><span class='nv'>$baseColor</span><span class='o'>,</span> <span class='mi'>5</span><span class='kt'>%</span><span class='p'>)</span><span class='o'>,</span> <span class='nv'>$baseColor</span><span class='p'>));</span>
+				<span class='k'>@include</span><span class='nd'> box-shadow</span><span class='p'>(</span><span class='mi'>0</span> <span class='mi'>1</span><span class='kt'>px</span> <span class='mi'>0</span> <span class='mh'>#fff</span><span class='o'>,</span> <span class='no'>inset</span> <span class='mi'>0</span> <span class='mi'>1</span><span class='kt'>px</span> <span class='mi'>2</span><span class='kt'>px</span> <span class='nf'>darken</span><span class='p'>(</span><span class='nv'>$baseColor</span><span class='o'>,</span> <span class='mi'>25</span><span class='kt'>%</span><span class='p'>));</span>
+				<span class='na'>border-color</span><span class='o'>:</span> <span class='nf'>darken</span><span class='p'>(</span><span class='nv'>$baseColor</span><span class='o'>,</span> <span class='mi'>30</span><span class='kt'>%</span><span class='p'>);</span>
+		<span class='p'>}</span>
+	<span class='p'>}</span>
+</code></pre>
+</div>
+<p>In your style sheet add:</p>
+<div class='highlight'><pre><code class='scss'>    <span class='nc'>.btn</span> <span class='p'>{</span>
+    	<span class='k'>@include</span><span class='nd'> btn</span><span class='p'>();</span>
+    <span class='p'>}</span>
+</code></pre>
+</div>
+<p>and it will compile to:</p>
+<div class='highlight'><pre><code class='scss'>    <span class='nc'>.btn</span> <span class='p'>{</span>
+      <span class='na'>cursor</span><span class='o'>:</span> <span class='no'>pointer</span><span class='p'>;</span>
+      <span class='na'>display</span><span class='o'>:</span> <span class='no'>inline</span><span class='o'>-</span><span class='no'>block</span><span class='p'>;</span>
+      <span class='na'>padding</span><span class='o'>:</span> <span class='mi'>0</span><span class='mf'>.8</span><span class='kt'>em</span> <span class='mi'>1</span><span class='mf'>.06667</span><span class='kt'>em</span><span class='p'>;</span>
+      <span class='na'>font-size</span><span class='o'>:</span> <span class='mi'>0</span><span class='mf'>.8</span><span class='kt'>em</span><span class='p'>;</span>
+      <span class='na'>border</span><span class='o'>:</span> <span class='mi'>1</span><span class='kt'>px</span> <span class='no'>solid</span> <span class='mh'>#adadad</span><span class='p'>;</span>
+      <span class='na'>-webkit-border-radius</span><span class='o'>:</span> <span class='mi'>2</span><span class='kt'>px</span><span class='p'>;</span>
+      <span class='na'>-moz-border-radius</span><span class='o'>:</span> <span class='mi'>2</span><span class='kt'>px</span><span class='p'>;</span>
+      <span class='na'>-ms-border-radius</span><span class='o'>:</span> <span class='mi'>2</span><span class='kt'>px</span><span class='p'>;</span>
+      <span class='na'>-o-border-radius</span><span class='o'>:</span> <span class='mi'>2</span><span class='kt'>px</span><span class='p'>;</span>
+      <span class='na'>border-radius</span><span class='o'>:</span> <span class='mi'>2</span><span class='kt'>px</span><span class='p'>;</span>
+      <span class='na'>-webkit-box-shadow</span><span class='o'>:</span> <span class='mi'>0</span> <span class='mi'>1</span><span class='kt'>px</span> <span class='mi'>0</span> <span class='nb'>white</span><span class='p'>;</span>
+      <span class='na'>-moz-box-shadow</span><span class='o'>:</span> <span class='mi'>0</span> <span class='mi'>1</span><span class='kt'>px</span> <span class='mi'>0</span> <span class='nb'>white</span><span class='p'>;</span>
+      <span class='na'>box-shadow</span><span class='o'>:</span> <span class='mi'>0</span> <span class='mi'>1</span><span class='kt'>px</span> <span class='mi'>0</span> <span class='nb'>white</span><span class='p'>;</span>
+      <span class='na'>text-shadow</span><span class='o'>:</span> <span class='mi'>0</span> <span class='mi'>1</span><span class='kt'>px</span> <span class='mi'>0</span> <span class='nb'>white</span><span class='p'>;</span>
+      <span class='na'>-webkit-transition</span><span class='o'>:</span> <span class='n'>all</span> <span class='mi'>0</span><span class='mf'>.1</span><span class='kt'>s</span> <span class='n'>ease-in-out</span><span class='p'>;</span>
+      <span class='na'>-moz-transition</span><span class='o'>:</span> <span class='n'>all</span> <span class='mi'>0</span><span class='mf'>.1</span><span class='kt'>s</span> <span class='n'>ease-in-out</span><span class='p'>;</span>
+      <span class='na'>-ms-transition</span><span class='o'>:</span> <span class='n'>all</span> <span class='mi'>0</span><span class='mf'>.1</span><span class='kt'>s</span> <span class='n'>ease-in-out</span><span class='p'>;</span>
+      <span class='na'>-o-transition</span><span class='o'>:</span> <span class='n'>all</span> <span class='mi'>0</span><span class='mf'>.1</span><span class='kt'>s</span> <span class='n'>ease-in-out</span><span class='p'>;</span>
+      <span class='na'>transition</span><span class='o'>:</span> <span class='n'>all</span> <span class='mi'>0</span><span class='mf'>.1</span><span class='kt'>s</span> <span class='n'>ease-in-out</span><span class='p'>;</span>
+      <span class='na'>color</span><span class='o'>:</span> <span class='mh'>#616161</span><span class='p'>;</span>
+    <span class='p'>}</span>
+    <span class='nc'>.btn</span><span class='nd'>:hover</span> <span class='p'>{</span>
+      <span class='na'>border-color</span><span class='o'>:</span> <span class='mh'>#949494</span><span class='p'>;</span>
+      <span class='na'>background</span><span class='o'>:</span> <span class='nf'>-webkit-gradient</span><span class='p'>(</span><span class='n'>linear</span><span class='o'>,</span> <span class='mi'>50</span><span class='kt'>%</span> <span class='mi'>0</span><span class='kt'>%</span><span class='o'>,</span> <span class='mi'>50</span><span class='kt'>%</span> <span class='mi'>100</span><span class='kt'>%</span><span class='o'>,</span> <span class='nf'>color-stop</span><span class='p'>(</span><span class='mi'>0</span><span class='kt'>%</span><span class='o'>,</span> <span class='mh'>#ffffff</span><span class='p'>)</span><span class='o'>,</span> <span class='nf'>color-stop</span><span class='p'>(</span><span class='mi'>100</span><span class='kt'>%</span><span class='o'>,</span> <span class='mh'>#c7c7c7</span><span class='p'>));</span>
+      <span class='na'>background</span><span class='o'>:</span> <span class='nf'>-webkit-linear-gradient</span><span class='p'>(</span><span class='no'>top</span><span class='o'>,</span> <span class='mh'>#ffffff</span><span class='o'>,</span> <span class='mh'>#c7c7c7</span><span class='p'>);</span>
+      <span class='na'>background</span><span class='o'>:</span> <span class='nf'>-moz-linear-gradient</span><span class='p'>(</span><span class='no'>top</span><span class='o'>,</span> <span class='mh'>#ffffff</span><span class='o'>,</span> <span class='mh'>#c7c7c7</span><span class='p'>);</span>
+      <span class='na'>background</span><span class='o'>:</span> <span class='nf'>-o-linear-gradient</span><span class='p'>(</span><span class='no'>top</span><span class='o'>,</span> <span class='mh'>#ffffff</span><span class='o'>,</span> <span class='mh'>#c7c7c7</span><span class='p'>);</span>
+      <span class='na'>background</span><span class='o'>:</span> <span class='nf'>-ms-linear-gradient</span><span class='p'>(</span><span class='no'>top</span><span class='o'>,</span> <span class='mh'>#ffffff</span><span class='o'>,</span> <span class='mh'>#c7c7c7</span><span class='p'>);</span>
+      <span class='na'>background</span><span class='o'>:</span> <span class='nf'>linear-gradient</span><span class='p'>(</span><span class='no'>top</span><span class='o'>,</span> <span class='mh'>#ffffff</span><span class='o'>,</span> <span class='mh'>#c7c7c7</span><span class='p'>);</span>
+      <span class='na'>-webkit-box-shadow</span><span class='o'>:</span> <span class='mi'>0</span> <span class='mi'>1</span><span class='kt'>px</span> <span class='mi'>2</span><span class='kt'>px</span> <span class='nf'>rgba</span><span class='p'>(</span><span class='mi'>0</span><span class='o'>,</span> <span class='mi'>0</span><span class='o'>,</span> <span class='mi'>0</span><span class='o'>,</span> <span class='mi'>0</span><span class='mf'>.25</span><span class='p'>)</span><span class='o'>,</span> <span class='no'>inset</span> <span class='mi'>0</span> <span class='mi'>0</span> <span class='mi'>2</span><span class='kt'>px</span> <span class='nb'>white</span><span class='p'>;</span>
+      <span class='na'>-moz-box-shadow</span><span class='o'>:</span> <span class='mi'>0</span> <span class='mi'>1</span><span class='kt'>px</span> <span class='mi'>2</span><span class='kt'>px</span> <span class='nf'>rgba</span><span class='p'>(</span><span class='mi'>0</span><span class='o'>,</span> <span class='mi'>0</span><span class='o'>,</span> <span class='mi'>0</span><span class='o'>,</span> <span class='mi'>0</span><span class='mf'>.25</span><span class='p'>)</span><span class='o'>,</span> <span class='no'>inset</span> <span class='mi'>0</span> <span class='mi'>0</span> <span class='mi'>2</span><span class='kt'>px</span> <span class='nb'>white</span><span class='p'>;</span>
+      <span class='na'>box-shadow</span><span class='o'>:</span> <span class='mi'>0</span> <span class='mi'>1</span><span class='kt'>px</span> <span class='mi'>2</span><span class='kt'>px</span> <span class='nf'>rgba</span><span class='p'>(</span><span class='mi'>0</span><span class='o'>,</span> <span class='mi'>0</span><span class='o'>,</span> <span class='mi'>0</span><span class='o'>,</span> <span class='mi'>0</span><span class='mf'>.25</span><span class='p'>)</span><span class='o'>,</span> <span class='no'>inset</span> <span class='mi'>0</span> <span class='mi'>0</span> <span class='mi'>2</span><span class='kt'>px</span> <span class='nb'>white</span><span class='p'>;</span>
+      <span class='na'>text-decoration</span><span class='o'>:</span> <span class='no'>none</span><span class='p'>;</span>
+    <span class='p'>}</span>
+    <span class='nc'>.btn</span><span class='nd'>:active</span> <span class='p'>{</span>
+      <span class='na'>background</span><span class='o'>:</span> <span class='nf'>-webkit-gradient</span><span class='p'>(</span><span class='n'>linear</span><span class='o'>,</span> <span class='mi'>50</span><span class='kt'>%</span> <span class='mi'>0</span><span class='kt'>%</span><span class='o'>,</span> <span class='mi'>50</span><span class='kt'>%</span> <span class='mi'>100</span><span class='kt'>%</span><span class='o'>,</span> <span class='nf'>color-stop</span><span class='p'>(</span><span class='mi'>0</span><span class='kt'>%</span><span class='o'>,</span> <span class='mh'>#d3d3d3</span><span class='p'>)</span><span class='o'>,</span> <span class='nf'>color-stop</span><span class='p'>(</span><span class='mi'>100</span><span class='kt'>%</span><span class='o'>,</span> <span class='mh'>#e0e0e0</span><span class='p'>));</span>
+      <span class='na'>background</span><span class='o'>:</span> <span class='nf'>-webkit-linear-gradient</span><span class='p'>(</span><span class='no'>top</span><span class='o'>,</span> <span class='mh'>#d3d3d3</span><span class='o'>,</span> <span class='mh'>#e0e0e0</span><span class='p'>);</span>
+      <span class='na'>background</span><span class='o'>:</span> <span class='nf'>-moz-linear-gradient</span><span class='p'>(</span><span class='no'>top</span><span class='o'>,</span> <span class='mh'>#d3d3d3</span><span class='o'>,</span> <span class='mh'>#e0e0e0</span><span class='p'>);</span>
+      <span class='na'>background</span><span class='o'>:</span> <span class='nf'>-o-linear-gradient</span><span class='p'>(</span><span class='no'>top</span><span class='o'>,</span> <span class='mh'>#d3d3d3</span><span class='o'>,</span> <span class='mh'>#e0e0e0</span><span class='p'>);</span>
+      <span class='na'>background</span><span class='o'>:</span> <span class='nf'>-ms-linear-gradient</span><span class='p'>(</span><span class='no'>top</span><span class='o'>,</span> <span class='mh'>#d3d3d3</span><span class='o'>,</span> <span class='mh'>#e0e0e0</span><span class='p'>);</span>
+      <span class='na'>background</span><span class='o'>:</span> <span class='nf'>linear-gradient</span><span class='p'>(</span><span class='no'>top</span><span class='o'>,</span> <span class='mh'>#d3d3d3</span><span class='o'>,</span> <span class='mh'>#e0e0e0</span><span class='p'>);</span>
+      <span class='na'>-webkit-box-shadow</span><span class='o'>:</span> <span class='mi'>0</span> <span class='mi'>1</span><span class='kt'>px</span> <span class='mi'>0</span> <span class='nb'>white</span><span class='o'>,</span> <span class='no'>inset</span> <span class='mi'>0</span> <span class='mi'>1</span><span class='kt'>px</span> <span class='mi'>2</span><span class='kt'>px</span> <span class='mh'>#a0a0a0</span><span class='p'>;</span>
+      <span class='na'>-moz-box-shadow</span><span class='o'>:</span> <span class='mi'>0</span> <span class='mi'>1</span><span class='kt'>px</span> <span class='mi'>0</span> <span class='nb'>white</span><span class='o'>,</span> <span class='no'>inset</span> <span class='mi'>0</span> <span class='mi'>1</span><span class='kt'>px</span> <span class='mi'>2</span><span class='kt'>px</span> <span class='mh'>#a0a0a0</span><span class='p'>;</span>
+      <span class='na'>box-shadow</span><span class='o'>:</span> <span class='mi'>0</span> <span class='mi'>1</span><span class='kt'>px</span> <span class='mi'>0</span> <span class='nb'>white</span><span class='o'>,</span> <span class='no'>inset</span> <span class='mi'>0</span> <span class='mi'>1</span><span class='kt'>px</span> <span class='mi'>2</span><span class='kt'>px</span> <span class='mh'>#a0a0a0</span><span class='p'>;</span>
+      <span class='na'>border-color</span><span class='o'>:</span> <span class='mh'>#949494</span><span class='p'>;</span>
+    <span class='p'>}</span>
+</code></pre>
+</div>
+<p>Fork the repo on <a href='https://github.com/michaelsacca/Fancy-Compass-Button-Mixin'>github</a> and create your own.</p>
+
+            
+              <div class="meta">
+                <h1>This article was carefully crafted by...</h1>
+                <img class="gravatar" src="http://www.gravatar.com/avatar/7a1dc0efd8eba2f7c5932b5dffbca642?s=64">
+                <span class="author">Michael Sacca</span>
+                <a class="website" href="http://twitter.com/michaelsacca" target="_blank">http://www.tinyfactory.co</a>
+                  <ul class="profiles">
+                    <li class="twitter"><a href="http://twitter.com/michaelsacca" target="_blank">@michaelsacca</a></li>
+                    <li class="dribbble"><a href="http://dribbble.com/michaelsacca" target="_blank">dribbble</a></li>
+                    <li class="github"><a href="http://github.com/michaelsacca" target="_blank">github</a></li>
+                  </ul>
+              </div>
+          </div>
+      </article>
+</div>
+
+      </div>
+
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
+      <script type="text/javascript" src="http://localhost:4000/js/slimScroll.min.js"></script>
+      <script type="text/javascript" src="http://localhost:4000/js/masonry.js"></script>
+      <script type="text/javascript" src="http://localhost:4000/js/web.js"></script>
+  </body>
+</html>

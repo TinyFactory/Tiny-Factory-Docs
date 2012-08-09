@@ -2,6 +2,7 @@
 layout: post
 category: design
 published: true
+author: aaron
 ---
 
 We're going to use an awesome tool called [Hieroglyph](https://github.com/averyvery/hieroglyph). There's already a pretty intuitive readme file in the repo, but I hope to elaborate a little more on what was provided.

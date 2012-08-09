@@ -2,6 +2,7 @@
 layout: post
 category: sass
 published: true
+author: michael
 ---
 
 Compass has a really nice [sticky footer](http://compass-style.org/reference/compass/layout/sticky_footer/) mixin built into the library but we've been writing our own site in vanilla SASS so I converted an out of date SASS mixin to it's current syntax.

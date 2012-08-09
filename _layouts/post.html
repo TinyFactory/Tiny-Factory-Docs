@@ -57,6 +57,19 @@ layout: default
           <div class="entry">
             {% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
             {{ content }}
+
+            {% assign author = site.authors[page.author] %}
+              <div class="meta">
+                <h1>This article was carefully crafted by...</h1>
+                <img class="gravatar" src="http://www.gravatar.com/avatar/{{ author.gravatar }}?s=64">
+                <span class="author">{{ author.display_name }}</span>
+                <a class="website" href="http://twitter.com/{{ author.twitter }}" target="_blank">{{ author.web }}</a>
+                  <ul class="profiles">
+                    {% if author.twitter %}<li class="twitter"><a href="http://twitter.com/{{ author.twitter }}" target="_blank">@{{ author.twitter }}</a></li>{% endif %}
+                    {% if author.dribbble %}<li class="dribbble"><a href="http://dribbble.com/{{ author.dribbble }}" target="_blank">dribbble</a></li>{% endif %}
+                    {% if author.github %}<li class="github"><a href="http://github.com/{{ author.github }}" target="_blank">github</a></li>{% endif %}
+                  </ul>
+              </div>
           </div>
       </article>
 </div>

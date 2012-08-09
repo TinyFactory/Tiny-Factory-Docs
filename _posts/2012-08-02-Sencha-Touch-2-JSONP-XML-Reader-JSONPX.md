@@ -2,6 +2,7 @@
 layout: post
 published: true
 category: sencha touch 2
+author: alex
 ---
 
 I was integrating with a client's API which used a blend of JSONP and XML.  Sencha Touch 2 does not have a native way to parse this, so I extended XML reader to make a 'jsonpx' reader.  Hopefully this will help someone who might run into the same situation.

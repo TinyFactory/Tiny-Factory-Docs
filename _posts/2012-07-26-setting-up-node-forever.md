@@ -2,6 +2,7 @@
 layout: post
 category: node.js
 published: true
+author: justen
 ---
 
 ###Keep a node server running

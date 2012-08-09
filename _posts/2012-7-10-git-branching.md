@@ -1,6 +1,7 @@
 ---
 layout: post
 category: git
+author: michael
 ---
 
 To create a new branch locally

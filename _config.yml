@@ -21,3 +21,35 @@ google_analytics:
 
 prose:
   rooturl: "_posts"
+
+authors:
+  aaron:
+    display_name: Areus Wade
+    gravatar: 3a88629dd9417c822b68af4af685b782
+    email: hi@areuswade.com
+    web: http://www.areuswade.com
+    twitter: areus
+    github: areus
+    dribbble: areus
+  michael:
+    display_name: Michael Sacca
+    gravatar: 7a1dc0efd8eba2f7c5932b5dffbca642
+    email: michael.sacca@gmail.com
+    web: http://www.tinyfactory.co
+    twitter: michaelsacca
+    github: michaelsacca
+    dribbble: michaelsacca
+  alex:
+    display_name: Alex Rolek
+    gravatar: 32e270a19ef710b143c87036aaacb6a3
+    email: alex.rolek@gmail.com
+    web: http://www.tinyfactory.co
+    twitter: AlexRolek
+    github: ARolek
+  justen:
+    display_name: Justen Palmer
+    gravatar: f232f3a8afb733882c6e8489a1ad05f8
+    email: artichokeworld@gmail.com
+    web: http://www.tinyfactory.co
+    twitter: justenPalmer
+    github: justenPalmer
