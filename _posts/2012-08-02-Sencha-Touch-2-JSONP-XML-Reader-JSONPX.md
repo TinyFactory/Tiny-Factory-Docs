@@ -79,4 +79,4 @@ Ext.define('smtp.store.PartsFilterYear', {
 });
 {% endhighlight %}
 
-This code was inspired by a piece a found for Sencha Touch 1 [here](http://www.sencha.com/forum/showthread.php?12852-ScriptTagProxy-and-XML)
+This code was inspired by a piece I found for Sencha Touch 1 [here](http://www.sencha.com/forum/showthread.php?12852-ScriptTagProxy-and-XML)
