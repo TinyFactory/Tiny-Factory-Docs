@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>Tiny Factory Docs</title>
- <link href="http://http://tinyfactory.github.com/atom.xml" rel="self"/>
- <link href="http://http://tinyfactory.github.com/"/>
- <updated>2012-08-09T16:18:06-07:00</updated>
- <id>http://http://tinyfactory.github.com/</id>
+ <link href="http://localhost:4000/atom.xml" rel="self"/>
+ <link href="http://localhost:4000/"/>
+ <updated>2012-08-10T15:08:07-07:00</updated>
+ <id>http://localhost:4000/</id>
  <author>
    <name>Tiny Factory</name>
    <email>hello@tinyfactory.co</email>
@@ -14,9 +14,14 @@
  
  <entry>
    <title>Compass Fancy Button Mixin</title>
-   <link href="http://http://tinyfactory.github.com/compass/2012/08/07/compass-fancy-button-mixin.html"/>
+   <link href="http://localhost:4000/compass/2012/08/07/compass-fancy-button-mixin.html"/>
    <updated>2012-08-07T00:00:00-07:00</updated>
-   <id>http://http://tinyfactory.github.com/compass/2012/08/07/compass-fancy-button-mixin</id>
+   <id>http://http://localhost:4000/compass/2012/08/07/compass-fancy-button-mixin</id>
+   
+   <author>
+   	<name>Michael Sacca</name>
+   	<email>michael.sacca@gmail.com</email>
+   </author>
    <content type="html">&lt;p&gt;This mixin will create an animated hover and active state for your button (&lt;a href='http://dribbble.com/shots/678970-Compass-CSS3-Button-Mixin'&gt;View Example Here&lt;/a&gt;) using css3 transitions. Feel free to replace the variables or add them to a variable sheet inside of your project. Add this mixin to your Compass project:&lt;/p&gt;
 &lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='scss'&gt;    &lt;span class='cm'&gt;/* =======================&lt;/span&gt;
 &lt;span class='cm'&gt;    Variables&lt;/span&gt;
@@ -107,13 +112,19 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;Fork the repo on &lt;a href='https://github.com/michaelsacca/Fancy-Compass-Button-Mixin'&gt;github&lt;/a&gt; and create your own.&lt;/p&gt;</content>
+
  </entry>
  
  <entry>
    <title>Sass Inline Media Queries</title>
-   <link href="http://http://tinyfactory.github.com/sass/2012/08/02/sass-inline-media-queries.html"/>
+   <link href="http://localhost:4000/sass/2012/08/02/sass-inline-media-queries.html"/>
    <updated>2012-08-02T00:00:00-07:00</updated>
-   <id>http://http://tinyfactory.github.com/sass/2012/08/02/sass-inline-media-queries</id>
+   <id>http://http://localhost:4000/sass/2012/08/02/sass-inline-media-queries</id>
+   
+   <author>
+   	<name>Areus Wade</name>
+   	<email>hi@areuswade.com</email>
+   </author>
    <content type="html">&lt;p&gt;With SASS 3.2 we get inline media queries. Compass allows this if you&amp;#8217;re using the alpha build. At of the date of this doc, &lt;code&gt;0.12.2&lt;/code&gt; is the current version.&lt;/p&gt;
 
 &lt;p&gt;We can install Compass alpha &lt;code&gt;0.13.0&lt;/code&gt; by running &lt;code&gt;sudo gem install compass --pre&lt;/code&gt;. This is a prerelease build, so if you&amp;#8217;re worried about things not working, hold out until &lt;code&gt;0.13.x&lt;/code&gt; is released.&lt;/p&gt;
@@ -207,13 +218,19 @@
 		&lt;span class='k'&gt;@content&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;</content>
+
  </entry>
  
  <entry>
    <title>Sencha Touch 2 Jsonp Xml Reader Jsonpx</title>
-   <link href="http://http://tinyfactory.github.com/sencha touch 2/2012/08/02/Sencha-Touch-2-JSONP-XML-Reader-JSONPX.html"/>
+   <link href="http://localhost:4000/sencha touch 2/2012/08/02/Sencha-Touch-2-JSONP-XML-Reader-JSONPX.html"/>
    <updated>2012-08-02T00:00:00-07:00</updated>
-   <id>http://http://tinyfactory.github.com/sencha touch 2/2012/08/02/Sencha-Touch-2-JSONP-XML-Reader-JSONPX</id>
+   <id>http://http://localhost:4000/sencha touch 2/2012/08/02/Sencha-Touch-2-JSONP-XML-Reader-JSONPX</id>
+   
+   <author>
+   	<name>Alex Rolek</name>
+   	<email>a.rolek@gmail.com</email>
+   </author>
    <content type="html">&lt;p&gt;I was integrating with a client&amp;#8217;s API which used a blend of JSONP and XML. Sencha Touch 2 does not have a native way to parse this, so I extended XML reader to make a &amp;#8216;jsonpx&amp;#8217; reader. Hopefully this will help someone who might run into the same situation.&lt;/p&gt;
 &lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='javascript'&gt;&lt;span class='nx'&gt;Ext&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;define&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s1'&gt;&amp;#39;app.util.JsonpX&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
     &lt;span class='nx'&gt;extend&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;Ext.data.reader.Xml&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;
@@ -285,13 +302,19 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;This code was inspired by a piece a found for Sencha Touch 1 &lt;a href='http://www.sencha.com/forum/showthread.php?12852-ScriptTagProxy-and-XML'&gt;here&lt;/a&gt;&lt;/p&gt;</content>
+
  </entry>
  
  <entry>
    <title>Compass Retina Display Mixin</title>
-   <link href="http://http://tinyfactory.github.com/compass/2012/08/01/compass-retina-display-mixin.html"/>
+   <link href="http://localhost:4000/compass/2012/08/01/compass-retina-display-mixin.html"/>
    <updated>2012-08-01T00:00:00-07:00</updated>
-   <id>http://http://tinyfactory.github.com/compass/2012/08/01/compass-retina-display-mixin</id>
+   <id>http://http://localhost:4000/compass/2012/08/01/compass-retina-display-mixin</id>
+   
+   <author>
+   	<name>Michael Sacca</name>
+   	<email>michael.sacca@gmail.com</email>
+   </author>
    <content type="html">&lt;p&gt;This compass mixin helps for applying high-resolution background images in your stylesheet. You provide it with an image path and the dimensions of the original-resolution image. The mixin creates a media query spefically for Retina displays, changes the background image for the selector elements to use the high-resolution (@2x) variant and applies a background-size of the original image in order to maintain proper dimensions. To use it, download the mixin, import or include it in your SASS stylesheet, and apply it to elements of your choice.&lt;/p&gt;
 
 &lt;p&gt;Syntax:&lt;/p&gt;
@@ -337,13 +360,19 @@
 &lt;span class='p'&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;</content>
+
  </entry>
  
  <entry>
    <title>Sass Sticky Footer Mixin</title>
-   <link href="http://http://tinyfactory.github.com/sass/2012/07/31/sass-sticky-footer-mixin.html"/>
+   <link href="http://localhost:4000/sass/2012/07/31/sass-sticky-footer-mixin.html"/>
    <updated>2012-07-31T00:00:00-07:00</updated>
-   <id>http://http://tinyfactory.github.com/sass/2012/07/31/sass-sticky-footer-mixin</id>
+   <id>http://http://localhost:4000/sass/2012/07/31/sass-sticky-footer-mixin</id>
+   
+   <author>
+   	<name>Michael Sacca</name>
+   	<email>michael.sacca@gmail.com</email>
+   </author>
    <content type="html">&lt;p&gt;Compass has a really nice &lt;a href='http://compass-style.org/reference/compass/layout/sticky_footer/'&gt;sticky footer&lt;/a&gt; mixin built into the library but we&amp;#8217;ve been writing our own site in vanilla SASS so I converted an out of date SASS mixin to it&amp;#8217;s current syntax.&lt;/p&gt;
 &lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='sass'&gt;&lt;span class='nf'&gt;=sticky-footer&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nv'&gt;$footer_height&lt;/span&gt;&lt;span class='o'&gt;,&lt;/span&gt; &lt;span class='nv'&gt;$root_selector&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;#root&amp;quot;&lt;/span&gt;&lt;span class='o'&gt;,&lt;/span&gt; &lt;span class='nv'&gt;$root_footer_selector&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;#root_footer&amp;quot;&lt;/span&gt;&lt;span class='o'&gt;,&lt;/span&gt; &lt;span class='nv'&gt;$footer_selector&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;#footer&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt;
   &lt;span class='nt'&gt;html&lt;/span&gt;
@@ -361,13 +390,19 @@
     &lt;span class='na'&gt;:height&lt;/span&gt;          &lt;span class='si'&gt;#{&lt;/span&gt;&lt;span class='nv'&gt;$footer_height&lt;/span&gt;&lt;span class='si'&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;</content>
+
  </entry>
  
  <entry>
    <title>Compass Placeholder Text Mixin</title>
-   <link href="http://http://tinyfactory.github.com/compass/2012/07/31/Compass-Placeholder-Text-Mixin.html"/>
+   <link href="http://localhost:4000/compass/2012/07/31/Compass-Placeholder-Text-Mixin.html"/>
    <updated>2012-07-31T00:00:00-07:00</updated>
-   <id>http://http://tinyfactory.github.com/compass/2012/07/31/Compass-Placeholder-Text-Mixin</id>
+   <id>http://http://localhost:4000/compass/2012/07/31/Compass-Placeholder-Text-Mixin</id>
+   
+   <author>
+   	<name>Michael Sacca</name>
+   	<email>michael.sacca@gmail.com</email>
+   </author>
    <content type="html">&lt;p&gt;Simple Mixin For Compass Placeholder Text&lt;/p&gt;
 
 &lt;p&gt;Syntax:&lt;/p&gt;
@@ -407,13 +442,19 @@
               &lt;span class='p'&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;</content>
+
  </entry>
  
  <entry>
    <title>Generate An Icon Font</title>
-   <link href="http://http://tinyfactory.github.com/design/2012/07/27/generate-an-icon-font.html"/>
+   <link href="http://localhost:4000/design/2012/07/27/generate-an-icon-font.html"/>
    <updated>2012-07-27T00:00:00-07:00</updated>
-   <id>http://http://tinyfactory.github.com/design/2012/07/27/generate-an-icon-font</id>
+   <id>http://http://localhost:4000/design/2012/07/27/generate-an-icon-font</id>
+   
+   <author>
+   	<name>Areus Wade</name>
+   	<email>hi@areuswade.com</email>
+   </author>
    <content type="html">&lt;p&gt;We&amp;#8217;re going to use an awesome tool called &lt;a href='https://github.com/averyvery/hieroglyph'&gt;Hieroglyph&lt;/a&gt;. There&amp;#8217;s already a pretty intuitive readme file in the repo, but I hope to elaborate a little more on what was provided.&lt;/p&gt;
 
 &lt;h4 id='installing_hieroglyph'&gt;Installing Hieroglyph&lt;/h4&gt;
@@ -440,10 +481,10 @@
 
 &lt;p&gt;Open up Illustrator and create a new document sized &lt;strong&gt;1000pt x 1000pt&lt;/strong&gt;. We need to make sure that the icons are centered, and relatively the same size. Drag a horizontal guide so it sits &lt;strong&gt;250 points&lt;/strong&gt; from the top of the canvas. You can set this easily by dragging out a guide, then in your Illustrator toolbar setting the &lt;strong&gt;Y value&lt;/strong&gt; to 250. You should also drag out a vertical rule with the &lt;strong&gt;X value&lt;/strong&gt; of 500 so you have a vertical center showing.&lt;/p&gt;
 
-&lt;p&gt;&lt;img alt='Illustrator Toolbar' src='http://docs.tinyfactory.co/images/assets/toolbar.png' /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src='http://docs.tinyfactory.co/images/assets/toolbar.png' alt='Illustrator Toolbar' /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img alt='Twitter icon mapped to T key' src='http://docs.tinyfactory.co/images/assets/twitter-ss.png' /&gt;&lt;/p&gt;
-&lt;a class='button' href='http://docs.tinyfactory.co/images/downloads/icon.zip'&gt;Download Icon Template&lt;/a&gt;
+&lt;p&gt;&lt;img src='http://docs.tinyfactory.co/images/assets/twitter-ss.png' alt='Twitter icon mapped to T key' /&gt;&lt;/p&gt;
+&lt;a href='http://docs.tinyfactory.co/images/downloads/icon.zip' class='button'&gt;Download Icon Template&lt;/a&gt;
 &lt;p&gt;&lt;strong&gt;Important:&lt;/strong&gt; Make sure your icon is a compound path. If your canvas has more than one shape, it will cause issues with the font generation. You can make it a compound path by selecting all the shapes in the icon, and pressing &lt;strong&gt;CMD + 8&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;h4 id='saving__naming_convetion'&gt;Saving &amp;amp; Naming Convetion&lt;/h4&gt;
@@ -492,13 +533,19 @@
 &lt;p&gt;If you really want to do it up proper, &lt;a href='https://github.com/blog/1135-the-making-of-octicons'&gt;GitHub&amp;#8217;s post about Octicons&lt;/a&gt; goes through their process in great detail.&lt;/p&gt;
 
 &lt;p&gt;If this is too much for you, fortunately there are tons of great services out there right now that really make this easier. There is the newly created &lt;a href='http://symbolset.com/'&gt;Symbolset&lt;/a&gt;, which is a font of icons that advocates way better semantics than I&amp;#8217;ve shown above. The &lt;a href='http://pictos.cc/font/'&gt;Pictos font&lt;/a&gt; has a pretty wide array of icons, &lt;a href='http://pictos.cc/server/'&gt;Pictos Server&lt;/a&gt; and &lt;a href='https://www.shifticons.com/'&gt;Shifticons&lt;/a&gt; which are both damn fine services for doing this a lot faster.&lt;/p&gt;</content>
+
  </entry>
  
  <entry>
    <title>Setting Up Node Forever</title>
-   <link href="http://http://tinyfactory.github.com/node.js/2012/07/26/setting-up-node-forever.html"/>
+   <link href="http://localhost:4000/node.js/2012/07/26/setting-up-node-forever.html"/>
    <updated>2012-07-26T00:00:00-07:00</updated>
-   <id>http://http://tinyfactory.github.com/node.js/2012/07/26/setting-up-node-forever</id>
+   <id>http://http://localhost:4000/node.js/2012/07/26/setting-up-node-forever</id>
+   
+   <author>
+   	<name>Justen Palmer</name>
+   	<email>artichokeworld@gmail.com</email>
+   </author>
    <content type="html">&lt;h3 id='keep_a_node_server_running'&gt;Keep a node server running&lt;/h3&gt;
 
 &lt;p&gt;Download the CLI tool from: &lt;a href='https://github.com/nodejitsu/forever/'&gt;https://github.com/nodejitsu/forever/&lt;/a&gt;&lt;/p&gt;
@@ -531,13 +578,19 @@ insert into .bash_profile
 npm install forever -g
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;</content>
+
  </entry>
  
  <entry>
    <title>Mysql Setup On Aws Centos</title>
-   <link href="http://http://tinyfactory.github.com/centos/2012/07/26/MySql-Setup-on-AWS-CentOS.html"/>
+   <link href="http://localhost:4000/centos/2012/07/26/MySql-Setup-on-AWS-CentOS.html"/>
    <updated>2012-07-26T00:00:00-07:00</updated>
-   <id>http://http://tinyfactory.github.com/centos/2012/07/26/MySql-Setup-on-AWS-CentOS</id>
+   <id>http://http://localhost:4000/centos/2012/07/26/MySql-Setup-on-AWS-CentOS</id>
+   
+   <author>
+   	<name>Alex Rolek</name>
+   	<email>a.rolek@gmail.com</email>
+   </author>
    <content type="html">&lt;ol&gt;
 &lt;li&gt;Install mysql and the server&lt;/li&gt;
 &lt;/ol&gt;
@@ -576,13 +629,19 @@ npm install forever -g
 &lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;create database database_name
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;</content>
+
  </entry>
  
  <entry>
    <title>Setup Nodejs Environment On Ec2</title>
-   <link href="http://http://tinyfactory.github.com/node.js/2012/07/18/setup-nodejs-environment-on-ec2.html"/>
+   <link href="http://localhost:4000/node.js/2012/07/18/setup-nodejs-environment-on-ec2.html"/>
    <updated>2012-07-18T00:00:00-07:00</updated>
-   <id>http://http://tinyfactory.github.com/node.js/2012/07/18/setup-nodejs-environment-on-ec2</id>
+   <id>http://http://localhost:4000/node.js/2012/07/18/setup-nodejs-environment-on-ec2</id>
+   
+   <author>
+   	<name>Justen Palmer</name>
+   	<email>artichokeworld@gmail.com</email>
+   </author>
    <content type="html">&lt;h2 id='create_the_ec2_instance'&gt;Create the EC2 Instance&lt;/h2&gt;
 
 &lt;ol&gt;
@@ -742,13 +801,19 @@ Port 8080 &lt;span class='k'&gt;for &lt;/span&gt;socket traffic
 &lt;/ol&gt;
 
 &lt;h3 id='congrats_nodejs_is_installed_whats_next_you_can_install_mongodb_or_setup_a_git_repo_on_the_server_to_really_get_developing'&gt;Congrats! Node.js is installed! What&amp;#8217;s next? You can install mongodb or setup a git repo on the server to really get developing.&lt;/h3&gt;</content>
+
  </entry>
  
  <entry>
    <title>Git Branching</title>
-   <link href="http://http://tinyfactory.github.com/git/2012/07/10/git-branching.html"/>
+   <link href="http://localhost:4000/git/2012/07/10/git-branching.html"/>
    <updated>2012-07-10T00:00:00-07:00</updated>
-   <id>http://http://tinyfactory.github.com/git/2012/07/10/git-branching</id>
+   <id>http://http://localhost:4000/git/2012/07/10/git-branching</id>
+   
+   <author>
+   	<name>Michael Sacca</name>
+   	<email>michael.sacca@gmail.com</email>
+   </author>
    <content type="html">&lt;p&gt;To create a new branch locally&lt;/p&gt;
 &lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;&lt;span class='nv'&gt;$ &lt;/span&gt;git checkout -b &lt;span class='s2'&gt;&amp;quot;new-branch-name&amp;quot;&lt;/span&gt;
 Switched to a new branch &lt;span class='s2'&gt;&amp;quot;new-branch-name&amp;quot;&lt;/span&gt;
@@ -792,13 +857,19 @@ Switched to a new branch &lt;span class='s2'&gt;&amp;quot;new-branch-name&amp;qu
 &lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;&lt;span class='nv'&gt;$ &lt;/span&gt;gitk
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;</content>
+
  </entry>
  
  <entry>
    <title>Changing the head on a Git Repo</title>
-   <link href="http://http://tinyfactory.github.com/git/2012/07/09/changing-the-head-pointer-on-a-git-repoistory.html"/>
+   <link href="http://localhost:4000/git/2012/07/09/changing-the-head-pointer-on-a-git-repoistory.html"/>
    <updated>2012-07-09T00:00:00-07:00</updated>
-   <id>http://http://tinyfactory.github.com/git/2012/07/09/changing-the-head-pointer-on-a-git-repoistory</id>
+   <id>http://http://localhost:4000/git/2012/07/09/changing-the-head-pointer-on-a-git-repoistory</id>
+   
+   <author>
+   	<name>Michael Sacca</name>
+   	<email>michael.sacca@gmail.com</email>
+   </author>
    <content type="html">&lt;p&gt;If you want the default branch from a &lt;code&gt;git clone&lt;/code&gt; to be something besides &lt;code&gt;master&lt;/code&gt;, use the following steps:&lt;/p&gt;
 
 &lt;p&gt;Check what remote branches are available:&lt;/p&gt;
@@ -824,13 +895,19 @@ origin/master
 &lt;p&gt;&lt;code&gt;origin/HEAD -&amp;gt; orgin/dev&lt;/code&gt; is pointing to our dev branch.&lt;/p&gt;
 
 &lt;h3 id='how_does_it_work'&gt;How does it work?&lt;/h3&gt;</content>
+
  </entry>
  
  <entry>
    <title>Setup Ftp On Aws Centos</title>
-   <link href="http://http://tinyfactory.github.com/centos/2012/07/08/setup-ftp-on-aws-centos.html"/>
+   <link href="http://localhost:4000/centos/2012/07/08/setup-ftp-on-aws-centos.html"/>
    <updated>2012-07-08T00:00:00-07:00</updated>
-   <id>http://http://tinyfactory.github.com/centos/2012/07/08/setup-ftp-on-aws-centos</id>
+   <id>http://http://localhost:4000/centos/2012/07/08/setup-ftp-on-aws-centos</id>
+   
+   <author>
+   	<name>Alex Rolek</name>
+   	<email>a.rolek@gmail.com</email>
+   </author>
    <content type="html">&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;Install &lt;strong&gt;vsftpd&lt;/strong&gt;&lt;/p&gt;
@@ -899,6 +976,7 @@ origin/master
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;&lt;/li&gt;
 &lt;/ol&gt;</content>
+
  </entry>
  
 
