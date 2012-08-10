@@ -4,13 +4,37 @@
  <title>Tiny Factory Docs</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2012-08-10T15:08:07-07:00</updated>
- <id>http://localhost:4000/</id>
+ <updated>2012-08-10T15:54:56-07:00</updated>
+ <id>http://localhost:4000</id>
  <author>
    <name>Tiny Factory</name>
    <email>hello@tinyfactory.co</email>
  </author>
 
+ 
+ <entry>
+   <title>Targeting Mobile Webkit Browsers With Javascript</title>
+   <link href="http://localhost:4000/javascript/2012/08/10/targeting-mobile-webkit-browsers-with-javascript.html"/>
+   <updated>2012-08-10T00:00:00-07:00</updated>
+   <id>http://http://localhost:4000/javascript/2012/08/10/targeting-mobile-webkit-browsers-with-javascript</id>
+   
+   <author>
+   	<name>Michael Sacca</name>
+   	<email>michael.sacca@gmail.com</email>
+   </author>
+   <content type="html">&lt;p&gt;Here is a way to target mobile browsers with Javascript. It&amp;#8217;s not recommended you use this as your sole method for targeting mobile browsers as it first requires your users to load your entire standard site before serving your mobile specific code. But if used in conjunction with &lt;a href='http://docs.tinyfactory.co/sass/2012/08/02/sass-inline-media-queries.html'&gt;CSS Media Queries&lt;/a&gt; - this can be quite handy.&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='javascript'&gt;&lt;span class='k'&gt;if&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt; &lt;span class='o'&gt;!&lt;/span&gt;&lt;span class='nx'&gt;navigator&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;userAgent&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;match&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='sr'&gt;/Android/i&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='o'&gt;||&lt;/span&gt;
+    &lt;span class='o'&gt;!&lt;/span&gt;&lt;span class='nx'&gt;navigator&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;userAgent&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;match&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='sr'&gt;/webOS/i&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='o'&gt;||&lt;/span&gt;
+    &lt;span class='o'&gt;!&lt;/span&gt;&lt;span class='nx'&gt;navigator&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;userAgent&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;match&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='sr'&gt;/iPhone/i&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='o'&gt;||&lt;/span&gt;
+    &lt;span class='o'&gt;!&lt;/span&gt;&lt;span class='nx'&gt;navigator&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;userAgent&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;match&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='sr'&gt;/iPod/i&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='o'&gt;||&lt;/span&gt;
+ &lt;span class='p'&gt;){&lt;/span&gt;
+ 	&lt;span class='c1'&gt;// Mobile Code Here&lt;/span&gt;
+ &lt;span class='p'&gt;});&lt;/span&gt;
+ 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content>
+
+ </entry>
  
  <entry>
    <title>Compass Fancy Button Mixin</title>
@@ -301,7 +325,7 @@
 &lt;span class='p'&gt;});&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;This code was inspired by a piece a found for Sencha Touch 1 &lt;a href='http://www.sencha.com/forum/showthread.php?12852-ScriptTagProxy-and-XML'&gt;here&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;This code was inspired by a piece I found for Sencha Touch 1 &lt;a href='http://www.sencha.com/forum/showthread.php?12852-ScriptTagProxy-and-XML'&gt;here&lt;/a&gt;&lt;/p&gt;</content>
 
  </entry>
  

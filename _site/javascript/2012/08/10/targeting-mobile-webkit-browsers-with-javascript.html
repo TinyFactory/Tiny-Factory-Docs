@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Git Branching - Tiny Factory Docs</title>
+    <title>Targeting Mobile Webkit Browsers With Javascript - Tiny Factory Docs</title>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" media="screen" href="http://localhost:4000/css/screen.css" type="text/css" />
@@ -159,8 +159,6 @@
         <h3>Most Recent</h3>
         <ul class="posts">
           
-            <li><a href="http://localhost:4000/javascript/2012/08/10/targeting-mobile-webkit-browsers-with-javascript.html">Targeting Mobile Webkit Browsers With Javascript</a></li>
-          
             <li><a href="http://localhost:4000/compass/2012/08/07/compass-fancy-button-mixin.html">Compass Fancy Button Mixin</a></li>
           
             <li><a href="http://localhost:4000/sass/2012/08/02/sass-inline-media-queries.html">Sass Inline Media Queries</a></li>
@@ -169,54 +167,24 @@
           
             <li><a href="http://localhost:4000/compass/2012/08/01/compass-retina-display-mixin.html">Compass Retina Display Mixin</a></li>
           
+            <li><a href="http://localhost:4000/sass/2012/07/31/sass-sticky-footer-mixin.html">Sass Sticky Footer Mixin</a></li>
+          
         </ul>
       </div>
     </div><!-- sidebar -->
 
       <article>
           <div class="entry">
-            <h1>Git Branching</h1>
-            <p>To create a new branch locally</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>git checkout -b <span class='s2'>&quot;new-branch-name&quot;</span>
-Switched to a new branch <span class='s2'>&quot;new-branch-name&quot;</span>
-</code></pre>
-</div>
-<p>To create a new local branch from a remote branch</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>git checkout -b new-branch-name origin/remote-branch-name
-Switched to a new branch <span class='s2'>&quot;new-branch-name&quot;</span>
-</code></pre>
-</div>
-<p>Push a New Local Branch to a Remote Git Repo</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>git push origin new-branch-name
-</code></pre>
-</div>
-<p>To view your local branches</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>git branch
-</code></pre>
-</div>
-<p>To view all branches (local and remote)</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>git branch -a
-</code></pre>
-</div>
-<p>To view all remote branches</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>git branch -r
-</code></pre>
-</div>
-<p>To merge a branch check out the branch you&#8217;d like to merge to and run</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>git checkout master
-<span class='nv'>$ </span>git merge new-branch-name
-</code></pre>
-</div>
-<p>To push all local changes to remote</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>git push origin
-</code></pre>
-</div>
-<p>To push local changes for a specific repo</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>git push origin master
-</code></pre>
-</div>
-<p>View GUI of merges</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>gitk
+            <h1>Targeting Mobile Webkit Browsers With Javascript</h1>
+            <p>Here is a way to target mobile browsers with Javascript. It&#8217;s not recommended you use this as your sole method for targeting mobile browsers as it first requires your users to load your entire standard site before serving your mobile specific code. But if used in conjunction with <a href='http://docs.tinyfactory.co/sass/2012/08/02/sass-inline-media-queries.html'>CSS Media Queries</a> - this can be quite handy.</p>
+<div class='highlight'><pre><code class='javascript'><span class='k'>if</span><span class='p'>(</span> <span class='o'>!</span><span class='nx'>navigator</span><span class='p'>.</span><span class='nx'>userAgent</span><span class='p'>.</span><span class='nx'>match</span><span class='p'>(</span><span class='sr'>/Android/i</span><span class='p'>)</span> <span class='o'>||</span>
+    <span class='o'>!</span><span class='nx'>navigator</span><span class='p'>.</span><span class='nx'>userAgent</span><span class='p'>.</span><span class='nx'>match</span><span class='p'>(</span><span class='sr'>/webOS/i</span><span class='p'>)</span> <span class='o'>||</span>
+    <span class='o'>!</span><span class='nx'>navigator</span><span class='p'>.</span><span class='nx'>userAgent</span><span class='p'>.</span><span class='nx'>match</span><span class='p'>(</span><span class='sr'>/iPhone/i</span><span class='p'>)</span> <span class='o'>||</span>
+    <span class='o'>!</span><span class='nx'>navigator</span><span class='p'>.</span><span class='nx'>userAgent</span><span class='p'>.</span><span class='nx'>match</span><span class='p'>(</span><span class='sr'>/iPod/i</span><span class='p'>)</span> <span class='o'>||</span>
+ <span class='p'>){</span>
+ 	<span class='c1'>// Mobile Code Here</span>
+ <span class='p'>});</span>
+ 
 </code></pre>
 </div>
 
