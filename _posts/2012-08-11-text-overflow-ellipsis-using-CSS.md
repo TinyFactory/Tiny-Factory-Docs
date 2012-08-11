@@ -5,7 +5,7 @@ published: true
 author: michael
 ---
 
-The CSS3 text overflow ellipsis solution is perfect for single line truncations.  I use this constantly when creating mobile or responsive applications.
+The CSS text overflow ellipsis solution is perfect for single line truncations.  I use this constantly when creating mobile or responsive applications.
 
 {% hightlight css %}
 span {
