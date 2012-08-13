@@ -9,7 +9,7 @@ If CSS isn't enough to solve your your ellipsis issues and you want to take it t
 
 Use this in your CSS document
 
-{% hightlight css %}
+{% highlight css %}
 .ellipsis {
         white-space: nowrap;
         overflow: hidden;
@@ -18,11 +18,11 @@ Use this in your CSS document
 .ellipsis.multiline {
         white-space: normal;
 }
-{% endhightlight %}
+{% endhighlight %}
 
 Here is your HTML, always remember to include jQuery in your document before using jQuery.
 
-{% hightlight html %}
+{% highlight html %}
 /* this is a one line ellipsis */
 <div class="ellipsis" style="width: 100px; border: 1px solid black;">Lorem ipsum dolor sit amet, consectetur adipisicing elit</div>
 
@@ -33,11 +33,11 @@ Here is your HTML, always remember to include jQuery in your document before usi
 <script type="text/javascript">
 $(".ellipsis").ellipsis();
 </script>
-{% endhightlight %}
+{% endhighlight %}
 
 ...and last but not least the jquery for creating a single or multi-line ellipsis
 
-{% highlight javascript %}
+{% highlight js %}
 (function($) {
         $.fn.ellipsis = function()
         {
@@ -76,6 +76,6 @@ $(".ellipsis").ellipsis();
                 });
         };
 })(jQuery);
-{% end highlight %}
+{% endhighlight %}
 
 If you're looking more configurable options, check out the [dotdotdot](http://dotdotdot.frebsite.nl/) jQuery plugin.

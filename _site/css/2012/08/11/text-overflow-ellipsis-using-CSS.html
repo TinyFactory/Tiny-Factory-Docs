@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Compass Placeholder Text Mixin - Tiny Factory Docs</title>
+    <title>Text Overflow Ellipsis Using Css - Tiny Factory Docs</title>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" media="screen" href="http://localhost:4000/css/screen.css" type="text/css" />
@@ -112,16 +112,6 @@
           
           
             
-              
-            
-          
-          
-            <li><a href="http://localhost:4000/compass/2012/08/07/compass-animated-button-mixin.html">Compass Animated Button Mixin</a></li>
-                                 
-        
-          
-          
-            
           
                                  
         
@@ -134,11 +124,13 @@
           
           
             
-              
+          
+                                 
+        
+          
+          
             
           
-          
-            <li><a href="http://localhost:4000/compass/2012/08/01/compass-retina-display-mixin.html">Compass Retina Display Mixin</a></li>
                                  
         
           
@@ -168,13 +160,13 @@
           
             <li><a href="http://localhost:4000/jquery/2012/08/11/text-overflow-ellipsis-using-jquery.html">Text Overflow Ellipsis Using Jquery</a></li>
           
-            <li><a href="http://localhost:4000/css/2012/08/11/text-overflow-ellipsis-using-CSS.html">Text Overflow Ellipsis Using Css</a></li>
-          
             <li><a href="http://localhost:4000/javascript/2012/08/10/targeting-mobile-webkit-browsers-with-javascript.html">Targeting Mobile Webkit Browsers With Javascript</a></li>
           
             <li><a href="http://localhost:4000/compass/2012/08/07/compass-animated-button-mixin.html">Compass Animated Button Mixin</a></li>
           
             <li><a href="http://localhost:4000/sass/2012/08/02/sass-inline-media-queries.html">Sass Inline Media Queries</a></li>
+          
+            <li><a href="http://localhost:4000/sencha touch 2/2012/08/02/Sencha-Touch-2-JSONP-XML-Reader-JSONPX.html">Sencha Touch 2 Jsonp Xml Reader Jsonpx</a></li>
           
         </ul>
       </div>
@@ -182,44 +174,15 @@
 
       <article>
           <div class="entry">
-            <h1>Compass Placeholder Text Mixin</h1>
-            <p>Simple Mixin For Compass Placeholder Text</p>
-
-<p>Syntax:</p>
-
-<p><div class='highlight'><pre><code class='scss'>    <span class='k'>@mixin</span><span class='nf'> input-placeholder</span><span class='p'>(</span><span class='nv'>$color</span><span class='p'>)</span> <span class='p'>{</span>
-      <span class='k'>&amp;</span><span class='nc'>.placeholder</span> <span class='p'>{</span>
-        <span class='na'>color</span><span class='o'>:</span> <span class='nv'>$color</span><span class='p'>;</span> 
-        <span class='p'>}</span>
-      <span class='na'>&amp;</span><span class='o'>:-</span><span class='n'>moz-placeholder</span> <span class='p'>{</span>
-        <span class='na'>color</span><span class='o'>:</span> <span class='nv'>$color</span><span class='p'>;</span> 
-        <span class='p'>}</span>
-      <span class='na'>&amp;</span><span class='o'>::-</span><span class='n'>webkit-input-placeholder</span> <span class='p'>{</span>
-        <span class='na'>color</span><span class='o'>:</span> <span class='nv'>$color</span><span class='p'>;</span> 
-        <span class='p'>}</span> 
-    <span class='p'>}</span>
-</code></pre>
-</div></p>
-
-<p>Steps:</p>
-
-<pre><code>1.  Add the .input-placeholder() mixin from _placeholderText.scss to your compass stylesheet (or reference it in an @import statement)
-2.  In your stylesheet, call the .input-placeholder() mixin anywhere you want to style your placeholder text</code></pre>
-<div class='highlight'><pre><code class='scss'>            <span class='nc'>.inputCls</span> <span class='p'>{</span>
-              <span class='k'>@include</span><span class='nd'> input-placeholder</span><span class='p'>(</span><span class='mh'>#ccc</span><span class='p'>);</span> 
-            <span class='p'>}</span> 
-</code></pre>
-</div>
-<pre><code>Will compile to: </code></pre>
-<div class='highlight'><pre><code class='scss'>              <span class='nc'>.inputCls.placeholder</span> <span class='p'>{</span>
-                <span class='na'>color</span><span class='o'>:</span> <span class='mh'>#cccccc</span><span class='p'>;</span>
-              <span class='p'>}</span>
-              <span class='na'>.inputCls</span><span class='o'>:-</span><span class='n'>moz-placeholder</span> <span class='p'>{</span>
-                <span class='na'>color</span><span class='o'>:</span> <span class='mh'>#cccccc</span><span class='p'>;</span>
-              <span class='p'>}</span>
-              <span class='na'>.inputCls</span><span class='o'>::-</span><span class='n'>webkit-input-placeholder</span> <span class='p'>{</span>
-                <span class='na'>color</span><span class='o'>:</span> <span class='mh'>#cccccc</span><span class='p'>;</span>
-              <span class='p'>}</span>
+            <h1>Text Overflow Ellipsis Using Css</h1>
+            <p>The CSS text overflow ellipsis solution is perfect for single line truncations. I use this constantly when building mobile or responsive applications.</p>
+<div class='highlight'><pre><code class='css'><span class='nt'>span</span> <span class='p'>{</span>
+	<span class='k'>display</span><span class='o'>:</span><span class='k'>block</span><span class='p'>;</span> <span class='o'>//</span> <span class='n'>because</span> <span class='n'>we</span><span class='err'>&#39;</span><span class='n'>re</span> <span class='n'>using</span> <span class='err'>a</span> <span class='n'>span</span> <span class='n'>class</span>
+	<span class='k'>white-space</span><span class='o'>:</span> <span class='k'>nowrap</span><span class='p'>;</span> <span class='o'>//</span><span class='n'>This</span> <span class='n'>prevents</span> <span class='n'>the</span> <span class='k'>content</span> <span class='n'>from</span> <span class='n'>breaking</span> <span class='n'>onto</span> <span class='n'>another</span> <span class='n'>line</span>
+	<span class='k'>width</span><span class='o'>:</span> <span class='m'>100</span><span class='o'>%</span><span class='p'>;</span> <span class='o'>//</span> <span class='n'>this</span> <span class='n'>should</span> <span class='n'>be</span> <span class='n'>the</span> <span class='k'>width</span> <span class='n'>of</span> <span class='n'>your</span> <span class='k'>content</span>
+	<span class='k'>overflow</span><span class='o'>:</span> <span class='k'>hidden</span><span class='p'>;</span> <span class='o'>//</span> <span class='n'>hides</span> <span class='n'>the</span> <span class='k'>text</span> <span class='n'>that</span> <span class='n'>is</span> <span class='k'>outside</span> <span class='n'>of</span> <span class='n'>your</span> <span class='k'>width</span>
+	<span class='k'>text</span><span class='o'>-</span><span class='k'>overflow</span><span class='o'>:</span> <span class='n'>ellipsis</span><span class='p'>;</span> <span class='o'>//</span><span class='n'>creates</span> <span class='n'>our</span> <span class='n'>ellipsis</span><span class='o'>!</span>
+<span class='p'>}</span>
 </code></pre>
 </div>
 

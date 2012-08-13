@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Text Overflow Ellipsis Using Jquery - Tiny Factory Docs</title>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" media="screen" href="http://localhost:4000/css/screen.css" type="text/css" />
+    
+    
+    <!-- google analytics async -->
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-20145334-1']);
+      _gaq.push(['_setDomainName', 'tinyfactory.co']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    
+    <script type="text/javascript" src="//use.typekit.net/xkw5qeu.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  </head>
+  <body>
+      <header>
+        <div id="logo">
+          <a href="http://localhost:4000"><img src="http://localhost:4000/images/logo.png" alt="Tiny Factory"/></a>
+        </div><!-- logo -->
+  
+        <nav class="mobile-nav">
+          <div class="mobile-band">
+            
+            
+          
+            
+              <a href="http://localhost:4000/jobs.html">Jobs</a>
+            
+          
+            <!--a class="category" href="#">Categories</a>
+            <ul>
+               
+                <li><a href="http://localhost:4000/archive.html#git">git</a></li> 
+               
+                <li><a href="http://localhost:4000/archive.html#jquery">jquery</a></li> 
+               
+                <li><a href="http://localhost:4000/archive.html#compass">compass</a></li> 
+               
+                <li><a href="http://localhost:4000/archive.html#sass">sass</a></li> 
+               
+                <li><a href="http://localhost:4000/archive.html#javascript">javascript</a></li> 
+               
+                <li><a href="http://localhost:4000/archive.html#sencha touch 2">sencha touch 2</a></li> 
+               
+                <li><a href="http://localhost:4000/archive.html#node.js">node.js</a></li> 
+               
+                <li><a href="http://localhost:4000/archive.html#design">design</a></li> 
+               
+                <li><a href="http://localhost:4000/archive.html#centos">centos</a></li> 
+               
+                <li><a href="http://localhost:4000/archive.html#css">css</a></li> 
+              
+            </ul>
+          </div -->
+        </nav>
+      </header>
+      <div id="container">
+            <div id="container" class="single">
+
+  <div id="sidebar">
+    <div class="side-logo"><a href="http://localhost:4000"><img src="http://localhost:4000/images/logo.png" alt=""></a></div>
+      <div class="item">
+        <h3>Contribute</h3>
+        <a href="https://github.com/TinyFactory/Tiny-Factory-Docs">Fork this on GitHub</a>
+      </div><!-- item -->
+      <div class="item">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://localhost:4000">Home</a></li>
+          
+            
+          
+            
+              <li><a href="http://localhost:4000/jobs.html">Jobs</a></li>
+            
+          
+        </ul>
+      </div><!-- item -->
+      <div class="item">
+        <h3>Related</h3>
+        <ul>
+        
+          
+          
+            
+          
+                                 
+        
+          
+          
+            
+          
+                                 
+        
+          
+          
+            
+          
+                                 
+        
+          
+          
+            
+          
+                                 
+        
+          
+          
+            
+          
+                                 
+        
+          
+          
+            
+          
+                                 
+        
+          
+          
+            
+          
+                                 
+        
+          
+          
+            
+          
+                                 
+        
+          
+          
+            
+          
+                                 
+        
+          
+          
+            
+          
+                                 
+        
+         
+      </ul> 
+      </div><!-- item -->
+      <div class="item">
+        <h3>Most Recent</h3>
+        <ul class="posts">
+          
+            <li><a href="http://localhost:4000/css/2012/08/11/text-overflow-ellipsis-using-CSS.html">Text Overflow Ellipsis Using Css</a></li>
+          
+            <li><a href="http://localhost:4000/javascript/2012/08/10/targeting-mobile-webkit-browsers-with-javascript.html">Targeting Mobile Webkit Browsers With Javascript</a></li>
+          
+            <li><a href="http://localhost:4000/compass/2012/08/07/compass-animated-button-mixin.html">Compass Animated Button Mixin</a></li>
+          
+            <li><a href="http://localhost:4000/sass/2012/08/02/sass-inline-media-queries.html">Sass Inline Media Queries</a></li>
+          
+            <li><a href="http://localhost:4000/sencha touch 2/2012/08/02/Sencha-Touch-2-JSONP-XML-Reader-JSONPX.html">Sencha Touch 2 Jsonp Xml Reader Jsonpx</a></li>
+          
+        </ul>
+      </div>
+    </div><!-- sidebar -->
+
+      <article>
+          <div class="entry">
+            <h1>Text Overflow Ellipsis Using Jquery</h1>
+            <p>If CSS isn&#8217;t enough to solve your your ellipsis issues and you want to take it to the next level and insert after multiple lines you can introduce some jQuery into the mix. This is a solution I found on <a href='http://stackoverflow.com/questions/536814/insert-ellipsis-into-html-tag-if-content-too-wide'>stacks overflow</a> that works quite well.</p>
+
+<p>Use this in your CSS document</p>
+<div class='highlight'><pre><code class='css'><span class='nc'>.ellipsis</span> <span class='p'>{</span>
+        <span class='k'>white-space</span><span class='o'>:</span> <span class='k'>nowrap</span><span class='p'>;</span>
+        <span class='k'>overflow</span><span class='o'>:</span> <span class='k'>hidden</span><span class='p'>;</span>
+<span class='p'>}</span>
+
+<span class='nc'>.ellipsis.multiline</span> <span class='p'>{</span>
+        <span class='k'>white-space</span><span class='o'>:</span> <span class='k'>normal</span><span class='p'>;</span>
+<span class='p'>}</span>
+</code></pre>
+</div>
+<p>Here is your HTML, always remember to include jQuery in your document before using jQuery.</p>
+<div class='highlight'><pre><code class='html'>/* this is a one line ellipsis */
+<span class='nt'>&lt;div</span> <span class='na'>class=</span><span class='s'>&quot;ellipsis&quot;</span> <span class='na'>style=</span><span class='s'>&quot;width: 100px; border: 1px solid black;&quot;</span><span class='nt'>&gt;</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit<span class='nt'>&lt;/div&gt;</span>
+
+/* this is a multiline ellipsis */
+<span class='nt'>&lt;div</span> <span class='na'>class=</span><span class='s'>&quot;ellipsis multiline&quot;</span> <span class='na'>style=</span><span class='s'>&quot;width: 100px; height: 40px; border: 1px solid black; margin-bottom: 100px&quot;</span><span class='nt'>&gt;</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit<span class='nt'>&lt;/div&gt;</span>
+
+<span class='nt'>&lt;script </span><span class='na'>type=</span><span class='s'>&quot;text/javascript&quot;</span> <span class='na'>src=</span><span class='s'>&quot;/js/jquery.ellipsis.js&quot;</span><span class='nt'>&gt;&lt;/script&gt;</span>
+<span class='nt'>&lt;script </span><span class='na'>type=</span><span class='s'>&quot;text/javascript&quot;</span><span class='nt'>&gt;</span>
+<span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;.ellipsis&quot;</span><span class='p'>).</span><span class='nx'>ellipsis</span><span class='p'>();</span>
+<span class='nt'>&lt;/script&gt;</span>
+</code></pre>
+</div>
+<p>&#8230;and last but not least the jquery for creating a single or multi-line ellipsis</p>
+<div class='highlight'><pre><code class='js'><span class='p'>(</span><span class='kd'>function</span><span class='p'>(</span><span class='nx'>$</span><span class='p'>)</span> <span class='p'>{</span>
+        <span class='nx'>$</span><span class='p'>.</span><span class='nx'>fn</span><span class='p'>.</span><span class='nx'>ellipsis</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>()</span>
+        <span class='p'>{</span>
+                <span class='k'>return</span> <span class='k'>this</span><span class='p'>.</span><span class='nx'>each</span><span class='p'>(</span><span class='kd'>function</span><span class='p'>()</span>
+                <span class='p'>{</span>
+                        <span class='kd'>var</span> <span class='nx'>el</span> <span class='o'>=</span> <span class='nx'>$</span><span class='p'>(</span><span class='k'>this</span><span class='p'>);</span>
+
+                        <span class='k'>if</span><span class='p'>(</span><span class='nx'>el</span><span class='p'>.</span><span class='nx'>css</span><span class='p'>(</span><span class='s2'>&quot;overflow&quot;</span><span class='p'>)</span> <span class='o'>==</span> <span class='s2'>&quot;hidden&quot;</span><span class='p'>)</span>
+                        <span class='p'>{</span>
+                                <span class='kd'>var</span> <span class='nx'>text</span> <span class='o'>=</span> <span class='nx'>el</span><span class='p'>.</span><span class='nx'>html</span><span class='p'>();</span>
+                                <span class='kd'>var</span> <span class='nx'>multiline</span> <span class='o'>=</span> <span class='nx'>el</span><span class='p'>.</span><span class='nx'>hasClass</span><span class='p'>(</span><span class='s1'>&#39;multiline&#39;</span><span class='p'>);</span>
+                                <span class='kd'>var</span> <span class='nx'>t</span> <span class='o'>=</span> <span class='nx'>$</span><span class='p'>(</span><span class='k'>this</span><span class='p'>.</span><span class='nx'>cloneNode</span><span class='p'>(</span><span class='kc'>true</span><span class='p'>))</span>
+                                        <span class='p'>.</span><span class='nx'>hide</span><span class='p'>()</span>
+                                        <span class='p'>.</span><span class='nx'>css</span><span class='p'>(</span><span class='s1'>&#39;position&#39;</span><span class='p'>,</span> <span class='s1'>&#39;absolute&#39;</span><span class='p'>)</span>
+                                        <span class='p'>.</span><span class='nx'>css</span><span class='p'>(</span><span class='s1'>&#39;overflow&#39;</span><span class='p'>,</span> <span class='s1'>&#39;visible&#39;</span><span class='p'>)</span>
+                                        <span class='p'>.</span><span class='nx'>width</span><span class='p'>(</span><span class='nx'>multiline</span> <span class='o'>?</span> <span class='nx'>el</span><span class='p'>.</span><span class='nx'>width</span><span class='p'>()</span> <span class='o'>:</span> <span class='s1'>&#39;auto&#39;</span><span class='p'>)</span>
+                                        <span class='p'>.</span><span class='nx'>height</span><span class='p'>(</span><span class='nx'>multiline</span> <span class='o'>?</span> <span class='s1'>&#39;auto&#39;</span> <span class='o'>:</span> <span class='nx'>el</span><span class='p'>.</span><span class='nx'>height</span><span class='p'>())</span>
+                                        <span class='p'>;</span>
+
+                                <span class='nx'>el</span><span class='p'>.</span><span class='nx'>after</span><span class='p'>(</span><span class='nx'>t</span><span class='p'>);</span>
+
+                                <span class='kd'>function</span> <span class='nx'>height</span><span class='p'>()</span> <span class='p'>{</span> <span class='k'>return</span> <span class='nx'>t</span><span class='p'>.</span><span class='nx'>height</span><span class='p'>()</span> <span class='o'>&gt;</span> <span class='nx'>el</span><span class='p'>.</span><span class='nx'>height</span><span class='p'>();</span> <span class='p'>};</span>
+                                <span class='kd'>function</span> <span class='nx'>width</span><span class='p'>()</span> <span class='p'>{</span> <span class='k'>return</span> <span class='nx'>t</span><span class='p'>.</span><span class='nx'>width</span><span class='p'>()</span> <span class='o'>&gt;</span> <span class='nx'>el</span><span class='p'>.</span><span class='nx'>width</span><span class='p'>();</span> <span class='p'>};</span>
+
+                                <span class='kd'>var</span> <span class='nx'>func</span> <span class='o'>=</span> <span class='nx'>multiline</span> <span class='o'>?</span> <span class='nx'>height</span> <span class='o'>:</span> <span class='nx'>width</span><span class='p'>;</span>
+
+                                <span class='k'>while</span> <span class='p'>(</span><span class='nx'>text</span><span class='p'>.</span><span class='nx'>length</span> <span class='o'>&gt;</span> <span class='mi'>0</span> <span class='o'>&amp;&amp;</span> <span class='nx'>func</span><span class='p'>())</span>
+                                <span class='p'>{</span>
+                                        <span class='nx'>text</span> <span class='o'>=</span> <span class='nx'>text</span><span class='p'>.</span><span class='nx'>substr</span><span class='p'>(</span><span class='mi'>0</span><span class='p'>,</span> <span class='nx'>text</span><span class='p'>.</span><span class='nx'>length</span> <span class='o'>-</span> <span class='mi'>1</span><span class='p'>);</span>
+                                        <span class='nx'>t</span><span class='p'>.</span><span class='nx'>html</span><span class='p'>(</span><span class='nx'>text</span> <span class='o'>+</span> <span class='s2'>&quot;...&quot;</span><span class='p'>);</span>
+                                <span class='p'>}</span>
+
+                                <span class='nx'>el</span><span class='p'>.</span><span class='nx'>html</span><span class='p'>(</span><span class='nx'>t</span><span class='p'>.</span><span class='nx'>html</span><span class='p'>());</span>
+                                <span class='nx'>t</span><span class='p'>.</span><span class='nx'>remove</span><span class='p'>();</span>
+                        <span class='p'>}</span>
+                <span class='p'>});</span>
+        <span class='p'>};</span>
+<span class='p'>})(</span><span class='nx'>jQuery</span><span class='p'>);</span>
+</code></pre>
+</div>
+<p>If you&#8217;re looking more configurable options, check out the <a href='http://dotdotdot.frebsite.nl/'>dotdotdot</a> jQuery plugin.</p>
+
+            
+              <div class="meta">
+                <h1>This article was carefully crafted by...</h1>
+                <img class="gravatar" src="http://www.gravatar.com/avatar/7a1dc0efd8eba2f7c5932b5dffbca642?s=64">
+                <span class="author">Michael Sacca</span>
+                <a class="website" href="http://twitter.com/michaelsacca" target="_blank">http://www.tinyfactory.co</a>
+                  <ul class="profiles">
+                    <li class="twitter"><a href="http://twitter.com/michaelsacca" target="_blank">@michaelsacca</a></li>
+                    <li class="dribbble"><a href="http://dribbble.com/michaelsacca" target="_blank">dribbble</a></li>
+                    <li class="github"><a href="http://github.com/michaelsacca" target="_blank">github</a></li>
+                  </ul>
+              </div>
+          </div>
+      </article>
+</div>
+
+      </div>
+
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
+      <script type="text/javascript" src="http://localhost:4000/js/slimScroll.min.js"></script>
+      <script type="text/javascript" src="http://localhost:4000/js/masonry.js"></script>
+      <script type="text/javascript" src="http://localhost:4000/js/web.js"></script>
+  </body>
+</html>

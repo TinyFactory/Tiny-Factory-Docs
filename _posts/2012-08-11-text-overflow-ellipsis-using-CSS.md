@@ -7,7 +7,7 @@ author: michael
 
 The CSS text overflow ellipsis solution is perfect for single line truncations.  I use this constantly when building mobile or responsive applications.
 
-{% hightlight css %}
+{% highlight css %}
 span {
 	display:block; // because we're using a span class
 	white-space: nowrap; //This prevents the content from breaking onto another line
@@ -15,4 +15,4 @@ span {
 	overflow: hidden; // hides the text that is outside of your width
 	text-overflow: ellipsis; //creates our ellipsis!
 }
-{% endhightlight %}
+{% endhighlight %}

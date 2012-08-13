@@ -4,13 +4,117 @@
  <title>Tiny Factory Docs</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2012-08-13T09:51:22-07:00</updated>
+ <updated>2012-08-13T10:37:10-07:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Tiny Factory</name>
    <email>hello@tinyfactory.co</email>
  </author>
 
+ 
+ <entry>
+   <title>Text Overflow Ellipsis Using Jquery</title>
+   <link href="http://localhost:4000/jquery/2012/08/11/text-overflow-ellipsis-using-jquery.html"/>
+   <updated>2012-08-11T00:00:00-07:00</updated>
+   <id>http://localhost:4000/jquery/2012/08/11/text-overflow-ellipsis-using-jquery</id>
+   
+   <author>
+   	<name>Michael Sacca</name>
+   	<email>michael.sacca@gmail.com</email>
+   </author>
+   <content type="html">&lt;p&gt;If CSS isn&amp;#8217;t enough to solve your your ellipsis issues and you want to take it to the next level and insert after multiple lines you can introduce some jQuery into the mix. This is a solution I found on &lt;a href='http://stackoverflow.com/questions/536814/insert-ellipsis-into-html-tag-if-content-too-wide'&gt;stacks overflow&lt;/a&gt; that works quite well.&lt;/p&gt;
+
+&lt;p&gt;Use this in your CSS document&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='css'&gt;&lt;span class='nc'&gt;.ellipsis&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+        &lt;span class='k'&gt;white-space&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='k'&gt;nowrap&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt;
+        &lt;span class='k'&gt;overflow&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='k'&gt;hidden&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt;
+&lt;span class='p'&gt;}&lt;/span&gt;
+
+&lt;span class='nc'&gt;.ellipsis.multiline&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+        &lt;span class='k'&gt;white-space&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='k'&gt;normal&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt;
+&lt;span class='p'&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Here is your HTML, always remember to include jQuery in your document before using jQuery.&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='html'&gt;/* this is a one line ellipsis */
+&lt;span class='nt'&gt;&amp;lt;div&lt;/span&gt; &lt;span class='na'&gt;class=&lt;/span&gt;&lt;span class='s'&gt;&amp;quot;ellipsis&amp;quot;&lt;/span&gt; &lt;span class='na'&gt;style=&lt;/span&gt;&lt;span class='s'&gt;&amp;quot;width: 100px; border: 1px solid black;&amp;quot;&lt;/span&gt;&lt;span class='nt'&gt;&amp;gt;&lt;/span&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit&lt;span class='nt'&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+/* this is a multiline ellipsis */
+&lt;span class='nt'&gt;&amp;lt;div&lt;/span&gt; &lt;span class='na'&gt;class=&lt;/span&gt;&lt;span class='s'&gt;&amp;quot;ellipsis multiline&amp;quot;&lt;/span&gt; &lt;span class='na'&gt;style=&lt;/span&gt;&lt;span class='s'&gt;&amp;quot;width: 100px; height: 40px; border: 1px solid black; margin-bottom: 100px&amp;quot;&lt;/span&gt;&lt;span class='nt'&gt;&amp;gt;&lt;/span&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit&lt;span class='nt'&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+&lt;span class='nt'&gt;&amp;lt;script &lt;/span&gt;&lt;span class='na'&gt;type=&lt;/span&gt;&lt;span class='s'&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt; &lt;span class='na'&gt;src=&lt;/span&gt;&lt;span class='s'&gt;&amp;quot;/js/jquery.ellipsis.js&amp;quot;&lt;/span&gt;&lt;span class='nt'&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class='nt'&gt;&amp;lt;script &lt;/span&gt;&lt;span class='na'&gt;type=&lt;/span&gt;&lt;span class='s'&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt;&lt;span class='nt'&gt;&amp;gt;&lt;/span&gt;
+&lt;span class='nx'&gt;$&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;.ellipsis&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;).&lt;/span&gt;&lt;span class='nx'&gt;ellipsis&lt;/span&gt;&lt;span class='p'&gt;();&lt;/span&gt;
+&lt;span class='nt'&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;&amp;#8230;and last but not least the jquery for creating a single or multi-line ellipsis&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='js'&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='kd'&gt;function&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;$&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+        &lt;span class='nx'&gt;$&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;fn&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;ellipsis&lt;/span&gt; &lt;span class='o'&gt;=&lt;/span&gt; &lt;span class='kd'&gt;function&lt;/span&gt;&lt;span class='p'&gt;()&lt;/span&gt;
+        &lt;span class='p'&gt;{&lt;/span&gt;
+                &lt;span class='k'&gt;return&lt;/span&gt; &lt;span class='k'&gt;this&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;each&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='kd'&gt;function&lt;/span&gt;&lt;span class='p'&gt;()&lt;/span&gt;
+                &lt;span class='p'&gt;{&lt;/span&gt;
+                        &lt;span class='kd'&gt;var&lt;/span&gt; &lt;span class='nx'&gt;el&lt;/span&gt; &lt;span class='o'&gt;=&lt;/span&gt; &lt;span class='nx'&gt;$&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='k'&gt;this&lt;/span&gt;&lt;span class='p'&gt;);&lt;/span&gt;
+
+                        &lt;span class='k'&gt;if&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;el&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;css&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;overflow&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='o'&gt;==&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot;hidden&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt;
+                        &lt;span class='p'&gt;{&lt;/span&gt;
+                                &lt;span class='kd'&gt;var&lt;/span&gt; &lt;span class='nx'&gt;text&lt;/span&gt; &lt;span class='o'&gt;=&lt;/span&gt; &lt;span class='nx'&gt;el&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;html&lt;/span&gt;&lt;span class='p'&gt;();&lt;/span&gt;
+                                &lt;span class='kd'&gt;var&lt;/span&gt; &lt;span class='nx'&gt;multiline&lt;/span&gt; &lt;span class='o'&gt;=&lt;/span&gt; &lt;span class='nx'&gt;el&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;hasClass&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s1'&gt;&amp;#39;multiline&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;);&lt;/span&gt;
+                                &lt;span class='kd'&gt;var&lt;/span&gt; &lt;span class='nx'&gt;t&lt;/span&gt; &lt;span class='o'&gt;=&lt;/span&gt; &lt;span class='nx'&gt;$&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='k'&gt;this&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;cloneNode&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='kc'&gt;true&lt;/span&gt;&lt;span class='p'&gt;))&lt;/span&gt;
+                                        &lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;hide&lt;/span&gt;&lt;span class='p'&gt;()&lt;/span&gt;
+                                        &lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;css&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s1'&gt;&amp;#39;position&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;absolute&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt;
+                                        &lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;css&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s1'&gt;&amp;#39;overflow&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;visible&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt;
+                                        &lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;width&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;multiline&lt;/span&gt; &lt;span class='o'&gt;?&lt;/span&gt; &lt;span class='nx'&gt;el&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;width&lt;/span&gt;&lt;span class='p'&gt;()&lt;/span&gt; &lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;auto&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt;
+                                        &lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;height&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;multiline&lt;/span&gt; &lt;span class='o'&gt;?&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;auto&amp;#39;&lt;/span&gt; &lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='nx'&gt;el&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;height&lt;/span&gt;&lt;span class='p'&gt;())&lt;/span&gt;
+                                        &lt;span class='p'&gt;;&lt;/span&gt;
+
+                                &lt;span class='nx'&gt;el&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;after&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;t&lt;/span&gt;&lt;span class='p'&gt;);&lt;/span&gt;
+
+                                &lt;span class='kd'&gt;function&lt;/span&gt; &lt;span class='nx'&gt;height&lt;/span&gt;&lt;span class='p'&gt;()&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt; &lt;span class='k'&gt;return&lt;/span&gt; &lt;span class='nx'&gt;t&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;height&lt;/span&gt;&lt;span class='p'&gt;()&lt;/span&gt; &lt;span class='o'&gt;&amp;gt;&lt;/span&gt; &lt;span class='nx'&gt;el&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;height&lt;/span&gt;&lt;span class='p'&gt;();&lt;/span&gt; &lt;span class='p'&gt;};&lt;/span&gt;
+                                &lt;span class='kd'&gt;function&lt;/span&gt; &lt;span class='nx'&gt;width&lt;/span&gt;&lt;span class='p'&gt;()&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt; &lt;span class='k'&gt;return&lt;/span&gt; &lt;span class='nx'&gt;t&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;width&lt;/span&gt;&lt;span class='p'&gt;()&lt;/span&gt; &lt;span class='o'&gt;&amp;gt;&lt;/span&gt; &lt;span class='nx'&gt;el&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;width&lt;/span&gt;&lt;span class='p'&gt;();&lt;/span&gt; &lt;span class='p'&gt;};&lt;/span&gt;
+
+                                &lt;span class='kd'&gt;var&lt;/span&gt; &lt;span class='nx'&gt;func&lt;/span&gt; &lt;span class='o'&gt;=&lt;/span&gt; &lt;span class='nx'&gt;multiline&lt;/span&gt; &lt;span class='o'&gt;?&lt;/span&gt; &lt;span class='nx'&gt;height&lt;/span&gt; &lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='nx'&gt;width&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt;
+
+                                &lt;span class='k'&gt;while&lt;/span&gt; &lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;text&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;length&lt;/span&gt; &lt;span class='o'&gt;&amp;gt;&lt;/span&gt; &lt;span class='mi'&gt;0&lt;/span&gt; &lt;span class='o'&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class='nx'&gt;func&lt;/span&gt;&lt;span class='p'&gt;())&lt;/span&gt;
+                                &lt;span class='p'&gt;{&lt;/span&gt;
+                                        &lt;span class='nx'&gt;text&lt;/span&gt; &lt;span class='o'&gt;=&lt;/span&gt; &lt;span class='nx'&gt;text&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;substr&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='mi'&gt;0&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;text&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;length&lt;/span&gt; &lt;span class='o'&gt;-&lt;/span&gt; &lt;span class='mi'&gt;1&lt;/span&gt;&lt;span class='p'&gt;);&lt;/span&gt;
+                                        &lt;span class='nx'&gt;t&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;html&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;text&lt;/span&gt; &lt;span class='o'&gt;+&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot;...&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;);&lt;/span&gt;
+                                &lt;span class='p'&gt;}&lt;/span&gt;
+
+                                &lt;span class='nx'&gt;el&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;html&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;t&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;html&lt;/span&gt;&lt;span class='p'&gt;());&lt;/span&gt;
+                                &lt;span class='nx'&gt;t&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;remove&lt;/span&gt;&lt;span class='p'&gt;();&lt;/span&gt;
+                        &lt;span class='p'&gt;}&lt;/span&gt;
+                &lt;span class='p'&gt;});&lt;/span&gt;
+        &lt;span class='p'&gt;};&lt;/span&gt;
+&lt;span class='p'&gt;})(&lt;/span&gt;&lt;span class='nx'&gt;jQuery&lt;/span&gt;&lt;span class='p'&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;If you&amp;#8217;re looking more configurable options, check out the &lt;a href='http://dotdotdot.frebsite.nl/'&gt;dotdotdot&lt;/a&gt; jQuery plugin.&lt;/p&gt;</content>
+
+ </entry>
+ 
+ <entry>
+   <title>Text Overflow Ellipsis Using Css</title>
+   <link href="http://localhost:4000/css/2012/08/11/text-overflow-ellipsis-using-CSS.html"/>
+   <updated>2012-08-11T00:00:00-07:00</updated>
+   <id>http://localhost:4000/css/2012/08/11/text-overflow-ellipsis-using-CSS</id>
+   
+   <author>
+   	<name>Michael Sacca</name>
+   	<email>michael.sacca@gmail.com</email>
+   </author>
+   <content type="html">&lt;p&gt;The CSS text overflow ellipsis solution is perfect for single line truncations. I use this constantly when building mobile or responsive applications.&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='css'&gt;&lt;span class='nt'&gt;span&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+	&lt;span class='k'&gt;display&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt;&lt;span class='k'&gt;block&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt; &lt;span class='o'&gt;//&lt;/span&gt; &lt;span class='n'&gt;because&lt;/span&gt; &lt;span class='n'&gt;we&lt;/span&gt;&lt;span class='err'&gt;&amp;#39;&lt;/span&gt;&lt;span class='n'&gt;re&lt;/span&gt; &lt;span class='n'&gt;using&lt;/span&gt; &lt;span class='err'&gt;a&lt;/span&gt; &lt;span class='n'&gt;span&lt;/span&gt; &lt;span class='n'&gt;class&lt;/span&gt;
+	&lt;span class='k'&gt;white-space&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='k'&gt;nowrap&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt; &lt;span class='o'&gt;//&lt;/span&gt;&lt;span class='n'&gt;This&lt;/span&gt; &lt;span class='n'&gt;prevents&lt;/span&gt; &lt;span class='n'&gt;the&lt;/span&gt; &lt;span class='k'&gt;content&lt;/span&gt; &lt;span class='n'&gt;from&lt;/span&gt; &lt;span class='n'&gt;breaking&lt;/span&gt; &lt;span class='n'&gt;onto&lt;/span&gt; &lt;span class='n'&gt;another&lt;/span&gt; &lt;span class='n'&gt;line&lt;/span&gt;
+	&lt;span class='k'&gt;width&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='m'&gt;100&lt;/span&gt;&lt;span class='o'&gt;%&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt; &lt;span class='o'&gt;//&lt;/span&gt; &lt;span class='n'&gt;this&lt;/span&gt; &lt;span class='n'&gt;should&lt;/span&gt; &lt;span class='n'&gt;be&lt;/span&gt; &lt;span class='n'&gt;the&lt;/span&gt; &lt;span class='k'&gt;width&lt;/span&gt; &lt;span class='n'&gt;of&lt;/span&gt; &lt;span class='n'&gt;your&lt;/span&gt; &lt;span class='k'&gt;content&lt;/span&gt;
+	&lt;span class='k'&gt;overflow&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='k'&gt;hidden&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt; &lt;span class='o'&gt;//&lt;/span&gt; &lt;span class='n'&gt;hides&lt;/span&gt; &lt;span class='n'&gt;the&lt;/span&gt; &lt;span class='k'&gt;text&lt;/span&gt; &lt;span class='n'&gt;that&lt;/span&gt; &lt;span class='n'&gt;is&lt;/span&gt; &lt;span class='k'&gt;outside&lt;/span&gt; &lt;span class='n'&gt;of&lt;/span&gt; &lt;span class='n'&gt;your&lt;/span&gt; &lt;span class='k'&gt;width&lt;/span&gt;
+	&lt;span class='k'&gt;text&lt;/span&gt;&lt;span class='o'&gt;-&lt;/span&gt;&lt;span class='k'&gt;overflow&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='n'&gt;ellipsis&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt; &lt;span class='o'&gt;//&lt;/span&gt;&lt;span class='n'&gt;creates&lt;/span&gt; &lt;span class='n'&gt;our&lt;/span&gt; &lt;span class='n'&gt;ellipsis&lt;/span&gt;&lt;span class='o'&gt;!&lt;/span&gt;
+&lt;span class='p'&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content>
+
+ </entry>
  
  <entry>
    <title>Targeting Mobile Webkit Browsers With Javascript</title>
@@ -23,10 +127,10 @@
    	<email>michael.sacca@gmail.com</email>
    </author>
    <content type="html">&lt;p&gt;Here is a way to target mobile browsers with Javascript. It&amp;#8217;s not recommended you use this as your sole method for targeting mobile browsers as it first requires your users to load your entire standard site before serving your mobile specific code. But if used in conjunction with &lt;a href='http://docs.tinyfactory.co/sass/2012/08/02/sass-inline-media-queries.html'&gt;CSS Media Queries&lt;/a&gt; - this can be quite handy.&lt;/p&gt;
-&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='javascript'&gt;&lt;span class='k'&gt;if&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt; &lt;span class='o'&gt;!&lt;/span&gt;&lt;span class='nx'&gt;navigator&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;userAgent&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;match&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='sr'&gt;/Android/i&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='o'&gt;||&lt;/span&gt;
-    &lt;span class='o'&gt;!&lt;/span&gt;&lt;span class='nx'&gt;navigator&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;userAgent&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;match&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='sr'&gt;/webOS/i&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='o'&gt;||&lt;/span&gt;
-    &lt;span class='o'&gt;!&lt;/span&gt;&lt;span class='nx'&gt;navigator&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;userAgent&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;match&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='sr'&gt;/iPhone/i&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='o'&gt;||&lt;/span&gt;
-    &lt;span class='o'&gt;!&lt;/span&gt;&lt;span class='nx'&gt;navigator&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;userAgent&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;match&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='sr'&gt;/iPod/i&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='o'&gt;||&lt;/span&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='js'&gt;&lt;span class='k'&gt;if&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt; &lt;span class='nx'&gt;navigator&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;userAgent&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;match&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='sr'&gt;/Android/i&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='o'&gt;||&lt;/span&gt;
+    &lt;span class='nx'&gt;navigator&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;userAgent&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;match&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='sr'&gt;/webOS/i&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='o'&gt;||&lt;/span&gt;
+    &lt;span class='nx'&gt;navigator&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;userAgent&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;match&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='sr'&gt;/iPhone/i&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='o'&gt;||&lt;/span&gt;
+    &lt;span class='nx'&gt;navigator&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;userAgent&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;match&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='sr'&gt;/iPod/i&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt;
  &lt;span class='p'&gt;){&lt;/span&gt;
  	&lt;span class='c1'&gt;// Mobile Code Here&lt;/span&gt;
  &lt;span class='p'&gt;});&lt;/span&gt;
@@ -37,10 +141,10 @@
  </entry>
  
  <entry>
-   <title>Compass Fancy Button Mixin</title>
-   <link href="http://localhost:4000/compass/2012/08/07/compass-fancy-button-mixin.html"/>
+   <title>Compass Animated Button Mixin</title>
+   <link href="http://localhost:4000/compass/2012/08/07/compass-animated-button-mixin.html"/>
    <updated>2012-08-07T00:00:00-07:00</updated>
-   <id>http://localhost:4000/compass/2012/08/07/compass-fancy-button-mixin</id>
+   <id>http://localhost:4000/compass/2012/08/07/compass-animated-button-mixin</id>
    
    <author>
    	<name>Michael Sacca</name>
