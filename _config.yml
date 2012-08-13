@@ -1,8 +1,8 @@
 # Development
-# url: http://localhost:4000
+url: http://localhost:4000
 
 # Production
-url: http://docs.tinyfactory.co
+# url: http://docs.tinyfactory.co
 
 
 permalink: :date

@@ -17,6 +17,8 @@ $sidebar.after($sidebar_ns);
 $sidebar.slimScroll({
  	height: '100%',
  	width: '23%',
+ 	railVisible: true,
+	alwaysVisible: true
 });
 
 // Add or remove function depending on what
