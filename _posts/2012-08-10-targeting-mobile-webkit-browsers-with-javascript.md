@@ -11,7 +11,7 @@ Here is a way to target mobile browsers with Javascript.  It's not recommended y
 if( navigator.userAgent.match(/Android/i) ||
     navigator.userAgent.match(/webOS/i) ||
     navigator.userAgent.match(/iPhone/i) ||
-    navigator.userAgent.match(/iPod/i) ||
+    navigator.userAgent.match(/iPod/i)
  ){
  	// Mobile Code Here
  });
