@@ -11,7 +11,7 @@ Syntax:
 
 {% highlight scss %}
 // retina.scss
-// Defaults to png but can be overwritten to jpg or gif
+// This will default to png but can be overwritten to jpg or gif
 //$image name is equal to the image name with out it's extention - 'example.png' would be defined as 'example'
 
 @mixin at2x($image_name, $w: auto, $h: auto, $extention: '.png') {
