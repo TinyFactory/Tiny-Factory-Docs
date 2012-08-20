@@ -3,11 +3,12 @@ layout: post
 title: Changing the head on a Git Repo
 category: git
 author: michael
+published: false
 ---
 
 If you want the default branch from a `git clone` to be something besides `master`, use the following steps:
 
-Check what remote branches are available: 
+Check what remote branches are available:
 
 {% highlight bash %}
 git branch -r
