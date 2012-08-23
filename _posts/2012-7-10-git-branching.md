@@ -64,6 +64,16 @@ To push local changes for a specific repo
 $ git push origin master
 {% endhighlight %}
 
+To delete a local branch
+{% highlight bash %}
+$ git branch -D branch-name
+{% endhighlight %}
+
+To delete a remote branch
+{% highlight bash %}
+$ git push origin --delete branch-name
+{% endhighlight %}
+
 View GUI of merges
 
 {% highlight bash %}
