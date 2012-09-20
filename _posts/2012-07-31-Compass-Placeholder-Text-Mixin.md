@@ -37,7 +37,7 @@ Steps:
     Will compile to: 
     
 {% highlight scss %}
-              .inputCls.placeholder {
+              .inputCls:placeholder {
                 color: #cccccc;
               }
               .inputCls:-moz-placeholder {
