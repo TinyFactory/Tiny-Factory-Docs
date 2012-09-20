@@ -24,8 +24,14 @@ Syntax:
 Steps:
 
     1.  Add the .placeholder mixin to your stylesheet (or reference it from a file such as var.less)
-    2.  In your stylesheet call the mixin like: **.some-class { .placeholder(@placeholderColor);}**
-    
+    2.  In your stylesheet call the mixin like: 
+
+{% highlight scss %}
+    .some-class { 
+    	.placeholder(#ccc);
+    }
+{% endhighlight %}
+
 This will compile to: 
     
 {% highlight scss %}
