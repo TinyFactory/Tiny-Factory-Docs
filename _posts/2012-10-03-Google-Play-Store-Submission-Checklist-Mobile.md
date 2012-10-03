@@ -22,7 +22,7 @@ So you've finished your application and you're ready to submit it to the Google 
 * Dimensions: 320 x 480, 480 x 800, 480 x 854, 1280 x 720, 1280 x 800
 * 24 bit PNG or JPEG (no alpha)
 * Full bleed, no border in art
-    
+
 ##Promo Graphic (Optional)
 * 180w x 120h
 * 24 bit PNG or JPEG (no alpha)
