@@ -16,10 +16,10 @@ In order to submit an application to Apple's App Store, there are numerous requi
 * 1024px - New requirement (now with macbook retina)
 
 ### Splash
-Must be named exactly as is next to the dimensions & PNG only
+Must be named exactly as is next to the dimensions.  Must be a PNG file.
 * 320 x 480px - Default.png - iPhone 3Gs and older
 * 640 x 960px - Default@2x.png - iPhone 4 & 4s
-* 1136 x 640px - iPhone 5
+* 1136 x 640px - Default-568h@2x.png - iPhone 5
 
 ### Screenshots
 File formats allowed: .jpeg, .jpg, .tif, .tiff, or .png
