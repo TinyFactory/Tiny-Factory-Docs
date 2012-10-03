@@ -7,7 +7,7 @@ category: design
 
 So you've finished your application and you're ready to submit it to the Google Play store, but wait - you still need more assets!  Here's a quick checklist for what you'll need to prepare before submission.
 
-##icons
+##Icons
 
 * 512x512 - required for publishing
 * 72x72, 48x48, 36x36 - all three used for compiling
@@ -27,13 +27,12 @@ So you've finished your application and you're ready to submit it to the Google 
 * 180w x 120h
 * 24 bit PNG or JPEG (no alpha)
 * No border in art
-    
+
 ##Feature Graphic (Optional)
 
 * 1024 x 500
-* 24 bit PNG or JPEG (no alpha)
 * Will be downsized to mini or micro
-    
+
 ##Promotional Video:
 
 * Enter YouTube URL
@@ -41,7 +40,7 @@ So you've finished your application and you're ready to submit it to the Google 
 ##Text descriptions
 
 * Language
-* Title 
+* Title
 * Description
 * Promo Text
 * Application Type
