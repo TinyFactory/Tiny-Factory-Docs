@@ -8,8 +8,8 @@ category: design
 So you've finished your application and you're ready to submit it to the Google Play store, but wait - you still need more assets!  Here's a quick checklist for what you'll need to prepare before submission.
 
 ###icons
-*512x512 - required for publishing
-*72x72, 48x48, 36x36 - all three used for compiling
+-512x512 - required for publishing
+-72x72, 48x48, 36x36 - all three used for compiling
     
 ###Splash
 	320x480 (mobile devices)
