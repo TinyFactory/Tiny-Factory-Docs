@@ -3,10 +3,8 @@ layout: post
 title: iOS Store Submission Checklist
 category: design
 author: alex
-published: true
+published: false
 ---
-
-# iOS Store Submission Checklist
 
 In order to submit an application to Apple's App Store, there are numerous requiements.  We use this checklist to make sure we have everything we need prior to submission.
 
