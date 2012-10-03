@@ -315,6 +315,10 @@ strong
 		color: #333
 		margin-bottom: 250px
 
+		.col ul li
+			margin-left: 0 !important
+			list-style: none !important
+
 		a
 			color: lighten($red, 10%)
 			+bold
@@ -332,6 +336,13 @@ strong
 
 		p
 			margin: 20px 0
+
+		li
+			list-style: disc
+			margin-left: 30px
+
+			p
+				margin: 0 !important
 
 		img
 			max-width: 100%
@@ -400,6 +411,8 @@ li div.highlight
 		padding: 15px
 		background: darken($body, 4%)
 		+border-radius(3px)
+
+
 
 		+tablet-landscape-only
 			width: 465px

@@ -4,11 +4,39 @@
   <!--  Homepage -->
   <url>
     <loc>http://http://tinyfactory.github.com/</loc>
-    <lastmod>2012-08-13</lastmod>
+    <lastmod>2012-10-03</lastmod>
     <changefreq>daily</changefreq>
 		<priority>1.0</priority>
   </url>
 
+  
+  <url>
+    <loc>http://http://tinyfactory.github.com/design/2012/10/03/ios-store-submission-checklist.html</loc>
+    
+    <lastmod>2012-10-03</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://http://tinyfactory.github.com/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile.html</loc>
+    
+    <lastmod>2012-10-03</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://http://tinyfactory.github.com/less/2012/09/20/text-overflow-ellipsis-using-LESS.html</loc>
+    
+    <lastmod>2012-09-20</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://http://tinyfactory.github.com/less/2012/09/20/LESS-placeholder-text-mixin.html</loc>
+    
+    <lastmod>2012-09-20</lastmod>
+    
+  </url>
   
   <url>
     <loc>http://http://tinyfactory.github.com/jquery/2012/08/11/text-overflow-ellipsis-using-jquery.html</loc>
@@ -109,13 +137,6 @@
   </url>
   
   <url>
-    <loc>http://http://tinyfactory.github.com/git/2012/07/09/changing-the-head-pointer-on-a-git-repoistory.html</loc>
-    
-    <lastmod>2012-07-09</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://http://tinyfactory.github.com/centos/2012/07/08/setup-ftp-on-aws-centos.html</loc>
     
     <lastmod>2012-07-08</lastmod>
@@ -127,7 +148,7 @@
   <url>
     <loc>http://http://tinyfactory.github.com/index.html</loc>
     
-    <lastmod>2012-08-13</lastmod>
+    <lastmod>2012-10-03</lastmod>
     
     
     
@@ -136,7 +157,7 @@
   <url>
     <loc>http://http://tinyfactory.github.com/jobs.html</loc>
     
-    <lastmod>2012-08-13</lastmod>
+    <lastmod>2012-10-03</lastmod>
     
     
     

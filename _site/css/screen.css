@@ -607,6 +607,10 @@ strong {
   color: #333333;
   margin-bottom: 250px;
 }
+#container .entry .col ul li {
+  margin-left: 0 !important;
+  list-style: none !important;
+}
 #container .entry a {
   color: #de4132;
   font-family: "ff-meta-web-pro", "Georgia", sans-serif;
@@ -631,6 +635,13 @@ strong {
 }
 #container .entry p {
   margin: 20px 0;
+}
+#container .entry li {
+  list-style: disc;
+  margin-left: 30px;
+}
+#container .entry li p {
+  margin: 0 !important;
 }
 #container .entry img {
   max-width: 100%;

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Setup Nodejs Environment On Ec2 - Tiny Factory Docs</title>
+    <title>Google Play Store Submission Checklist Mobile - Tiny Factory Docs</title>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" media="screen" href="http://localhost:4000/css/screen.css" type="text/css" />
@@ -101,7 +101,11 @@
           
           
             
+              
+            
           
+          
+            <li><a href="http://localhost:4000/design/2012/10/03/ios-store-submission-checklist.html">iOS Store Submission Checklist</a></li>
                                  
         
           
@@ -167,13 +171,13 @@
           
             <li><a href="http://localhost:4000/design/2012/10/03/ios-store-submission-checklist.html">iOS Store Submission Checklist</a></li>
           
-            <li><a href="http://localhost:4000/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile.html">Google Play Store Submission Checklist Mobile</a></li>
-          
             <li><a href="http://localhost:4000/less/2012/09/20/text-overflow-ellipsis-using-LESS.html">Text Overflow Ellipsis Using Less</a></li>
           
             <li><a href="http://localhost:4000/less/2012/09/20/LESS-placeholder-text-mixin.html">Less Placeholder Text Mixin</a></li>
           
             <li><a href="http://localhost:4000/jquery/2012/08/11/text-overflow-ellipsis-using-jquery.html">Text Overflow Ellipsis Using Jquery</a></li>
+          
+            <li><a href="http://localhost:4000/css/2012/08/11/text-overflow-ellipsis-using-CSS.html">Text Overflow Ellipsis Using Css</a></li>
           
         </ul>
       </div>
@@ -181,177 +185,113 @@
 
       <article>
           <div class="entry">
-            <h1>Setup Nodejs Environment On Ec2</h1>
-            <h2 id='create_the_ec2_instance'>Create the EC2 Instance</h2>
+            <h1>Google Play Store Submission Checklist Mobile</h1>
+            <p>So you&#8217;ve finished your application and you&#8217;re ready to submit it to the Google Play store, but wait - you still need more assets! Here&#8217;s a quick checklist for what you&#8217;ll need to prepare before submission.</p>
 
-<ol>
+<h3 id='icons'>icons</h3>
+
+<ul>
 <li>
-<p>Login to <a href='http://aws.amazon.com/'>aws.amazon.com</a></p>
+<p>512x512 - required for publishing</p>
 </li>
 
 <li>
-<p>Pulldown <strong>My Account/Console</strong> and select <strong>AWS Management Console</strong></p>
+<p>72x72, 48x48, 36x36 - all three used for compiling</p>
+
+<h3 id='splash'>Splash</h3>
 </li>
 
 <li>
-<p>Select <strong>EC2</strong> under <strong>Compute and Networking</strong></p>
+<p>320x480 (mobile devices)</p>
 </li>
 
 <li>
-<p>Click the <strong>Launch Instance</strong> button</p>
+<p>1024x600 (Samsung galaxy tab)</p>
+
+<h3 id='screen_shots__at_least_2_required'>Screen shots - at least 2 required</h3>
 </li>
 
 <li>
-<p>Select the Classic Interface</p>
+<p>Dimensions: 320 x 480, 480 x 800, 480 x 854, 1280 x 720, 1280 x 800</p>
 </li>
 
 <li>
-<p>Select <strong>64 bit Amazon Linux AMI</strong></p>
+<p>24 bit PNG or JPEG (no alpha)</p>
 </li>
 
 <li>
-<p>Select <strong>Micro</strong> (unless for high traffic site)</p>
+<p>Full bleed, no border in art</p>
+
+<h3 id='promo_graphic_optional'>Promo Graphic (Optional)</h3>
 </li>
 
 <li>
-<p>Set zone to <strong>us-east-1a</strong> (or make a note if selecting another zone)</p>
+<p>180w x 120h</p>
 </li>
 
 <li>
-<p>Give the instance a name</p>
+<p>24 bit PNG or JPEG (no alpha)</p>
 </li>
 
 <li>
-<p>Download the ssh key</p>
+<p>No border in art</p>
+
+<h3 id='feature_graphic_optional'>Feature Graphic (Optional)</h3>
 </li>
 
 <li>
-<p>Move key to your local ~/.ssh/ directory</p>
+<p>1024 x 500</p>
 </li>
 
 <li>
-<p>Change permissions on key to 600:</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>chmod 600 ~/.ssh/<span class='o'>(</span>filename<span class='o'>)</span>.pem
-
-</code></pre>
-</div></li>
-
-<li>
-<p>In EC2 setup a security group with the following open ports:</p>
-<div class='highlight'><pre><code class='bash'>Port 22 <span class='k'>for </span>ssh
-Port 80 <span class='k'>for </span>http traffic
-Port 8080 <span class='k'>for </span>socket traffic
-
-</code></pre>
-</div></li>
-
-<li>
-<p>Launch the instance</p>
+<p>24 bit PNG or JPEG (no alpha)</p>
 </li>
-</ol>
-
-<h2 id='associate_an_ip_with_your_ec2_instance'>Associate an IP with your EC2 instance</h2>
-
-<ol>
-<li>Under <strong>Networking and Security</strong> select <strong>Elastic IPs</strong></li>
-
-<li>Click the <strong>Allocate New Address</strong> button</li>
-
-<li>Ensure EC2 is selected and click <strong>Yes</strong></li>
-
-<li>Select the newly created IP and click on the <strong>Associate Address</strong> button</li>
-
-<li>Select the EC2 instance</li>
-
-<li>Copy the IP Address (You&#8217;ll need it later)</li>
-</ol>
-
-<h2 id='connect_to_the_new_instance'>Connect to the New Instance</h2>
-
-<ol>
-<li>
-<p>Connect with:</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>ssh -i ~/.ssh/keyname.pem ec2-user@the-ip-address-for-the-instance
- 
-</code></pre>
-</div></li>
 
 <li>
-<p>Add public key to to the authorized_keys file for passwordless ssh login</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>sudo vim ~/.ssh/authorized_keys
- 
-</code></pre>
-</div></li>
+<p>Will be downsized to mini or micro</p>
+
+<h3 id='promotional_video'>Promotional Video:</h3>
+</li>
 
 <li>
-<p>Install development tools group for compiling:</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>sudo yum groupinstall <span class='s2'>&quot;Development Tools&quot;</span>
- 
-</code></pre>
-</div></li>
+<p>Enter YouTube URL</p>
+</li>
+</ul>
 
-<li>
-<p>Install ssl support for node with:</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>sudo yum install openssl-devel
- 
-</code></pre>
-</div></li>
+<h3 id='text_descriptions'>Text descriptions</h3>
 
-<li>
-<p>Download Node.js repo and checkout a version to install</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>sudo mkdir /downloads
-<span class='nv'>$ </span><span class='nb'>cd</span> /downloads
-<span class='nv'>$ </span>sudo git clone --depth 1 git://github.com/joyent/node.git
-<span class='nv'>$ </span><span class='nb'>cd </span>node
-<span class='nv'>$ </span>sudo git checkout v0.6.10 //replace version with most recent stable version
+<ul>
+<li>Language</li>
 
-</code></pre>
-</div></li>
+<li>Title</li>
 
-<li>
-<p>Configure, make and install Node.js</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>sudo ./configure --prefix<span class='o'>=</span>/opt/node
-<span class='nv'>$ </span>sudo make -j2
-<span class='nv'>$ </span>sudo make install
+<li>Description</li>
 
-</code></pre>
-</div></li>
+<li>Promo Text</li>
 
-<li>
-<p>Setup Node.js environment varibales</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span><span class='nb'>echo export </span><span class='nv'>PATH</span><span class='o'>=</span><span class='nv'>$PATH</span>:/opt/node/bin &gt;&gt; ~/.bash_profile
-<span class='nv'>$ </span><span class='nb'>source</span> ~/.bash_profile
+<li>Application Type</li>
 
-</code></pre>
-</div></li>
+<li>Category</li>
 
-<li>
-<p>Change permissions on node directory</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>sudo chown -R ec2-user:ec2-user /opt/node
+<li>Contact information</li>
 
-</code></pre>
-</div></li>
+<li>Website</li>
 
-<li>
-<p>Confirm we have a successfull install:</p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>node -v
+<li>Email</li>
 
-</code></pre>
-</div></li>
-</ol>
-
-<h3 id='congrats_nodejs_is_installed_whats_next_you_can_install_mongodb_or_setup_a_git_repo_on_the_server_to_really_get_developing'>Congrats! Node.js is installed! What&#8217;s next? You can install mongodb or setup a git repo on the server to really get developing.</h3>
+<li>Phone</li>
+</ul>
 
             
               <div class="meta">
                 <h1>This article was carefully crafted by...</h1>
-                <img class="gravatar" src="http://www.gravatar.com/avatar/f232f3a8afb733882c6e8489a1ad05f8?s=64">
-                <span class="author">Justen Palmer</span>
-                <a class="website" href="http://twitter.com/justenPalmer" target="_blank">http://www.tinyfactory.co</a>
+                <img class="gravatar" src="http://www.gravatar.com/avatar/7a1dc0efd8eba2f7c5932b5dffbca642?s=64">
+                <span class="author">Michael Sacca</span>
+                <a class="website" href="http://twitter.com/michaelsacca" target="_blank">http://www.tinyfactory.co</a>
                   <ul class="profiles">
-                    <li class="twitter"><a href="http://twitter.com/justenPalmer" target="_blank">@justenPalmer</a></li>
-                    
-                    <li class="github"><a href="http://github.com/justenPalmer" target="_blank">github</a></li>
+                    <li class="twitter"><a href="http://twitter.com/michaelsacca" target="_blank">@michaelsacca</a></li>
+                    <li class="dribbble"><a href="http://dribbble.com/michaelsacca" target="_blank">dribbble</a></li>
+                    <li class="github"><a href="http://github.com/michaelsacca" target="_blank">github</a></li>
                   </ul>
               </div>
           </div>

@@ -4,13 +4,295 @@
  <title>Tiny Factory Docs</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2012-08-13T10:53:54-07:00</updated>
+ <updated>2012-10-03T16:23:22-07:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Tiny Factory</name>
    <email>hello@tinyfactory.co</email>
  </author>
 
+ 
+ <entry>
+   <title>iOS Store Submission Checklist</title>
+   <link href="http://localhost:4000/design/2012/10/03/ios-store-submission-checklist.html"/>
+   <updated>2012-10-03T00:00:00-07:00</updated>
+   <id>http://localhost:4000/design/2012/10/03/ios-store-submission-checklist</id>
+   
+   <author>
+   	<name>Alex Rolek</name>
+   	<email>a.rolek@gmail.com</email>
+   </author>
+   <content type="html">&lt;p&gt;In order to submit an application to Apple&amp;#8217;s App Store, there are numerous requiements. We use this checklist to make sure we have everything we need prior to submission.&lt;/p&gt;
+
+&lt;h2 id='icons'&gt;icons&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;57px - iPhone&lt;/li&gt;
+
+&lt;li&gt;72px - iPad&lt;/li&gt;
+
+&lt;li&gt;114px - iPhone 4 + Retina Display&lt;/li&gt;
+
+&lt;li&gt;512px - iTunes – Used in iTunes and in the App Store sized down to 175px&lt;/li&gt;
+
+&lt;li&gt;1024px - New requirement (now with macbook retina)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id='splash'&gt;Splash&lt;/h2&gt;
+
+&lt;p&gt;Must be named exactly as is next to the dimensions &amp;amp; PNG only&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;320 x 480px - Default.png - iPhone 3Gs and older&lt;/li&gt;
+
+&lt;li&gt;640 x 960px - Default@2x.png - iPhone 4 &amp;amp; 4s&lt;/li&gt;
+
+&lt;li&gt;1136 x 640px - iPhone 5&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id='screenshots'&gt;Screenshots&lt;/h2&gt;
+
+&lt;p&gt;File formats allowed: .jpeg, .jpg, .tif, .tiff, or .png Color space: RGB DPI: at least 72 DPI&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Iphone 4/4s&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Portrait: 960 x 640px or 960 x 600px&lt;/li&gt;
+
+&lt;li&gt;Landscape: 640 x 960px or 640 x 920px&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Iphone 5&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Portrait: 1136 x 640px&lt;/li&gt;
+
+&lt;li&gt;Landscape: 640 x 1136px&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;iPad:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Portrait: 768 x 1024px or 1536 x 2048px&lt;/li&gt;
+
+&lt;li&gt;Landscape: 1024 x 768px or 2048 x 1536px&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id='submittal_information'&gt;Submittal Information&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Title&lt;/li&gt;
+
+&lt;li&gt;Description&lt;/li&gt;
+
+&lt;li&gt;Keywords&lt;/li&gt;
+
+&lt;li&gt;Default Language&lt;/li&gt;
+
+&lt;li&gt;Version Number&lt;/li&gt;
+
+&lt;li&gt;Copyright&lt;/li&gt;
+
+&lt;li&gt;Primary Category&lt;/li&gt;
+
+&lt;li&gt;Secondary Category (optional)&lt;/li&gt;
+
+&lt;li&gt;Support Email Address&lt;/li&gt;
+
+&lt;li&gt;Support URL&lt;/li&gt;
+
+&lt;li&gt;Marketing URL (optional)&lt;/li&gt;
+
+&lt;li&gt;Privacy Policy URL (optional)&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+ </entry>
+ 
+ <entry>
+   <title>Google Play Store Submission Checklist Mobile</title>
+   <link href="http://localhost:4000/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile.html"/>
+   <updated>2012-10-03T00:00:00-07:00</updated>
+   <id>http://localhost:4000/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile</id>
+   
+   <author>
+   	<name>Michael Sacca</name>
+   	<email>michael.sacca@gmail.com</email>
+   </author>
+   <content type="html">&lt;p&gt;So you&amp;#8217;ve finished your application and you&amp;#8217;re ready to submit it to the Google Play store, but wait - you still need more assets! Here&amp;#8217;s a quick checklist for what you&amp;#8217;ll need to prepare before submission.&lt;/p&gt;
+
+&lt;h3 id='icons'&gt;icons&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;512x512 - required for publishing&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;72x72, 48x48, 36x36 - all three used for compiling&lt;/p&gt;
+
+&lt;h3 id='splash'&gt;Splash&lt;/h3&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;320x480 (mobile devices)&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;1024x600 (Samsung galaxy tab)&lt;/p&gt;
+
+&lt;h3 id='screen_shots__at_least_2_required'&gt;Screen shots - at least 2 required&lt;/h3&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Dimensions: 320 x 480, 480 x 800, 480 x 854, 1280 x 720, 1280 x 800&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;24 bit PNG or JPEG (no alpha)&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Full bleed, no border in art&lt;/p&gt;
+
+&lt;h3 id='promo_graphic_optional'&gt;Promo Graphic (Optional)&lt;/h3&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;180w x 120h&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;24 bit PNG or JPEG (no alpha)&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;No border in art&lt;/p&gt;
+
+&lt;h3 id='feature_graphic_optional'&gt;Feature Graphic (Optional)&lt;/h3&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;1024 x 500&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;24 bit PNG or JPEG (no alpha)&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Will be downsized to mini or micro&lt;/p&gt;
+
+&lt;h3 id='promotional_video'&gt;Promotional Video:&lt;/h3&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Enter YouTube URL&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id='text_descriptions'&gt;Text descriptions&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Language&lt;/li&gt;
+
+&lt;li&gt;Title&lt;/li&gt;
+
+&lt;li&gt;Description&lt;/li&gt;
+
+&lt;li&gt;Promo Text&lt;/li&gt;
+
+&lt;li&gt;Application Type&lt;/li&gt;
+
+&lt;li&gt;Category&lt;/li&gt;
+
+&lt;li&gt;Contact information&lt;/li&gt;
+
+&lt;li&gt;Website&lt;/li&gt;
+
+&lt;li&gt;Email&lt;/li&gt;
+
+&lt;li&gt;Phone&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+ </entry>
+ 
+ <entry>
+   <title>Text Overflow Ellipsis Using Less</title>
+   <link href="http://localhost:4000/less/2012/09/20/text-overflow-ellipsis-using-LESS.html"/>
+   <updated>2012-09-20T00:00:00-07:00</updated>
+   <id>http://localhost:4000/less/2012/09/20/text-overflow-ellipsis-using-LESS</id>
+   
+   <author>
+   	<name>Michael Sacca</name>
+   	<email>michael.sacca@gmail.com</email>
+   </author>
+   <content type="html">&lt;p&gt;As a follow up to our &lt;a href='http://docs.tinyfactory.co/css/2012/08/11/text-overflow-ellipsis-using-CSS.html'&gt;CSS ellipsis&lt;/a&gt; solution, this LESS overflow ellipsis mixin is perfect for single line truncations.&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='css'&gt;&lt;span class='o'&gt;//&lt;/span&gt; &lt;span class='nt'&gt;Text&lt;/span&gt; &lt;span class='nt'&gt;overflow&lt;/span&gt; &lt;span class='nt'&gt;Mixin&lt;/span&gt;
+&lt;span class='nc'&gt;.text-overflow&lt;/span&gt;&lt;span class='o'&gt;()&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+  &lt;span class='k'&gt;overflow&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='k'&gt;hidden&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt;
+  &lt;span class='k'&gt;text&lt;/span&gt;&lt;span class='o'&gt;-&lt;/span&gt;&lt;span class='k'&gt;overflow&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='n'&gt;ellipsis&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt;
+  &lt;span class='k'&gt;white-space&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='k'&gt;nowrap&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt;
+&lt;span class='p'&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content>
+
+ </entry>
+ 
+ <entry>
+   <title>Less Placeholder Text Mixin</title>
+   <link href="http://localhost:4000/less/2012/09/20/LESS-placeholder-text-mixin.html"/>
+   <updated>2012-09-20T00:00:00-07:00</updated>
+   <id>http://localhost:4000/less/2012/09/20/LESS-placeholder-text-mixin</id>
+   
+   <author>
+   	<name>Michael Sacca</name>
+   	<email>michael.sacca@gmail.com</email>
+   </author>
+   <content type="html">&lt;p&gt;Simple LESS mixin for Placeholder Text:&lt;/p&gt;
+
+&lt;p&gt;Syntax:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='scss'&gt;   &lt;span class='c1'&gt;// Placeholder text Mixin&lt;/span&gt;
+	&lt;span class='na'&gt;.placeholder(@color&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='o'&gt;@&lt;/span&gt;&lt;span class='n'&gt;placeholderText&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+  			&lt;span class='nd'&gt;:-moz-placeholder&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+    		&lt;span class='na'&gt;color&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='o'&gt;@&lt;/span&gt;&lt;span class='no'&gt;color&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt;
+  		&lt;span class='p'&gt;}&lt;/span&gt;
+  		&lt;span class='nd'&gt;::-webkit-input-placeholder&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+    		&lt;span class='na'&gt;color&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='o'&gt;@&lt;/span&gt;&lt;span class='no'&gt;color&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt;
+  		&lt;span class='p'&gt;}&lt;/span&gt;
+	&lt;span class='p'&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Steps:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;1.  Add the .placeholder mixin to your stylesheet (or reference it from a file such as var.less)
+2.  In your stylesheet call the mixin like: &lt;/code&gt;&lt;/pre&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='scss'&gt;    &lt;span class='nc'&gt;.some-class&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt; 
+    	&lt;span class='nc'&gt;.placeholder&lt;/span&gt;&lt;span class='o'&gt;(&lt;/span&gt;&lt;span class='nn'&gt;#ccc&lt;/span&gt;&lt;span class='o'&gt;);&lt;/span&gt;
+    &lt;span class='p'&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;This will compile to:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='scss'&gt;              &lt;span class='nc'&gt;.some-class&lt;/span&gt;&lt;span class='nd'&gt;:placeholder&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+                &lt;span class='na'&gt;color&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mh'&gt;#cccccc&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt;
+              &lt;span class='p'&gt;}&lt;/span&gt;
+              &lt;span class='na'&gt;.some-class&lt;/span&gt;&lt;span class='o'&gt;:-&lt;/span&gt;&lt;span class='n'&gt;moz-placeholder&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+                &lt;span class='na'&gt;color&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mh'&gt;#cccccc&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt;
+              &lt;span class='p'&gt;}&lt;/span&gt;
+              &lt;span class='na'&gt;.some-class&lt;/span&gt;&lt;span class='o'&gt;::-&lt;/span&gt;&lt;span class='n'&gt;webkit-input-placeholder&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+                &lt;span class='na'&gt;color&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mh'&gt;#cccccc&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt;
+              &lt;span class='p'&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content>
+
+ </entry>
  
  <entry>
    <title>Text Overflow Ellipsis Using Jquery</title>
@@ -250,7 +532,7 @@
    <id>http://localhost:4000/sass/2012/08/02/sass-inline-media-queries</id>
    
    <author>
-   	<name>Areus Wade</name>
+   	<name>Aaron Wade</name>
    	<email>hi@areuswade.com</email>
    </author>
    <content type="html">&lt;p&gt;With SASS 3.2 we get inline media queries. Compass allows this if you&amp;#8217;re using the alpha build. At of the date of this doc, &lt;code&gt;0.12.2&lt;/code&gt; is the current version.&lt;/p&gt;
@@ -447,7 +729,7 @@
 
 &lt;p&gt;Syntax:&lt;/p&gt;
 &lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='scss'&gt;&lt;span class='c1'&gt;// retina.scss&lt;/span&gt;
-&lt;span class='c1'&gt;// Defaults to png but can be overwritten to jpg or gif&lt;/span&gt;
+&lt;span class='c1'&gt;// This will default to png but can be overwritten to jpg or gif&lt;/span&gt;
 &lt;span class='c1'&gt;//$image name is equal to the image name with out it&amp;#39;s extention - &amp;#39;example.png&amp;#39; would be defined as &amp;#39;example&amp;#39;&lt;/span&gt;
 
 &lt;span class='k'&gt;@mixin&lt;/span&gt;&lt;span class='nf'&gt; at2x&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nv'&gt;$image_name&lt;/span&gt;&lt;span class='o'&gt;,&lt;/span&gt; &lt;span class='nv'&gt;$w&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='no'&gt;auto&lt;/span&gt;&lt;span class='o'&gt;,&lt;/span&gt; &lt;span class='nv'&gt;$h&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='no'&gt;auto&lt;/span&gt;&lt;span class='o'&gt;,&lt;/span&gt; &lt;span class='nv'&gt;$extention&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;&lt;/span&gt;&lt;span class='s2'&gt;.png&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
@@ -559,7 +841,7 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;pre&gt;&lt;code&gt;Will compile to: &lt;/code&gt;&lt;/pre&gt;
-&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='scss'&gt;              &lt;span class='nc'&gt;.inputCls.placeholder&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='scss'&gt;              &lt;span class='nc'&gt;.inputCls&lt;/span&gt;&lt;span class='nd'&gt;:placeholder&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
                 &lt;span class='na'&gt;color&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mh'&gt;#cccccc&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt;
               &lt;span class='p'&gt;}&lt;/span&gt;
               &lt;span class='na'&gt;.inputCls&lt;/span&gt;&lt;span class='o'&gt;:-&lt;/span&gt;&lt;span class='n'&gt;moz-placeholder&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
@@ -580,7 +862,7 @@
    <id>http://localhost:4000/design/2012/07/27/generate-an-icon-font</id>
    
    <author>
-   	<name>Areus Wade</name>
+   	<name>Aaron Wade</name>
    	<email>hi@areuswade.com</email>
    </author>
    <content type="html">&lt;p&gt;We&amp;#8217;re going to use an awesome tool called &lt;a href='https://github.com/averyvery/hieroglyph'&gt;Hieroglyph&lt;/a&gt;. There&amp;#8217;s already a pretty intuitive readme file in the repo, but I hope to elaborate a little more on what was provided.&lt;/p&gt;
@@ -981,48 +1263,18 @@ Switched to a new branch &lt;span class='s2'&gt;&amp;quot;new-branch-name&amp;qu
 &lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;&lt;span class='nv'&gt;$ &lt;/span&gt;git push origin master
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
+&lt;p&gt;To delete a local branch&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;&lt;span class='nv'&gt;$ &lt;/span&gt;git branch -D branch-name
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;To delete a remote branch&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;&lt;span class='nv'&gt;$ &lt;/span&gt;git push origin --delete branch-name
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 &lt;p&gt;View GUI of merges&lt;/p&gt;
 &lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;&lt;span class='nv'&gt;$ &lt;/span&gt;gitk
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;</content>
-
- </entry>
- 
- <entry>
-   <title>Changing the head on a Git Repo</title>
-   <link href="http://localhost:4000/git/2012/07/09/changing-the-head-pointer-on-a-git-repoistory.html"/>
-   <updated>2012-07-09T00:00:00-07:00</updated>
-   <id>http://localhost:4000/git/2012/07/09/changing-the-head-pointer-on-a-git-repoistory</id>
-   
-   <author>
-   	<name>Michael Sacca</name>
-   	<email>michael.sacca@gmail.com</email>
-   </author>
-   <content type="html">&lt;p&gt;If you want the default branch from a &lt;code&gt;git clone&lt;/code&gt; to be something besides &lt;code&gt;master&lt;/code&gt;, use the following steps:&lt;/p&gt;
-
-&lt;p&gt;Check what remote branches are available:&lt;/p&gt;
-&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;git branch -r
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;The output will look like:&lt;/p&gt;
-&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;origin/HEAD -&amp;gt; origin/master
-origin/dev
-origin/master
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;Notice &lt;code&gt;origin/HEAD -&amp;gt; orgin/master&lt;/code&gt;. When you issue a &lt;code&gt;git clone&lt;/code&gt; on this repository you will get the master branch by default. If want to change this to the dev branch we also have in our remote repository, issue the following command&lt;/p&gt;
-&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;git remote &lt;span class='nb'&gt;set&lt;/span&gt;-head origin dev
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;To confirm the change took, run &lt;code&gt;git branch -r&lt;/code&gt; and review our output:&lt;/p&gt;
-&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;origin/HEAD -&amp;gt; origin/dev
-origin/dev
-origin/master
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;&lt;code&gt;origin/HEAD -&amp;gt; orgin/dev&lt;/code&gt; is pointing to our dev branch.&lt;/p&gt;
-
-&lt;h3 id='how_does_it_work'&gt;How does it work?&lt;/h3&gt;</content>
 
  </entry>
  

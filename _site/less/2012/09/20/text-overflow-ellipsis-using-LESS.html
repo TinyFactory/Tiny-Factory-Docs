@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Changing the head on a Git Repo - Tiny Factory Docs</title>
+    <title>Text Overflow Ellipsis Using Less - Tiny Factory Docs</title>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" media="screen" href="http://localhost:4000/css/screen.css" type="text/css" />
@@ -41,13 +41,15 @@
             <!--a class="category" href="#">Categories</a>
             <ul>
                
-                <li><a href="http://localhost:4000/archive.html#jquery">jquery</a></li> 
-               
                 <li><a href="http://localhost:4000/archive.html#sass">sass</a></li> 
                
-                <li><a href="http://localhost:4000/archive.html#compass">compass</a></li> 
+                <li><a href="http://localhost:4000/archive.html#centos">centos</a></li> 
                
-                <li><a href="http://localhost:4000/archive.html#css">css</a></li> 
+                <li><a href="http://localhost:4000/archive.html#node.js">node.js</a></li> 
+               
+                <li><a href="http://localhost:4000/archive.html#jquery">jquery</a></li> 
+               
+                <li><a href="http://localhost:4000/archive.html#less">less</a></li> 
                
                 <li><a href="http://localhost:4000/archive.html#sencha touch 2">sencha touch 2</a></li> 
                
@@ -55,11 +57,11 @@
                
                 <li><a href="http://localhost:4000/archive.html#javascript">javascript</a></li> 
                
-                <li><a href="http://localhost:4000/archive.html#node.js">node.js</a></li> 
-               
-                <li><a href="http://localhost:4000/archive.html#centos">centos</a></li> 
-               
                 <li><a href="http://localhost:4000/archive.html#design">design</a></li> 
+               
+                <li><a href="http://localhost:4000/archive.html#css">css</a></li> 
+               
+                <li><a href="http://localhost:4000/archive.html#compass">compass</a></li> 
               
             </ul>
           </div -->
@@ -111,7 +113,11 @@
           
           
             
+              
+            
           
+          
+            <li><a href="http://localhost:4000/less/2012/09/20/LESS-placeholder-text-mixin.html">Less Placeholder Text Mixin</a></li>
                                  
         
           
@@ -163,15 +169,15 @@
         <h3>Most Recent</h3>
         <ul class="posts">
           
+            <li><a href="http://localhost:4000/design/2012/10/03/ios-store-submission-checklist.html">iOS Store Submission Checklist</a></li>
+          
+            <li><a href="http://localhost:4000/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile.html">Google Play Store Submission Checklist Mobile</a></li>
+          
+            <li><a href="http://localhost:4000/less/2012/09/20/LESS-placeholder-text-mixin.html">Less Placeholder Text Mixin</a></li>
+          
             <li><a href="http://localhost:4000/jquery/2012/08/11/text-overflow-ellipsis-using-jquery.html">Text Overflow Ellipsis Using Jquery</a></li>
           
             <li><a href="http://localhost:4000/css/2012/08/11/text-overflow-ellipsis-using-CSS.html">Text Overflow Ellipsis Using Css</a></li>
-          
-            <li><a href="http://localhost:4000/javascript/2012/08/10/targeting-mobile-webkit-browsers-with-javascript.html">Targeting Mobile Webkit Browsers With Javascript</a></li>
-          
-            <li><a href="http://localhost:4000/compass/2012/08/07/compass-animated-button-mixin.html">Compass Animated Button Mixin</a></li>
-          
-            <li><a href="http://localhost:4000/sass/2012/08/02/sass-inline-media-queries.html">Sass Inline Media Queries</a></li>
           
         </ul>
       </div>
@@ -179,32 +185,16 @@
 
       <article>
           <div class="entry">
-            <h1>Changing the head on a Git Repo</h1>
-            <p>If you want the default branch from a <code>git clone</code> to be something besides <code>master</code>, use the following steps:</p>
-
-<p>Check what remote branches are available:</p>
-<div class='highlight'><pre><code class='bash'>git branch -r
+            <h1>Text Overflow Ellipsis Using Less</h1>
+            <p>As a follow up to our <a href='http://docs.tinyfactory.co/css/2012/08/11/text-overflow-ellipsis-using-CSS.html'>CSS ellipsis</a> solution, this LESS overflow ellipsis mixin is perfect for single line truncations.</p>
+<div class='highlight'><pre><code class='css'><span class='o'>//</span> <span class='nt'>Text</span> <span class='nt'>overflow</span> <span class='nt'>Mixin</span>
+<span class='nc'>.text-overflow</span><span class='o'>()</span> <span class='p'>{</span>
+  <span class='k'>overflow</span><span class='o'>:</span> <span class='k'>hidden</span><span class='p'>;</span>
+  <span class='k'>text</span><span class='o'>-</span><span class='k'>overflow</span><span class='o'>:</span> <span class='n'>ellipsis</span><span class='p'>;</span>
+  <span class='k'>white-space</span><span class='o'>:</span> <span class='k'>nowrap</span><span class='p'>;</span>
+<span class='p'>}</span>
 </code></pre>
 </div>
-<p>The output will look like:</p>
-<div class='highlight'><pre><code class='bash'>origin/HEAD -&gt; origin/master
-origin/dev
-origin/master
-</code></pre>
-</div>
-<p>Notice <code>origin/HEAD -&gt; orgin/master</code>. When you issue a <code>git clone</code> on this repository you will get the master branch by default. If want to change this to the dev branch we also have in our remote repository, issue the following command</p>
-<div class='highlight'><pre><code class='bash'>git remote <span class='nb'>set</span>-head origin dev
-</code></pre>
-</div>
-<p>To confirm the change took, run <code>git branch -r</code> and review our output:</p>
-<div class='highlight'><pre><code class='bash'>origin/HEAD -&gt; origin/dev
-origin/dev
-origin/master
-</code></pre>
-</div>
-<p><code>origin/HEAD -&gt; orgin/dev</code> is pointing to our dev branch.</p>
-
-<h3 id='how_does_it_work'>How does it work?</h3>
 
             
               <div class="meta">
