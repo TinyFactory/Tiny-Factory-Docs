@@ -25,6 +25,7 @@ Must be named exactly as is next to the dimensions & PNG only
 File formats allowed: .jpeg, .jpg, .tif, .tiff, or .png
 Color space: RGB
 DPI: at least 72 DPI
+
 * Iphone 4/4s
 	* Portrait: 960 x 640px or 960 x 600px
 	* Landscape: 640 x 960px or 640 x 920px
