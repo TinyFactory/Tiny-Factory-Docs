@@ -4,7 +4,7 @@
  <title>Tiny Factory Docs</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2012-10-03T16:23:22-07:00</updated>
+ <updated>2012-10-03T16:25:44-07:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Tiny Factory</name>
@@ -128,29 +128,25 @@
    </author>
    <content type="html">&lt;p&gt;So you&amp;#8217;ve finished your application and you&amp;#8217;re ready to submit it to the Google Play store, but wait - you still need more assets! Here&amp;#8217;s a quick checklist for what you&amp;#8217;ll need to prepare before submission.&lt;/p&gt;
 
-&lt;h3 id='icons'&gt;icons&lt;/h3&gt;
+&lt;h2 id='icons'&gt;Icons&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;512x512 - required for publishing&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;512x512 - required for publishing&lt;/li&gt;
 
-&lt;li&gt;
-&lt;p&gt;72x72, 48x48, 36x36 - all three used for compiling&lt;/p&gt;
+&lt;li&gt;72x72, 48x48, 36x36 - all three used for compiling&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;h3 id='splash'&gt;Splash&lt;/h3&gt;
-&lt;/li&gt;
+&lt;h2 id='splash'&gt;Splash&lt;/h2&gt;
 
-&lt;li&gt;
-&lt;p&gt;320x480 (mobile devices)&lt;/p&gt;
-&lt;/li&gt;
+&lt;ul&gt;
+&lt;li&gt;320x480 (mobile devices)&lt;/li&gt;
 
-&lt;li&gt;
-&lt;p&gt;1024x600 (Samsung galaxy tab)&lt;/p&gt;
+&lt;li&gt;1024x600 (Samsung galaxy tab)&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;h3 id='screen_shots__at_least_2_required'&gt;Screen shots - at least 2 required&lt;/h3&gt;
-&lt;/li&gt;
+&lt;h2 id='screen_shots__at_least_2_required'&gt;Screen shots - at least 2 required&lt;/h2&gt;
 
+&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Dimensions: 320 x 480, 480 x 800, 480 x 854, 1280 x 720, 1280 x 800&lt;/p&gt;
 &lt;/li&gt;
@@ -162,7 +158,7 @@
 &lt;li&gt;
 &lt;p&gt;Full bleed, no border in art&lt;/p&gt;
 
-&lt;h3 id='promo_graphic_optional'&gt;Promo Graphic (Optional)&lt;/h3&gt;
+&lt;h2 id='promo_graphic_optional'&gt;Promo Graphic (Optional)&lt;/h2&gt;
 &lt;/li&gt;
 
 &lt;li&gt;
@@ -175,30 +171,24 @@
 
 &lt;li&gt;
 &lt;p&gt;No border in art&lt;/p&gt;
-
-&lt;h3 id='feature_graphic_optional'&gt;Feature Graphic (Optional)&lt;/h3&gt;
-&lt;/li&gt;
-
-&lt;li&gt;
-&lt;p&gt;1024 x 500&lt;/p&gt;
-&lt;/li&gt;
-
-&lt;li&gt;
-&lt;p&gt;24 bit PNG or JPEG (no alpha)&lt;/p&gt;
-&lt;/li&gt;
-
-&lt;li&gt;
-&lt;p&gt;Will be downsized to mini or micro&lt;/p&gt;
-
-&lt;h3 id='promotional_video'&gt;Promotional Video:&lt;/h3&gt;
-&lt;/li&gt;
-
-&lt;li&gt;
-&lt;p&gt;Enter YouTube URL&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id='text_descriptions'&gt;Text descriptions&lt;/h3&gt;
+&lt;h2 id='feature_graphic_optional'&gt;Feature Graphic (Optional)&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;1024 x 500&lt;/li&gt;
+
+&lt;li&gt;Will be downsized to mini or micro&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id='promotional_video'&gt;Promotional Video:&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Enter YouTube URL&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id='text_descriptions'&gt;Text descriptions&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Language&lt;/li&gt;
