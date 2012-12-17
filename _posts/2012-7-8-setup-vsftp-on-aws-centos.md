@@ -6,7 +6,7 @@ author: alex
 ---
 
 1. Install **vsftpd**
-	{% highlight bash %}yum install vsftpd - y
+	{% highlight bash %}yum install vsftpd -y
 	{% endhighlight %}
 
 2. Open up the config file 
