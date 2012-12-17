@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>Tiny Factory Docs</title>
- <link href="http://localhost:4000/atom.xml" rel="self"/>
- <link href="http://localhost:4000/"/>
- <updated>2012-10-03T16:25:44-07:00</updated>
- <id>http://localhost:4000</id>
+ <link href="http://192.168.1.122:4000/atom.xml" rel="self"/>
+ <link href="http://192.168.1.122:4000/"/>
+ <updated>2012-12-17T12:32:21-08:00</updated>
+ <id>http://192.168.1.122:4000</id>
  <author>
    <name>Tiny Factory</name>
    <email>hello@tinyfactory.co</email>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>iOS Store Submission Checklist</title>
-   <link href="http://localhost:4000/design/2012/10/03/ios-store-submission-checklist.html"/>
+   <link href="http://192.168.1.122:4000/design/2012/10/03/ios-store-submission-checklist.html"/>
    <updated>2012-10-03T00:00:00-07:00</updated>
-   <id>http://localhost:4000/design/2012/10/03/ios-store-submission-checklist</id>
+   <id>http://192.168.1.122:4000/design/2012/10/03/ios-store-submission-checklist</id>
    
    <author>
    	<name>Alex Rolek</name>
@@ -118,9 +118,9 @@
  
  <entry>
    <title>Google Play Store Submission Checklist Mobile</title>
-   <link href="http://localhost:4000/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile.html"/>
+   <link href="http://192.168.1.122:4000/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile.html"/>
    <updated>2012-10-03T00:00:00-07:00</updated>
-   <id>http://localhost:4000/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile</id>
+   <id>http://192.168.1.122:4000/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile</id>
    
    <author>
    	<name>Michael Sacca</name>
@@ -216,9 +216,9 @@
  
  <entry>
    <title>Text Overflow Ellipsis Using Less</title>
-   <link href="http://localhost:4000/less/2012/09/20/text-overflow-ellipsis-using-LESS.html"/>
+   <link href="http://192.168.1.122:4000/less/2012/09/20/text-overflow-ellipsis-using-LESS.html"/>
    <updated>2012-09-20T00:00:00-07:00</updated>
-   <id>http://localhost:4000/less/2012/09/20/text-overflow-ellipsis-using-LESS</id>
+   <id>http://192.168.1.122:4000/less/2012/09/20/text-overflow-ellipsis-using-LESS</id>
    
    <author>
    	<name>Michael Sacca</name>
@@ -238,9 +238,9 @@
  
  <entry>
    <title>Less Placeholder Text Mixin</title>
-   <link href="http://localhost:4000/less/2012/09/20/LESS-placeholder-text-mixin.html"/>
+   <link href="http://192.168.1.122:4000/less/2012/09/20/LESS-placeholder-text-mixin.html"/>
    <updated>2012-09-20T00:00:00-07:00</updated>
-   <id>http://localhost:4000/less/2012/09/20/LESS-placeholder-text-mixin</id>
+   <id>http://192.168.1.122:4000/less/2012/09/20/LESS-placeholder-text-mixin</id>
    
    <author>
    	<name>Michael Sacca</name>
@@ -286,9 +286,9 @@
  
  <entry>
    <title>Text Overflow Ellipsis Using Jquery</title>
-   <link href="http://localhost:4000/jquery/2012/08/11/text-overflow-ellipsis-using-jquery.html"/>
+   <link href="http://192.168.1.122:4000/jquery/2012/08/11/text-overflow-ellipsis-using-jquery.html"/>
    <updated>2012-08-11T00:00:00-07:00</updated>
-   <id>http://localhost:4000/jquery/2012/08/11/text-overflow-ellipsis-using-jquery</id>
+   <id>http://192.168.1.122:4000/jquery/2012/08/11/text-overflow-ellipsis-using-jquery</id>
    
    <author>
    	<name>Michael Sacca</name>
@@ -367,9 +367,9 @@
  
  <entry>
    <title>Text Overflow Ellipsis Using Css</title>
-   <link href="http://localhost:4000/css/2012/08/11/text-overflow-ellipsis-using-CSS.html"/>
+   <link href="http://192.168.1.122:4000/css/2012/08/11/text-overflow-ellipsis-using-CSS.html"/>
    <updated>2012-08-11T00:00:00-07:00</updated>
-   <id>http://localhost:4000/css/2012/08/11/text-overflow-ellipsis-using-CSS</id>
+   <id>http://192.168.1.122:4000/css/2012/08/11/text-overflow-ellipsis-using-CSS</id>
    
    <author>
    	<name>Michael Sacca</name>
@@ -390,9 +390,9 @@
  
  <entry>
    <title>Targeting Mobile Webkit Browsers With Javascript</title>
-   <link href="http://localhost:4000/javascript/2012/08/10/targeting-mobile-webkit-browsers-with-javascript.html"/>
+   <link href="http://192.168.1.122:4000/javascript/2012/08/10/targeting-mobile-webkit-browsers-with-javascript.html"/>
    <updated>2012-08-10T00:00:00-07:00</updated>
-   <id>http://localhost:4000/javascript/2012/08/10/targeting-mobile-webkit-browsers-with-javascript</id>
+   <id>http://192.168.1.122:4000/javascript/2012/08/10/targeting-mobile-webkit-browsers-with-javascript</id>
    
    <author>
    	<name>Michael Sacca</name>
@@ -414,9 +414,9 @@
  
  <entry>
    <title>Compass Animated Button Mixin</title>
-   <link href="http://localhost:4000/compass/2012/08/07/compass-animated-button-mixin.html"/>
+   <link href="http://192.168.1.122:4000/compass/2012/08/07/compass-animated-button-mixin.html"/>
    <updated>2012-08-07T00:00:00-07:00</updated>
-   <id>http://localhost:4000/compass/2012/08/07/compass-animated-button-mixin</id>
+   <id>http://192.168.1.122:4000/compass/2012/08/07/compass-animated-button-mixin</id>
    
    <author>
    	<name>Michael Sacca</name>
@@ -517,9 +517,9 @@
  
  <entry>
    <title>Sass Inline Media Queries</title>
-   <link href="http://localhost:4000/sass/2012/08/02/sass-inline-media-queries.html"/>
+   <link href="http://192.168.1.122:4000/sass/2012/08/02/sass-inline-media-queries.html"/>
    <updated>2012-08-02T00:00:00-07:00</updated>
-   <id>http://localhost:4000/sass/2012/08/02/sass-inline-media-queries</id>
+   <id>http://192.168.1.122:4000/sass/2012/08/02/sass-inline-media-queries</id>
    
    <author>
    	<name>Aaron Wade</name>
@@ -623,9 +623,9 @@
  
  <entry>
    <title>Sencha Touch 2 Jsonp Xml Reader Jsonpx</title>
-   <link href="http://localhost:4000/sencha touch 2/2012/08/02/Sencha-Touch-2-JSONP-XML-Reader-JSONPX.html"/>
+   <link href="http://192.168.1.122:4000/sencha touch 2/2012/08/02/Sencha-Touch-2-JSONP-XML-Reader-JSONPX.html"/>
    <updated>2012-08-02T00:00:00-07:00</updated>
-   <id>http://localhost:4000/sencha touch 2/2012/08/02/Sencha-Touch-2-JSONP-XML-Reader-JSONPX</id>
+   <id>http://192.168.1.122:4000/sencha touch 2/2012/08/02/Sencha-Touch-2-JSONP-XML-Reader-JSONPX</id>
    
    <author>
    	<name>Alex Rolek</name>
@@ -707,9 +707,9 @@
  
  <entry>
    <title>Compass Retina Display Mixin</title>
-   <link href="http://localhost:4000/compass/2012/08/01/compass-retina-display-mixin.html"/>
+   <link href="http://192.168.1.122:4000/compass/2012/08/01/compass-retina-display-mixin.html"/>
    <updated>2012-08-01T00:00:00-07:00</updated>
-   <id>http://localhost:4000/compass/2012/08/01/compass-retina-display-mixin</id>
+   <id>http://192.168.1.122:4000/compass/2012/08/01/compass-retina-display-mixin</id>
    
    <author>
    	<name>Michael Sacca</name>
@@ -765,9 +765,9 @@
  
  <entry>
    <title>Sass Sticky Footer Mixin</title>
-   <link href="http://localhost:4000/sass/2012/07/31/sass-sticky-footer-mixin.html"/>
+   <link href="http://192.168.1.122:4000/sass/2012/07/31/sass-sticky-footer-mixin.html"/>
    <updated>2012-07-31T00:00:00-07:00</updated>
-   <id>http://localhost:4000/sass/2012/07/31/sass-sticky-footer-mixin</id>
+   <id>http://192.168.1.122:4000/sass/2012/07/31/sass-sticky-footer-mixin</id>
    
    <author>
    	<name>Michael Sacca</name>
@@ -795,9 +795,9 @@
  
  <entry>
    <title>Compass Placeholder Text Mixin</title>
-   <link href="http://localhost:4000/compass/2012/07/31/Compass-Placeholder-Text-Mixin.html"/>
+   <link href="http://192.168.1.122:4000/compass/2012/07/31/Compass-Placeholder-Text-Mixin.html"/>
    <updated>2012-07-31T00:00:00-07:00</updated>
-   <id>http://localhost:4000/compass/2012/07/31/Compass-Placeholder-Text-Mixin</id>
+   <id>http://192.168.1.122:4000/compass/2012/07/31/Compass-Placeholder-Text-Mixin</id>
    
    <author>
    	<name>Michael Sacca</name>
@@ -847,9 +847,9 @@
  
  <entry>
    <title>Generate An Icon Font</title>
-   <link href="http://localhost:4000/design/2012/07/27/generate-an-icon-font.html"/>
+   <link href="http://192.168.1.122:4000/design/2012/07/27/generate-an-icon-font.html"/>
    <updated>2012-07-27T00:00:00-07:00</updated>
-   <id>http://localhost:4000/design/2012/07/27/generate-an-icon-font</id>
+   <id>http://192.168.1.122:4000/design/2012/07/27/generate-an-icon-font</id>
    
    <author>
    	<name>Aaron Wade</name>
@@ -884,7 +884,7 @@
 &lt;p&gt;&lt;img alt='Illustrator Toolbar' src='http://docs.tinyfactory.co/images/assets/toolbar.png' /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img alt='Twitter icon mapped to T key' src='http://docs.tinyfactory.co/images/assets/twitter-ss.png' /&gt;&lt;/p&gt;
-&lt;a href='http://docs.tinyfactory.co/images/downloads/icon.zip' class='button'&gt;Download Icon Template&lt;/a&gt;
+&lt;a class='button' href='http://docs.tinyfactory.co/images/downloads/icon.zip'&gt;Download Icon Template&lt;/a&gt;
 &lt;p&gt;&lt;strong&gt;Important:&lt;/strong&gt; Make sure your icon is a compound path. If your canvas has more than one shape, it will cause issues with the font generation. You can make it a compound path by selecting all the shapes in the icon, and pressing &lt;strong&gt;CMD + 8&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;h4 id='saving__naming_convetion'&gt;Saving &amp;amp; Naming Convetion&lt;/h4&gt;
@@ -938,9 +938,9 @@
  
  <entry>
    <title>Setting Up Node Forever</title>
-   <link href="http://localhost:4000/node.js/2012/07/26/setting-up-node-forever.html"/>
+   <link href="http://192.168.1.122:4000/node.js/2012/07/26/setting-up-node-forever.html"/>
    <updated>2012-07-26T00:00:00-07:00</updated>
-   <id>http://localhost:4000/node.js/2012/07/26/setting-up-node-forever</id>
+   <id>http://192.168.1.122:4000/node.js/2012/07/26/setting-up-node-forever</id>
    
    <author>
    	<name>Justen Palmer</name>
@@ -983,9 +983,9 @@ npm install forever -g
  
  <entry>
    <title>Mysql Setup On Aws Centos</title>
-   <link href="http://localhost:4000/centos/2012/07/26/MySql-Setup-on-AWS-CentOS.html"/>
+   <link href="http://192.168.1.122:4000/centos/2012/07/26/MySql-Setup-on-AWS-CentOS.html"/>
    <updated>2012-07-26T00:00:00-07:00</updated>
-   <id>http://localhost:4000/centos/2012/07/26/MySql-Setup-on-AWS-CentOS</id>
+   <id>http://192.168.1.122:4000/centos/2012/07/26/MySql-Setup-on-AWS-CentOS</id>
    
    <author>
    	<name>Alex Rolek</name>
@@ -1034,9 +1034,9 @@ npm install forever -g
  
  <entry>
    <title>Setup Nodejs Environment On Ec2</title>
-   <link href="http://localhost:4000/node.js/2012/07/18/setup-nodejs-environment-on-ec2.html"/>
+   <link href="http://192.168.1.122:4000/node.js/2012/07/18/setup-nodejs-environment-on-ec2.html"/>
    <updated>2012-07-18T00:00:00-07:00</updated>
-   <id>http://localhost:4000/node.js/2012/07/18/setup-nodejs-environment-on-ec2</id>
+   <id>http://192.168.1.122:4000/node.js/2012/07/18/setup-nodejs-environment-on-ec2</id>
    
    <author>
    	<name>Justen Palmer</name>
@@ -1206,9 +1206,9 @@ Port 8080 &lt;span class='k'&gt;for &lt;/span&gt;socket traffic
  
  <entry>
    <title>Git Branching</title>
-   <link href="http://localhost:4000/git/2012/07/10/git-branching.html"/>
+   <link href="http://192.168.1.122:4000/git/2012/07/10/git-branching.html"/>
    <updated>2012-07-10T00:00:00-07:00</updated>
-   <id>http://localhost:4000/git/2012/07/10/git-branching</id>
+   <id>http://192.168.1.122:4000/git/2012/07/10/git-branching</id>
    
    <author>
    	<name>Michael Sacca</name>
@@ -1270,9 +1270,9 @@ Switched to a new branch &lt;span class='s2'&gt;&amp;quot;new-branch-name&amp;qu
  
  <entry>
    <title>Setup Ftp On Aws Centos</title>
-   <link href="http://localhost:4000/centos/2012/07/08/setup-ftp-on-aws-centos.html"/>
+   <link href="http://192.168.1.122:4000/centos/2012/07/08/setup-ftp-on-aws-centos.html"/>
    <updated>2012-07-08T00:00:00-07:00</updated>
-   <id>http://localhost:4000/centos/2012/07/08/setup-ftp-on-aws-centos</id>
+   <id>http://192.168.1.122:4000/centos/2012/07/08/setup-ftp-on-aws-centos</id>
    
    <author>
    	<name>Alex Rolek</name>
