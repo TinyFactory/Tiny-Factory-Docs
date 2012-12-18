@@ -3,7 +3,7 @@ layout: post
 title: Changing the head on a Git Repo
 category: git
 author: michael
-published: false
+published: true
 ---
 
 If you want the default branch from a `git clone` to be something besides `master`, use the following steps:
@@ -37,5 +37,3 @@ origin/master
 {% endhighlight %}
 
 `origin/HEAD -> orgin/dev` is pointing to our dev branch.
-
-### How does it work?
