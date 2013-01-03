@@ -6,8 +6,11 @@ url: http://docs.tinyfactory.co
 
 
 permalink: :date
-exclude: ['Rakefile', 'README.md', 'config.rb']
+exclude: ['Rakefile', 'README.md', 'config.rb', "_plugins"]
 pygments: true
+markdown: redcarpet2
+# redcarpet:
+#   extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "with_toc_data"]
 
 # configuration required for some pages
 

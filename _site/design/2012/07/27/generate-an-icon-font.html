@@ -165,7 +165,7 @@
             <h1>Generate An Icon Font</h1>
             <p>We&#39;re going to use an awesome tool called <a href="https://github.com/averyvery/hieroglyph">Hieroglyph</a>. There&#39;s already a pretty intuitive readme file in the repo, but I hope to elaborate a little more on what was provided.</p>
 
-<h4 id="toc_236">Installing Hieroglyph</h4>
+<h4 id="toc_213">Installing Hieroglyph</h4>
 
 <p>Open up <strong>Terminal</strong> and type <code>gem install hieroglyph</code>. If for some reason you get an error and/or the install fails, update RubyGems by entering <code>sudo gem update --system</code> into Terminal, then give it another shot. You can test to see if it works by simply entering <code>hieroglyph</code> in terminal to generate an empty, dummy font.</p>
 
@@ -186,7 +186,7 @@
 
 <p>Then just delete the dummy SVG file, in my case, on my Desktop.</p>
 
-<h4 id="toc_237">Getting your icons ready</h4>
+<h4 id="toc_214">Getting your icons ready</h4>
 
 <p>Open up Illustrator and create a new document sized <strong>1000pt x 1000pt</strong>. We need to make sure that the icons are centered, and relatively the same size. Drag a horizontal guide so it sits <strong>250 points</strong> from the top of the canvas. You can set this easily by dragging out a guide, then in your Illustrator toolbar setting the <strong>Y value</strong> to 250. You should also drag out a vertical rule with the <strong>X value</strong> of 500 so you have a vertical center showing.</p>
 
@@ -198,11 +198,11 @@
 
 <p><strong>Important:</strong> Make sure your icon is a compound path. If your canvas has more than one shape, it will cause issues with the font generation. You can make it a compound path by selecting all the shapes in the icon, and pressing <strong>CMD + 8</strong>.</p>
 
-<h4 id="toc_238">Saving &amp; Naming Convetion</h4>
+<h4 id="toc_215">Saving &amp; Naming Convetion</h4>
 
 <p>Save your files as SVGs. Name them <em>[key]-icon-name.svg</em>. If you downloaded the template, you&#39;ll notice it&#39;s named [t]-twitter.svg. This will map the icon to the T key when our font is generated.</p>
 
-<h4 id="toc_239">Font Generation</h4>
+<h4 id="toc_216">Font Generation</h4>
 
 <p>I&#39;ve saved all my icons into a folder on my Desktop called <strong>glyphs</strong>. Go back into Terminal and browse to your Desktop by typing <code>cd ~/Desktop</code>.</p>
 
@@ -239,7 +239,7 @@ Or if you&#39;ve setup everything the way I have <code>hieroglyph -n Icons -g gl
 
 <p>Now that you&#39;ve got your font in an SVG format, go ahead and run your new font through <a href="http://www.fontsquirrel.com/fontface/generator">this font-face generator</a> to get the other @font-face formats. Also make sure that you&#39;ve clicked <strong>Expert</strong>  and selected the custom subsetting option in the font-squirrel interface. If you&#39;re ballin&#39; out of control, you might use <a href="http://www.fontgear.net/fontxchange.html">FontXChange</a> to generate the different formats instead.</p>
 
-<h4 id="toc_240">In Conclusion</h4>
+<h4 id="toc_217">In Conclusion</h4>
 
 <p>Now you&#39;re ready to embed those files into your stylesheet and start serving some icons!</p>
 

@@ -4,7 +4,7 @@
  <title>Tiny Factory Docs</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2013-01-03T10:11:40-08:00</updated>
+ <updated>2013-01-03T11:07:00-08:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Tiny Factory</name>
@@ -58,7 +58,7 @@
    </author>
    <content type="html">&lt;p&gt;In order to submit an application to Apple&amp;#39;s App Store, there are numerous requiements.  We use this checklist to make sure we have everything we need prior to submission.&lt;/p&gt;
 
-&lt;h3 id=&quot;toc_248&quot;&gt;icons&lt;/h3&gt;
+&lt;h3 id=&quot;toc_225&quot;&gt;icons&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;57px - iPhone&lt;/li&gt;
@@ -68,14 +68,14 @@
 &lt;li&gt;1024px - New requirement (now with macbook retina)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;toc_249&quot;&gt;Splash&lt;/h3&gt;
+&lt;h3 id=&quot;toc_226&quot;&gt;Splash&lt;/h3&gt;
 
 &lt;p&gt;Must be named exactly as is next to the dimensions.  Must be a PNG file.
 * 320 x 480px - Default.png - iPhone 3Gs and older
 * 640 x 960px - &lt;a href=&quot;mailto:Default@2x.png&quot;&gt;Default@2x.png&lt;/a&gt; - iPhone 4 &amp;amp; 4s
 * 1136 x 640px - &lt;a href=&quot;mailto:Default-568h@2x.png&quot;&gt;Default-568h@2x.png&lt;/a&gt; - iPhone 5&lt;/p&gt;
 
-&lt;h3 id=&quot;toc_250&quot;&gt;Screenshots&lt;/h3&gt;
+&lt;h3 id=&quot;toc_227&quot;&gt;Screenshots&lt;/h3&gt;
 
 &lt;p&gt;File formats allowed: .jpeg, .jpg, .tif, .tiff, or .png
 Color space: RGB
@@ -102,7 +102,7 @@ DPI: at least 72 DPI&lt;/p&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;toc_251&quot;&gt;Submittal Information&lt;/h3&gt;
+&lt;h3 id=&quot;toc_228&quot;&gt;Submittal Information&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Title&lt;/li&gt;
@@ -134,21 +134,21 @@ DPI: at least 72 DPI&lt;/p&gt;
    </author>
    <content type="html">&lt;p&gt;So you&amp;#39;ve finished your application and you&amp;#39;re ready to submit it to the Google Play store, but wait - you still need more assets!  Here&amp;#39;s a quick checklist for what you&amp;#39;ll need to prepare before submission.&lt;/p&gt;
 
-&lt;h3 id=&quot;toc_241&quot;&gt;Icons&lt;/h3&gt;
+&lt;h3 id=&quot;toc_218&quot;&gt;Icons&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;512x512 - required for publishing&lt;/li&gt;
 &lt;li&gt;96x96, 72x72, 48x48, 36x36 - all used for compiling&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;toc_242&quot;&gt;Splash&lt;/h3&gt;
+&lt;h3 id=&quot;toc_219&quot;&gt;Splash&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;320x480 (mobile devices)&lt;/li&gt;
 &lt;li&gt;1024x600 (Samsung galaxy tab)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;toc_243&quot;&gt;Screen shots - at least 2 required&lt;/h3&gt;
+&lt;h3 id=&quot;toc_220&quot;&gt;Screen shots - at least 2 required&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Dimensions: 320 x 480, 480 x 800, 480 x 854, 1280 x 720, 1280 x 800&lt;/li&gt;
@@ -156,7 +156,7 @@ DPI: at least 72 DPI&lt;/p&gt;
 &lt;li&gt;Full bleed, no border in art&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;toc_244&quot;&gt;Promo Graphic (Optional)&lt;/h3&gt;
+&lt;h3 id=&quot;toc_221&quot;&gt;Promo Graphic (Optional)&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;180w x 120h&lt;/li&gt;
@@ -164,20 +164,20 @@ DPI: at least 72 DPI&lt;/p&gt;
 &lt;li&gt;No border in art&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;toc_245&quot;&gt;Feature Graphic (Optional)&lt;/h3&gt;
+&lt;h3 id=&quot;toc_222&quot;&gt;Feature Graphic (Optional)&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;1024 x 500&lt;/li&gt;
 &lt;li&gt;Will be downsized to mini or micro&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;toc_246&quot;&gt;Promotional Video:&lt;/h3&gt;
+&lt;h3 id=&quot;toc_223&quot;&gt;Promotional Video:&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Enter YouTube URL&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;toc_247&quot;&gt;Text descriptions&lt;/h3&gt;
+&lt;h3 id=&quot;toc_224&quot;&gt;Text descriptions&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Language&lt;/li&gt;
@@ -864,7 +864,7 @@ DPI: at least 72 DPI&lt;/p&gt;
    </author>
    <content type="html">&lt;p&gt;We&amp;#39;re going to use an awesome tool called &lt;a href=&quot;https://github.com/averyvery/hieroglyph&quot;&gt;Hieroglyph&lt;/a&gt;. There&amp;#39;s already a pretty intuitive readme file in the repo, but I hope to elaborate a little more on what was provided.&lt;/p&gt;
 
-&lt;h4 id=&quot;toc_236&quot;&gt;Installing Hieroglyph&lt;/h4&gt;
+&lt;h4 id=&quot;toc_213&quot;&gt;Installing Hieroglyph&lt;/h4&gt;
 
 &lt;p&gt;Open up &lt;strong&gt;Terminal&lt;/strong&gt; and type &lt;code&gt;gem install hieroglyph&lt;/code&gt;. If for some reason you get an error and/or the install fails, update RubyGems by entering &lt;code&gt;sudo gem update --system&lt;/code&gt; into Terminal, then give it another shot. You can test to see if it works by simply entering &lt;code&gt;hieroglyph&lt;/code&gt; in terminal to generate an empty, dummy font.&lt;/p&gt;
 
@@ -885,7 +885,7 @@ DPI: at least 72 DPI&lt;/p&gt;
 
 &lt;p&gt;Then just delete the dummy SVG file, in my case, on my Desktop.&lt;/p&gt;
 
-&lt;h4 id=&quot;toc_237&quot;&gt;Getting your icons ready&lt;/h4&gt;
+&lt;h4 id=&quot;toc_214&quot;&gt;Getting your icons ready&lt;/h4&gt;
 
 &lt;p&gt;Open up Illustrator and create a new document sized &lt;strong&gt;1000pt x 1000pt&lt;/strong&gt;. We need to make sure that the icons are centered, and relatively the same size. Drag a horizontal guide so it sits &lt;strong&gt;250 points&lt;/strong&gt; from the top of the canvas. You can set this easily by dragging out a guide, then in your Illustrator toolbar setting the &lt;strong&gt;Y value&lt;/strong&gt; to 250. You should also drag out a vertical rule with the &lt;strong&gt;X value&lt;/strong&gt; of 500 so you have a vertical center showing.&lt;/p&gt;
 
@@ -897,11 +897,11 @@ DPI: at least 72 DPI&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Important:&lt;/strong&gt; Make sure your icon is a compound path. If your canvas has more than one shape, it will cause issues with the font generation. You can make it a compound path by selecting all the shapes in the icon, and pressing &lt;strong&gt;CMD + 8&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;h4 id=&quot;toc_238&quot;&gt;Saving &amp;amp; Naming Convetion&lt;/h4&gt;
+&lt;h4 id=&quot;toc_215&quot;&gt;Saving &amp;amp; Naming Convetion&lt;/h4&gt;
 
 &lt;p&gt;Save your files as SVGs. Name them &lt;em&gt;[key]-icon-name.svg&lt;/em&gt;. If you downloaded the template, you&amp;#39;ll notice it&amp;#39;s named [t]-twitter.svg. This will map the icon to the T key when our font is generated.&lt;/p&gt;
 
-&lt;h4 id=&quot;toc_239&quot;&gt;Font Generation&lt;/h4&gt;
+&lt;h4 id=&quot;toc_216&quot;&gt;Font Generation&lt;/h4&gt;
 
 &lt;p&gt;I&amp;#39;ve saved all my icons into a folder on my Desktop called &lt;strong&gt;glyphs&lt;/strong&gt;. Go back into Terminal and browse to your Desktop by typing &lt;code&gt;cd ~/Desktop&lt;/code&gt;.&lt;/p&gt;
 
@@ -938,7 +938,7 @@ Or if you&amp;#39;ve setup everything the way I have &lt;code&gt;hieroglyph -n I
 
 &lt;p&gt;Now that you&amp;#39;ve got your font in an SVG format, go ahead and run your new font through &lt;a href=&quot;http://www.fontsquirrel.com/fontface/generator&quot;&gt;this font-face generator&lt;/a&gt; to get the other @font-face formats. Also make sure that you&amp;#39;ve clicked &lt;strong&gt;Expert&lt;/strong&gt;  and selected the custom subsetting option in the font-squirrel interface. If you&amp;#39;re ballin&amp;#39; out of control, you might use &lt;a href=&quot;http://www.fontgear.net/fontxchange.html&quot;&gt;FontXChange&lt;/a&gt; to generate the different formats instead.&lt;/p&gt;
 
-&lt;h4 id=&quot;toc_240&quot;&gt;In Conclusion&lt;/h4&gt;
+&lt;h4 id=&quot;toc_217&quot;&gt;In Conclusion&lt;/h4&gt;
 
 &lt;p&gt;Now you&amp;#39;re ready to embed those files into your stylesheet and start serving some icons!&lt;/p&gt;
 
@@ -959,7 +959,7 @@ Or if you&amp;#39;ve setup everything the way I have &lt;code&gt;hieroglyph -n I
    	<name>Justen Palmer</name>
    	<email>artichokeworld@gmail.com</email>
    </author>
-   <content type="html">&lt;h3 id=&quot;toc_234&quot;&gt;Keep a node server running&lt;/h3&gt;
+   <content type="html">&lt;h3 id=&quot;toc_211&quot;&gt;Keep a node server running&lt;/h3&gt;
 
 &lt;p&gt;Download the CLI tool from: 
 &lt;a href=&quot;https://github.com/nodejitsu/forever/&quot;&gt;https://github.com/nodejitsu/forever/&lt;/a&gt;&lt;/p&gt;
@@ -979,7 +979,7 @@ forever stopall
 forever start server.js
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;toc_235&quot;&gt;Installation&lt;/h3&gt;
+&lt;h3 id=&quot;toc_212&quot;&gt;Installation&lt;/h3&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;sudo su
 
@@ -1062,7 +1062,7 @@ npm install forever -g
    	<name>Justen Palmer</name>
    	<email>artichokeworld@gmail.com</email>
    </author>
-   <content type="html">&lt;h2 id=&quot;toc_230&quot;&gt;Create the EC2 Instance&lt;/h2&gt;
+   <content type="html">&lt;h2 id=&quot;toc_207&quot;&gt;Create the EC2 Instance&lt;/h2&gt;
 
 &lt;ol&gt;
 &lt;li&gt;Login to &lt;a href=&quot;http://aws.amazon.com/&quot;&gt;aws.amazon.com&lt;/a&gt;&lt;/li&gt;
@@ -1097,7 +1097,7 @@ npm install forever -g
 &lt;li&gt;Launch the instance&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&quot;toc_231&quot;&gt;Associate an IP with your EC2 instance&lt;/h2&gt;
+&lt;h2 id=&quot;toc_208&quot;&gt;Associate an IP with your EC2 instance&lt;/h2&gt;
 
 &lt;ol&gt;
 &lt;li&gt;Under &lt;strong&gt;Networking and Security&lt;/strong&gt; select &lt;strong&gt;Elastic IPs&lt;/strong&gt;&lt;/li&gt;
@@ -1108,7 +1108,7 @@ npm install forever -g
 &lt;li&gt;Copy the IP Address (You&amp;#39;ll need it later)&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&quot;toc_232&quot;&gt;Connect to the New Instance&lt;/h2&gt;
+&lt;h2 id=&quot;toc_209&quot;&gt;Connect to the New Instance&lt;/h2&gt;
 
 &lt;ol&gt;
 &lt;li&gt;Connect with:&lt;/li&gt;
@@ -1195,7 +1195,7 @@ npm install forever -g
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
    
 
-&lt;h3 id=&quot;toc_233&quot;&gt;Congrats!  Node.js is installed!  What&amp;#39;s next?  You can install mongodb or setup a git repo on the server to really get developing.&lt;/h3&gt;
+&lt;h3 id=&quot;toc_210&quot;&gt;Congrats!  Node.js is installed!  What&amp;#39;s next?  You can install mongodb or setup a git repo on the server to really get developing.&lt;/h3&gt;
 </content>
 
  </entry>
