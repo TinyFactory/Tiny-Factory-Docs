@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Google Play Store Submission Checklist Mobile - Tiny Factory Docs</title>
+    <title>HTML5 Placeholder in IE7 and IE8 fix - Tiny Factory Docs</title>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" media="screen" href="http://localhost:4000/css/screen.css" type="text/css" />
@@ -80,29 +80,29 @@
           
           
             
+          
+                                 
+        
+          
+          
+            
+          
+                                 
+        
+          
+          
+            
+          
+                                 
+        
+          
+          
+            
               
             
           
           
-            <li><a href="http://localhost:4000/design/2012/10/03/ios-store-submission-checklist.html">iOS Store Submission Checklist</a></li>
-                                 
-        
-          
-          
-            
-          
-                                 
-        
-          
-          
-            
-          
-                                 
-        
-          
-          
-            
-          
+            <li><a href="http://localhost:4000/jquery/2012/08/11/text-overflow-ellipsis-using-jquery.html">Text Overflow Ellipsis Using Jquery</a></li>
                                  
         
           
@@ -142,9 +142,9 @@
         <h3>Most Recent</h3>
         <ul class="posts">
           
-            <li><a href="http://localhost:4000/jquery/2012/12/18/HTML5-Placeholder-In-ie7-and-ie8-fix.html">HTML5 Placeholder in IE7 and IE8 fix</a></li>
-          
             <li><a href="http://localhost:4000/design/2012/10/03/ios-store-submission-checklist.html">iOS Store Submission Checklist</a></li>
+          
+            <li><a href="http://localhost:4000/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile.html">Google Play Store Submission Checklist Mobile</a></li>
           
             <li><a href="http://localhost:4000/less/2012/09/20/text-overflow-ellipsis-using-LESS.html">Text Overflow Ellipsis Using Less</a></li>
           
@@ -158,66 +158,27 @@
 
       <article>
           <div class="entry">
-            <h1>Google Play Store Submission Checklist Mobile</h1>
-            <p>So you&#39;ve finished your application and you&#39;re ready to submit it to the Google Play store, but wait - you still need more assets!  Here&#39;s a quick checklist for what you&#39;ll need to prepare before submission.</p>
+            <h1>HTML5 Placeholder in IE7 and IE8 fix</h1>
+            <p>You can now use the HTML5 placeholder attribute in IE7 &amp; IE8 - just use this code below.  Origionally found at: <a href="http://dipaksblogonline.blogspot.com/2012/02/html5-placeholder-in-ie7-and-ie8-fixed.html">dipaksblogonline</a></p>
 
-<h3 id="toc_241">Icons</h3>
-
-<ul>
-<li>512x512 - required for publishing</li>
-<li>96x96, 72x72, 48x48, 36x36 - all used for compiling</li>
-</ul>
-
-<h3 id="toc_242">Splash</h3>
-
-<ul>
-<li>320x480 (mobile devices)</li>
-<li>1024x600 (Samsung galaxy tab)</li>
-</ul>
-
-<h3 id="toc_243">Screen shots - at least 2 required</h3>
-
-<ul>
-<li>Dimensions: 320 x 480, 480 x 800, 480 x 854, 1280 x 720, 1280 x 800</li>
-<li>24 bit PNG or JPEG (no alpha)</li>
-<li>Full bleed, no border in art</li>
-</ul>
-
-<h3 id="toc_244">Promo Graphic (Optional)</h3>
-
-<ul>
-<li>180w x 120h</li>
-<li>24 bit PNG or JPEG (no alpha)</li>
-<li>No border in art</li>
-</ul>
-
-<h3 id="toc_245">Feature Graphic (Optional)</h3>
-
-<ul>
-<li>1024 x 500</li>
-<li>Will be downsized to mini or micro</li>
-</ul>
-
-<h3 id="toc_246">Promotional Video:</h3>
-
-<ul>
-<li>Enter YouTube URL</li>
-</ul>
-
-<h3 id="toc_247">Text descriptions</h3>
-
-<ul>
-<li>Language</li>
-<li>Title</li>
-<li>Description</li>
-<li>Promo Text</li>
-<li>Application Type</li>
-<li>Category</li>
-<li>Contact information</li>
-<li>Website</li>
-<li>Email</li>
-<li>Phone</li>
-</ul>
+<div class="highlight"><pre><code class="bash">//Assign to those input elements that have <span class="s1">&#39;placeholder&#39;</span> attribute
+<span class="k">$(</span><span class="s1">&#39;input[placeholder]&#39;</span><span class="k">)</span>.each<span class="o">(</span><span class="k">function</span><span class="o">(){</span>  
+    var <span class="nv">input</span> <span class="o">=</span> <span class="k">$(</span>this<span class="k">)</span>;        
+    <span class="k">$(</span>input<span class="k">)</span>.val<span class="o">(</span>input.attr<span class="o">(</span><span class="s1">&#39;placeholder&#39;</span><span class="o">))</span>;
+                
+    <span class="k">$(</span>input<span class="k">)</span>.focus<span class="o">(</span><span class="k">function</span><span class="o">(){</span>
+        <span class="k">if</span> <span class="o">(</span>input.val<span class="o">()</span> <span class="o">==</span> input.attr<span class="o">(</span><span class="s1">&#39;placeholder&#39;</span><span class="o">))</span> <span class="o">{</span>
+           input.val<span class="o">(</span><span class="s1">&#39;&#39;</span><span class="o">)</span>;
+        <span class="o">}</span>
+    <span class="o">})</span>;
+        
+    <span class="k">$(</span>input<span class="k">)</span>.blur<span class="o">(</span><span class="k">function</span><span class="o">(){</span>
+       <span class="k">if</span> <span class="o">(</span>input.val<span class="o">()</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span> <span class="o">||</span> input.val<span class="o">()</span> <span class="o">==</span> input.attr<span class="o">(</span><span class="s1">&#39;placeholder&#39;</span><span class="o">))</span> <span class="o">{</span>
+           input.val<span class="o">(</span>input.attr<span class="o">(</span><span class="s1">&#39;placeholder&#39;</span><span class="o">))</span>;
+       <span class="o">}</span>
+    <span class="o">})</span>;
+<span class="o">})</span>;
+</code></pre></div>
 
 
             

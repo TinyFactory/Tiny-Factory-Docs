@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Setup Ftp On Aws Centos - Tiny Factory Docs</title>
+    <title>Setup Vsftp On Aws Centos - Tiny Factory Docs</title>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" media="screen" href="http://docs.tinyfactory.co/css/screen.css" type="text/css" />
+    <link rel="stylesheet" media="screen" href="http://localhost:4000/css/screen.css" type="text/css" />
     
     
     <!-- google analytics async -->
@@ -26,7 +26,7 @@
   <body>
       <header>
         <div id="logo">
-          <a href="http://docs.tinyfactory.co"><img src="http://docs.tinyfactory.co/images/logo.png" alt="Tiny Factory"/></a>
+          <a href="http://localhost:4000"><img src="http://localhost:4000/images/logo.png" alt="Tiny Factory"/></a>
         </div><!-- logo -->
   
         <nav class="mobile-nav">
@@ -35,7 +35,7 @@
             
           
             
-              <a href="http://docs.tinyfactory.co/jobs.html">Jobs</a>
+              <a href="http://localhost:4000/jobs.html">Jobs</a>
             
           
         </nav>
@@ -44,7 +44,7 @@
             <div id="container" class="single">
 
   <div id="sidebar">
-    <div class="side-logo"><a href="http://docs.tinyfactory.co"><img src="http://docs.tinyfactory.co/images/logo.png" alt=""></a></div>
+    <div class="side-logo"><a href="http://localhost:4000"><img src="http://localhost:4000/images/logo.png" alt=""></a></div>
       <div class="item">
         <h3>Contribute</h3>
         <div class="github-buttons">
@@ -57,12 +57,12 @@
       <div class="item">
         <h3>Documentation</h3>
         <ul>
-          <li><a href="http://docs.tinyfactory.co">Home</a></li>
+          <li><a href="http://localhost:4000">Home</a></li>
           
             
           
             
-              <li><a href="http://docs.tinyfactory.co/jobs.html">Jobs</a></li>
+              <li><a href="http://localhost:4000/jobs.html">Jobs</a></li>
             
           
         </ul>
@@ -138,15 +138,15 @@
         <h3>Most Recent</h3>
         <ul class="posts">
           
-            <li><a href="http://docs.tinyfactory.co/design/2012/10/03/ios-store-submission-checklist.html">iOS Store Submission Checklist</a></li>
+            <li><a href="http://localhost:4000/jquery/2012/12/18/HTML5-Placeholder-In-ie7-and-ie8-fix.html">HTML5 Placeholder in IE7 and IE8 fix</a></li>
           
-            <li><a href="http://docs.tinyfactory.co/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile.html">Google Play Store Submission Checklist Mobile</a></li>
+            <li><a href="http://localhost:4000/design/2012/10/03/ios-store-submission-checklist.html">iOS Store Submission Checklist</a></li>
           
-            <li><a href="http://docs.tinyfactory.co/less/2012/09/20/text-overflow-ellipsis-using-LESS.html">Text Overflow Ellipsis Using Less</a></li>
+            <li><a href="http://localhost:4000/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile.html">Google Play Store Submission Checklist Mobile</a></li>
           
-            <li><a href="http://docs.tinyfactory.co/less/2012/09/20/LESS-placeholder-text-mixin.html">Less Placeholder Text Mixin</a></li>
+            <li><a href="http://localhost:4000/less/2012/09/20/text-overflow-ellipsis-using-LESS.html">Text Overflow Ellipsis Using Less</a></li>
           
-            <li><a href="http://docs.tinyfactory.co/jquery/2012/08/11/text-overflow-ellipsis-using-jquery.html">Text Overflow Ellipsis Using Jquery</a></li>
+            <li><a href="http://localhost:4000/less/2012/09/20/LESS-placeholder-text-mixin.html">Less Placeholder Text Mixin</a></li>
           
         </ul>
       </div>
@@ -154,75 +154,83 @@
 
       <article>
           <div class="entry">
-            <h1>Setup Ftp On Aws Centos</h1>
+            <h1>Setup Vsftp On Aws Centos</h1>
             <ol>
-<li>
-<p>Install <strong>vsftpd</strong></p>
-<div class='highlight'><pre><code class='bash'>yum install vsftpd - y
-
-</code></pre>
-</div></li>
-
-<li>
-<p>Open up the config file</p>
-<div class='highlight'><pre><code class='bash'>vim /etc/vsftpd/vsftpd.conf
-
-</code></pre>
-</div></li>
-
-<li>
-<p>Add the following lines to the end of <strong>vsftpd.conf</strong></p>
-<div class='highlight'><pre><code class='bash'><span class='nv'>pasv_enable</span><span class='o'>=</span>YES
-<span class='nv'>pasv_min_port</span><span class='o'>=</span>1400 ← port range to be opened at the security group
-<span class='nv'>pasv_max_port</span><span class='o'>=</span>1500
-<span class='nv'>pasv_address</span><span class='o'>=</span>23.21.148.84 ← server IP
-
-</code></pre>
-</div></li>
-
-<li>
-<p>Open up the following <strong>ports</strong> at the security group within <strong>AWS</strong></p>
-<div class='highlight'><pre><code class='bash'>21 ← default FTP connection port
-1400-1500 ← passive port range <span class='nb'>set </span>in vsftpd.con
-
-</code></pre>
-</div></li>
-
-<li>
-<p>Restart the <strong>vsftpd</strong> server</p>
-<div class='highlight'><pre><code class='bash'>sudo service vsftpd restart
-
-</code></pre>
-</div></li>
-
-<li>
-<p>Add new user to server for login</p>
-<div class='highlight'><pre><code class='bash'>sudo adduser <span class='o'>[</span>username<span class='o'>]</span>
-
-</code></pre>
-</div></li>
-
-<li>
-<p>Give user a password so they can login</p>
-<div class='highlight'><pre><code class='bash'>sudo passwd <span class='o'>[</span>username<span class='o'>]</span>
-
-</code></pre>
-</div></li>
-
-<li>
-<p>Add entry to auto start <strong>vsftpd</strong> on server restart</p>
-<div class='highlight'><pre><code class='bash'>sudo chkconfig vsftpd on 
-
-</code></pre>
-</div></li>
-
-<li>
-<p>Bonus - if you want to have a user’s files uploaded to an EBS mount, symlink from the FTP user’s directory to the EBS mount</p>
-<div class='highlight'><pre><code class='bash'>ln -s <span class='o'>[</span><span class='nb'>source</span>-file/folder<span class='o'>]</span> <span class='o'>[</span>link-name<span class='o'>]</span>
-
-</code></pre>
-</div></li>
+<li>Install <strong>vsftpd</strong></li>
 </ol>
+
+<div class="highlight"><pre><code class="bash">yum install vsftpd -y
+    
+</code></pre></div>
+
+<ol>
+<li>Open up the config file </li>
+</ol>
+
+<div class="highlight"><pre><code class="bash">vim /etc/vsftpd/vsftpd.conf
+    
+</code></pre></div>
+
+<ol>
+<li>Add the following lines to the end of <strong>vsftpd.conf</strong></li>
+</ol>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">pasv_enable</span><span class="o">=</span>YES
+    <span class="nv">pasv_min_port</span><span class="o">=</span>1400 ← port range to be opened at the security group
+    <span class="nv">pasv_max_port</span><span class="o">=</span>1500
+    <span class="nv">pasv_address</span><span class="o">=</span>23.21.148.84 ← server IP
+    
+</code></pre></div>
+
+<ol>
+<li>Open up the following <strong>ports</strong> at the security group within <strong>AWS</strong></li>
+</ol>
+
+<div class="highlight"><pre><code class="bash">21 ← default FTP connection port
+    1400-1500 ← passive port range <span class="nb">set </span>in vsftpd.con
+    
+</code></pre></div>
+
+<ol>
+<li>Restart the <strong>vsftpd</strong> server</li>
+</ol>
+
+<div class="highlight"><pre><code class="bash">sudo service vsftpd restart
+    
+</code></pre></div>
+
+<ol>
+<li>Add new user to server for login</li>
+</ol>
+
+<div class="highlight"><pre><code class="bash">sudo adduser <span class="o">[</span>username<span class="o">]</span>
+    
+</code></pre></div>
+
+<ol>
+<li>Give user a password so they can login</li>
+</ol>
+
+<div class="highlight"><pre><code class="bash">sudo passwd <span class="o">[</span>username<span class="o">]</span>
+    
+</code></pre></div>
+
+<ol>
+<li>Add entry to auto start <strong>vsftpd</strong> on server restart</li>
+</ol>
+
+<div class="highlight"><pre><code class="bash">sudo chkconfig vsftpd on 
+    
+</code></pre></div>
+
+<ol>
+<li>Bonus - if you want to have a user’s files uploaded to an EBS mount, symlink from the FTP user’s directory to the EBS mount</li>
+</ol>
+
+<div class="highlight"><pre><code class="bash">ln -s <span class="o">[</span><span class="nb">source</span>-file/folder<span class="o">]</span> <span class="o">[</span>link-name<span class="o">]</span>
+    
+</code></pre></div>
+
 
             
               <div class="meta">
@@ -243,11 +251,11 @@
       </div>
 
      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script type="text/javascript" src="http://docs.tinyfactory.co/js/masonry.js"></script>
-<script type="text/javascript" src="http://docs.tinyfactory.co/js/respond.min.js"></script>
-<script type="text/javascript" src="http://docs.tinyfactory.co/js/jquery.jscrollpane.min.js"></script>
-<script type="text/javascript" src="http://docs.tinyfactory.co/js/jquery.mousewheel.js"></script>
-<script type="text/javascript" src="http://docs.tinyfactory.co/js/mwheelIntent.js"></script>
-<script type="text/javascript" src="http://docs.tinyfactory.co/js/web.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/masonry.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/respond.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/jquery.jscrollpane.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/mwheelIntent.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/web.js"></script>
   </body>
 </html>

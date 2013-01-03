@@ -4,7 +4,7 @@
     <title>iOS Store Submission Checklist - Tiny Factory Docs</title>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" media="screen" href="http://docs.tinyfactory.co/css/screen.css" type="text/css" />
+    <link rel="stylesheet" media="screen" href="http://localhost:4000/css/screen.css" type="text/css" />
     
     
     <!-- google analytics async -->
@@ -26,7 +26,7 @@
   <body>
       <header>
         <div id="logo">
-          <a href="http://docs.tinyfactory.co"><img src="http://docs.tinyfactory.co/images/logo.png" alt="Tiny Factory"/></a>
+          <a href="http://localhost:4000"><img src="http://localhost:4000/images/logo.png" alt="Tiny Factory"/></a>
         </div><!-- logo -->
   
         <nav class="mobile-nav">
@@ -35,7 +35,7 @@
             
           
             
-              <a href="http://docs.tinyfactory.co/jobs.html">Jobs</a>
+              <a href="http://localhost:4000/jobs.html">Jobs</a>
             
           
         </nav>
@@ -44,7 +44,7 @@
             <div id="container" class="single">
 
   <div id="sidebar">
-    <div class="side-logo"><a href="http://docs.tinyfactory.co"><img src="http://docs.tinyfactory.co/images/logo.png" alt=""></a></div>
+    <div class="side-logo"><a href="http://localhost:4000"><img src="http://localhost:4000/images/logo.png" alt=""></a></div>
       <div class="item">
         <h3>Contribute</h3>
         <div class="github-buttons">
@@ -57,12 +57,12 @@
       <div class="item">
         <h3>Documentation</h3>
         <ul>
-          <li><a href="http://docs.tinyfactory.co">Home</a></li>
+          <li><a href="http://localhost:4000">Home</a></li>
           
             
           
             
-              <li><a href="http://docs.tinyfactory.co/jobs.html">Jobs</a></li>
+              <li><a href="http://localhost:4000/jobs.html">Jobs</a></li>
             
           
         </ul>
@@ -74,17 +74,17 @@
           
           
             
-              
-            
           
-          
-            <li><a href="http://docs.tinyfactory.co/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile.html">Google Play Store Submission Checklist Mobile</a></li>
                                  
         
           
           
             
+              
+            
           
+          
+            <li><a href="http://localhost:4000/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile.html">Google Play Store Submission Checklist Mobile</a></li>
                                  
         
           
@@ -142,15 +142,15 @@
         <h3>Most Recent</h3>
         <ul class="posts">
           
-            <li><a href="http://docs.tinyfactory.co/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile.html">Google Play Store Submission Checklist Mobile</a></li>
+            <li><a href="http://localhost:4000/jquery/2012/12/18/HTML5-Placeholder-In-ie7-and-ie8-fix.html">HTML5 Placeholder in IE7 and IE8 fix</a></li>
           
-            <li><a href="http://docs.tinyfactory.co/less/2012/09/20/text-overflow-ellipsis-using-LESS.html">Text Overflow Ellipsis Using Less</a></li>
+            <li><a href="http://localhost:4000/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile.html">Google Play Store Submission Checklist Mobile</a></li>
           
-            <li><a href="http://docs.tinyfactory.co/less/2012/09/20/LESS-placeholder-text-mixin.html">Less Placeholder Text Mixin</a></li>
+            <li><a href="http://localhost:4000/less/2012/09/20/text-overflow-ellipsis-using-LESS.html">Text Overflow Ellipsis Using Less</a></li>
           
-            <li><a href="http://docs.tinyfactory.co/jquery/2012/08/11/text-overflow-ellipsis-using-jquery.html">Text Overflow Ellipsis Using Jquery</a></li>
+            <li><a href="http://localhost:4000/less/2012/09/20/LESS-placeholder-text-mixin.html">Less Placeholder Text Mixin</a></li>
           
-            <li><a href="http://docs.tinyfactory.co/css/2012/08/11/text-overflow-ellipsis-using-CSS.html">Text Overflow Ellipsis Using Css</a></li>
+            <li><a href="http://localhost:4000/jquery/2012/08/11/text-overflow-ellipsis-using-jquery.html">Text Overflow Ellipsis Using Jquery</a></li>
           
         </ul>
       </div>
@@ -159,97 +159,69 @@
       <article>
           <div class="entry">
             <h1>iOS Store Submission Checklist</h1>
-            <p>In order to submit an application to Apple&#8217;s App Store, there are numerous requiements. We use this checklist to make sure we have everything we need prior to submission.</p>
+            <p>In order to submit an application to Apple&#39;s App Store, there are numerous requiements.  We use this checklist to make sure we have everything we need prior to submission.</p>
 
-<h2 id='icons'>icons</h2>
+<h3 id="toc_248">icons</h3>
 
 <ul>
 <li>57px - iPhone</li>
-
 <li>72px - iPad</li>
-
 <li>114px - iPhone 4 + Retina Display</li>
-
 <li>512px - iTunes – Used in iTunes and in the App Store sized down to 175px</li>
-
 <li>1024px - New requirement (now with macbook retina)</li>
 </ul>
 
-<h2 id='splash'>Splash</h2>
+<h3 id="toc_249">Splash</h3>
 
-<p>Must be named exactly as is next to the dimensions &amp; PNG only</p>
+<p>Must be named exactly as is next to the dimensions.  Must be a PNG file.
+* 320 x 480px - Default.png - iPhone 3Gs and older
+* 640 x 960px - <a href="mailto:Default@2x.png">Default@2x.png</a> - iPhone 4 &amp; 4s
+* 1136 x 640px - <a href="mailto:Default-568h@2x.png">Default-568h@2x.png</a> - iPhone 5</p>
 
-<ul>
-<li>320 x 480px - Default.png - iPhone 3Gs and older</li>
+<h3 id="toc_250">Screenshots</h3>
 
-<li>640 x 960px - Default@2x.png - iPhone 4 &amp; 4s</li>
-
-<li>1136 x 640px - iPhone 5</li>
-</ul>
-
-<h2 id='screenshots'>Screenshots</h2>
-
-<p>File formats allowed: .jpeg, .jpg, .tif, .tiff, or .png Color space: RGB DPI: at least 72 DPI</p>
+<p>File formats allowed: .jpeg, .jpg, .tif, .tiff, or .png
+Color space: RGB
+DPI: at least 72 DPI</p>
 
 <ul>
-<li>
-<p>Iphone 4/4s</p>
+<li>Iphone 4/4s
 
 <ul>
 <li>Portrait: 960 x 640px or 960 x 600px</li>
-
 <li>Landscape: 640 x 960px or 640 x 920px</li>
-</ul>
-</li>
-
-<li>
-<p>Iphone 5</p>
+</ul></li>
+<li>Iphone 5
 
 <ul>
 <li>Portrait: 1136 x 640px</li>
-
 <li>Landscape: 640 x 1136px</li>
-</ul>
-</li>
-
-<li>
-<p>iPad:</p>
+</ul></li>
+<li>iPad:
 
 <ul>
 <li>Portrait: 768 x 1024px or 1536 x 2048px</li>
-
 <li>Landscape: 1024 x 768px or 2048 x 1536px</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 
-<h2 id='submittal_information'>Submittal Information</h2>
+<h3 id="toc_251">Submittal Information</h3>
 
 <ul>
 <li>Title</li>
-
 <li>Description</li>
-
 <li>Keywords</li>
-
 <li>Default Language</li>
-
 <li>Version Number</li>
-
 <li>Copyright</li>
-
 <li>Primary Category</li>
-
 <li>Secondary Category (optional)</li>
-
 <li>Support Email Address</li>
-
 <li>Support URL</li>
-
 <li>Marketing URL (optional)</li>
-
 <li>Privacy Policy URL (optional)</li>
 </ul>
+
 
             
               <div class="meta">
@@ -270,11 +242,11 @@
       </div>
 
      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script type="text/javascript" src="http://docs.tinyfactory.co/js/masonry.js"></script>
-<script type="text/javascript" src="http://docs.tinyfactory.co/js/respond.min.js"></script>
-<script type="text/javascript" src="http://docs.tinyfactory.co/js/jquery.jscrollpane.min.js"></script>
-<script type="text/javascript" src="http://docs.tinyfactory.co/js/jquery.mousewheel.js"></script>
-<script type="text/javascript" src="http://docs.tinyfactory.co/js/mwheelIntent.js"></script>
-<script type="text/javascript" src="http://docs.tinyfactory.co/js/web.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/masonry.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/respond.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/jquery.jscrollpane.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/mwheelIntent.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/web.js"></script>
   </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Google Play Store Submission Checklist Mobile - Tiny Factory Docs</title>
+    <title>Changing the head on a Git Repo - Tiny Factory Docs</title>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" media="screen" href="http://localhost:4000/css/screen.css" type="text/css" />
@@ -80,11 +80,7 @@
           
           
             
-              
-            
           
-          
-            <li><a href="http://localhost:4000/design/2012/10/03/ios-store-submission-checklist.html">iOS Store Submission Checklist</a></li>
                                  
         
           
@@ -146,11 +142,11 @@
           
             <li><a href="http://localhost:4000/design/2012/10/03/ios-store-submission-checklist.html">iOS Store Submission Checklist</a></li>
           
+            <li><a href="http://localhost:4000/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile.html">Google Play Store Submission Checklist Mobile</a></li>
+          
             <li><a href="http://localhost:4000/less/2012/09/20/text-overflow-ellipsis-using-LESS.html">Text Overflow Ellipsis Using Less</a></li>
           
             <li><a href="http://localhost:4000/less/2012/09/20/LESS-placeholder-text-mixin.html">Less Placeholder Text Mixin</a></li>
-          
-            <li><a href="http://localhost:4000/jquery/2012/08/11/text-overflow-ellipsis-using-jquery.html">Text Overflow Ellipsis Using Jquery</a></li>
           
         </ul>
       </div>
@@ -158,66 +154,34 @@
 
       <article>
           <div class="entry">
-            <h1>Google Play Store Submission Checklist Mobile</h1>
-            <p>So you&#39;ve finished your application and you&#39;re ready to submit it to the Google Play store, but wait - you still need more assets!  Here&#39;s a quick checklist for what you&#39;ll need to prepare before submission.</p>
+            <h1>Changing the head on a Git Repo</h1>
+            <p>If you want the default branch from a <code>git clone</code> to be something besides <code>master</code>, use the following steps:</p>
 
-<h3 id="toc_241">Icons</h3>
+<p>Check what remote branches are available: </p>
 
-<ul>
-<li>512x512 - required for publishing</li>
-<li>96x96, 72x72, 48x48, 36x36 - all used for compiling</li>
-</ul>
+<div class="highlight"><pre><code class="bash">git branch -r
+</code></pre></div>
 
-<h3 id="toc_242">Splash</h3>
+<p>The output will look like:</p>
 
-<ul>
-<li>320x480 (mobile devices)</li>
-<li>1024x600 (Samsung galaxy tab)</li>
-</ul>
+<div class="highlight"><pre><code class="bash">origin/HEAD -&gt; origin/master
+origin/dev
+origin/master
+</code></pre></div>
 
-<h3 id="toc_243">Screen shots - at least 2 required</h3>
+<p>Notice <code>origin/HEAD -&gt; orgin/master</code>.  When you issue a <code>git clone</code> on this repository you will get the master branch by default.  If want to change this to the dev branch we also have in our remote repository, issue the following command</p>
 
-<ul>
-<li>Dimensions: 320 x 480, 480 x 800, 480 x 854, 1280 x 720, 1280 x 800</li>
-<li>24 bit PNG or JPEG (no alpha)</li>
-<li>Full bleed, no border in art</li>
-</ul>
+<div class="highlight"><pre><code class="bash">git remote <span class="nb">set</span>-head origin dev
+</code></pre></div>
 
-<h3 id="toc_244">Promo Graphic (Optional)</h3>
+<p>To confirm the change took, run <code>git branch -r</code> and review our output:</p>
 
-<ul>
-<li>180w x 120h</li>
-<li>24 bit PNG or JPEG (no alpha)</li>
-<li>No border in art</li>
-</ul>
+<div class="highlight"><pre><code class="bash">origin/HEAD -&gt; origin/dev
+origin/dev
+origin/master
+</code></pre></div>
 
-<h3 id="toc_245">Feature Graphic (Optional)</h3>
-
-<ul>
-<li>1024 x 500</li>
-<li>Will be downsized to mini or micro</li>
-</ul>
-
-<h3 id="toc_246">Promotional Video:</h3>
-
-<ul>
-<li>Enter YouTube URL</li>
-</ul>
-
-<h3 id="toc_247">Text descriptions</h3>
-
-<ul>
-<li>Language</li>
-<li>Title</li>
-<li>Description</li>
-<li>Promo Text</li>
-<li>Application Type</li>
-<li>Category</li>
-<li>Contact information</li>
-<li>Website</li>
-<li>Email</li>
-<li>Phone</li>
-</ul>
+<p><code>origin/HEAD -&gt; orgin/dev</code> is pointing to our dev branch.</p>
 
 
             

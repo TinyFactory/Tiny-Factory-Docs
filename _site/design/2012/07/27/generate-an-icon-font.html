@@ -4,7 +4,7 @@
     <title>Generate An Icon Font - Tiny Factory Docs</title>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" media="screen" href="http://docs.tinyfactory.co/css/screen.css" type="text/css" />
+    <link rel="stylesheet" media="screen" href="http://localhost:4000/css/screen.css" type="text/css" />
     
     
     <!-- google analytics async -->
@@ -26,7 +26,7 @@
   <body>
       <header>
         <div id="logo">
-          <a href="http://docs.tinyfactory.co"><img src="http://docs.tinyfactory.co/images/logo.png" alt="Tiny Factory"/></a>
+          <a href="http://localhost:4000"><img src="http://localhost:4000/images/logo.png" alt="Tiny Factory"/></a>
         </div><!-- logo -->
   
         <nav class="mobile-nav">
@@ -35,7 +35,7 @@
             
           
             
-              <a href="http://docs.tinyfactory.co/jobs.html">Jobs</a>
+              <a href="http://localhost:4000/jobs.html">Jobs</a>
             
           
         </nav>
@@ -44,7 +44,7 @@
             <div id="container" class="single">
 
   <div id="sidebar">
-    <div class="side-logo"><a href="http://docs.tinyfactory.co"><img src="http://docs.tinyfactory.co/images/logo.png" alt=""></a></div>
+    <div class="side-logo"><a href="http://localhost:4000"><img src="http://localhost:4000/images/logo.png" alt=""></a></div>
       <div class="item">
         <h3>Contribute</h3>
         <div class="github-buttons">
@@ -57,12 +57,12 @@
       <div class="item">
         <h3>Documentation</h3>
         <ul>
-          <li><a href="http://docs.tinyfactory.co">Home</a></li>
+          <li><a href="http://localhost:4000">Home</a></li>
           
             
           
             
-              <li><a href="http://docs.tinyfactory.co/jobs.html">Jobs</a></li>
+              <li><a href="http://localhost:4000/jobs.html">Jobs</a></li>
             
           
         </ul>
@@ -74,11 +74,7 @@
           
           
             
-              
-            
           
-          
-            <li><a href="http://docs.tinyfactory.co/design/2012/10/03/ios-store-submission-checklist.html">iOS Store Submission Checklist</a></li>
                                  
         
           
@@ -88,13 +84,17 @@
             
           
           
-            <li><a href="http://docs.tinyfactory.co/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile.html">Google Play Store Submission Checklist Mobile</a></li>
+            <li><a href="http://localhost:4000/design/2012/10/03/ios-store-submission-checklist.html">iOS Store Submission Checklist</a></li>
                                  
         
           
           
             
+              
+            
           
+          
+            <li><a href="http://localhost:4000/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile.html">Google Play Store Submission Checklist Mobile</a></li>
                                  
         
           
@@ -146,15 +146,15 @@
         <h3>Most Recent</h3>
         <ul class="posts">
           
-            <li><a href="http://docs.tinyfactory.co/design/2012/10/03/ios-store-submission-checklist.html">iOS Store Submission Checklist</a></li>
+            <li><a href="http://localhost:4000/jquery/2012/12/18/HTML5-Placeholder-In-ie7-and-ie8-fix.html">HTML5 Placeholder in IE7 and IE8 fix</a></li>
           
-            <li><a href="http://docs.tinyfactory.co/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile.html">Google Play Store Submission Checklist Mobile</a></li>
+            <li><a href="http://localhost:4000/design/2012/10/03/ios-store-submission-checklist.html">iOS Store Submission Checklist</a></li>
           
-            <li><a href="http://docs.tinyfactory.co/less/2012/09/20/text-overflow-ellipsis-using-LESS.html">Text Overflow Ellipsis Using Less</a></li>
+            <li><a href="http://localhost:4000/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile.html">Google Play Store Submission Checklist Mobile</a></li>
           
-            <li><a href="http://docs.tinyfactory.co/less/2012/09/20/LESS-placeholder-text-mixin.html">Less Placeholder Text Mixin</a></li>
+            <li><a href="http://localhost:4000/less/2012/09/20/text-overflow-ellipsis-using-LESS.html">Text Overflow Ellipsis Using Less</a></li>
           
-            <li><a href="http://docs.tinyfactory.co/jquery/2012/08/11/text-overflow-ellipsis-using-jquery.html">Text Overflow Ellipsis Using Jquery</a></li>
+            <li><a href="http://localhost:4000/less/2012/09/20/LESS-placeholder-text-mixin.html">Less Placeholder Text Mixin</a></li>
           
         </ul>
       </div>
@@ -163,84 +163,90 @@
       <article>
           <div class="entry">
             <h1>Generate An Icon Font</h1>
-            <p>We&#8217;re going to use an awesome tool called <a href='https://github.com/averyvery/hieroglyph'>Hieroglyph</a>. There&#8217;s already a pretty intuitive readme file in the repo, but I hope to elaborate a little more on what was provided.</p>
+            <p>We&#39;re going to use an awesome tool called <a href="https://github.com/averyvery/hieroglyph">Hieroglyph</a>. There&#39;s already a pretty intuitive readme file in the repo, but I hope to elaborate a little more on what was provided.</p>
 
-<h4 id='installing_hieroglyph'>Installing Hieroglyph</h4>
+<h4 id="toc_236">Installing Hieroglyph</h4>
 
 <p>Open up <strong>Terminal</strong> and type <code>gem install hieroglyph</code>. If for some reason you get an error and/or the install fails, update RubyGems by entering <code>sudo gem update --system</code> into Terminal, then give it another shot. You can test to see if it works by simply entering <code>hieroglyph</code> in terminal to generate an empty, dummy font.</p>
 
 <p>You should get output similar to this:</p>
-<div class='highlight'><pre><code class='console'><span class='go'>~/Desktop » hieroglyph</span>
-<span class='go'>  </span>
-<span class='go'>Setup:</span>
-<span class='go'>  ImageMagick not detected - skipping character sheet</span>
-<span class='go'>  </span>
-<span class='go'>Reading glyphs:</span>
-<span class='go'>  </span>
-<span class='go'>Done!</span>
-<span class='go'>  MyFont generated saved to /Users/Aaron/Desktop/MyFont.svg</span>
-<span class='go'>  Single characters: </span>
-<span class='go'>  Unicode characters: </span>
+<div class="highlight"><pre><code class="console"><span class="go">~/Desktop » hieroglyph</span>
+
+<span class="go">Setup:</span>
+<span class="go">  ImageMagick not detected - skipping character sheet</span>
+
+<span class="go">Reading glyphs:</span>
+
+<span class="go">Done!</span>
+<span class="go">  MyFont generated saved to /Users/Aaron/Desktop/MyFont.svg</span>
+<span class="go">  Single characters: </span>
+<span class="go">  Unicode characters: </span>
 </code></pre>
 </div>
+
 <p>Then just delete the dummy SVG file, in my case, on my Desktop.</p>
 
-<h4 id='getting_your_icons_ready'>Getting your icons ready</h4>
+<h4 id="toc_237">Getting your icons ready</h4>
 
 <p>Open up Illustrator and create a new document sized <strong>1000pt x 1000pt</strong>. We need to make sure that the icons are centered, and relatively the same size. Drag a horizontal guide so it sits <strong>250 points</strong> from the top of the canvas. You can set this easily by dragging out a guide, then in your Illustrator toolbar setting the <strong>Y value</strong> to 250. You should also drag out a vertical rule with the <strong>X value</strong> of 500 so you have a vertical center showing.</p>
 
-<p><img src='http://docs.tinyfactory.co/images/assets/toolbar.png' alt='Illustrator Toolbar' /></p>
+<p><img src="http://docs.tinyfactory.co/images/assets/toolbar.png" alt="Illustrator Toolbar"></p>
 
-<p><img src='http://docs.tinyfactory.co/images/assets/twitter-ss.png' alt='Twitter icon mapped to T key' /></p>
-<a href='http://docs.tinyfactory.co/images/downloads/icon.zip' class='button'>Download Icon Template</a>
+<p><img src="http://docs.tinyfactory.co/images/assets/twitter-ss.png" alt="Twitter icon mapped to T key"></p>
+
+<p><a href="http://docs.tinyfactory.co/images/downloads/icon.zip" class="button">Download Icon Template</a></p>
+
 <p><strong>Important:</strong> Make sure your icon is a compound path. If your canvas has more than one shape, it will cause issues with the font generation. You can make it a compound path by selecting all the shapes in the icon, and pressing <strong>CMD + 8</strong>.</p>
 
-<h4 id='saving__naming_convetion'>Saving &amp; Naming Convetion</h4>
+<h4 id="toc_238">Saving &amp; Naming Convetion</h4>
 
-<p>Save your files as SVGs. Name them <em><span>key</span>-icon-name.svg</em>. If you downloaded the template, you&#8217;ll notice it&#8217;s named <span>t</span>-twitter.svg. This will map the icon to the T key when our font is generated.</p>
+<p>Save your files as SVGs. Name them <em>[key]-icon-name.svg</em>. If you downloaded the template, you&#39;ll notice it&#39;s named [t]-twitter.svg. This will map the icon to the T key when our font is generated.</p>
 
-<h4 id='font_generation'>Font Generation</h4>
+<h4 id="toc_239">Font Generation</h4>
 
-<p>I&#8217;ve saved all my icons into a folder on my Desktop called <strong>glyphs</strong>. Go back into Terminal and browse to your Desktop by typing <code>cd ~/Desktop</code>.</p>
+<p>I&#39;ve saved all my icons into a folder on my Desktop called <strong>glyphs</strong>. Go back into Terminal and browse to your Desktop by typing <code>cd ~/Desktop</code>.</p>
 
-<p>Once we&#8217;re there we can run <code>hieroglyph -n FontName -g path/to/glyphs -o destination/path</code>.<br /> Or if you&#8217;ve setup everything the way I have <code>hieroglyph -n Icons -g glyphs</code> will generate the font on your desktop.</p>
+<p>Once we&#39;re there we can run <code>hieroglyph -n FontName -g path/to/glyphs -o destination/path</code>.<br>
+Or if you&#39;ve setup everything the way I have <code>hieroglyph -n Icons -g glyphs</code> will generate the font on your desktop.</p>
 
-<p>Your output will change depending on how many icons you&#8217;ve generated, but mine reads:</p>
-<div class='highlight'><pre><code class='console'><span class='go'>~/Desktop » hieroglyph -n Icons -g glyphs/</span>
-<span class='go'>  </span>
-<span class='go'>Setup:</span>
-<span class='go'>  ImageMagick not detected - skipping character sheet</span>
-<span class='go'>  </span>
-<span class='go'>Reading glyphs:</span>
-<span class='go'>  Parsing 1</span>
-<span class='go'>  Parsing 2</span>
-<span class='go'>  Parsing 3</span>
-<span class='go'>  Parsing 4</span>
-<span class='go'>  Parsing 5</span>
-<span class='go'>  Parsing 6</span>
-<span class='go'>  Parsing 7</span>
-<span class='go'>  Parsing 8</span>
-<span class='go'>  Parsing 9</span>
-<span class='go'>  </span>
-<span class='go'>Done!</span>
-<span class='go'>  Icons generated saved to /Users/Aaron/Desktop/Icons.svg</span>
-<span class='go'>  Single characters: 1,2,3,4,5,6,7,8,9</span>
-<span class='go'>  Unicode characters: </span>
-<span class='go'>  </span>
-<span class='go'>  To create a full set of webfonts, upload to http://www.fontsquirrel.com/fontface/generator</span>
-<span class='go'>  If you&#39;re having trouble uploading SVGs, try converting to a TTF first using </span>
-<span class='go'>  http://www.freefontconverter.com</span>
-</code></pre>
-</div>
-<p>Now that you&#8217;ve got your font in an SVG format, go ahead and run your new font through <a href='http://www.fontsquirrel.com/fontface/generator'>this font-face generator</a> to get the other @font-face formats. Also make sure that you&#8217;ve clicked <strong>Expert</strong> and selected the custom subsetting option in the font-squirrel interface. If you&#8217;re ballin&#8217; out of control, you might use <a href='http://www.fontgear.net/fontxchange.html'>FontXChange</a> to generate the different formats instead.</p>
+<p>Your output will change depending on how many icons you&#39;ve generated, but mine reads:</p>
 
-<h4 id='in_conclusion'>In Conclusion</h4>
+<div class="highlight"><pre><code class="console"><span class="go">~/Desktop » hieroglyph -n Icons -g glyphs/</span>
+<span class="go">  </span>
+<span class="go">Setup:</span>
+<span class="go">  ImageMagick not detected - skipping character sheet</span>
+<span class="go">  </span>
+<span class="go">Reading glyphs:</span>
+<span class="go">  Parsing 1</span>
+<span class="go">  Parsing 2</span>
+<span class="go">  Parsing 3</span>
+<span class="go">  Parsing 4</span>
+<span class="go">  Parsing 5</span>
+<span class="go">  Parsing 6</span>
+<span class="go">  Parsing 7</span>
+<span class="go">  Parsing 8</span>
+<span class="go">  Parsing 9</span>
+<span class="go">  </span>
+<span class="go">Done!</span>
+<span class="go">  Icons generated saved to /Users/Aaron/Desktop/Icons.svg</span>
+<span class="go">  Single characters: 1,2,3,4,5,6,7,8,9</span>
+<span class="go">  Unicode characters: </span>
+<span class="go">  </span>
+<span class="go">  To create a full set of webfonts, upload to http://www.fontsquirrel.com/fontface/generator</span>
+<span class="go">  If you&#39;re having trouble uploading SVGs, try converting to a TTF first using </span>
+<span class="go">  http://www.freefontconverter.com</span>
+</code></pre></div>
 
-<p>Now you&#8217;re ready to embed those files into your stylesheet and start serving some icons!</p>
+<p>Now that you&#39;ve got your font in an SVG format, go ahead and run your new font through <a href="http://www.fontsquirrel.com/fontface/generator">this font-face generator</a> to get the other @font-face formats. Also make sure that you&#39;ve clicked <strong>Expert</strong>  and selected the custom subsetting option in the font-squirrel interface. If you&#39;re ballin&#39; out of control, you might use <a href="http://www.fontgear.net/fontxchange.html">FontXChange</a> to generate the different formats instead.</p>
 
-<p>If you really want to do it up proper, <a href='https://github.com/blog/1135-the-making-of-octicons'>GitHub&#8217;s post about Octicons</a> goes through their process in great detail.</p>
+<h4 id="toc_240">In Conclusion</h4>
 
-<p>If this is too much for you, fortunately there are tons of great services out there right now that really make this easier. There is the newly created <a href='http://symbolset.com/'>Symbolset</a>, which is a font of icons that advocates way better semantics than I&#8217;ve shown above. The <a href='http://pictos.cc/font/'>Pictos font</a> has a pretty wide array of icons, <a href='http://pictos.cc/server/'>Pictos Server</a> and <a href='https://www.shifticons.com/'>Shifticons</a> which are both damn fine services for doing this a lot faster.</p>
+<p>Now you&#39;re ready to embed those files into your stylesheet and start serving some icons!</p>
+
+<p>If you really want to do it up proper, <a href="https://github.com/blog/1135-the-making-of-octicons">GitHub&#39;s post about Octicons</a> goes through their process in great detail.</p>
+
+<p>If this is too much for you, fortunately there are tons of great services out there right now that really make this easier. There is the newly created <a href="http://symbolset.com/">Symbolset</a>, which is a font of icons that advocates way better semantics than I&#39;ve shown above. The <a href="http://pictos.cc/font/">Pictos font</a> has a pretty wide array of icons, <a href="http://pictos.cc/server/">Pictos Server</a> and <a href="https://www.shifticons.com/">Shifticons</a> which are both damn fine services for doing this a lot faster.</p>
+
 
             
               <div class="meta">
@@ -261,11 +267,11 @@
       </div>
 
      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script type="text/javascript" src="http://docs.tinyfactory.co/js/masonry.js"></script>
-<script type="text/javascript" src="http://docs.tinyfactory.co/js/respond.min.js"></script>
-<script type="text/javascript" src="http://docs.tinyfactory.co/js/jquery.jscrollpane.min.js"></script>
-<script type="text/javascript" src="http://docs.tinyfactory.co/js/jquery.mousewheel.js"></script>
-<script type="text/javascript" src="http://docs.tinyfactory.co/js/mwheelIntent.js"></script>
-<script type="text/javascript" src="http://docs.tinyfactory.co/js/web.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/masonry.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/respond.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/jquery.jscrollpane.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/mwheelIntent.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/web.js"></script>
   </body>
 </html>
