@@ -1,13 +1,12 @@
 # Development
 # url: http://localhost:4000
-# markdown: redcarpet2
 
 # Production
 url: http://docs.tinyfactory.co
 
 
 permalink: :date
-exclude: ['Rakefile', 'README.md', 'config.rb', "_plugins"]
+exclude: ['Rakefile', 'README.md', 'config.rb']
 pygments: true
 
 # configuration required for some pages
