@@ -12,7 +12,7 @@ Open up **Terminal** and type `gem install hieroglyph`. If for some reason you g
 
 You should get output similar to this:
 
-``` console
+``` sass
 ~/Desktop » hieroglyph
   
 Setup:
