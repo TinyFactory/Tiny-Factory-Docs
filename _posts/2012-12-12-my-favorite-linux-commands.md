@@ -18,3 +18,6 @@ Change to last working directory
     
 Run last command as sudo
 	sudo !!
+    
+Search through bash command history
+	ctl+r then start typing
