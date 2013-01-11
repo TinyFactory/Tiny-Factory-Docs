@@ -13,3 +13,8 @@ Human readable recursive directory size
 Compare two directories and output what files are different
 	diff -qr dir1/ dir2/
     
+Change to last working directory
+	cd -
+    
+Run last command as sudo
+	sudo !!
