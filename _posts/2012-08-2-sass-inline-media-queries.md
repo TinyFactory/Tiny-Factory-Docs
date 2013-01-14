@@ -11,19 +11,19 @@ We can install Compass alpha `0.13.0` by running `sudo gem install compass --pre
 
 Before inline media queries, we'd throw all of our device arguments in a section at the bottom of our stylesheets. Inline media queries allow me to do something like this:
 
-{% highlight sass %}
+``` sass
 header
 	background: rgba(0,0,0,0.5)
 	color: #fff
 	+mobile-landscape-and-up
 		background: rgba(0,0,0,1)
 		color: #fff
-{% endhighlight %}
+```
 
 
 The mixins below will allow you to do what I've demonstrated above. This is a port to the old SASS syntax from the amazing base the Anthony Short developed. You're able to use any of the @mixin properties inline throughout your stylesheet. No more scrolling top to bottom to see what you need to override.
 
-{% highlight sass %}
+``` sass
 $mq-mobile-portrait: 320px !default
 $mq-mobile-landscape: 480px !default
 $mq-tablet-portrait: 768px !default
@@ -101,4 +101,4 @@ $mq-desktop: 1382px !default
 @mixin retina
 	@media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5)
 		@content
-{% endhighlight %}
+```
