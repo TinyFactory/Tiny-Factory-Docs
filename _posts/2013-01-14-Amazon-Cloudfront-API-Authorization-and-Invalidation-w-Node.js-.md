@@ -10,6 +10,7 @@ author: alex
 We have been working on integrating Amazon's Cloudfront CDN into our upcoming language learning game [Lingual](http://wwww.catchlingual.com). One of the requirements when we push to production is invalidating a batch of previously cached packages for the game. Our system is written in Node.js, so this is a quick script I put together to test the integration with Amazon's Cloudfront API.
 
 Building the 'Authorization' string required to make the request was a bit tricky, so hopefully this script will help someone out.
+
 ```
 var crypto = require('crypto');
 var querystring = require('querystring');
