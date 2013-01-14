@@ -12,7 +12,7 @@ Open up **Terminal** and type `gem install hieroglyph`. If for some reason you g
 
 You should get output similar to this:
 
-{% highlight console %}
+``` bash
 ~/Desktop » hieroglyph
   
 Setup:
@@ -24,7 +24,7 @@ Done!
   MyFont generated saved to /Users/Aaron/Desktop/MyFont.svg
   Single characters: 
   Unicode characters: 
-{% endhighlight %}
+```
 
 Then just delete the dummy SVG file, in my case, on my Desktop.
 
