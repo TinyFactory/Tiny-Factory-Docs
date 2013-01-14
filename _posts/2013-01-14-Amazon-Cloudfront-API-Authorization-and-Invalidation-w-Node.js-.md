@@ -1,6 +1,8 @@
 ---
 layout: default
 published: false
+category: node.js
+author: alex
 ---
 
 # Amazon Cloudfront API Authorization and Invalidation with Node.js
