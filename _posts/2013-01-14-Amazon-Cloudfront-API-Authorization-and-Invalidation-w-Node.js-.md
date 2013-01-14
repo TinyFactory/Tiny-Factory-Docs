@@ -11,7 +11,7 @@ We have been working on integrating Amazon's Cloudfront CDN into our upcoming la
 
 Building the 'Authorization' string required to make the request was a bit tricky, so hopefully this script will help someone out.
 
-```
+``` js
 var crypto = require('crypto');
 var querystring = require('querystring');
 var https = require('https');
