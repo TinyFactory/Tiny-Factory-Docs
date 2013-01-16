@@ -1,6 +1,6 @@
 ---
 layout: post
-published: false
+published: true
 category: node.js
 author: alex
 ---
