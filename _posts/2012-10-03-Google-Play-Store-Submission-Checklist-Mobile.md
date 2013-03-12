@@ -10,7 +10,10 @@ So you've finished your application and you're ready to submit it to the Google 
 ###Icons
 
 * 512x512 - required for publishing
-* 96x96, 72x72, 48x48, 36x36 - all used for compiling
+* 96x96 - xhdpi
+* 72x72 - hdpi
+* 48x48 - mdpi
+* 36x36 - ldpi 
 
 ###Splash
 
