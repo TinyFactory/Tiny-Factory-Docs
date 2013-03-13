@@ -8,6 +8,7 @@ category: design
 So you've finished your application and you're ready to submit it to the Google Play store, but wait - you still need more assets!  Here's a quick checklist for what you'll need to prepare before submission.
 
 ###Icons
+Name the file icon.png (lowercase "i")
 
 * 512x512 - required for publishing
 * 96x96 - xhdpi
@@ -16,9 +17,14 @@ So you've finished your application and you're ready to submit it to the Google 
 * 36x36 - ldpi 
 
 ###Splash
+Name the file splash.png (lowercase "s")
 
-* 320x480 (mobile devices)
-* 1024x600 (Samsung galaxy tab)
+* 960dp x 720dp - xhdpi
+* 640dp x 480dp - hdpi
+* 470dp x 320dp - mdpi
+* 426dp x 320dp - ldpi
+
+These are the minimum screen densities for the various Android device resolutions. Android will size the splash screens from each of these to match the device that is opening the app.
 
 ###Screen shots - at least 2 required
 
