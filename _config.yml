@@ -14,7 +14,7 @@ markdown: redcarpet
 
 # configuration required for some pages
 
-domain: http://tinyfactory.github.com
+domain: http://docs.tinyfactory.co
 title: Tiny Factory Docs
 author: Tiny Factory
 email: hello@tinyfactory.co
