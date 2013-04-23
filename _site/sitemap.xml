@@ -4,11 +4,25 @@
   <!--  Homepage -->
   <url>
     <loc>http://http://tinyfactory.github.com/</loc>
-    <lastmod>2013-01-03</lastmod>
+    <lastmod>2013-04-22</lastmod>
     <changefreq>daily</changefreq>
 		<priority>1.0</priority>
   </url>
 
+  
+  <url>
+    <loc>http://http://tinyfactory.github.com/node.js/2013/01/14/Amazon-Cloudfront-API-Authorization-and-Invalidation-with-Node.js.html</loc>
+    
+    <lastmod>2013-01-14</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://http://tinyfactory.github.com/centos/2013/01/11/formatting-partitioning-and-mounting-drives-on-cent-os.html</loc>
+    
+    <lastmod>2013-01-11</lastmod>
+    
+  </url>
   
   <url>
     <loc>http://http://tinyfactory.github.com/jquery/2012/12/18/HTML5-Placeholder-In-ie7-and-ie8-fix.html</loc>
@@ -81,7 +95,7 @@
   </url>
   
   <url>
-    <loc>http://http://tinyfactory.github.com/sencha%20touch%202/2012/08/02/Sencha-Touch-2-JSONP-XML-Reader-JSONPX.html</loc>
+    <loc>http://http://tinyfactory.github.com/sencha touch 2/2012/08/02/Sencha-Touch-2-JSONP-XML-Reader-JSONPX.html</loc>
     
     <lastmod>2012-08-02</lastmod>
     
@@ -162,7 +176,7 @@
   <url>
     <loc>http://http://tinyfactory.github.com/index.html</loc>
     
-    <lastmod>2013-01-03</lastmod>
+    <lastmod>2013-04-22</lastmod>
     
     
     
@@ -171,7 +185,7 @@
   <url>
     <loc>http://http://tinyfactory.github.com/jobs.html</loc>
     
-    <lastmod>2013-01-03</lastmod>
+    <lastmod>2013-04-22</lastmod>
     
     
     

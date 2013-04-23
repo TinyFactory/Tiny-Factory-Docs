@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>iOS Store Submission Checklist - Tiny Factory Docs</title>
+    <title>Formatting, Partitioning, and Mounting Drives on CentOS - Tiny Factory Docs</title>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" media="screen" href="http://docs.tinyfactory.co/css/screen.css" type="text/css" />
@@ -92,11 +92,7 @@
           
           
             
-              
-            
           
-          
-            <li><a href="http://docs.tinyfactory.co/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile.html">Google Play Store Submission Checklist Mobile</a></li>
                                  
         
           
@@ -144,9 +140,9 @@
           
             <li><a href="http://docs.tinyfactory.co/node.js/2013/01/14/Amazon-Cloudfront-API-Authorization-and-Invalidation-with-Node.js.html">Amazon Cloudfront Api Authorization And Invalidation With Node.js</a></li>
           
-            <li><a href="http://docs.tinyfactory.co/centos/2013/01/11/formatting-partitioning-and-mounting-drives-on-cent-os.html">Formatting, Partitioning, and Mounting Drives on CentOS</a></li>
-          
             <li><a href="http://docs.tinyfactory.co/jquery/2012/12/18/HTML5-Placeholder-In-ie7-and-ie8-fix.html">HTML5 Placeholder in IE7 and IE8 fix</a></li>
+          
+            <li><a href="http://docs.tinyfactory.co/design/2012/10/03/ios-store-submission-checklist.html">iOS Store Submission Checklist</a></li>
           
             <li><a href="http://docs.tinyfactory.co/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile.html">Google Play Store Submission Checklist Mobile</a></li>
           
@@ -158,69 +154,138 @@
 
       <article>
           <div class="entry">
-            <h1>iOS Store Submission Checklist</h1>
-            <p>In order to submit an application to Apple's App Store, there are numerous requiements.  We use this checklist to make sure we have everything we need prior to submission.</p>
+            <h1>Formatting, Partitioning, and Mounting Drives on CentOS</h1>
+            <h1>Mounting a new disk or external drive on CentOS</h1>
 
-<h3>icons</h3>
+<p>I always forget how to do this, so here is a quick writeup.</p>
+
+<p><strong>Important:</strong> You need to be root or add <code>sudo</code> before all commands.</p>
+
+<h2>Locate attached drives</h2>
+
+<p>```
+[root@server]# ls /dev/sd*</p>
+
+<p>brw-rw----. 1 root disk 8,  0 Jun  2  2012 /dev/sda
+brw-rw----. 1 root disk 8,  1 Jun  2  2012 /dev/sda1
+brw-rw----. 1 root disk 8,  2 Jun  2  2012 /dev/sda2
+brw-rw----. 1 root disk 8, 16 Jan 11 09:01 /dev/sdb
+``<code>
+The output is shows that drive</code>/dev/sda<code>has 2 partitaions,</code>/dev/sda1<code>and</code>/dev/sda2<code>. Our target drive</code>/dev/sdb` has no partitions so we need to create one.</p>
+
+<h2>Partition the drive</h2>
+
+<p>If this is a new drive, you will need to make a partition and format it. If not skip this step.</p>
+
+<p>The following steps will create a single partition that will take up the entire drive:</p>
+
+<p>```
+[root@server]# fdisk /dev/sdb</p>
+
+<p>WARNING: DOS-compatible mode is deprecated. It's strongly recommended to
+         switch off the mode (command 'c') and change display units to
+         sectors (command 'u').</p>
+
+<p>Command (m for help):
+```
+In this case we need to switch off the DOS compatible mode and change the units to sectors:</p>
+
+<p><code>
+Command (m for help): c
+DOS Compatibility flag is not set
+Command (m for help): u
+Changing display/entry units to sectors
+</code></p>
+
+<p>Create a new part ion by typing <code>n</code>. We will then select this as a primary part ion by entering <code>p</code> and select this as the first partition by entering <code>1</code>:</p>
+
+<p><code>
+Command (m for help): n
+Command action
+   e   extended
+   p   primary partition (1-4)
+p
+Partition number (1-4): 1
+First cylinder (1-182401, default 1):
+Using default value 1
+Last cylinder, +cylinders or +size{K,M,G} (1-182401, default 182401):
+Using default value 182401
+</code>
+We can review our results by entering <code>p</code>:</p>
+
+<p>```
+Command (m for help): p</p>
+
+<p>Disk /dev/sdb: 1500.3 GB, 1500301910016 bytes
+255 heads, 63 sectors/track, 182401 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x00000000</p>
+
+<p>Device Boot      Start         End      Blocks   Id  System
+/dev/sdb1               1      182401  1465136001   83  Linux
+```
+Write (save) the part ion:</p>
+
+<p><code>
+Command (m for help): w
+The partition table has been altered!
+</code></p>
+
+<h2>Format the filesystem</h2>
+
+<p>There are a few different types of filesystems to consider:</p>
 
 <ul>
-<li>57px - iPhone</li>
-<li>72px - iPad</li>
-<li>114px - iPhone 4 + Retina Display</li>
-<li>512px - iTunes – Used in iTunes and in the App Store sized down to 175px</li>
-<li>1024px - New requirement (now with macbook retina)</li>
+<li>auto - this is a special one. It will try to guess the file system type when you use this.<br /></li>
+<li> ext4 - this is probably the most common Linux file system type of the last few years<br /></li>
+<li> ext3 - this is the most common Linux file system type from a couple years back<br /></li>
+<li> ntfs - this is the most common Windows file system type or larger external hard drives<br /></li>
+<li> vfat - this is the most common file system type used for smaller external hard drives<br /></li>
 </ul>
 
-<h3>Splash</h3>
+<p>For our situation we will use ext4</p>
 
-<p>Must be named exactly as is next to the dimensions.  Must be a PNG file.
-* 320 x 480px - Default.png - iPhone 3Gs and older
-* 640 x 960px - Default@2x.png - iPhone 4 &amp; 4s
-* 1136 x 640px - Default-568h@2x.png - iPhone 5</p>
+<p>```
+[root@server] mkfs.ext4 /dev/sdb1</p>
 
-<h3>Screenshots</h3>
+<p>mke2fs 1.41.12 (17-May-2010)
+Filesystem label=
+OS type: Linux
+Block size=4096 (log=2)
+Fragment size=4096 (log=2)
+Stride=0 blocks, Stripe width=0 blocks
+91578368 inodes, 366284000 blocks
+18314200 blocks (5.00%) reserved for the super user
+First data block=0
+Maximum filesystem blocks=0
+11179 block groups
+32768 blocks per group, 32768 fragments per group
+8192 inodes per group
+Superblock backups stored on blocks:
+    32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208,
+    4096000, 7962624, 11239424, 20480000, 23887872, 71663616, 78675968,
+    102400000, 214990848
+```</p>
 
-<p>File formats allowed: .jpeg, .jpg, .tif, .tiff, or .png
-Color space: RGB
-DPI: at least 72 DPI</p>
+<p>This will take awhile and will show <code>Writing inote tables:</code> with numbers detailing progress.</p>
 
-<ul>
-<li>Iphone 4/4s
+<h2>Mount the new drive</h2>
 
-<ul>
-<li>Portrait: 960 x 640px or 960 x 600px</li>
-<li>Landscape: 640 x 960px or 640 x 920px</li>
-</ul></li>
-<li>Iphone 5
+<p>If you don't already have a mount point, make one. This is the directory you will able to access the newly mounted drive</p>
 
-<ul>
-<li>Portrait: 1136 x 640px</li>
-<li>Landscape: 640 x 1136px</li>
-</ul></li>
-<li>iPad:
+<p><code>
+[root@server]# mkdir /mnt/backup
+</code></p>
 
-<ul>
-<li>Portrait: 768 x 1024px or 1536 x 2048px</li>
-<li>Landscape: 1024 x 768px or 2048 x 1536px</li>
-</ul></li>
-</ul>
+<p>We can now mount the partition we created earlier to the new mount point:</p>
 
-<h3>Submittal Information</h3>
+<p><code>
+[root@server] mount /dev/sdb1 /mnt/backup
+</code></p>
 
-<ul>
-<li>Title</li>
-<li>Description</li>
-<li>Keywords</li>
-<li>Default Language</li>
-<li>Version Number</li>
-<li>Copyright</li>
-<li>Primary Category</li>
-<li>Secondary Category (optional)</li>
-<li>Support Email Address</li>
-<li>Support URL</li>
-<li>Marketing URL (optional)</li>
-<li>Privacy Policy URL (optional)</li>
-</ul>
+<p>And we are done!</p>
 
 
             

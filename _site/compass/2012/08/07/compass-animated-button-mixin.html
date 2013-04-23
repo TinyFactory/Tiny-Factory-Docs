@@ -4,7 +4,7 @@
     <title>Compass Animated Button Mixin - Tiny Factory Docs</title>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" media="screen" href="http://localhost:4000/css/screen.css" type="text/css" />
+    <link rel="stylesheet" media="screen" href="http://docs.tinyfactory.co/css/screen.css" type="text/css" />
     
     
     <!-- google analytics async -->
@@ -26,7 +26,7 @@
   <body>
       <header>
         <div id="logo">
-          <a href="http://localhost:4000"><img src="http://localhost:4000/images/logo.png" alt="Tiny Factory"/></a>
+          <a href="http://docs.tinyfactory.co"><img src="http://docs.tinyfactory.co/images/logo.png" alt="Tiny Factory"/></a>
         </div><!-- logo -->
   
         <nav class="mobile-nav">
@@ -35,7 +35,7 @@
             
           
             
-              <a href="http://localhost:4000/jobs.html">Jobs</a>
+              <a href="http://docs.tinyfactory.co/jobs.html">Jobs</a>
             
           
         </nav>
@@ -44,7 +44,7 @@
             <div id="container" class="single">
 
   <div id="sidebar">
-    <div class="side-logo"><a href="http://localhost:4000"><img src="http://localhost:4000/images/logo.png" alt=""></a></div>
+    <div class="side-logo"><a href="http://docs.tinyfactory.co"><img src="http://docs.tinyfactory.co/images/logo.png" alt=""></a></div>
       <div class="item">
         <h3>Contribute</h3>
         <div class="github-buttons">
@@ -57,12 +57,12 @@
       <div class="item">
         <h3>Documentation</h3>
         <ul>
-          <li><a href="http://localhost:4000">Home</a></li>
+          <li><a href="http://docs.tinyfactory.co">Home</a></li>
           
             
           
             
-              <li><a href="http://localhost:4000/jobs.html">Jobs</a></li>
+              <li><a href="http://docs.tinyfactory.co/jobs.html">Jobs</a></li>
             
           
         </ul>
@@ -138,15 +138,15 @@
         <h3>Most Recent</h3>
         <ul class="posts">
           
-            <li><a href="http://localhost:4000/jquery/2012/12/18/HTML5-Placeholder-In-ie7-and-ie8-fix.html">HTML5 Placeholder in IE7 and IE8 fix</a></li>
+            <li><a href="http://docs.tinyfactory.co/node.js/2013/01/14/Amazon-Cloudfront-API-Authorization-and-Invalidation-with-Node.js.html">Amazon Cloudfront Api Authorization And Invalidation With Node.js</a></li>
           
-            <li><a href="http://localhost:4000/design/2012/10/03/ios-store-submission-checklist.html">iOS Store Submission Checklist</a></li>
+            <li><a href="http://docs.tinyfactory.co/centos/2013/01/11/formatting-partitioning-and-mounting-drives-on-cent-os.html">Formatting, Partitioning, and Mounting Drives on CentOS</a></li>
           
-            <li><a href="http://localhost:4000/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile.html">Google Play Store Submission Checklist Mobile</a></li>
+            <li><a href="http://docs.tinyfactory.co/jquery/2012/12/18/HTML5-Placeholder-In-ie7-and-ie8-fix.html">HTML5 Placeholder in IE7 and IE8 fix</a></li>
           
-            <li><a href="http://localhost:4000/less/2012/09/20/text-overflow-ellipsis-using-LESS.html">Text Overflow Ellipsis Using Less</a></li>
+            <li><a href="http://docs.tinyfactory.co/design/2012/10/03/ios-store-submission-checklist.html">iOS Store Submission Checklist</a></li>
           
-            <li><a href="http://localhost:4000/less/2012/09/20/LESS-placeholder-text-mixin.html">Less Placeholder Text Mixin</a></li>
+            <li><a href="http://docs.tinyfactory.co/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile.html">Google Play Store Submission Checklist Mobile</a></li>
           
         </ul>
       </div>
@@ -157,95 +157,15 @@
             <h1>Compass Animated Button Mixin</h1>
             <p>This mixin will create an animated hover and active state for your button (<a href="http://dribbble.com/shots/678970-Compass-CSS3-Button-Mixin">View Example Here</a>) using css3 transitions.  Feel free to replace the variables or add them to a variable sheet inside of your project.  Add this mixin to your Compass project: </p>
 
-<div class="highlight"><pre><code class="scss">    <span class="cm">/* =======================</span>
-<span class="cm">    Variables</span>
-<span class="cm">    ========================*/</span>
-    <span class="nv">$baseColor</span><span class="o">:</span>    <span class="mh">#E0E0E0</span><span class="p">;</span>
-    <span class="nv">$textColor</span><span class="o">:</span>    <span class="nf">darken</span><span class="p">(</span><span class="nv">$baseColor</span><span class="o">,</span> <span class="mi">50</span><span class="kt">%</span><span class="p">);</span>
-    <span class="nv">$fontSize</span><span class="o">:</span>     <span class="mf">.8</span><span class="kt">em</span><span class="p">;</span>
-
-    <span class="k">@mixin</span><span class="nf"> btn</span><span class="p">()</span> <span class="p">{</span>
-        <span class="na">cursor</span><span class="o">:</span> <span class="no">pointer</span><span class="p">;</span>
-        <span class="nt">display</span><span class="nd">:inline-block</span><span class="o">;</span>
-        <span class="nt">padding</span><span class="nd">:</span> <span class="err">$</span><span class="nt">fontSize</span> <span class="err">$</span><span class="nt">fontSize</span> <span class="o">+</span> <span class="o">(</span><span class="err">$</span><span class="nt">fontSize</span> <span class="o">/</span> <span class="nt">3</span><span class="o">);</span>
-        <span class="nt">font-size</span><span class="nd">:</span> <span class="err">$</span><span class="nt">fontSize</span><span class="o">;</span>
-        <span class="nt">border</span><span class="nd">:1px</span> <span class="nt">solid</span> <span class="nt">darken</span><span class="o">(</span><span class="err">$</span><span class="nt">baseColor</span><span class="o">,</span> <span class="nt">20</span><span class="err">%</span><span class="o">);</span>
-        <span class="o">@</span><span class="nt">include</span> <span class="nt">border-radius</span><span class="o">(</span><span class="nt">2px</span><span class="o">);</span>
-        <span class="o">@</span><span class="nt">include</span> <span class="nt">box-shadow</span><span class="o">(</span><span class="nt">0</span> <span class="nt">1px</span> <span class="nt">0</span> <span class="nn">#fff</span><span class="o">);</span>
-        <span class="o">@</span><span class="nt">include</span> <span class="nt">text-shadow</span><span class="o">(</span><span class="nt">0</span> <span class="nt">1px</span> <span class="nt">0</span> <span class="nn">#fff</span><span class="o">);</span>
-        <span class="o">@</span><span class="nt">include</span> <span class="nt">transition</span><span class="o">(</span><span class="nt">all</span> <span class="nc">.1s</span> <span class="nt">ease-in-out</span><span class="o">);</span>
-        <span class="nt">color</span><span class="nd">:</span><span class="err">$</span><span class="nt">textColor</span><span class="o">;</span>
-        <span class="k">&amp;</span><span class="nd">:hover</span> <span class="p">{</span>
-                <span class="na">border-color</span><span class="o">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$baseColor</span><span class="o">,</span> <span class="mi">30</span><span class="kt">%</span><span class="p">);</span>
-                <span class="k">@include</span><span class="nd"> background</span><span class="p">(</span><span class="nf">linear-gradient</span><span class="p">(</span><span class="no">top</span><span class="o">,</span> <span class="nb">white</span><span class="o">,</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$baseColor</span><span class="o">,</span> <span class="mi">10</span><span class="kt">%</span><span class="p">)));</span>
-                <span class="k">@include</span><span class="nd"> box-shadow</span><span class="p">(</span><span class="mi">0</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">2</span><span class="kt">px</span> <span class="nf">rgba</span><span class="p">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="mf">.25</span><span class="p">)</span><span class="o">,</span> <span class="no">inset</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">2</span><span class="kt">px</span> <span class="nb">white</span><span class="p">);</span>
-                <span class="na">text-decoration</span><span class="o">:</span> <span class="no">none</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="k">&amp;</span><span class="nd">:active</span> <span class="p">{</span> <span class="c1">// Adds Styles When Button Is Pushed</span>
-                <span class="k">@include</span><span class="nd"> background</span><span class="p">(</span><span class="nf">linear-gradient</span><span class="p">(</span><span class="no">top</span><span class="o">,</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$baseColor</span><span class="o">,</span> <span class="mi">5</span><span class="kt">%</span><span class="p">)</span><span class="o">,</span> <span class="nv">$baseColor</span><span class="p">));</span>
-                <span class="k">@include</span><span class="nd"> box-shadow</span><span class="p">(</span><span class="mi">0</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">0</span> <span class="mh">#fff</span><span class="o">,</span> <span class="no">inset</span> <span class="mi">0</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">2</span><span class="kt">px</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$baseColor</span><span class="o">,</span> <span class="mi">25</span><span class="kt">%</span><span class="p">));</span>
-                <span class="na">border-color</span><span class="o">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$baseColor</span><span class="o">,</span> <span class="mi">30</span><span class="kt">%</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-</code></pre></div>
+<p>Liquid error: No such file or directory - posix_spawnp</p>
 
 <p>In your style sheet add:</p>
 
-<div class="highlight"><pre><code class="scss">    <span class="nc">.btn</span> <span class="p">{</span>
-        <span class="k">@include</span><span class="nd"> btn</span><span class="p">();</span>
-    <span class="p">}</span>
-</code></pre></div>
+<p>Liquid error: No such file or directory - posix_spawnp</p>
 
 <p>and it will compile to:</p>
 
-<div class="highlight"><pre><code class="scss">    <span class="nc">.btn</span> <span class="p">{</span>
-      <span class="na">cursor</span><span class="o">:</span> <span class="no">pointer</span><span class="p">;</span>
-      <span class="na">display</span><span class="o">:</span> <span class="no">inline</span><span class="o">-</span><span class="no">block</span><span class="p">;</span>
-      <span class="na">padding</span><span class="o">:</span> <span class="mi">0</span><span class="mf">.8</span><span class="kt">em</span> <span class="mi">1</span><span class="mf">.06667</span><span class="kt">em</span><span class="p">;</span>
-      <span class="na">font-size</span><span class="o">:</span> <span class="mi">0</span><span class="mf">.8</span><span class="kt">em</span><span class="p">;</span>
-      <span class="na">border</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#adadad</span><span class="p">;</span>
-      <span class="na">-webkit-border-radius</span><span class="o">:</span> <span class="mi">2</span><span class="kt">px</span><span class="p">;</span>
-      <span class="na">-moz-border-radius</span><span class="o">:</span> <span class="mi">2</span><span class="kt">px</span><span class="p">;</span>
-      <span class="na">-ms-border-radius</span><span class="o">:</span> <span class="mi">2</span><span class="kt">px</span><span class="p">;</span>
-      <span class="na">-o-border-radius</span><span class="o">:</span> <span class="mi">2</span><span class="kt">px</span><span class="p">;</span>
-      <span class="na">border-radius</span><span class="o">:</span> <span class="mi">2</span><span class="kt">px</span><span class="p">;</span>
-      <span class="na">-webkit-box-shadow</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">0</span> <span class="nb">white</span><span class="p">;</span>
-      <span class="na">-moz-box-shadow</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">0</span> <span class="nb">white</span><span class="p">;</span>
-      <span class="na">box-shadow</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">0</span> <span class="nb">white</span><span class="p">;</span>
-      <span class="na">text-shadow</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">0</span> <span class="nb">white</span><span class="p">;</span>
-      <span class="na">-webkit-transition</span><span class="o">:</span> <span class="n">all</span> <span class="mi">0</span><span class="mf">.1</span><span class="kt">s</span> <span class="n">ease-in-out</span><span class="p">;</span>
-      <span class="na">-moz-transition</span><span class="o">:</span> <span class="n">all</span> <span class="mi">0</span><span class="mf">.1</span><span class="kt">s</span> <span class="n">ease-in-out</span><span class="p">;</span>
-      <span class="na">-ms-transition</span><span class="o">:</span> <span class="n">all</span> <span class="mi">0</span><span class="mf">.1</span><span class="kt">s</span> <span class="n">ease-in-out</span><span class="p">;</span>
-      <span class="na">-o-transition</span><span class="o">:</span> <span class="n">all</span> <span class="mi">0</span><span class="mf">.1</span><span class="kt">s</span> <span class="n">ease-in-out</span><span class="p">;</span>
-      <span class="na">transition</span><span class="o">:</span> <span class="n">all</span> <span class="mi">0</span><span class="mf">.1</span><span class="kt">s</span> <span class="n">ease-in-out</span><span class="p">;</span>
-      <span class="na">color</span><span class="o">:</span> <span class="mh">#616161</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="nc">.btn</span><span class="nd">:hover</span> <span class="p">{</span>
-      <span class="na">border-color</span><span class="o">:</span> <span class="mh">#949494</span><span class="p">;</span>
-      <span class="na">background</span><span class="o">:</span> <span class="nf">-webkit-gradient</span><span class="p">(</span><span class="n">linear</span><span class="o">,</span> <span class="mi">50</span><span class="kt">%</span> <span class="mi">0</span><span class="kt">%</span><span class="o">,</span> <span class="mi">50</span><span class="kt">%</span> <span class="mi">100</span><span class="kt">%</span><span class="o">,</span> <span class="nf">color-stop</span><span class="p">(</span><span class="mi">0</span><span class="kt">%</span><span class="o">,</span> <span class="mh">#ffffff</span><span class="p">)</span><span class="o">,</span> <span class="nf">color-stop</span><span class="p">(</span><span class="mi">100</span><span class="kt">%</span><span class="o">,</span> <span class="mh">#c7c7c7</span><span class="p">));</span>
-      <span class="na">background</span><span class="o">:</span> <span class="nf">-webkit-linear-gradient</span><span class="p">(</span><span class="no">top</span><span class="o">,</span> <span class="mh">#ffffff</span><span class="o">,</span> <span class="mh">#c7c7c7</span><span class="p">);</span>
-      <span class="na">background</span><span class="o">:</span> <span class="nf">-moz-linear-gradient</span><span class="p">(</span><span class="no">top</span><span class="o">,</span> <span class="mh">#ffffff</span><span class="o">,</span> <span class="mh">#c7c7c7</span><span class="p">);</span>
-      <span class="na">background</span><span class="o">:</span> <span class="nf">-o-linear-gradient</span><span class="p">(</span><span class="no">top</span><span class="o">,</span> <span class="mh">#ffffff</span><span class="o">,</span> <span class="mh">#c7c7c7</span><span class="p">);</span>
-      <span class="na">background</span><span class="o">:</span> <span class="nf">-ms-linear-gradient</span><span class="p">(</span><span class="no">top</span><span class="o">,</span> <span class="mh">#ffffff</span><span class="o">,</span> <span class="mh">#c7c7c7</span><span class="p">);</span>
-      <span class="na">background</span><span class="o">:</span> <span class="nf">linear-gradient</span><span class="p">(</span><span class="no">top</span><span class="o">,</span> <span class="mh">#ffffff</span><span class="o">,</span> <span class="mh">#c7c7c7</span><span class="p">);</span>
-      <span class="na">-webkit-box-shadow</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">2</span><span class="kt">px</span> <span class="nf">rgba</span><span class="p">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="mf">.25</span><span class="p">)</span><span class="o">,</span> <span class="no">inset</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">2</span><span class="kt">px</span> <span class="nb">white</span><span class="p">;</span>
-      <span class="na">-moz-box-shadow</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">2</span><span class="kt">px</span> <span class="nf">rgba</span><span class="p">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="mf">.25</span><span class="p">)</span><span class="o">,</span> <span class="no">inset</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">2</span><span class="kt">px</span> <span class="nb">white</span><span class="p">;</span>
-      <span class="na">box-shadow</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">2</span><span class="kt">px</span> <span class="nf">rgba</span><span class="p">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="mf">.25</span><span class="p">)</span><span class="o">,</span> <span class="no">inset</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">2</span><span class="kt">px</span> <span class="nb">white</span><span class="p">;</span>
-      <span class="na">text-decoration</span><span class="o">:</span> <span class="no">none</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="nc">.btn</span><span class="nd">:active</span> <span class="p">{</span>
-      <span class="na">background</span><span class="o">:</span> <span class="nf">-webkit-gradient</span><span class="p">(</span><span class="n">linear</span><span class="o">,</span> <span class="mi">50</span><span class="kt">%</span> <span class="mi">0</span><span class="kt">%</span><span class="o">,</span> <span class="mi">50</span><span class="kt">%</span> <span class="mi">100</span><span class="kt">%</span><span class="o">,</span> <span class="nf">color-stop</span><span class="p">(</span><span class="mi">0</span><span class="kt">%</span><span class="o">,</span> <span class="mh">#d3d3d3</span><span class="p">)</span><span class="o">,</span> <span class="nf">color-stop</span><span class="p">(</span><span class="mi">100</span><span class="kt">%</span><span class="o">,</span> <span class="mh">#e0e0e0</span><span class="p">));</span>
-      <span class="na">background</span><span class="o">:</span> <span class="nf">-webkit-linear-gradient</span><span class="p">(</span><span class="no">top</span><span class="o">,</span> <span class="mh">#d3d3d3</span><span class="o">,</span> <span class="mh">#e0e0e0</span><span class="p">);</span>
-      <span class="na">background</span><span class="o">:</span> <span class="nf">-moz-linear-gradient</span><span class="p">(</span><span class="no">top</span><span class="o">,</span> <span class="mh">#d3d3d3</span><span class="o">,</span> <span class="mh">#e0e0e0</span><span class="p">);</span>
-      <span class="na">background</span><span class="o">:</span> <span class="nf">-o-linear-gradient</span><span class="p">(</span><span class="no">top</span><span class="o">,</span> <span class="mh">#d3d3d3</span><span class="o">,</span> <span class="mh">#e0e0e0</span><span class="p">);</span>
-      <span class="na">background</span><span class="o">:</span> <span class="nf">-ms-linear-gradient</span><span class="p">(</span><span class="no">top</span><span class="o">,</span> <span class="mh">#d3d3d3</span><span class="o">,</span> <span class="mh">#e0e0e0</span><span class="p">);</span>
-      <span class="na">background</span><span class="o">:</span> <span class="nf">linear-gradient</span><span class="p">(</span><span class="no">top</span><span class="o">,</span> <span class="mh">#d3d3d3</span><span class="o">,</span> <span class="mh">#e0e0e0</span><span class="p">);</span>
-      <span class="na">-webkit-box-shadow</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">0</span> <span class="nb">white</span><span class="o">,</span> <span class="no">inset</span> <span class="mi">0</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">2</span><span class="kt">px</span> <span class="mh">#a0a0a0</span><span class="p">;</span>
-      <span class="na">-moz-box-shadow</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">0</span> <span class="nb">white</span><span class="o">,</span> <span class="no">inset</span> <span class="mi">0</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">2</span><span class="kt">px</span> <span class="mh">#a0a0a0</span><span class="p">;</span>
-      <span class="na">box-shadow</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">0</span> <span class="nb">white</span><span class="o">,</span> <span class="no">inset</span> <span class="mi">0</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">2</span><span class="kt">px</span> <span class="mh">#a0a0a0</span><span class="p">;</span>
-      <span class="na">border-color</span><span class="o">:</span> <span class="mh">#949494</span><span class="p">;</span>
-    <span class="p">}</span>
-</code></pre></div>
+<p>Liquid error: No such file or directory - posix_spawnp</p>
 
 <p>Fork the repo on <a href="https://github.com/michaelsacca/Fancy-Compass-Button-Mixin">github</a> and create your own.</p>
 
@@ -269,11 +189,11 @@
       </div>
 
      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script type="text/javascript" src="http://localhost:4000/js/masonry.js"></script>
-<script type="text/javascript" src="http://localhost:4000/js/respond.min.js"></script>
-<script type="text/javascript" src="http://localhost:4000/js/jquery.jscrollpane.min.js"></script>
-<script type="text/javascript" src="http://localhost:4000/js/jquery.mousewheel.js"></script>
-<script type="text/javascript" src="http://localhost:4000/js/mwheelIntent.js"></script>
-<script type="text/javascript" src="http://localhost:4000/js/web.js"></script>
+<script type="text/javascript" src="http://docs.tinyfactory.co/js/masonry.js"></script>
+<script type="text/javascript" src="http://docs.tinyfactory.co/js/respond.min.js"></script>
+<script type="text/javascript" src="http://docs.tinyfactory.co/js/jquery.jscrollpane.min.js"></script>
+<script type="text/javascript" src="http://docs.tinyfactory.co/js/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="http://docs.tinyfactory.co/js/mwheelIntent.js"></script>
+<script type="text/javascript" src="http://docs.tinyfactory.co/js/web.js"></script>
   </body>
 </html>

@@ -4,7 +4,7 @@
     <title>Compass Placeholder Text Mixin - Tiny Factory Docs</title>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" media="screen" href="http://localhost:4000/css/screen.css" type="text/css" />
+    <link rel="stylesheet" media="screen" href="http://docs.tinyfactory.co/css/screen.css" type="text/css" />
     
     
     <!-- google analytics async -->
@@ -26,7 +26,7 @@
   <body>
       <header>
         <div id="logo">
-          <a href="http://localhost:4000"><img src="http://localhost:4000/images/logo.png" alt="Tiny Factory"/></a>
+          <a href="http://docs.tinyfactory.co"><img src="http://docs.tinyfactory.co/images/logo.png" alt="Tiny Factory"/></a>
         </div><!-- logo -->
   
         <nav class="mobile-nav">
@@ -35,7 +35,7 @@
             
           
             
-              <a href="http://localhost:4000/jobs.html">Jobs</a>
+              <a href="http://docs.tinyfactory.co/jobs.html">Jobs</a>
             
           
         </nav>
@@ -44,7 +44,7 @@
             <div id="container" class="single">
 
   <div id="sidebar">
-    <div class="side-logo"><a href="http://localhost:4000"><img src="http://localhost:4000/images/logo.png" alt=""></a></div>
+    <div class="side-logo"><a href="http://docs.tinyfactory.co"><img src="http://docs.tinyfactory.co/images/logo.png" alt=""></a></div>
       <div class="item">
         <h3>Contribute</h3>
         <div class="github-buttons">
@@ -57,12 +57,12 @@
       <div class="item">
         <h3>Documentation</h3>
         <ul>
-          <li><a href="http://localhost:4000">Home</a></li>
+          <li><a href="http://docs.tinyfactory.co">Home</a></li>
           
             
           
             
-              <li><a href="http://localhost:4000/jobs.html">Jobs</a></li>
+              <li><a href="http://docs.tinyfactory.co/jobs.html">Jobs</a></li>
             
           
         </ul>
@@ -122,11 +122,7 @@
           
           
             
-              
-            
           
-          
-            <li><a href="http://localhost:4000/compass/2012/08/07/compass-animated-button-mixin.html">Compass Animated Button Mixin</a></li>
                                  
         
           
@@ -142,15 +138,15 @@
         <h3>Most Recent</h3>
         <ul class="posts">
           
-            <li><a href="http://localhost:4000/jquery/2012/12/18/HTML5-Placeholder-In-ie7-and-ie8-fix.html">HTML5 Placeholder in IE7 and IE8 fix</a></li>
+            <li><a href="http://docs.tinyfactory.co/node.js/2013/01/14/Amazon-Cloudfront-API-Authorization-and-Invalidation-with-Node.js.html">Amazon Cloudfront Api Authorization And Invalidation With Node.js</a></li>
           
-            <li><a href="http://localhost:4000/design/2012/10/03/ios-store-submission-checklist.html">iOS Store Submission Checklist</a></li>
+            <li><a href="http://docs.tinyfactory.co/centos/2013/01/11/formatting-partitioning-and-mounting-drives-on-cent-os.html">Formatting, Partitioning, and Mounting Drives on CentOS</a></li>
           
-            <li><a href="http://localhost:4000/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile.html">Google Play Store Submission Checklist Mobile</a></li>
+            <li><a href="http://docs.tinyfactory.co/jquery/2012/12/18/HTML5-Placeholder-In-ie7-and-ie8-fix.html">HTML5 Placeholder in IE7 and IE8 fix</a></li>
           
-            <li><a href="http://localhost:4000/less/2012/09/20/text-overflow-ellipsis-using-LESS.html">Text Overflow Ellipsis Using Less</a></li>
+            <li><a href="http://docs.tinyfactory.co/design/2012/10/03/ios-store-submission-checklist.html">iOS Store Submission Checklist</a></li>
           
-            <li><a href="http://localhost:4000/less/2012/09/20/LESS-placeholder-text-mixin.html">Less Placeholder Text Mixin</a></li>
+            <li><a href="http://docs.tinyfactory.co/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile.html">Google Play Store Submission Checklist Mobile</a></li>
           
         </ul>
       </div>
@@ -163,43 +159,20 @@
 
 <p>Syntax:</p>
 
-<div class="highlight"><pre><code class="scss">    <span class="k">@mixin</span><span class="nf"> input-placeholder</span><span class="p">(</span><span class="nv">$color</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">&amp;</span><span class="nc">.placeholder</span> <span class="p">{</span>
-        <span class="na">color</span><span class="o">:</span> <span class="nv">$color</span><span class="p">;</span> 
-        <span class="p">}</span>
-      <span class="na">&amp;</span><span class="o">:-</span><span class="n">moz-placeholder</span> <span class="p">{</span>
-        <span class="na">color</span><span class="o">:</span> <span class="nv">$color</span><span class="p">;</span> 
-        <span class="p">}</span>
-      <span class="na">&amp;</span><span class="o">::-</span><span class="n">webkit-input-placeholder</span> <span class="p">{</span>
-        <span class="na">color</span><span class="o">:</span> <span class="nv">$color</span><span class="p">;</span> 
-        <span class="p">}</span> 
-    <span class="p">}</span>
-</code></pre></div>
+<p>Liquid error: No such file or directory - posix_spawnp</p>
 
 <p>Steps:</p>
-<div class="highlight"><pre><code class="text">1.  Add the .input-placeholder() mixin from _placeholderText.scss to your compass stylesheet (or reference it in an @import statement)
+
+<pre><code>1.  Add the .input-placeholder() mixin from _placeholderText.scss to your compass stylesheet (or reference it in an @import statement)
 2.  In your stylesheet, call the .input-placeholder() mixin anywhere you want to style your placeholder text
 </code></pre>
-</div>
 
-<div class="highlight"><pre><code class="scss">            <span class="nc">.inputCls</span> <span class="p">{</span>
-              <span class="k">@include</span><span class="nd"> input-placeholder</span><span class="p">(</span><span class="mh">#ccc</span><span class="p">);</span> 
-            <span class="p">}</span> 
-</code></pre></div>
-<div class="highlight"><pre><code class="text">Will compile to: 
+<p>Liquid error: No such file or directory - posix_spawnp</p>
+
+<pre><code>Will compile to: 
 </code></pre>
-</div>
 
-<div class="highlight"><pre><code class="scss">              <span class="nc">.inputCls</span><span class="nd">:placeholder</span> <span class="p">{</span>
-                <span class="na">color</span><span class="o">:</span> <span class="mh">#cccccc</span><span class="p">;</span>
-              <span class="p">}</span>
-              <span class="na">.inputCls</span><span class="o">:-</span><span class="n">moz-placeholder</span> <span class="p">{</span>
-                <span class="na">color</span><span class="o">:</span> <span class="mh">#cccccc</span><span class="p">;</span>
-              <span class="p">}</span>
-              <span class="na">.inputCls</span><span class="o">::-</span><span class="n">webkit-input-placeholder</span> <span class="p">{</span>
-                <span class="na">color</span><span class="o">:</span> <span class="mh">#cccccc</span><span class="p">;</span>
-              <span class="p">}</span>
-</code></pre></div>
+<p>Liquid error: No such file or directory - posix_spawnp</p>
 
 
             
@@ -221,11 +194,11 @@
       </div>
 
      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script type="text/javascript" src="http://localhost:4000/js/masonry.js"></script>
-<script type="text/javascript" src="http://localhost:4000/js/respond.min.js"></script>
-<script type="text/javascript" src="http://localhost:4000/js/jquery.jscrollpane.min.js"></script>
-<script type="text/javascript" src="http://localhost:4000/js/jquery.mousewheel.js"></script>
-<script type="text/javascript" src="http://localhost:4000/js/mwheelIntent.js"></script>
-<script type="text/javascript" src="http://localhost:4000/js/web.js"></script>
+<script type="text/javascript" src="http://docs.tinyfactory.co/js/masonry.js"></script>
+<script type="text/javascript" src="http://docs.tinyfactory.co/js/respond.min.js"></script>
+<script type="text/javascript" src="http://docs.tinyfactory.co/js/jquery.jscrollpane.min.js"></script>
+<script type="text/javascript" src="http://docs.tinyfactory.co/js/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="http://docs.tinyfactory.co/js/mwheelIntent.js"></script>
+<script type="text/javascript" src="http://docs.tinyfactory.co/js/web.js"></script>
   </body>
 </html>

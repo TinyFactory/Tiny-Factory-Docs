@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>iOS Store Submission Checklist - Tiny Factory Docs</title>
+    <title>Amazon Cloudfront Api Authorization And Invalidation With Node.js - Tiny Factory Docs</title>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" media="screen" href="http://docs.tinyfactory.co/css/screen.css" type="text/css" />
@@ -92,11 +92,7 @@
           
           
             
-              
-            
           
-          
-            <li><a href="http://docs.tinyfactory.co/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile.html">Google Play Store Submission Checklist Mobile</a></li>
                                  
         
           
@@ -142,11 +138,11 @@
         <h3>Most Recent</h3>
         <ul class="posts">
           
-            <li><a href="http://docs.tinyfactory.co/node.js/2013/01/14/Amazon-Cloudfront-API-Authorization-and-Invalidation-with-Node.js.html">Amazon Cloudfront Api Authorization And Invalidation With Node.js</a></li>
-          
             <li><a href="http://docs.tinyfactory.co/centos/2013/01/11/formatting-partitioning-and-mounting-drives-on-cent-os.html">Formatting, Partitioning, and Mounting Drives on CentOS</a></li>
           
             <li><a href="http://docs.tinyfactory.co/jquery/2012/12/18/HTML5-Placeholder-In-ie7-and-ie8-fix.html">HTML5 Placeholder in IE7 and IE8 fix</a></li>
+          
+            <li><a href="http://docs.tinyfactory.co/design/2012/10/03/ios-store-submission-checklist.html">iOS Store Submission Checklist</a></li>
           
             <li><a href="http://docs.tinyfactory.co/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile.html">Google Play Store Submission Checklist Mobile</a></li>
           
@@ -158,69 +154,95 @@
 
       <article>
           <div class="entry">
-            <h1>iOS Store Submission Checklist</h1>
-            <p>In order to submit an application to Apple's App Store, there are numerous requiements.  We use this checklist to make sure we have everything we need prior to submission.</p>
+            <h1>Amazon Cloudfront Api Authorization And Invalidation With Node.js</h1>
+            <p>We have been working on integrating Amazon's Cloudfront CDN into our upcoming language learning game <a href="http://www.catchlingual.com">Lingual</a>. One of the requirements when we push to production is invalidating a batch of previously cached packages on Amazon's Cloudfront. Our system is written in Node.js, so this is a quick script I put together to test the integration with Amazon's Cloudfront API.</p>
 
-<h3>icons</h3>
+<p>Building the 'Authorization' string required to make the request was a bit tricky, so hopefully this script will help someone out.</p>
 
-<ul>
-<li>57px - iPhone</li>
-<li>72px - iPad</li>
-<li>114px - iPhone 4 + Retina Display</li>
-<li>512px - iTunes – Used in iTunes and in the App Store sized down to 175px</li>
-<li>1024px - New requirement (now with macbook retina)</li>
-</ul>
+<p>``` js
+var crypto = require('crypto');
+var querystring = require('querystring');
+var https = require('https');</p>
 
-<h3>Splash</h3>
+<p>var distroId = 'XXXXXXXXXXX', // your cloudfront distribution id.
+    accessKey = 'XXXXXXXXXXX', // your amazon access key
+    secretKey = 'XXXXXXXXXXX', // your amazon secret key
+    domain = 'cloudfront.amazonaws.com',
+    port = 443,
+    path = '/2012-07-01/distribution/' + distroId + '/invalidation',
+    date = ''; // fetched via an amazon request later in the script</p>
 
-<p>Must be named exactly as is next to the dimensions.  Must be a PNG file.
-* 320 x 480px - Default.png - iPhone 3Gs and older
-* 640 x 960px - Default@2x.png - iPhone 4 &amp; 4s
-* 1136 x 640px - Default-568h@2x.png - iPhone 5</p>
+<p>//  Amazon suggests you fetch the date header from their server
+//  since they require the timestamp that is used in your signature
+//  to be withing 15 mintues of their server time.
+var dateOptions = {
+    host: domain,
+    port: port,
+    path: '/date'
+};</p>
 
-<h3>Screenshots</h3>
+<p>var amazonDate = https.request(dateOptions, function(res){
+    res.setEncoding('utf8');</p>
 
-<p>File formats allowed: .jpeg, .jpg, .tif, .tiff, or .png
-Color space: RGB
-DPI: at least 72 DPI</p>
+<pre><code>//  we now have the date property from Amazon that we can
+//  use as the base of our Authroization signature
+date = res.headers.date;
 
-<ul>
-<li>Iphone 4/4s
+//  now let's call our invalidation script
+invalidate();
+</code></pre>
 
-<ul>
-<li>Portrait: 960 x 640px or 960 x 600px</li>
-<li>Landscape: 640 x 960px or 640 x 920px</li>
-</ul></li>
-<li>Iphone 5
+<p>}).end();</p>
 
-<ul>
-<li>Portrait: 1136 x 640px</li>
-<li>Landscape: 640 x 1136px</li>
-</ul></li>
-<li>iPad:
+<p>function invalidate(){
+    //  wrapping the URI string in &lt;![CDATA[ ]]&gt; avoids xml encoding the URI 
+    //  (which in our case would be necessary beacuse of the '&amp;' and '=' chars)
+    var postData = [''
+        ,'&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;'
+        ,'<InvalidationBatch xmlns="http://cloudfront.amazonaws.com/doc/2012-07-01/">'
+        ,'  <Paths>'
+        ,'      <Quantity>1</Quantity>'
+        ,'      <Items>'
+        ,'          <Path>&lt;![CDATA[/api/packageGet%253fpkg=images%252ficons%252fanimals&amp;lastMod=0&amp;size=1x]]&gt;</Path>'
+        ,'      </Items>'
+        ,'  </Paths>'
+        ,'  <CallerReference>20120301090192</CallerReference>'
+        ,'</InvalidationBatch>'].join('');</p>
 
-<ul>
-<li>Portrait: 768 x 1024px or 1536 x 2048px</li>
-<li>Landscape: 1024 x 768px or 2048 x 1536px</li>
-</ul></li>
-</ul>
+<pre><code>//  now that we have the date from amazon's servers, lets generate our auth string
+var authStr = crypto.createHmac('sha1', secretKey).update(date).digest('base64');
 
-<h3>Submittal Information</h3>
+var postOptions = {  
+  host: domain,  
+  port: port,  
+  path: path,  
+  method: 'POST',  
+  headers: {  
+    'Authorization': 'AWS ' + accessKey + &quot;:&quot; + authStr,
+    'Date': date,
+    'Content-Type': 'application/x-www-form-urlencoded',  
+    'Content-Length': postData.length  
+  }  
+};
 
-<ul>
-<li>Title</li>
-<li>Description</li>
-<li>Keywords</li>
-<li>Default Language</li>
-<li>Version Number</li>
-<li>Copyright</li>
-<li>Primary Category</li>
-<li>Secondary Category (optional)</li>
-<li>Support Email Address</li>
-<li>Support URL</li>
-<li>Marketing URL (optional)</li>
-<li>Privacy Policy URL (optional)</li>
-</ul>
+var postReq = https.request(postOptions, function(res) {  
+  res.setEncoding('utf8');
+  res.on('data', function (chunk) {
+    console.log('Response: ' + chunk);
+  });  
+});
+
+postReq.on('error', function(error){
+    console.log(error);
+});
+
+// write parameters to post body  
+postReq.write(postData);  
+postReq.end();
+</code></pre>
+
+<p>}
+```</p>
 
 
             

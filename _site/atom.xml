@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>Tiny Factory Docs</title>
- <link href="http://localhost:4000/atom.xml" rel="self"/>
- <link href="http://localhost:4000/"/>
- <updated>2013-01-03T11:07:00-08:00</updated>
- <id>http://localhost:4000</id>
+ <link href="http://docs.tinyfactory.co/atom.xml" rel="self"/>
+ <link href="http://docs.tinyfactory.co/"/>
+ <updated>2013-04-22T18:06:03-07:00</updated>
+ <id>http://docs.tinyfactory.co</id>
  <author>
    <name>Tiny Factory</name>
    <email>hello@tinyfactory.co</email>
@@ -13,10 +13,257 @@
 
  
  <entry>
+   <title>Amazon Cloudfront Api Authorization And Invalidation With Node.js</title>
+   <link href="http://docs.tinyfactory.co/node.js/2013/01/14/Amazon-Cloudfront-API-Authorization-and-Invalidation-with-Node.js.html"/>
+   <updated>2013-01-14T00:00:00-08:00</updated>
+   <id>http://docs.tinyfactory.co/node.js/2013/01/14/Amazon-Cloudfront-API-Authorization-and-Invalidation-with-Node.js</id>
+   
+   <author>
+   	<name>Alex Rolek</name>
+   	<email>a.rolek@gmail.com</email>
+   </author>
+   <content type="html">&lt;p&gt;We have been working on integrating Amazon's Cloudfront CDN into our upcoming language learning game &lt;a href=&quot;http://www.catchlingual.com&quot;&gt;Lingual&lt;/a&gt;. One of the requirements when we push to production is invalidating a batch of previously cached packages on Amazon's Cloudfront. Our system is written in Node.js, so this is a quick script I put together to test the integration with Amazon's Cloudfront API.&lt;/p&gt;
+
+&lt;p&gt;Building the 'Authorization' string required to make the request was a bit tricky, so hopefully this script will help someone out.&lt;/p&gt;
+
+&lt;p&gt;``` js
+var crypto = require('crypto');
+var querystring = require('querystring');
+var https = require('https');&lt;/p&gt;
+
+&lt;p&gt;var distroId = 'XXXXXXXXXXX', // your cloudfront distribution id.
+    accessKey = 'XXXXXXXXXXX', // your amazon access key
+    secretKey = 'XXXXXXXXXXX', // your amazon secret key
+    domain = 'cloudfront.amazonaws.com',
+    port = 443,
+    path = '/2012-07-01/distribution/' + distroId + '/invalidation',
+    date = ''; // fetched via an amazon request later in the script&lt;/p&gt;
+
+&lt;p&gt;//  Amazon suggests you fetch the date header from their server
+//  since they require the timestamp that is used in your signature
+//  to be withing 15 mintues of their server time.
+var dateOptions = {
+    host: domain,
+    port: port,
+    path: '/date'
+};&lt;/p&gt;
+
+&lt;p&gt;var amazonDate = https.request(dateOptions, function(res){
+    res.setEncoding('utf8');&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;//  we now have the date property from Amazon that we can
+//  use as the base of our Authroization signature
+date = res.headers.date;
+
+//  now let's call our invalidation script
+invalidate();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}).end();&lt;/p&gt;
+
+&lt;p&gt;function invalidate(){
+    //  wrapping the URI string in &amp;lt;![CDATA[ ]]&amp;gt; avoids xml encoding the URI 
+    //  (which in our case would be necessary beacuse of the '&amp;amp;' and '=' chars)
+    var postData = [''
+        ,'&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;'
+        ,'&lt;InvalidationBatch xmlns=&quot;http://cloudfront.amazonaws.com/doc/2012-07-01/&quot;&gt;'
+        ,'  &lt;Paths&gt;'
+        ,'      &lt;Quantity&gt;1&lt;/Quantity&gt;'
+        ,'      &lt;Items&gt;'
+        ,'          &lt;Path&gt;&amp;lt;![CDATA[/api/packageGet%253fpkg=images%252ficons%252fanimals&amp;amp;lastMod=0&amp;amp;size=1x]]&amp;gt;&lt;/Path&gt;'
+        ,'      &lt;/Items&gt;'
+        ,'  &lt;/Paths&gt;'
+        ,'  &lt;CallerReference&gt;20120301090192&lt;/CallerReference&gt;'
+        ,'&lt;/InvalidationBatch&gt;'].join('');&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;//  now that we have the date from amazon's servers, lets generate our auth string
+var authStr = crypto.createHmac('sha1', secretKey).update(date).digest('base64');
+
+var postOptions = {  
+  host: domain,  
+  port: port,  
+  path: path,  
+  method: 'POST',  
+  headers: {  
+    'Authorization': 'AWS ' + accessKey + &amp;quot;:&amp;quot; + authStr,
+    'Date': date,
+    'Content-Type': 'application/x-www-form-urlencoded',  
+    'Content-Length': postData.length  
+  }  
+};
+
+var postReq = https.request(postOptions, function(res) {  
+  res.setEncoding('utf8');
+  res.on('data', function (chunk) {
+    console.log('Response: ' + chunk);
+  });  
+});
+
+postReq.on('error', function(error){
+    console.log(error);
+});
+
+// write parameters to post body  
+postReq.write(postData);  
+postReq.end();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}
+```&lt;/p&gt;
+</content>
+
+ </entry>
+ 
+ <entry>
+   <title>Formatting, Partitioning, and Mounting Drives on CentOS</title>
+   <link href="http://docs.tinyfactory.co/centos/2013/01/11/formatting-partitioning-and-mounting-drives-on-cent-os.html"/>
+   <updated>2013-01-11T00:00:00-08:00</updated>
+   <id>http://docs.tinyfactory.co/centos/2013/01/11/formatting-partitioning-and-mounting-drives-on-cent-os</id>
+   
+   <author>
+   	<name>Alex Rolek</name>
+   	<email>a.rolek@gmail.com</email>
+   </author>
+   <content type="html">&lt;h1&gt;Mounting a new disk or external drive on CentOS&lt;/h1&gt;
+
+&lt;p&gt;I always forget how to do this, so here is a quick writeup.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Important:&lt;/strong&gt; You need to be root or add &lt;code&gt;sudo&lt;/code&gt; before all commands.&lt;/p&gt;
+
+&lt;h2&gt;Locate attached drives&lt;/h2&gt;
+
+&lt;p&gt;```
+[root@server]# ls /dev/sd*&lt;/p&gt;
+
+&lt;p&gt;brw-rw----. 1 root disk 8,  0 Jun  2  2012 /dev/sda
+brw-rw----. 1 root disk 8,  1 Jun  2  2012 /dev/sda1
+brw-rw----. 1 root disk 8,  2 Jun  2  2012 /dev/sda2
+brw-rw----. 1 root disk 8, 16 Jan 11 09:01 /dev/sdb
+``&lt;code&gt;
+The output is shows that drive&lt;/code&gt;/dev/sda&lt;code&gt;has 2 partitaions,&lt;/code&gt;/dev/sda1&lt;code&gt;and&lt;/code&gt;/dev/sda2&lt;code&gt;. Our target drive&lt;/code&gt;/dev/sdb` has no partitions so we need to create one.&lt;/p&gt;
+
+&lt;h2&gt;Partition the drive&lt;/h2&gt;
+
+&lt;p&gt;If this is a new drive, you will need to make a partition and format it. If not skip this step.&lt;/p&gt;
+
+&lt;p&gt;The following steps will create a single partition that will take up the entire drive:&lt;/p&gt;
+
+&lt;p&gt;```
+[root@server]# fdisk /dev/sdb&lt;/p&gt;
+
+&lt;p&gt;WARNING: DOS-compatible mode is deprecated. It's strongly recommended to
+         switch off the mode (command 'c') and change display units to
+         sectors (command 'u').&lt;/p&gt;
+
+&lt;p&gt;Command (m for help):
+```
+In this case we need to switch off the DOS compatible mode and change the units to sectors:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+Command (m for help): c
+DOS Compatibility flag is not set
+Command (m for help): u
+Changing display/entry units to sectors
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Create a new part ion by typing &lt;code&gt;n&lt;/code&gt;. We will then select this as a primary part ion by entering &lt;code&gt;p&lt;/code&gt; and select this as the first partition by entering &lt;code&gt;1&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+Command (m for help): n
+Command action
+   e   extended
+   p   primary partition (1-4)
+p
+Partition number (1-4): 1
+First cylinder (1-182401, default 1):
+Using default value 1
+Last cylinder, +cylinders or +size{K,M,G} (1-182401, default 182401):
+Using default value 182401
+&lt;/code&gt;
+We can review our results by entering &lt;code&gt;p&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;```
+Command (m for help): p&lt;/p&gt;
+
+&lt;p&gt;Disk /dev/sdb: 1500.3 GB, 1500301910016 bytes
+255 heads, 63 sectors/track, 182401 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x00000000&lt;/p&gt;
+
+&lt;p&gt;Device Boot      Start         End      Blocks   Id  System
+/dev/sdb1               1      182401  1465136001   83  Linux
+```
+Write (save) the part ion:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+Command (m for help): w
+The partition table has been altered!
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2&gt;Format the filesystem&lt;/h2&gt;
+
+&lt;p&gt;There are a few different types of filesystems to consider:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;auto - this is a special one. It will try to guess the file system type when you use this.&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt; ext4 - this is probably the most common Linux file system type of the last few years&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt; ext3 - this is the most common Linux file system type from a couple years back&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt; ntfs - this is the most common Windows file system type or larger external hard drives&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt; vfat - this is the most common file system type used for smaller external hard drives&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For our situation we will use ext4&lt;/p&gt;
+
+&lt;p&gt;```
+[root@server] mkfs.ext4 /dev/sdb1&lt;/p&gt;
+
+&lt;p&gt;mke2fs 1.41.12 (17-May-2010)
+Filesystem label=
+OS type: Linux
+Block size=4096 (log=2)
+Fragment size=4096 (log=2)
+Stride=0 blocks, Stripe width=0 blocks
+91578368 inodes, 366284000 blocks
+18314200 blocks (5.00%) reserved for the super user
+First data block=0
+Maximum filesystem blocks=0
+11179 block groups
+32768 blocks per group, 32768 fragments per group
+8192 inodes per group
+Superblock backups stored on blocks:
+    32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208,
+    4096000, 7962624, 11239424, 20480000, 23887872, 71663616, 78675968,
+    102400000, 214990848
+```&lt;/p&gt;
+
+&lt;p&gt;This will take awhile and will show &lt;code&gt;Writing inote tables:&lt;/code&gt; with numbers detailing progress.&lt;/p&gt;
+
+&lt;h2&gt;Mount the new drive&lt;/h2&gt;
+
+&lt;p&gt;If you don't already have a mount point, make one. This is the directory you will able to access the newly mounted drive&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+[root@server]# mkdir /mnt/backup
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;We can now mount the partition we created earlier to the new mount point:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+[root@server] mount /dev/sdb1 /mnt/backup
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;And we are done!&lt;/p&gt;
+</content>
+
+ </entry>
+ 
+ <entry>
    <title>HTML5 Placeholder in IE7 and IE8 fix</title>
-   <link href="http://localhost:4000/jquery/2012/12/18/HTML5-Placeholder-In-ie7-and-ie8-fix.html"/>
+   <link href="http://docs.tinyfactory.co/jquery/2012/12/18/HTML5-Placeholder-In-ie7-and-ie8-fix.html"/>
    <updated>2012-12-18T00:00:00-08:00</updated>
-   <id>http://localhost:4000/jquery/2012/12/18/HTML5-Placeholder-In-ie7-and-ie8-fix</id>
+   <id>http://docs.tinyfactory.co/jquery/2012/12/18/HTML5-Placeholder-In-ie7-and-ie8-fix</id>
    
    <author>
    	<name>Michael Sacca</name>
@@ -24,41 +271,24 @@
    </author>
    <content type="html">&lt;p&gt;You can now use the HTML5 placeholder attribute in IE7 &amp;amp; IE8 - just use this code below.  Origionally found at: &lt;a href=&quot;http://dipaksblogonline.blogspot.com/2012/02/html5-placeholder-in-ie7-and-ie8-fixed.html&quot;&gt;dipaksblogonline&lt;/a&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;//Assign to those input elements that have &lt;span class=&quot;s1&quot;&gt;&amp;#39;placeholder&amp;#39;&lt;/span&gt; attribute
-&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;input[placeholder]&amp;#39;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;.each&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;  
-    var &lt;span class=&quot;nv&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;this&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;;        
-    &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;input&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;.val&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;input.attr&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;placeholder&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;;
-                
-    &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;input&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;.focus&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;input.val&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; input.attr&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;placeholder&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-           input.val&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;})&lt;/span&gt;;
-        
-    &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;input&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;.blur&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-       &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;input.val&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; input.val&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; input.attr&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;placeholder&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-           input.val&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;input.attr&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;placeholder&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;;
-       &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;})&lt;/span&gt;;
-&lt;span class=&quot;o&quot;&gt;})&lt;/span&gt;;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 </content>
 
  </entry>
  
  <entry>
    <title>iOS Store Submission Checklist</title>
-   <link href="http://localhost:4000/design/2012/10/03/ios-store-submission-checklist.html"/>
+   <link href="http://docs.tinyfactory.co/design/2012/10/03/ios-store-submission-checklist.html"/>
    <updated>2012-10-03T00:00:00-07:00</updated>
-   <id>http://localhost:4000/design/2012/10/03/ios-store-submission-checklist</id>
+   <id>http://docs.tinyfactory.co/design/2012/10/03/ios-store-submission-checklist</id>
    
    <author>
    	<name>Alex Rolek</name>
    	<email>a.rolek@gmail.com</email>
    </author>
-   <content type="html">&lt;p&gt;In order to submit an application to Apple&amp;#39;s App Store, there are numerous requiements.  We use this checklist to make sure we have everything we need prior to submission.&lt;/p&gt;
+   <content type="html">&lt;p&gt;In order to submit an application to Apple's App Store, there are numerous requiements.  We use this checklist to make sure we have everything we need prior to submission.&lt;/p&gt;
 
-&lt;h3 id=&quot;toc_225&quot;&gt;icons&lt;/h3&gt;
+&lt;h3&gt;icons&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;57px - iPhone&lt;/li&gt;
@@ -68,14 +298,14 @@
 &lt;li&gt;1024px - New requirement (now with macbook retina)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;toc_226&quot;&gt;Splash&lt;/h3&gt;
+&lt;h3&gt;Splash&lt;/h3&gt;
 
 &lt;p&gt;Must be named exactly as is next to the dimensions.  Must be a PNG file.
 * 320 x 480px - Default.png - iPhone 3Gs and older
-* 640 x 960px - &lt;a href=&quot;mailto:Default@2x.png&quot;&gt;Default@2x.png&lt;/a&gt; - iPhone 4 &amp;amp; 4s
-* 1136 x 640px - &lt;a href=&quot;mailto:Default-568h@2x.png&quot;&gt;Default-568h@2x.png&lt;/a&gt; - iPhone 5&lt;/p&gt;
+* 640 x 960px - Default@2x.png - iPhone 4 &amp;amp; 4s
+* 1136 x 640px - Default-568h@2x.png - iPhone 5&lt;/p&gt;
 
-&lt;h3 id=&quot;toc_227&quot;&gt;Screenshots&lt;/h3&gt;
+&lt;h3&gt;Screenshots&lt;/h3&gt;
 
 &lt;p&gt;File formats allowed: .jpeg, .jpg, .tif, .tiff, or .png
 Color space: RGB
@@ -102,7 +332,7 @@ DPI: at least 72 DPI&lt;/p&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;toc_228&quot;&gt;Submittal Information&lt;/h3&gt;
+&lt;h3&gt;Submittal Information&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Title&lt;/li&gt;
@@ -124,31 +354,42 @@ DPI: at least 72 DPI&lt;/p&gt;
  
  <entry>
    <title>Google Play Store Submission Checklist Mobile</title>
-   <link href="http://localhost:4000/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile.html"/>
+   <link href="http://docs.tinyfactory.co/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile.html"/>
    <updated>2012-10-03T00:00:00-07:00</updated>
-   <id>http://localhost:4000/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile</id>
+   <id>http://docs.tinyfactory.co/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile</id>
    
    <author>
    	<name>Michael Sacca</name>
    	<email>michael.sacca@gmail.com</email>
    </author>
-   <content type="html">&lt;p&gt;So you&amp;#39;ve finished your application and you&amp;#39;re ready to submit it to the Google Play store, but wait - you still need more assets!  Here&amp;#39;s a quick checklist for what you&amp;#39;ll need to prepare before submission.&lt;/p&gt;
+   <content type="html">&lt;p&gt;So you've finished your application and you're ready to submit it to the Google Play store, but wait - you still need more assets!  Here's a quick checklist for what you'll need to prepare before submission.&lt;/p&gt;
 
-&lt;h3 id=&quot;toc_218&quot;&gt;Icons&lt;/h3&gt;
+&lt;h3&gt;Icons&lt;/h3&gt;
+
+&lt;p&gt;Name the file icon.png (lowercase &amp;quot;i&amp;quot;)&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;512x512 - required for publishing&lt;/li&gt;
-&lt;li&gt;96x96, 72x72, 48x48, 36x36 - all used for compiling&lt;/li&gt;
+&lt;li&gt;96x96 - xhdpi&lt;/li&gt;
+&lt;li&gt;72x72 - hdpi&lt;/li&gt;
+&lt;li&gt;48x48 - mdpi&lt;/li&gt;
+&lt;li&gt;36x36 - ldpi &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;toc_219&quot;&gt;Splash&lt;/h3&gt;
+&lt;h3&gt;Splash&lt;/h3&gt;
+
+&lt;p&gt;Name the file splash.png (lowercase &amp;quot;s&amp;quot;)&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;320x480 (mobile devices)&lt;/li&gt;
-&lt;li&gt;1024x600 (Samsung galaxy tab)&lt;/li&gt;
+&lt;li&gt;960dp x 720dp - xhdpi&lt;/li&gt;
+&lt;li&gt;640dp x 480dp - hdpi&lt;/li&gt;
+&lt;li&gt;470dp x 320dp - mdpi&lt;/li&gt;
+&lt;li&gt;426dp x 320dp - ldpi&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;toc_220&quot;&gt;Screen shots - at least 2 required&lt;/h3&gt;
+&lt;p&gt;These are the minimum screen densities for the various Android device resolutions. Android will size the splash screens from each of these to match the device that is opening the app.&lt;/p&gt;
+
+&lt;h3&gt;Screen shots - at least 2 required&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Dimensions: 320 x 480, 480 x 800, 480 x 854, 1280 x 720, 1280 x 800&lt;/li&gt;
@@ -156,7 +397,7 @@ DPI: at least 72 DPI&lt;/p&gt;
 &lt;li&gt;Full bleed, no border in art&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;toc_221&quot;&gt;Promo Graphic (Optional)&lt;/h3&gt;
+&lt;h3&gt;Promo Graphic (Optional)&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;180w x 120h&lt;/li&gt;
@@ -164,20 +405,20 @@ DPI: at least 72 DPI&lt;/p&gt;
 &lt;li&gt;No border in art&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;toc_222&quot;&gt;Feature Graphic (Optional)&lt;/h3&gt;
+&lt;h3&gt;Feature Graphic (Optional)&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;1024 x 500&lt;/li&gt;
 &lt;li&gt;Will be downsized to mini or micro&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;toc_223&quot;&gt;Promotional Video:&lt;/h3&gt;
+&lt;h3&gt;Promotional Video:&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Enter YouTube URL&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;toc_224&quot;&gt;Text descriptions&lt;/h3&gt;
+&lt;h3&gt;Text descriptions&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Language&lt;/li&gt;
@@ -197,9 +438,9 @@ DPI: at least 72 DPI&lt;/p&gt;
  
  <entry>
    <title>Text Overflow Ellipsis Using Less</title>
-   <link href="http://localhost:4000/less/2012/09/20/text-overflow-ellipsis-using-LESS.html"/>
+   <link href="http://docs.tinyfactory.co/less/2012/09/20/text-overflow-ellipsis-using-LESS.html"/>
    <updated>2012-09-20T00:00:00-07:00</updated>
-   <id>http://localhost:4000/less/2012/09/20/text-overflow-ellipsis-using-LESS</id>
+   <id>http://docs.tinyfactory.co/less/2012/09/20/text-overflow-ellipsis-using-LESS</id>
    
    <author>
    	<name>Michael Sacca</name>
@@ -207,22 +448,16 @@ DPI: at least 72 DPI&lt;/p&gt;
    </author>
    <content type="html">&lt;p&gt;As a follow up to our &lt;a href=&quot;http://docs.tinyfactory.co/css/2012/08/11/text-overflow-ellipsis-using-CSS.html&quot;&gt;CSS ellipsis&lt;/a&gt; solution, this LESS overflow ellipsis mixin is perfect for single line truncations.  &lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;css&quot;&gt;&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;Text&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;overflow&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;Mixin&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;.text-overflow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;overflow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;hidden&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;overflow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ellipsis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;white-space&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;nowrap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 </content>
 
  </entry>
  
  <entry>
    <title>Less Placeholder Text Mixin</title>
-   <link href="http://localhost:4000/less/2012/09/20/LESS-placeholder-text-mixin.html"/>
+   <link href="http://docs.tinyfactory.co/less/2012/09/20/LESS-placeholder-text-mixin.html"/>
    <updated>2012-09-20T00:00:00-07:00</updated>
-   <id>http://localhost:4000/less/2012/09/20/LESS-placeholder-text-mixin</id>
+   <id>http://docs.tinyfactory.co/less/2012/09/20/LESS-placeholder-text-mixin</id>
    
    <author>
    	<name>Michael Sacca</name>
@@ -232,134 +467,57 @@ DPI: at least 72 DPI&lt;/p&gt;
 
 &lt;p&gt;Syntax:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scss&quot;&gt;   &lt;span class=&quot;c1&quot;&gt;// Placeholder text Mixin&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;.placeholder(@color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;placeholderText&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;nd&quot;&gt;:-moz-placeholder&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;nd&quot;&gt;::-webkit-input-placeholder&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 
 &lt;p&gt;Steps:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;1.  Add the .placeholder mixin to your stylesheet (or reference it from a file such as var.less)
+
+&lt;pre&gt;&lt;code&gt;1.  Add the .placeholder mixin to your stylesheet (or reference it from a file such as var.less)
 2.  In your stylesheet call the mixin like: 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scss&quot;&gt;    &lt;span class=&quot;nc&quot;&gt;.some-class&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
-        &lt;span class=&quot;nc&quot;&gt;.placeholder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;#ccc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 
 &lt;p&gt;This will compile to: &lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scss&quot;&gt;              &lt;span class=&quot;nc&quot;&gt;.some-class&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:placeholder&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#cccccc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-              &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-              &lt;span class=&quot;na&quot;&gt;.some-class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;moz-placeholder&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#cccccc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-              &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-              &lt;span class=&quot;na&quot;&gt;.some-class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;webkit-input-placeholder&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#cccccc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-              &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 </content>
 
  </entry>
  
  <entry>
    <title>Text Overflow Ellipsis Using Jquery</title>
-   <link href="http://localhost:4000/jquery/2012/08/11/text-overflow-ellipsis-using-jquery.html"/>
+   <link href="http://docs.tinyfactory.co/jquery/2012/08/11/text-overflow-ellipsis-using-jquery.html"/>
    <updated>2012-08-11T00:00:00-07:00</updated>
-   <id>http://localhost:4000/jquery/2012/08/11/text-overflow-ellipsis-using-jquery</id>
+   <id>http://docs.tinyfactory.co/jquery/2012/08/11/text-overflow-ellipsis-using-jquery</id>
    
    <author>
    	<name>Michael Sacca</name>
    	<email>michael.sacca@gmail.com</email>
    </author>
-   <content type="html">&lt;p&gt;If CSS isn&amp;#39;t enough to solve your your ellipsis issues and you want to take it to the next level and insert after multiple lines you can introduce some jQuery into the mix.  This is a solution I found on &lt;a href=&quot;http://stackoverflow.com/questions/536814/insert-ellipsis-into-html-tag-if-content-too-wide&quot;&gt;stacks overflow&lt;/a&gt; that works quite well.&lt;/p&gt;
+   <content type="html">&lt;p&gt;If CSS isn't enough to solve your your ellipsis issues and you want to take it to the next level and insert after multiple lines you can introduce some jQuery into the mix.  This is a solution I found on &lt;a href=&quot;http://stackoverflow.com/questions/536814/insert-ellipsis-into-html-tag-if-content-too-wide&quot;&gt;stacks overflow&lt;/a&gt; that works quite well.&lt;/p&gt;
 
 &lt;p&gt;Use this in your CSS document&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;css&quot;&gt;&lt;span class=&quot;nc&quot;&gt;.ellipsis&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;white-space&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;nowrap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;overflow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;hidden&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;nc&quot;&gt;.ellipsis.multiline&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;white-space&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;normal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 
 &lt;p&gt;Here is your HTML, always remember to include jQuery in your document before using jQuery.&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;/* this is a one line ellipsis */
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;ellipsis&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;width: 100px; border: 1px solid black;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-
-/* this is a multiline ellipsis */
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;ellipsis multiline&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;width: 100px; height: 40px; border: 1px solid black; margin-bottom: 100px&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;/js/jquery.ellipsis.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;.ellipsis&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ellipsis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 
 &lt;p&gt;...and last but not least the jquery for creating a single or multi-line ellipsis&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;js&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ellipsis&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-                &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;el&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 
-                        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;overflow&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;hidden&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-                        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                                &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-                                &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;multiline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hasClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;multiline&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-                                &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cloneNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-                                        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hide&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-                                        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;position&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;absolute&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-                                        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;overflow&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;visible&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-                                        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;multiline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;auto&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-                                        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;multiline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;auto&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
-                                        &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-                                &lt;span class=&quot;nx&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;after&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-                                &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-                                &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-                                &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;multiline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;height&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-                                &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
-                                &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                                        &lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-                                        &lt;span class=&quot;nx&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;...&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-                                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-                                &lt;span class=&quot;nx&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
-                                &lt;span class=&quot;nx&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;remove&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-                        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-                &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;})(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;jQuery&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;If you&amp;#39;re looking more configurable options, check out the &lt;a href=&quot;http://dotdotdot.frebsite.nl/&quot;&gt;dotdotdot&lt;/a&gt; jQuery plugin.&lt;/p&gt;
+&lt;p&gt;If you're looking more configurable options, check out the &lt;a href=&quot;http://dotdotdot.frebsite.nl/&quot;&gt;dotdotdot&lt;/a&gt; jQuery plugin.&lt;/p&gt;
 </content>
 
  </entry>
  
  <entry>
    <title>Text Overflow Ellipsis Using Css</title>
-   <link href="http://localhost:4000/css/2012/08/11/text-overflow-ellipsis-using-CSS.html"/>
+   <link href="http://docs.tinyfactory.co/css/2012/08/11/text-overflow-ellipsis-using-CSS.html"/>
    <updated>2012-08-11T00:00:00-07:00</updated>
-   <id>http://localhost:4000/css/2012/08/11/text-overflow-ellipsis-using-CSS</id>
+   <id>http://docs.tinyfactory.co/css/2012/08/11/text-overflow-ellipsis-using-CSS</id>
    
    <author>
    	<name>Michael Sacca</name>
@@ -367,48 +525,33 @@ DPI: at least 72 DPI&lt;/p&gt;
    </author>
    <content type="html">&lt;p&gt;The CSS text overflow ellipsis solution is perfect for single line truncations.  I use this constantly when building mobile or responsive applications.&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;css&quot;&gt;&lt;span class=&quot;nt&quot;&gt;span&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;because&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;we&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;re&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;span&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;class&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;white-space&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;nowrap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;This&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prevents&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;content&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;breaking&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;onto&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;another&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;this&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;should&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;be&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;width&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;your&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;content&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;overflow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;hidden&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hides&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;that&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;outside&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;your&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;width&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;overflow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ellipsis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;creates&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;our&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ellipsis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 </content>
 
  </entry>
  
  <entry>
    <title>Targeting Mobile Webkit Browsers With Javascript</title>
-   <link href="http://localhost:4000/javascript/2012/08/10/targeting-mobile-webkit-browsers-with-javascript.html"/>
+   <link href="http://docs.tinyfactory.co/javascript/2012/08/10/targeting-mobile-webkit-browsers-with-javascript.html"/>
    <updated>2012-08-10T00:00:00-07:00</updated>
-   <id>http://localhost:4000/javascript/2012/08/10/targeting-mobile-webkit-browsers-with-javascript</id>
+   <id>http://docs.tinyfactory.co/javascript/2012/08/10/targeting-mobile-webkit-browsers-with-javascript</id>
    
    <author>
    	<name>Michael Sacca</name>
    	<email>michael.sacca@gmail.com</email>
    </author>
-   <content type="html">&lt;p&gt;Here is a way to target mobile browsers with Javascript.  It&amp;#39;s not recommended you use this as your sole method for targeting mobile browsers as it first requires your users to load your entire standard site before serving your mobile specific code.  But if used in conjunction with &lt;a href=&quot;http://docs.tinyfactory.co/sass/2012/08/02/sass-inline-media-queries.html&quot;&gt;CSS Media Queries&lt;/a&gt; - this can be quite handy.&lt;/p&gt;
+   <content type="html">&lt;p&gt;Here is a way to target mobile browsers with Javascript.  It's not recommended you use this as your sole method for targeting mobile browsers as it first requires your users to load your entire standard site before serving your mobile specific code.  But if used in conjunction with &lt;a href=&quot;http://docs.tinyfactory.co/sass/2012/08/02/sass-inline-media-queries.html&quot;&gt;CSS Media Queries&lt;/a&gt; - this can be quite handy.&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;js&quot;&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;navigator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;userAgent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;match&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/Android/i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;navigator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;userAgent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;match&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/webOS/i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;navigator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;userAgent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;match&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/iPhone/i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;navigator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;userAgent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;match&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/iPod/i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
- &lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// Mobile Code Here&lt;/span&gt;
- &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
- 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 </content>
 
  </entry>
  
  <entry>
    <title>Compass Animated Button Mixin</title>
-   <link href="http://localhost:4000/compass/2012/08/07/compass-animated-button-mixin.html"/>
+   <link href="http://docs.tinyfactory.co/compass/2012/08/07/compass-animated-button-mixin.html"/>
    <updated>2012-08-07T00:00:00-07:00</updated>
-   <id>http://localhost:4000/compass/2012/08/07/compass-animated-button-mixin</id>
+   <id>http://docs.tinyfactory.co/compass/2012/08/07/compass-animated-button-mixin</id>
    
    <author>
    	<name>Michael Sacca</name>
@@ -416,95 +559,15 @@ DPI: at least 72 DPI&lt;/p&gt;
    </author>
    <content type="html">&lt;p&gt;This mixin will create an animated hover and active state for your button (&lt;a href=&quot;http://dribbble.com/shots/678970-Compass-CSS3-Button-Mixin&quot;&gt;View Example Here&lt;/a&gt;) using css3 transitions.  Feel free to replace the variables or add them to a variable sheet inside of your project.  Add this mixin to your Compass project: &lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scss&quot;&gt;    &lt;span class=&quot;cm&quot;&gt;/* =======================&lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;    Variables&lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;    ========================*/&lt;/span&gt;
-    &lt;span class=&quot;nv&quot;&gt;$baseColor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;    &lt;span class=&quot;mh&quot;&gt;#E0E0E0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nv&quot;&gt;$textColor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;    &lt;span class=&quot;nf&quot;&gt;darken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$baseColor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nv&quot;&gt;$fontSize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;     &lt;span class=&quot;mf&quot;&gt;.8&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;@mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; btn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;cursor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;pointer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:inline-block&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;fontSize&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;fontSize&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;fontSize&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;fontSize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;border&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:1px&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;solid&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;darken&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;baseColor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;border-radius&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;2px&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;box-shadow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;1px&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;#fff&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;text-shadow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;1px&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;#fff&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;transition&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;all&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.1s&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;ease-in-out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;textColor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:hover&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;na&quot;&gt;border-color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;darken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$baseColor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;@include&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt; background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;linear-gradient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;white&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;darken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$baseColor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)));&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;@include&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt; box-shadow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;rgba&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.25&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;inset&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;white&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-                &lt;span class=&quot;na&quot;&gt;text-decoration&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;none&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:active&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Adds Styles When Button Is Pushed&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;@include&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt; background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;linear-gradient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;darken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$baseColor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$baseColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;@include&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt; box-shadow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#fff&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;inset&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;darken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$baseColor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-                &lt;span class=&quot;na&quot;&gt;border-color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;darken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$baseColor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 
 &lt;p&gt;In your style sheet add:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scss&quot;&gt;    &lt;span class=&quot;nc&quot;&gt;.btn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;@include&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt; btn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 
 &lt;p&gt;and it will compile to:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scss&quot;&gt;    &lt;span class=&quot;nc&quot;&gt;.btn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;cursor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;pointer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;inline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.8&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;em&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.06667&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.8&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;border&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;solid&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#adadad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;-webkit-border-radius&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;-moz-border-radius&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;-ms-border-radius&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;-o-border-radius&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;border-radius&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;-webkit-box-shadow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;white&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;-moz-box-shadow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;white&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;box-shadow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;white&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;text-shadow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;white&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;-webkit-transition&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;all&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.1&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ease-in-out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;-moz-transition&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;all&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.1&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ease-in-out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;-ms-transition&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;all&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.1&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ease-in-out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;-o-transition&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;all&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.1&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ease-in-out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;transition&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;all&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.1&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ease-in-out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#616161&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;nc&quot;&gt;.btn&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:hover&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;border-color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#949494&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;-webkit-gradient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;linear&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;color-stop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#ffffff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;color-stop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#c7c7c7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;-webkit-linear-gradient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#ffffff&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#c7c7c7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;-moz-linear-gradient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#ffffff&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#c7c7c7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;-o-linear-gradient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#ffffff&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#c7c7c7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;-ms-linear-gradient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#ffffff&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#c7c7c7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;linear-gradient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#ffffff&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#c7c7c7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;-webkit-box-shadow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;rgba&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.25&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;inset&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;white&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;-moz-box-shadow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;rgba&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.25&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;inset&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;white&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;box-shadow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;rgba&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.25&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;inset&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;white&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;text-decoration&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;none&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;nc&quot;&gt;.btn&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:active&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;-webkit-gradient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;linear&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;color-stop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#d3d3d3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;color-stop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#e0e0e0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;-webkit-linear-gradient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#d3d3d3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#e0e0e0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;-moz-linear-gradient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#d3d3d3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#e0e0e0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;-o-linear-gradient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#d3d3d3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#e0e0e0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;-ms-linear-gradient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#d3d3d3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#e0e0e0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;linear-gradient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#d3d3d3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#e0e0e0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;-webkit-box-shadow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;white&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;inset&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#a0a0a0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;-moz-box-shadow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;white&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;inset&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#a0a0a0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;box-shadow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;white&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;inset&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#a0a0a0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;border-color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#949494&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 
 &lt;p&gt;Fork the repo on &lt;a href=&quot;https://github.com/michaelsacca/Fancy-Compass-Button-Mixin&quot;&gt;github&lt;/a&gt; and create your own.&lt;/p&gt;
 </content>
@@ -513,193 +576,133 @@ DPI: at least 72 DPI&lt;/p&gt;
  
  <entry>
    <title>Sass Inline Media Queries</title>
-   <link href="http://localhost:4000/sass/2012/08/02/sass-inline-media-queries.html"/>
+   <link href="http://docs.tinyfactory.co/sass/2012/08/02/sass-inline-media-queries.html"/>
    <updated>2012-08-02T00:00:00-07:00</updated>
-   <id>http://localhost:4000/sass/2012/08/02/sass-inline-media-queries</id>
+   <id>http://docs.tinyfactory.co/sass/2012/08/02/sass-inline-media-queries</id>
    
    <author>
    	<name>Aaron Wade</name>
    	<email>hi@areuswade.com</email>
    </author>
-   <content type="html">&lt;p&gt;With SASS 3.2 we get inline media queries. Compass allows this if you&amp;#39;re using the alpha build. At of the date of this doc, &lt;code&gt;0.12.2&lt;/code&gt; is the current version.&lt;/p&gt;
+   <content type="html">&lt;p&gt;With SASS 3.2 we get inline media queries. Compass allows this if you're using the alpha build. At of the date of this doc, &lt;code&gt;0.12.2&lt;/code&gt; is the current version.&lt;/p&gt;
 
-&lt;p&gt;We can install Compass alpha &lt;code&gt;0.13.0&lt;/code&gt; by running &lt;code&gt;sudo gem install compass --pre&lt;/code&gt;. This is a prerelease build, so if you&amp;#39;re worried about things not working, hold out until &lt;code&gt;0.13.x&lt;/code&gt; is released.&lt;/p&gt;
+&lt;p&gt;We can install Compass alpha &lt;code&gt;0.13.0&lt;/code&gt; by running &lt;code&gt;sudo gem install compass --pre&lt;/code&gt;. This is a prerelease build, so if you're worried about things not working, hold out until &lt;code&gt;0.13.x&lt;/code&gt; is released.&lt;/p&gt;
 
-&lt;p&gt;Before inline media queries, we&amp;#39;d throw all of our device arguments in a section at the bottom of our stylesheets. Inline media queries allow me to do something like this:&lt;/p&gt;
+&lt;p&gt;Before inline media queries, we'd throw all of our device arguments in a section at the bottom of our stylesheets. Inline media queries allow me to do something like this:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;sass&quot;&gt;&lt;span class=&quot;nt&quot;&gt;header&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;rgba&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#fff&lt;/span&gt;
-    &lt;span class=&quot;nd&quot;&gt;+mobile-landscape-and-up&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;rgba&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#fff&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;sass
+header
+    background: rgba(0,0,0,0.5)
+    color: #fff
+    +mobile-landscape-and-up
+        background: rgba(0,0,0,1)
+        color: #fff
+&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;The mixins below will allow you to do what I&amp;#39;ve demonstrated above. This is a port to the old SASS syntax from the amazing base the Anthony Short developed. You&amp;#39;re able to use any of the @mixin properties inline throughout your stylesheet. No more scrolling top to bottom to see what you need to override.&lt;/p&gt;
+&lt;p&gt;The mixins below will allow you to do what I've demonstrated above. This is a port to the old SASS syntax from the amazing base the Anthony Short developed. You're able to use any of the @mixin properties inline throughout your stylesheet. No more scrolling top to bottom to see what you need to override.&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;sass&quot;&gt;&lt;span class=&quot;na&quot;&gt;$mq-mobile-portrait&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;320&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;!default&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;$mq-mobile-landscape&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;480&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;!default&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;$mq-tablet-portrait&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;768&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;!default&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;$mq-tablet-landscape&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1024&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;!default&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;$mq-desktop&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1382&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;!default&lt;/span&gt;
+&lt;p&gt;``` sass
+$mq-mobile-portrait: 320px !default
+$mq-mobile-landscape: 480px !default
+$mq-tablet-portrait: 768px !default
+$mq-tablet-landscape: 1024px !default
+$mq-desktop: 1382px !default&lt;/p&gt;
 
-&lt;span class=&quot;k&quot;&gt;@mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; mobile-only&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;@media&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;max-width&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;mq-mobile-landscape&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;@content&lt;/span&gt;
+&lt;p&gt;@mixin mobile-only
+    @media (max-width : $mq-mobile-landscape)
+        @content&lt;/p&gt;
 
-&lt;span class=&quot;k&quot;&gt;@mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; mobile-portrait-only&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;@media&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;max-width&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;mq-mobile-portrait&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;@content&lt;/span&gt;
+&lt;p&gt;@mixin mobile-portrait-only
+    @media (max-width : $mq-mobile-portrait)
+        @content&lt;/p&gt;
 
-&lt;span class=&quot;k&quot;&gt;@mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; mobile-portrait-and-below&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;@media&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;max-width&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;mq-mobile-portrait&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;@content&lt;/span&gt;
+&lt;p&gt;@mixin mobile-portrait-and-below
+    @media (max-width : $mq-mobile-portrait)
+        @content&lt;/p&gt;
 
-&lt;span class=&quot;k&quot;&gt;@mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; mobile-portrait-and-up&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;@media&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;min-width&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;mq-mobile-portrait&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;@content&lt;/span&gt;
+&lt;p&gt;@mixin mobile-portrait-and-up
+    @media (min-width : $mq-mobile-portrait)
+        @content&lt;/p&gt;
 
-&lt;span class=&quot;k&quot;&gt;@mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; mobile-landscape-only&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;@media&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;only&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;screen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;min-width&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;mq-mobile-portrait&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;max-width&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;mq-mobile-landscape&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;@content&lt;/span&gt;
+&lt;p&gt;@mixin mobile-landscape-only
+    @media only screen and (min-width : $mq-mobile-portrait + 1) and (max-width : $mq-mobile-landscape)
+        @content&lt;/p&gt;
 
-&lt;span class=&quot;k&quot;&gt;@mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; mobile-landscape-and-below&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;@media&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;only&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;screen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;max-width&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;mq-mobile-landscape&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;@content&lt;/span&gt;
+&lt;p&gt;@mixin mobile-landscape-and-below
+    @media only screen and (max-width : $mq-mobile-landscape)
+        @content&lt;/p&gt;
 
-&lt;span class=&quot;k&quot;&gt;@mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; mobile-landscape-and-up&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;@media&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;only&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;screen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;min-width&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;mq-mobile-portrait&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;@content&lt;/span&gt;
+&lt;p&gt;@mixin mobile-landscape-and-up
+    @media only screen and (min-width : $mq-mobile-portrait + 1)
+        @content&lt;/p&gt;
 
-&lt;span class=&quot;k&quot;&gt;@mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; tablet-only&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;@media&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;only&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;screen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;min-width&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;mq-mobile-landscape&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;max-width&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;mq-tablet-landscape&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;@content&lt;/span&gt;
+&lt;p&gt;@mixin tablet-only
+    @media only screen and (min-width : $mq-mobile-landscape + 1) and (max-width : $mq-tablet-landscape)
+        @content&lt;/p&gt;
 
-&lt;span class=&quot;k&quot;&gt;@mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; tablet-portrait-only&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;@media&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;only&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;screen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;min-width&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;mq-mobile-landscape&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;max-width&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;mq-tablet-portrait&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;@content&lt;/span&gt;
+&lt;p&gt;@mixin tablet-portrait-only
+    @media only screen and (min-width : $mq-mobile-landscape + 1) and (max-width : $mq-tablet-portrait)
+        @content&lt;/p&gt;
 
-&lt;span class=&quot;k&quot;&gt;@mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; tablet-portrait-and-below&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;@media&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;only&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;screen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;max-width&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;mq-tablet-portrait&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;@content&lt;/span&gt;
+&lt;p&gt;@mixin tablet-portrait-and-below
+    @media only screen and (max-width : $mq-tablet-portrait)
+        @content&lt;/p&gt;
 
-&lt;span class=&quot;k&quot;&gt;@mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; tablet-portrait-and-up&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;@media&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;only&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;screen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;min-width&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;mq-mobile-landscape&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;@content&lt;/span&gt;
+&lt;p&gt;@mixin tablet-portrait-and-up
+    @media only screen and (min-width : $mq-mobile-landscape + 1)
+        @content&lt;/p&gt;
 
-&lt;span class=&quot;k&quot;&gt;@mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; tablet-landscape-only&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;@media&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;only&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;screen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;min-width&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;mq-tablet-portrait&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;max-width&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;mq-tablet-landscape&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;@content&lt;/span&gt;
+&lt;p&gt;@mixin tablet-landscape-only
+    @media only screen and (min-width : $mq-tablet-portrait + 1) and (max-width : $mq-tablet-landscape)
+        @content&lt;/p&gt;
 
-&lt;span class=&quot;k&quot;&gt;@mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; tablet-landscape-and-below&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;@media&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;only&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;screen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;max-width&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;mq-tablet-landscape&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;@content&lt;/span&gt;
+&lt;p&gt;@mixin tablet-landscape-and-below
+    @media only screen and (max-width : $mq-tablet-landscape)
+        @content&lt;/p&gt;
 
-&lt;span class=&quot;k&quot;&gt;@mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; tablet-landscape-and-up&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;@media&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;only&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;screen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;min-width&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;mq-tablet-portrait&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;@content&lt;/span&gt;
+&lt;p&gt;@mixin tablet-landscape-and-up
+    @media only screen and (min-width : $mq-tablet-portrait + 1)
+        @content&lt;/p&gt;
 
-&lt;span class=&quot;k&quot;&gt;@mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; desktop-and-up&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;@media&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;only&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;screen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;min-width&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;mq-tablet-landscape&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;@content&lt;/span&gt;
+&lt;p&gt;@mixin desktop-and-up
+    @media only screen and (min-width : $mq-tablet-landscape + 1)
+        @content&lt;/p&gt;
 
-&lt;span class=&quot;k&quot;&gt;@mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; desktop-and-below&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;@media&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;only&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;screen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;max-width&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;mq-desktop&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;@content&lt;/span&gt;
+&lt;p&gt;@mixin desktop-and-below
+    @media only screen and (max-width : $mq-desktop)
+        @content&lt;/p&gt;
 
-&lt;span class=&quot;k&quot;&gt;@mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; desktop-only&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;@media&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;only&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;screen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;min-width&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;mq-tablet-landscape&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;max-width&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;mq-desktop&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;@content&lt;/span&gt;
+&lt;p&gt;@mixin desktop-only
+    @media only screen and (min-width : $mq-tablet-landscape + 1) and (max-width : $mq-desktop)
+        @content&lt;/p&gt;
 
-&lt;span class=&quot;k&quot;&gt;@mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; retina&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;@media&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;only&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;screen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-webkit-min-device-pixel-ratio&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;.5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;only&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;screen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;min-device-pixel-ratio&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;.5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;@content&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;@mixin retina
+    @media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5)
+        @content
+```&lt;/p&gt;
 </content>
 
  </entry>
  
  <entry>
    <title>Sencha Touch 2 Jsonp Xml Reader Jsonpx</title>
-   <link href="http://localhost:4000/sencha%20touch%202/2012/08/02/Sencha-Touch-2-JSONP-XML-Reader-JSONPX.html"/>
+   <link href="http://docs.tinyfactory.co/sencha touch 2/2012/08/02/Sencha-Touch-2-JSONP-XML-Reader-JSONPX.html"/>
    <updated>2012-08-02T00:00:00-07:00</updated>
-   <id>http://localhost:4000/sencha%20touch%202/2012/08/02/Sencha-Touch-2-JSONP-XML-Reader-JSONPX</id>
+   <id>http://docs.tinyfactory.co/sencha touch 2/2012/08/02/Sencha-Touch-2-JSONP-XML-Reader-JSONPX</id>
    
    <author>
    	<name>Alex Rolek</name>
    	<email>a.rolek@gmail.com</email>
    </author>
-   <content type="html">&lt;p&gt;I was integrating with a client&amp;#39;s API which used a blend of JSONP and XML.  Sencha Touch 2 does not have a native way to parse this, so I extended XML reader to make a &amp;#39;jsonpx&amp;#39; reader.  Hopefully this will help someone who might run into the same situation.&lt;/p&gt;
+   <content type="html">&lt;p&gt;I was integrating with a client's API which used a blend of JSONP and XML.  Sencha Touch 2 does not have a native way to parse this, so I extended XML reader to make a 'jsonpx' reader.  Hopefully this will help someone who might run into the same situation.&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;Ext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;define&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;app.util.JsonpX&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;extend&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Ext.data.reader.Xml&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;// Set the proxy alias&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;reader.jsonpx&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-
-    &lt;span class=&quot;nx&quot;&gt;parseXmlString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sXml&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;// If the specified XML document content is a string...&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sXml&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;string&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-
-            &lt;span class=&quot;c1&quot;&gt;// Create a reference to the XML document parser.&lt;/span&gt;
-            &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oParser&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;DOMParser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-
-            &lt;span class=&quot;c1&quot;&gt;// Return the reference to the XML document.&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oParser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parseFromString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sXml&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;text/xml&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// XML document content is NOT a string...&lt;/span&gt;
-            &lt;span class=&quot;c1&quot;&gt;// Return the specified XML document since it has already been parsed.&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sXml&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-
-    &lt;span class=&quot;cm&quot;&gt;/*&lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;   * override&lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;   * @param {string} response the response to parse&lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;   * @return {xml} the XML data that has been parsed&lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;   */&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;getResponseData&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parseXmlString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 
 &lt;p&gt;To use, place create a file [app root]/util/jsonpX.js&lt;/p&gt;
 
 &lt;p&gt;Inside of the store you are using, make sure to include and declare it as the reader.  For example:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;Ext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;define&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Year&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;extend&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Ext.data.Model&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;fields&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;number&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;Ext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;define&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;smtp.store.PartsFilterYear&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;extend&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Ext.data.Store&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;requires&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-        &lt;span class=&quot;s1&quot;&gt;&amp;#39;Ext.data.proxy.JsonP&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s1&quot;&gt;&amp;#39;app.util.JsonpX&amp;#39;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;autoLoad&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;storeId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;PartsFilterYear&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// ref to bind inside views&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Year&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;fields&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;pageSize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;proxy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;jsonp&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;http://somedomain.com/someapi&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;nx&quot;&gt;reader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;jsonpx&amp;#39;&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;//declare reader&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 
 &lt;p&gt;This code was inspired by a piece I found for Sencha Touch 1  &lt;a href=&quot;http://www.sencha.com/forum/showthread.php?12852-ScriptTagProxy-and-XML&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
 </content>
@@ -708,9 +711,9 @@ DPI: at least 72 DPI&lt;/p&gt;
  
  <entry>
    <title>Compass Retina Display Mixin</title>
-   <link href="http://localhost:4000/compass/2012/08/01/compass-retina-display-mixin.html"/>
+   <link href="http://docs.tinyfactory.co/compass/2012/08/01/compass-retina-display-mixin.html"/>
    <updated>2012-08-01T00:00:00-07:00</updated>
-   <id>http://localhost:4000/compass/2012/08/01/compass-retina-display-mixin</id>
+   <id>http://docs.tinyfactory.co/compass/2012/08/01/compass-retina-display-mixin</id>
    
    <author>
    	<name>Michael Sacca</name>
@@ -720,20 +723,7 @@ DPI: at least 72 DPI&lt;/p&gt;
 
 &lt;p&gt;Syntax:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scss&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// retina.scss&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// This will default to png but can be overwritten to jpg or gif&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//$image name is equal to the image name with out it&amp;#39;s extention - &amp;#39;example.png&amp;#39; would be defined as &amp;#39;example&amp;#39;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;@mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; at2x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$image_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$w&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;auto&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$h&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;auto&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$extention&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.png&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;background-image&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;image_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$image_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$extention&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;nv&quot;&gt;$x2img&lt;/span&gt;&lt;span class=&quot;o&quot;&gt; :&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$image_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;@2x&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$extention&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;@media&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;all&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-webkit-min-device-pixel-ratio&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;.5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;background-image&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;image_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$x2img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;background-size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$w&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;  
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;The extention defaults to PNG. To change this - define $extention when calling (ie jpg);&lt;/strong&gt;&lt;/p&gt;
 
@@ -744,64 +734,37 @@ DPI: at least 72 DPI&lt;/p&gt;
 &lt;li&gt; In your stylesheet, call the .at2x() mixin anywhere instead of using background-image &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scss&quot;&gt;&lt;span class=&quot;nn&quot;&gt;#logo&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-   &lt;span class=&quot;k&quot;&gt;@include&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt; at2x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;example&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jpg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 
 &lt;p&gt;Will compile to: &lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scss&quot;&gt;&lt;span class=&quot;nn&quot;&gt;#logo&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-   &lt;span class=&quot;na&quot;&gt;background-image&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;sx&quot;&gt;url(&amp;#39;/images/example.jpg&amp;#39;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;@media&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;all&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-webkit-min-device-pixel-ratio&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;.5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-   &lt;span class=&quot;nn&quot;&gt;#logo&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;background-image&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;sx&quot;&gt;url(&amp;#39;/images/exampe@2x.jpg&amp;#39;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;background-size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 </content>
 
  </entry>
  
  <entry>
    <title>Sass Sticky Footer Mixin</title>
-   <link href="http://localhost:4000/sass/2012/07/31/sass-sticky-footer-mixin.html"/>
+   <link href="http://docs.tinyfactory.co/sass/2012/07/31/sass-sticky-footer-mixin.html"/>
    <updated>2012-07-31T00:00:00-07:00</updated>
-   <id>http://localhost:4000/sass/2012/07/31/sass-sticky-footer-mixin</id>
+   <id>http://docs.tinyfactory.co/sass/2012/07/31/sass-sticky-footer-mixin</id>
    
    <author>
    	<name>Michael Sacca</name>
    	<email>michael.sacca@gmail.com</email>
    </author>
-   <content type="html">&lt;p&gt;Compass has a really nice &lt;a href=&quot;http://compass-style.org/reference/compass/layout/sticky_footer/&quot;&gt;sticky footer&lt;/a&gt; mixin built into the library but we&amp;#39;ve been writing our own site in vanilla SASS so I converted an out of date SASS mixin to it&amp;#39;s current syntax.&lt;/p&gt;
+   <content type="html">&lt;p&gt;Compass has a really nice &lt;a href=&quot;http://compass-style.org/reference/compass/layout/sticky_footer/&quot;&gt;sticky footer&lt;/a&gt; mixin built into the library but we've been writing our own site in vanilla SASS so I converted an out of date SASS mixin to it's current syntax.&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;sass&quot;&gt;&lt;span class=&quot;nf&quot;&gt;=sticky-footer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$footer_height&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$root_selector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;#root&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$root_footer_selector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;#root_footer&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$footer_selector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;#footer&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;html&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;:height&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;%&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;body&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;:height&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;%&lt;/span&gt;
-  &lt;span class=&quot;nn&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;root_selector&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;:min-height&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;%&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;:margin-bottom&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$footer_height&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;nn&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;root_footer_selector&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;:height&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$footer_height&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;nn&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;footer_selector&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;:clear&lt;/span&gt;            &lt;span class=&quot;no&quot;&gt;both&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;:position&lt;/span&gt;         &lt;span class=&quot;no&quot;&gt;relative&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;:height&lt;/span&gt;          &lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$footer_height&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 </content>
 
  </entry>
  
  <entry>
    <title>Compass Placeholder Text Mixin</title>
-   <link href="http://localhost:4000/compass/2012/07/31/Compass-Placeholder-Text-Mixin.html"/>
+   <link href="http://docs.tinyfactory.co/compass/2012/07/31/Compass-Placeholder-Text-Mixin.html"/>
    <updated>2012-07-31T00:00:00-07:00</updated>
-   <id>http://localhost:4000/compass/2012/07/31/Compass-Placeholder-Text-Mixin</id>
+   <id>http://docs.tinyfactory.co/compass/2012/07/31/Compass-Placeholder-Text-Mixin</id>
    
    <author>
    	<name>Michael Sacca</name>
@@ -811,258 +774,163 @@ DPI: at least 72 DPI&lt;/p&gt;
 
 &lt;p&gt;Syntax:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scss&quot;&gt;    &lt;span class=&quot;k&quot;&gt;@mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; input-placeholder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;.placeholder&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;moz-placeholder&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;webkit-input-placeholder&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 
 &lt;p&gt;Steps:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;1.  Add the .input-placeholder() mixin from _placeholderText.scss to your compass stylesheet (or reference it in an @import statement)
+
+&lt;pre&gt;&lt;code&gt;1.  Add the .input-placeholder() mixin from _placeholderText.scss to your compass stylesheet (or reference it in an @import statement)
 2.  In your stylesheet, call the .input-placeholder() mixin anywhere you want to style your placeholder text
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scss&quot;&gt;            &lt;span class=&quot;nc&quot;&gt;.inputCls&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-              &lt;span class=&quot;k&quot;&gt;@include&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt; input-placeholder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;#ccc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; 
-            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;Will compile to: 
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Will compile to: 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scss&quot;&gt;              &lt;span class=&quot;nc&quot;&gt;.inputCls&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:placeholder&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#cccccc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-              &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-              &lt;span class=&quot;na&quot;&gt;.inputCls&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;moz-placeholder&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#cccccc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-              &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-              &lt;span class=&quot;na&quot;&gt;.inputCls&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;webkit-input-placeholder&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#cccccc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-              &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 </content>
 
  </entry>
  
  <entry>
    <title>Generate An Icon Font</title>
-   <link href="http://localhost:4000/design/2012/07/27/generate-an-icon-font.html"/>
+   <link href="http://docs.tinyfactory.co/design/2012/07/27/generate-an-icon-font.html"/>
    <updated>2012-07-27T00:00:00-07:00</updated>
-   <id>http://localhost:4000/design/2012/07/27/generate-an-icon-font</id>
+   <id>http://docs.tinyfactory.co/design/2012/07/27/generate-an-icon-font</id>
    
    <author>
    	<name>Aaron Wade</name>
    	<email>hi@areuswade.com</email>
    </author>
-   <content type="html">&lt;p&gt;We&amp;#39;re going to use an awesome tool called &lt;a href=&quot;https://github.com/averyvery/hieroglyph&quot;&gt;Hieroglyph&lt;/a&gt;. There&amp;#39;s already a pretty intuitive readme file in the repo, but I hope to elaborate a little more on what was provided.&lt;/p&gt;
+   <content type="html">&lt;p&gt;We're going to use an awesome tool called &lt;a href=&quot;https://github.com/averyvery/hieroglyph&quot;&gt;Hieroglyph&lt;/a&gt;. There's already a pretty intuitive readme file in the repo, but I hope to elaborate a little more on what was provided.&lt;/p&gt;
 
-&lt;h4 id=&quot;toc_213&quot;&gt;Installing Hieroglyph&lt;/h4&gt;
+&lt;h4&gt;Installing Hieroglyph&lt;/h4&gt;
 
 &lt;p&gt;Open up &lt;strong&gt;Terminal&lt;/strong&gt; and type &lt;code&gt;gem install hieroglyph&lt;/code&gt;. If for some reason you get an error and/or the install fails, update RubyGems by entering &lt;code&gt;sudo gem update --system&lt;/code&gt; into Terminal, then give it another shot. You can test to see if it works by simply entering &lt;code&gt;hieroglyph&lt;/code&gt; in terminal to generate an empty, dummy font.&lt;/p&gt;
 
 &lt;p&gt;You should get output similar to this:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;console&quot;&gt;&lt;span class=&quot;go&quot;&gt;~/Desktop » hieroglyph&lt;/span&gt;
 
-&lt;span class=&quot;go&quot;&gt;Setup:&lt;/span&gt;
-&lt;span class=&quot;go&quot;&gt;  ImageMagick not detected - skipping character sheet&lt;/span&gt;
+&lt;p&gt;``` bash
+~/Desktop » hieroglyph&lt;/p&gt;
 
-&lt;span class=&quot;go&quot;&gt;Reading glyphs:&lt;/span&gt;
+&lt;p&gt;Setup:
+  ImageMagick not detected - skipping character sheet&lt;/p&gt;
 
-&lt;span class=&quot;go&quot;&gt;Done!&lt;/span&gt;
-&lt;span class=&quot;go&quot;&gt;  MyFont generated saved to /Users/Aaron/Desktop/MyFont.svg&lt;/span&gt;
-&lt;span class=&quot;go&quot;&gt;  Single characters: &lt;/span&gt;
-&lt;span class=&quot;go&quot;&gt;  Unicode characters: &lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;p&gt;Reading glyphs:&lt;/p&gt;
+
+&lt;p&gt;Done!
+  MyFont generated saved to /Users/Aaron/Desktop/MyFont.svg
+  Single characters: 
+  Unicode characters: 
+```&lt;/p&gt;
 
 &lt;p&gt;Then just delete the dummy SVG file, in my case, on my Desktop.&lt;/p&gt;
 
-&lt;h4 id=&quot;toc_214&quot;&gt;Getting your icons ready&lt;/h4&gt;
+&lt;h4&gt;Getting your icons ready&lt;/h4&gt;
 
 &lt;p&gt;Open up Illustrator and create a new document sized &lt;strong&gt;1000pt x 1000pt&lt;/strong&gt;. We need to make sure that the icons are centered, and relatively the same size. Drag a horizontal guide so it sits &lt;strong&gt;250 points&lt;/strong&gt; from the top of the canvas. You can set this easily by dragging out a guide, then in your Illustrator toolbar setting the &lt;strong&gt;Y value&lt;/strong&gt; to 250. You should also drag out a vertical rule with the &lt;strong&gt;X value&lt;/strong&gt; of 500 so you have a vertical center showing.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://docs.tinyfactory.co/images/assets/toolbar.png&quot; alt=&quot;Illustrator Toolbar&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://docs.tinyfactory.co/images/assets/toolbar.png&quot; alt=&quot;Illustrator Toolbar&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://docs.tinyfactory.co/images/assets/twitter-ss.png&quot; alt=&quot;Twitter icon mapped to T key&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://docs.tinyfactory.co/images/assets/twitter-ss.png&quot; alt=&quot;Twitter icon mapped to T key&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://docs.tinyfactory.co/images/downloads/icon.zip&quot; class=&quot;button&quot;&gt;Download Icon Template&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Important:&lt;/strong&gt; Make sure your icon is a compound path. If your canvas has more than one shape, it will cause issues with the font generation. You can make it a compound path by selecting all the shapes in the icon, and pressing &lt;strong&gt;CMD + 8&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;h4 id=&quot;toc_215&quot;&gt;Saving &amp;amp; Naming Convetion&lt;/h4&gt;
+&lt;h4&gt;Saving &amp;amp; Naming Convetion&lt;/h4&gt;
 
-&lt;p&gt;Save your files as SVGs. Name them &lt;em&gt;[key]-icon-name.svg&lt;/em&gt;. If you downloaded the template, you&amp;#39;ll notice it&amp;#39;s named [t]-twitter.svg. This will map the icon to the T key when our font is generated.&lt;/p&gt;
+&lt;p&gt;Save your files as SVGs. Name them &lt;em&gt;[key]-icon-name.svg&lt;/em&gt;. If you downloaded the template, you'll notice it's named [t]-twitter.svg. This will map the icon to the T key when our font is generated.&lt;/p&gt;
 
-&lt;h4 id=&quot;toc_216&quot;&gt;Font Generation&lt;/h4&gt;
+&lt;h4&gt;Font Generation&lt;/h4&gt;
 
-&lt;p&gt;I&amp;#39;ve saved all my icons into a folder on my Desktop called &lt;strong&gt;glyphs&lt;/strong&gt;. Go back into Terminal and browse to your Desktop by typing &lt;code&gt;cd ~/Desktop&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;I've saved all my icons into a folder on my Desktop called &lt;strong&gt;glyphs&lt;/strong&gt;. Go back into Terminal and browse to your Desktop by typing &lt;code&gt;cd ~/Desktop&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;Once we&amp;#39;re there we can run &lt;code&gt;hieroglyph -n FontName -g path/to/glyphs -o destination/path&lt;/code&gt;.&lt;br&gt;
-Or if you&amp;#39;ve setup everything the way I have &lt;code&gt;hieroglyph -n Icons -g glyphs&lt;/code&gt; will generate the font on your desktop.&lt;/p&gt;
+&lt;p&gt;Once we're there we can run &lt;code&gt;hieroglyph -n FontName -g path/to/glyphs -o destination/path&lt;/code&gt;.&lt;br&gt;
+Or if you've setup everything the way I have &lt;code&gt;hieroglyph -n Icons -g glyphs&lt;/code&gt; will generate the font on your desktop.&lt;/p&gt;
 
-&lt;p&gt;Your output will change depending on how many icons you&amp;#39;ve generated, but mine reads:&lt;/p&gt;
+&lt;p&gt;Your output will change depending on how many icons you've generated, but mine reads:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;console&quot;&gt;&lt;span class=&quot;go&quot;&gt;~/Desktop » hieroglyph -n Icons -g glyphs/&lt;/span&gt;
-&lt;span class=&quot;go&quot;&gt;  &lt;/span&gt;
-&lt;span class=&quot;go&quot;&gt;Setup:&lt;/span&gt;
-&lt;span class=&quot;go&quot;&gt;  ImageMagick not detected - skipping character sheet&lt;/span&gt;
-&lt;span class=&quot;go&quot;&gt;  &lt;/span&gt;
-&lt;span class=&quot;go&quot;&gt;Reading glyphs:&lt;/span&gt;
-&lt;span class=&quot;go&quot;&gt;  Parsing 1&lt;/span&gt;
-&lt;span class=&quot;go&quot;&gt;  Parsing 2&lt;/span&gt;
-&lt;span class=&quot;go&quot;&gt;  Parsing 3&lt;/span&gt;
-&lt;span class=&quot;go&quot;&gt;  Parsing 4&lt;/span&gt;
-&lt;span class=&quot;go&quot;&gt;  Parsing 5&lt;/span&gt;
-&lt;span class=&quot;go&quot;&gt;  Parsing 6&lt;/span&gt;
-&lt;span class=&quot;go&quot;&gt;  Parsing 7&lt;/span&gt;
-&lt;span class=&quot;go&quot;&gt;  Parsing 8&lt;/span&gt;
-&lt;span class=&quot;go&quot;&gt;  Parsing 9&lt;/span&gt;
-&lt;span class=&quot;go&quot;&gt;  &lt;/span&gt;
-&lt;span class=&quot;go&quot;&gt;Done!&lt;/span&gt;
-&lt;span class=&quot;go&quot;&gt;  Icons generated saved to /Users/Aaron/Desktop/Icons.svg&lt;/span&gt;
-&lt;span class=&quot;go&quot;&gt;  Single characters: 1,2,3,4,5,6,7,8,9&lt;/span&gt;
-&lt;span class=&quot;go&quot;&gt;  Unicode characters: &lt;/span&gt;
-&lt;span class=&quot;go&quot;&gt;  &lt;/span&gt;
-&lt;span class=&quot;go&quot;&gt;  To create a full set of webfonts, upload to http://www.fontsquirrel.com/fontface/generator&lt;/span&gt;
-&lt;span class=&quot;go&quot;&gt;  If you&amp;#39;re having trouble uploading SVGs, try converting to a TTF first using &lt;/span&gt;
-&lt;span class=&quot;go&quot;&gt;  http://www.freefontconverter.com&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 
-&lt;p&gt;Now that you&amp;#39;ve got your font in an SVG format, go ahead and run your new font through &lt;a href=&quot;http://www.fontsquirrel.com/fontface/generator&quot;&gt;this font-face generator&lt;/a&gt; to get the other @font-face formats. Also make sure that you&amp;#39;ve clicked &lt;strong&gt;Expert&lt;/strong&gt;  and selected the custom subsetting option in the font-squirrel interface. If you&amp;#39;re ballin&amp;#39; out of control, you might use &lt;a href=&quot;http://www.fontgear.net/fontxchange.html&quot;&gt;FontXChange&lt;/a&gt; to generate the different formats instead.&lt;/p&gt;
+&lt;p&gt;Now that you've got your font in an SVG format, go ahead and run your new font through &lt;a href=&quot;http://www.fontsquirrel.com/fontface/generator&quot;&gt;this font-face generator&lt;/a&gt; to get the other @font-face formats. Also make sure that you've clicked &lt;strong&gt;Expert&lt;/strong&gt;  and selected the custom subsetting option in the font-squirrel interface. If you're ballin' out of control, you might use &lt;a href=&quot;http://www.fontgear.net/fontxchange.html&quot;&gt;FontXChange&lt;/a&gt; to generate the different formats instead.&lt;/p&gt;
 
-&lt;h4 id=&quot;toc_217&quot;&gt;In Conclusion&lt;/h4&gt;
+&lt;h4&gt;In Conclusion&lt;/h4&gt;
 
-&lt;p&gt;Now you&amp;#39;re ready to embed those files into your stylesheet and start serving some icons!&lt;/p&gt;
+&lt;p&gt;Now you're ready to embed those files into your stylesheet and start serving some icons!&lt;/p&gt;
 
-&lt;p&gt;If you really want to do it up proper, &lt;a href=&quot;https://github.com/blog/1135-the-making-of-octicons&quot;&gt;GitHub&amp;#39;s post about Octicons&lt;/a&gt; goes through their process in great detail.&lt;/p&gt;
+&lt;p&gt;If you really want to do it up proper, &lt;a href=&quot;https://github.com/blog/1135-the-making-of-octicons&quot;&gt;GitHub's post about Octicons&lt;/a&gt; goes through their process in great detail.&lt;/p&gt;
 
-&lt;p&gt;If this is too much for you, fortunately there are tons of great services out there right now that really make this easier. There is the newly created &lt;a href=&quot;http://symbolset.com/&quot;&gt;Symbolset&lt;/a&gt;, which is a font of icons that advocates way better semantics than I&amp;#39;ve shown above. The &lt;a href=&quot;http://pictos.cc/font/&quot;&gt;Pictos font&lt;/a&gt; has a pretty wide array of icons, &lt;a href=&quot;http://pictos.cc/server/&quot;&gt;Pictos Server&lt;/a&gt; and &lt;a href=&quot;https://www.shifticons.com/&quot;&gt;Shifticons&lt;/a&gt; which are both damn fine services for doing this a lot faster.&lt;/p&gt;
+&lt;p&gt;If this is too much for you, fortunately there are tons of great services out there right now that really make this easier. There is the newly created &lt;a href=&quot;http://symbolset.com/&quot;&gt;Symbolset&lt;/a&gt;, which is a font of icons that advocates way better semantics than I've shown above. The &lt;a href=&quot;http://pictos.cc/font/&quot;&gt;Pictos font&lt;/a&gt; has a pretty wide array of icons, &lt;a href=&quot;http://pictos.cc/server/&quot;&gt;Pictos Server&lt;/a&gt; and &lt;a href=&quot;https://www.shifticons.com/&quot;&gt;Shifticons&lt;/a&gt; which are both damn fine services for doing this a lot faster.&lt;/p&gt;
 </content>
 
  </entry>
  
  <entry>
    <title>Setting Up Node Forever</title>
-   <link href="http://localhost:4000/node.js/2012/07/26/setting-up-node-forever.html"/>
+   <link href="http://docs.tinyfactory.co/node.js/2012/07/26/setting-up-node-forever.html"/>
    <updated>2012-07-26T00:00:00-07:00</updated>
-   <id>http://localhost:4000/node.js/2012/07/26/setting-up-node-forever</id>
+   <id>http://docs.tinyfactory.co/node.js/2012/07/26/setting-up-node-forever</id>
    
    <author>
    	<name>Justen Palmer</name>
    	<email>artichokeworld@gmail.com</email>
    </author>
-   <content type="html">&lt;h3 id=&quot;toc_211&quot;&gt;Keep a node server running&lt;/h3&gt;
+   <content type="html">&lt;h3&gt;Keep a node server running&lt;/h3&gt;
 
 &lt;p&gt;Download the CLI tool from: 
 &lt;a href=&quot;https://github.com/nodejitsu/forever/&quot;&gt;https://github.com/nodejitsu/forever/&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Use&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;sudo su
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 
-&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; ~/.bash_profile
+&lt;h3&gt;Installation&lt;/h3&gt;
 
-forever list
-
-forever stopall
-
-&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /servers/live &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Or path to server.js&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-
-forever start server.js
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;toc_212&quot;&gt;Installation&lt;/h3&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;sudo su
-
-vim ~/.bash_profile
-
-insert into .bash_profile
-
-&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;:/opt/node/bin
-
-&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; ~/.bash_profile
-
-npm install forever -g
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 </content>
 
  </entry>
  
  <entry>
    <title>Mysql Setup On Aws Centos</title>
-   <link href="http://localhost:4000/centos/2012/07/26/MySql-Setup-on-AWS-CentOS.html"/>
+   <link href="http://docs.tinyfactory.co/centos/2012/07/26/MySql-Setup-on-AWS-CentOS.html"/>
    <updated>2012-07-26T00:00:00-07:00</updated>
-   <id>http://localhost:4000/centos/2012/07/26/MySql-Setup-on-AWS-CentOS</id>
+   <id>http://docs.tinyfactory.co/centos/2012/07/26/MySql-Setup-on-AWS-CentOS</id>
    
    <author>
    	<name>Alex Rolek</name>
    	<email>a.rolek@gmail.com</email>
    </author>
    <content type="html">&lt;ol&gt;
-&lt;li&gt;Install mysql and the server&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Install mysql and the server
+Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Start the mysql server
+Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Set the initial root password
+Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Login to MySQL as root
+Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Create new MySQL user and grant them permissions on all databases
+Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Create a new database
+Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;yum install -y mysql mysql-server
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Start the mysql server&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;service mysqld start
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Set the initial root password&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;/usr/bin/mysqladmin -u root password &lt;span class=&quot;s1&quot;&gt;&amp;#39;new-password&amp;#39;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Login to MySQL as root&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;mysql -u root -p
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Create new MySQL user and grant them permissions on all databases&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;GRANT ALL PRIVILEGES ON *.* TO &lt;span class=&quot;s1&quot;&gt;&amp;#39;monty&amp;#39;&lt;/span&gt;@&lt;span class=&quot;s1&quot;&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt; IDENTIFIED BY &lt;span class=&quot;s1&quot;&gt;&amp;#39;some_pass&amp;#39;&lt;/span&gt; WITH GRANT OPTION;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Create a new database&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;create database database_name
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 </content>
 
  </entry>
  
  <entry>
    <title>Setup Nodejs Environment On Ec2</title>
-   <link href="http://localhost:4000/node.js/2012/07/18/setup-nodejs-environment-on-ec2.html"/>
+   <link href="http://docs.tinyfactory.co/node.js/2012/07/18/setup-nodejs-environment-on-ec2.html"/>
    <updated>2012-07-18T00:00:00-07:00</updated>
-   <id>http://localhost:4000/node.js/2012/07/18/setup-nodejs-environment-on-ec2</id>
+   <id>http://docs.tinyfactory.co/node.js/2012/07/18/setup-nodejs-environment-on-ec2</id>
    
    <author>
    	<name>Justen Palmer</name>
    	<email>artichokeworld@gmail.com</email>
    </author>
-   <content type="html">&lt;h2 id=&quot;toc_207&quot;&gt;Create the EC2 Instance&lt;/h2&gt;
+   <content type="html">&lt;h2&gt;Create the EC2 Instance&lt;/h2&gt;
 
 &lt;ol&gt;
 &lt;li&gt;Login to &lt;a href=&quot;http://aws.amazon.com/&quot;&gt;aws.amazon.com&lt;/a&gt;&lt;/li&gt;
@@ -1076,28 +944,14 @@ npm install forever -g
 &lt;li&gt;Give the instance a name&lt;/li&gt;
 &lt;li&gt;Download the ssh key&lt;/li&gt;
 &lt;li&gt;Move key to your local ~/.ssh/ directory&lt;/li&gt;
-&lt;li&gt;Change permissions on key to 600: &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;chmod 600 ~/.ssh/&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;filename&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.pem
-    
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;ol&gt;
-&lt;li&gt;In EC2 setup a security group with the following open ports:&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;Port 22 &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;ssh
-    Port 80 &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;http traffic
-    Port 8080 &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;socket traffic
-    
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;ol&gt;
+&lt;li&gt;Change permissions on key to 600: 
+Liquid error: No such file or directory - posix_spawnp&lt;/li&gt;
+&lt;li&gt;In EC2 setup a security group with the following open ports:
+Liquid error: No such file or directory - posix_spawnp&lt;/li&gt;
 &lt;li&gt;Launch the instance&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&quot;toc_208&quot;&gt;Associate an IP with your EC2 instance&lt;/h2&gt;
+&lt;h2&gt;Associate an IP with your EC2 instance&lt;/h2&gt;
 
 &lt;ol&gt;
 &lt;li&gt;Under &lt;strong&gt;Networking and Security&lt;/strong&gt; select &lt;strong&gt;Elastic IPs&lt;/strong&gt;&lt;/li&gt;
@@ -1105,106 +959,41 @@ npm install forever -g
 &lt;li&gt;Ensure EC2 is selected and click &lt;strong&gt;Yes&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;Select the newly created IP and click on the &lt;strong&gt;Associate Address&lt;/strong&gt; button&lt;/li&gt;
 &lt;li&gt;Select the EC2 instance&lt;/li&gt;
-&lt;li&gt;Copy the IP Address (You&amp;#39;ll need it later)&lt;/li&gt;
+&lt;li&gt;Copy the IP Address (You'll need it later)&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&quot;toc_209&quot;&gt;Connect to the New Instance&lt;/h2&gt;
+&lt;h2&gt;Connect to the New Instance&lt;/h2&gt;
 
 &lt;ol&gt;
-&lt;li&gt;Connect with:&lt;/li&gt;
+&lt;li&gt;Connect with:
+Liquid error: No such file or directory - posix_spawnp&lt;/li&gt;
+&lt;li&gt;Add public key to to the authorized_keys file for passwordless ssh login 
+Liquid error: No such file or directory - posix_spawnp&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Install development tools group for compiling:
+Liquid error: No such file or directory - posix_spawnp &lt;/li&gt;
+&lt;li&gt;Install ssl support for node with: 
+Liquid error: No such file or directory - posix_spawnp &lt;/li&gt;
+&lt;li&gt;Download Node.js repo and checkout a version to install
+Liquid error: No such file or directory - posix_spawnp&lt;/li&gt;
+&lt;li&gt; Configure, make and install Node.js
+Liquid error: No such file or directory - posix_spawnp&lt;/li&gt;
+&lt;li&gt; Setup Node.js environment varibales
+Liquid error: No such file or directory - posix_spawnp&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt; Change permissions on node directory
+Liquid error: No such file or directory - posix_spawnp&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt; Confirm we have a successfull install:
+Liquid error: No such file or directory - posix_spawnp&lt;br /&gt;
+###Congrats!  Node.js is installed!  What's next?  You can install mongodb or setup a git repo on the server to really get developing.&lt;/li&gt;
 &lt;/ol&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ssh -i ~/.ssh/keyname.pem ec2-user@the-ip-address-for-the-instance
-    
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Add public key to to the authorized_keys file for passwordless ssh login &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;sudo vim ~/.ssh/authorized_keys
-    
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-    
-
-&lt;ol&gt;
-&lt;li&gt;Install development tools group for compiling:&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;sudo yum groupinstall &lt;span class=&quot;s2&quot;&gt;&amp;quot;Development Tools&amp;quot;&lt;/span&gt;
-    
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
- 
-
-&lt;ol&gt;
-&lt;li&gt;Install ssl support for node with: &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;sudo yum install openssl-devel
-    
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
- 
-
-&lt;ol&gt;
-&lt;li&gt;Download Node.js repo and checkout a version to install&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;sudo mkdir /downloads
-    &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /downloads
-    &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;sudo git clone --depth 1 git://github.com/joyent/node.git
-    &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;node
-    &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;sudo git checkout v0.6.10 //replace version with most recent stable version
-    
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;ol&gt;
-&lt;li&gt; Configure, make and install Node.js&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;sudo ./configure --prefix&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/opt/node
-    &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;sudo make -j2
-    &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;sudo make install
-    
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;ol&gt;
-&lt;li&gt; Setup Node.js environment varibales&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;:/opt/node/bin &amp;gt;&amp;gt; ~/.bash_profile
-    &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; ~/.bash_profile
-    
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-   
-
-&lt;ol&gt;
-&lt;li&gt; Change permissions on node directory&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;sudo chown -R ec2-user:ec2-user /opt/node
-    
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-   
-
-&lt;ol&gt;
-&lt;li&gt; Confirm we have a successfull install:&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;node -v
-    
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-   
-
-&lt;h3 id=&quot;toc_210&quot;&gt;Congrats!  Node.js is installed!  What&amp;#39;s next?  You can install mongodb or setup a git repo on the server to really get developing.&lt;/h3&gt;
 </content>
 
  </entry>
  
  <entry>
    <title>Git Branching</title>
-   <link href="http://localhost:4000/git/2012/07/10/git-branching.html"/>
+   <link href="http://docs.tinyfactory.co/git/2012/07/10/git-branching.html"/>
    <updated>2012-07-10T00:00:00-07:00</updated>
-   <id>http://localhost:4000/git/2012/07/10/git-branching</id>
+   <id>http://docs.tinyfactory.co/git/2012/07/10/git-branching</id>
    
    <author>
    	<name>Michael Sacca</name>
@@ -1212,75 +1001,58 @@ npm install forever -g
    </author>
    <content type="html">&lt;p&gt;To create a new branch locally&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git checkout -b &lt;span class=&quot;s2&quot;&gt;&amp;quot;new-branch-name&amp;quot;&lt;/span&gt;
-Switched to a new branch &lt;span class=&quot;s2&quot;&gt;&amp;quot;new-branch-name&amp;quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 
 &lt;p&gt;To create a new local branch from a remote branch&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git checkout -b new-branch-name origin/remote-branch-name
-Switched to a new branch &lt;span class=&quot;s2&quot;&gt;&amp;quot;new-branch-name&amp;quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 
 &lt;p&gt;Push a New Local Branch to a Remote Git Repo&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git push origin new-branch-name
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 
 &lt;p&gt;To view your local branches&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git branch
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 
 &lt;p&gt;To view all branches (local and remote)&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git branch -a
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 
 &lt;p&gt;To view all remote branches &lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git branch -r
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 
-&lt;p&gt;To merge a branch check out the branch you&amp;#39;d like to merge to and run&lt;/p&gt;
+&lt;p&gt;To merge a branch check out the branch you'd like to merge to and run&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git checkout master
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git merge new-branch-name
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 
 &lt;p&gt;To push all local changes to remote&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git push origin
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 
 &lt;p&gt;To push local changes for a specific repo&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git push origin master
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 
-&lt;p&gt;To delete a local branch&lt;/p&gt;
+&lt;p&gt;To delete a local branch
+Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git branch -D branch-name
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;To delete a remote branch&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git push origin --delete branch-name
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;To delete a remote branch
+Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 
 &lt;p&gt;View GUI of merges&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;gitk
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 </content>
 
  </entry>
  
  <entry>
    <title>Changing the head on a Git Repo</title>
-   <link href="http://localhost:4000/git/2012/07/09/changing-the-head-pointer-on-a-git-repoistory.html"/>
+   <link href="http://docs.tinyfactory.co/git/2012/07/09/changing-the-head-pointer-on-a-git-repoistory.html"/>
    <updated>2012-07-09T00:00:00-07:00</updated>
-   <id>http://localhost:4000/git/2012/07/09/changing-the-head-pointer-on-a-git-repoistory</id>
+   <id>http://docs.tinyfactory.co/git/2012/07/09/changing-the-head-pointer-on-a-git-repoistory</id>
    
    <author>
    	<name>Michael Sacca</name>
@@ -1290,27 +1062,19 @@ Switched to a new branch &lt;span class=&quot;s2&quot;&gt;&amp;quot;new-branch-n
 
 &lt;p&gt;Check what remote branches are available: &lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;git branch -r
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 
 &lt;p&gt;The output will look like:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;origin/HEAD -&amp;gt; origin/master
-origin/dev
-origin/master
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 
 &lt;p&gt;Notice &lt;code&gt;origin/HEAD -&amp;gt; orgin/master&lt;/code&gt;.  When you issue a &lt;code&gt;git clone&lt;/code&gt; on this repository you will get the master branch by default.  If want to change this to the dev branch we also have in our remote repository, issue the following command&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;git remote &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;-head origin dev
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 
 &lt;p&gt;To confirm the change took, run &lt;code&gt;git branch -r&lt;/code&gt; and review our output:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;origin/HEAD -&amp;gt; origin/dev
-origin/dev
-origin/master
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;origin/HEAD -&amp;gt; orgin/dev&lt;/code&gt; is pointing to our dev branch.&lt;/p&gt;
 </content>
@@ -1319,89 +1083,34 @@ origin/master
  
  <entry>
    <title>Setup Vsftp On Aws Centos</title>
-   <link href="http://localhost:4000/centos/2012/07/08/setup-vsftp-on-aws-centos.html"/>
+   <link href="http://docs.tinyfactory.co/centos/2012/07/08/setup-vsftp-on-aws-centos.html"/>
    <updated>2012-07-08T00:00:00-07:00</updated>
-   <id>http://localhost:4000/centos/2012/07/08/setup-vsftp-on-aws-centos</id>
+   <id>http://docs.tinyfactory.co/centos/2012/07/08/setup-vsftp-on-aws-centos</id>
    
    <author>
    	<name>Alex Rolek</name>
    	<email>a.rolek@gmail.com</email>
    </author>
    <content type="html">&lt;ol&gt;
-&lt;li&gt;Install &lt;strong&gt;vsftpd&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Install &lt;strong&gt;vsftpd&lt;/strong&gt;
+Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Open up the config file 
+Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Add the following lines to the end of &lt;strong&gt;vsftpd.conf&lt;/strong&gt;
+Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Open up the following &lt;strong&gt;ports&lt;/strong&gt; at the security group within &lt;strong&gt;AWS&lt;/strong&gt;
+Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Restart the &lt;strong&gt;vsftpd&lt;/strong&gt; server
+Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Add new user to server for login
+Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Give user a password so they can login
+Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Add entry to auto start &lt;strong&gt;vsftpd&lt;/strong&gt; on server restart
+Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Bonus - if you want to have a user’s files uploaded to an EBS mount, symlink from the FTP user’s directory to the EBS mount
+Liquid error: No such file or directory - posix_spawnp&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;yum install vsftpd -y
-    
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Open up the config file &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;vim /etc/vsftpd/vsftpd.conf
-    
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Add the following lines to the end of &lt;strong&gt;vsftpd.conf&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;pasv_enable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;YES
-    &lt;span class=&quot;nv&quot;&gt;pasv_min_port&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1400 ← port range to be opened at the security group
-    &lt;span class=&quot;nv&quot;&gt;pasv_max_port&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1500
-    &lt;span class=&quot;nv&quot;&gt;pasv_address&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;23.21.148.84 ← server IP
-    
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Open up the following &lt;strong&gt;ports&lt;/strong&gt; at the security group within &lt;strong&gt;AWS&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;21 ← default FTP connection port
-    1400-1500 ← passive port range &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;in vsftpd.con
-    
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Restart the &lt;strong&gt;vsftpd&lt;/strong&gt; server&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;sudo service vsftpd restart
-    
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Add new user to server for login&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;sudo adduser &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;username&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-    
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Give user a password so they can login&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;sudo passwd &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;username&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-    
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Add entry to auto start &lt;strong&gt;vsftpd&lt;/strong&gt; on server restart&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;sudo chkconfig vsftpd on 
-    
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Bonus - if you want to have a user’s files uploaded to an EBS mount, symlink from the FTP user’s directory to the EBS mount&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;ln -s &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt;-file/folder&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;link-name&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-    
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 </content>
 
  </entry>

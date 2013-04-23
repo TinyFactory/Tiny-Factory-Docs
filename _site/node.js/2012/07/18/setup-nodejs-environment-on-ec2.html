@@ -4,7 +4,7 @@
     <title>Setup Nodejs Environment On Ec2 - Tiny Factory Docs</title>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" media="screen" href="http://localhost:4000/css/screen.css" type="text/css" />
+    <link rel="stylesheet" media="screen" href="http://docs.tinyfactory.co/css/screen.css" type="text/css" />
     
     
     <!-- google analytics async -->
@@ -26,7 +26,7 @@
   <body>
       <header>
         <div id="logo">
-          <a href="http://localhost:4000"><img src="http://localhost:4000/images/logo.png" alt="Tiny Factory"/></a>
+          <a href="http://docs.tinyfactory.co"><img src="http://docs.tinyfactory.co/images/logo.png" alt="Tiny Factory"/></a>
         </div><!-- logo -->
   
         <nav class="mobile-nav">
@@ -35,7 +35,7 @@
             
           
             
-              <a href="http://localhost:4000/jobs.html">Jobs</a>
+              <a href="http://docs.tinyfactory.co/jobs.html">Jobs</a>
             
           
         </nav>
@@ -44,7 +44,7 @@
             <div id="container" class="single">
 
   <div id="sidebar">
-    <div class="side-logo"><a href="http://localhost:4000"><img src="http://localhost:4000/images/logo.png" alt=""></a></div>
+    <div class="side-logo"><a href="http://docs.tinyfactory.co"><img src="http://docs.tinyfactory.co/images/logo.png" alt=""></a></div>
       <div class="item">
         <h3>Contribute</h3>
         <div class="github-buttons">
@@ -57,12 +57,12 @@
       <div class="item">
         <h3>Documentation</h3>
         <ul>
-          <li><a href="http://localhost:4000">Home</a></li>
+          <li><a href="http://docs.tinyfactory.co">Home</a></li>
           
             
           
             
-              <li><a href="http://localhost:4000/jobs.html">Jobs</a></li>
+              <li><a href="http://docs.tinyfactory.co/jobs.html">Jobs</a></li>
             
           
         </ul>
@@ -74,7 +74,11 @@
           
           
             
+              
+            
           
+          
+            <li><a href="http://docs.tinyfactory.co/node.js/2013/01/14/Amazon-Cloudfront-API-Authorization-and-Invalidation-with-Node.js.html">Amazon Cloudfront Api Authorization And Invalidation With Node.js</a></li>
                                  
         
           
@@ -138,15 +142,15 @@
         <h3>Most Recent</h3>
         <ul class="posts">
           
-            <li><a href="http://localhost:4000/jquery/2012/12/18/HTML5-Placeholder-In-ie7-and-ie8-fix.html">HTML5 Placeholder in IE7 and IE8 fix</a></li>
+            <li><a href="http://docs.tinyfactory.co/node.js/2013/01/14/Amazon-Cloudfront-API-Authorization-and-Invalidation-with-Node.js.html">Amazon Cloudfront Api Authorization And Invalidation With Node.js</a></li>
           
-            <li><a href="http://localhost:4000/design/2012/10/03/ios-store-submission-checklist.html">iOS Store Submission Checklist</a></li>
+            <li><a href="http://docs.tinyfactory.co/centos/2013/01/11/formatting-partitioning-and-mounting-drives-on-cent-os.html">Formatting, Partitioning, and Mounting Drives on CentOS</a></li>
           
-            <li><a href="http://localhost:4000/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile.html">Google Play Store Submission Checklist Mobile</a></li>
+            <li><a href="http://docs.tinyfactory.co/jquery/2012/12/18/HTML5-Placeholder-In-ie7-and-ie8-fix.html">HTML5 Placeholder in IE7 and IE8 fix</a></li>
           
-            <li><a href="http://localhost:4000/less/2012/09/20/text-overflow-ellipsis-using-LESS.html">Text Overflow Ellipsis Using Less</a></li>
+            <li><a href="http://docs.tinyfactory.co/design/2012/10/03/ios-store-submission-checklist.html">iOS Store Submission Checklist</a></li>
           
-            <li><a href="http://localhost:4000/less/2012/09/20/LESS-placeholder-text-mixin.html">Less Placeholder Text Mixin</a></li>
+            <li><a href="http://docs.tinyfactory.co/design/2012/10/03/Google-Play-Store-Submission-Checklist-Mobile.html">Google Play Store Submission Checklist Mobile</a></li>
           
         </ul>
       </div>
@@ -155,7 +159,7 @@
       <article>
           <div class="entry">
             <h1>Setup Nodejs Environment On Ec2</h1>
-            <h2 id="toc_207">Create the EC2 Instance</h2>
+            <h2>Create the EC2 Instance</h2>
 
 <ol>
 <li>Login to <a href="http://aws.amazon.com/">aws.amazon.com</a></li>
@@ -169,28 +173,14 @@
 <li>Give the instance a name</li>
 <li>Download the ssh key</li>
 <li>Move key to your local ~/.ssh/ directory</li>
-<li>Change permissions on key to 600: </li>
-</ol>
-
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>chmod 600 ~/.ssh/<span class="o">(</span>filename<span class="o">)</span>.pem
-    
-</code></pre></div>
-
-<ol>
-<li>In EC2 setup a security group with the following open ports:</li>
-</ol>
-
-<div class="highlight"><pre><code class="bash">Port 22 <span class="k">for </span>ssh
-    Port 80 <span class="k">for </span>http traffic
-    Port 8080 <span class="k">for </span>socket traffic
-    
-</code></pre></div>
-
-<ol>
+<li>Change permissions on key to 600: 
+Liquid error: No such file or directory - posix_spawnp</li>
+<li>In EC2 setup a security group with the following open ports:
+Liquid error: No such file or directory - posix_spawnp</li>
 <li>Launch the instance</li>
 </ol>
 
-<h2 id="toc_208">Associate an IP with your EC2 instance</h2>
+<h2>Associate an IP with your EC2 instance</h2>
 
 <ol>
 <li>Under <strong>Networking and Security</strong> select <strong>Elastic IPs</strong></li>
@@ -198,97 +188,32 @@
 <li>Ensure EC2 is selected and click <strong>Yes</strong></li>
 <li>Select the newly created IP and click on the <strong>Associate Address</strong> button</li>
 <li>Select the EC2 instance</li>
-<li>Copy the IP Address (You&#39;ll need it later)</li>
+<li>Copy the IP Address (You'll need it later)</li>
 </ol>
 
-<h2 id="toc_209">Connect to the New Instance</h2>
+<h2>Connect to the New Instance</h2>
 
 <ol>
-<li>Connect with:</li>
+<li>Connect with:
+Liquid error: No such file or directory - posix_spawnp</li>
+<li>Add public key to to the authorized_keys file for passwordless ssh login 
+Liquid error: No such file or directory - posix_spawnp<br /></li>
+<li>Install development tools group for compiling:
+Liquid error: No such file or directory - posix_spawnp </li>
+<li>Install ssl support for node with: 
+Liquid error: No such file or directory - posix_spawnp </li>
+<li>Download Node.js repo and checkout a version to install
+Liquid error: No such file or directory - posix_spawnp</li>
+<li> Configure, make and install Node.js
+Liquid error: No such file or directory - posix_spawnp</li>
+<li> Setup Node.js environment varibales
+Liquid error: No such file or directory - posix_spawnp<br /></li>
+<li> Change permissions on node directory
+Liquid error: No such file or directory - posix_spawnp<br /></li>
+<li> Confirm we have a successfull install:
+Liquid error: No such file or directory - posix_spawnp<br />
+###Congrats!  Node.js is installed!  What's next?  You can install mongodb or setup a git repo on the server to really get developing.</li>
 </ol>
-
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>ssh -i ~/.ssh/keyname.pem ec2-user@the-ip-address-for-the-instance
-    
-</code></pre></div>
-
-<ol>
-<li>Add public key to to the authorized_keys file for passwordless ssh login </li>
-</ol>
-
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sudo vim ~/.ssh/authorized_keys
-    
-</code></pre></div>
-    
-
-<ol>
-<li>Install development tools group for compiling:</li>
-</ol>
-
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sudo yum groupinstall <span class="s2">&quot;Development Tools&quot;</span>
-    
-</code></pre></div>
- 
-
-<ol>
-<li>Install ssl support for node with: </li>
-</ol>
-
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sudo yum install openssl-devel
-    
-</code></pre></div>
- 
-
-<ol>
-<li>Download Node.js repo and checkout a version to install</li>
-</ol>
-
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sudo mkdir /downloads
-    <span class="nv">$ </span><span class="nb">cd</span> /downloads
-    <span class="nv">$ </span>sudo git clone --depth 1 git://github.com/joyent/node.git
-    <span class="nv">$ </span><span class="nb">cd </span>node
-    <span class="nv">$ </span>sudo git checkout v0.6.10 //replace version with most recent stable version
-    
-</code></pre></div>
-
-<ol>
-<li> Configure, make and install Node.js</li>
-</ol>
-
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sudo ./configure --prefix<span class="o">=</span>/opt/node
-    <span class="nv">$ </span>sudo make -j2
-    <span class="nv">$ </span>sudo make install
-    
-</code></pre></div>
-
-<ol>
-<li> Setup Node.js environment varibales</li>
-</ol>
-
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span><span class="nb">echo export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/opt/node/bin &gt;&gt; ~/.bash_profile
-    <span class="nv">$ </span><span class="nb">source</span> ~/.bash_profile
-    
-</code></pre></div>
-   
-
-<ol>
-<li> Change permissions on node directory</li>
-</ol>
-
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sudo chown -R ec2-user:ec2-user /opt/node
-    
-</code></pre></div>
-   
-
-<ol>
-<li> Confirm we have a successfull install:</li>
-</ol>
-
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>node -v
-    
-</code></pre></div>
-   
-
-<h3 id="toc_210">Congrats!  Node.js is installed!  What&#39;s next?  You can install mongodb or setup a git repo on the server to really get developing.</h3>
 
 
             
@@ -310,11 +235,11 @@
       </div>
 
      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script type="text/javascript" src="http://localhost:4000/js/masonry.js"></script>
-<script type="text/javascript" src="http://localhost:4000/js/respond.min.js"></script>
-<script type="text/javascript" src="http://localhost:4000/js/jquery.jscrollpane.min.js"></script>
-<script type="text/javascript" src="http://localhost:4000/js/jquery.mousewheel.js"></script>
-<script type="text/javascript" src="http://localhost:4000/js/mwheelIntent.js"></script>
-<script type="text/javascript" src="http://localhost:4000/js/web.js"></script>
+<script type="text/javascript" src="http://docs.tinyfactory.co/js/masonry.js"></script>
+<script type="text/javascript" src="http://docs.tinyfactory.co/js/respond.min.js"></script>
+<script type="text/javascript" src="http://docs.tinyfactory.co/js/jquery.jscrollpane.min.js"></script>
+<script type="text/javascript" src="http://docs.tinyfactory.co/js/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="http://docs.tinyfactory.co/js/mwheelIntent.js"></script>
+<script type="text/javascript" src="http://docs.tinyfactory.co/js/web.js"></script>
   </body>
 </html>
