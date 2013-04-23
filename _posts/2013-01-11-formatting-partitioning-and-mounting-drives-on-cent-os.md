@@ -6,8 +6,6 @@ author: alex
 published: true
 ---
 
-# Mounting a new disk or external drive on CentOS
-
 I always forget how to do this, so here is a quick writeup.
 
 **Important:** You need to be root or add `sudo` before all commands.
