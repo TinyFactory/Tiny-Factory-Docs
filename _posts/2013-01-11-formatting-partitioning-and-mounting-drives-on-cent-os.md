@@ -1,6 +1,9 @@
 ---
-layout: default
-published: false
+layout: post
+title: Formatting, Partitioning, and Mounting Drives on CentOS
+category: centos
+author: alex
+published: true
 ---
 
 # Mounting a new disk or external drive on CentOS
