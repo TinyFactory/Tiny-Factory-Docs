@@ -5,7 +5,7 @@
 url: http://docs.tinyfactory.co
 
 
-permalink: :date
+permalink: date
 exclude: ['Rakefile', 'README.md', 'config.rb', "_plugins"]
 pygments: true
 markdown: redcarpet
