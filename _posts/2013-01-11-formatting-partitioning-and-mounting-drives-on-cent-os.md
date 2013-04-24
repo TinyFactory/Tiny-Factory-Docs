@@ -20,7 +20,7 @@ brw-rw----. 1 root disk 8,  1 Jun  2  2012 /dev/sda1
 brw-rw----. 1 root disk 8,  2 Jun  2  2012 /dev/sda2
 brw-rw----. 1 root disk 8, 16 Jan 11 09:01 /dev/sdb
 ```
-The output is shows that drive `/dev/sda` has 2 partitaions, `/dev/sda1` and `/dev/sda2`. Our target drive `/dev/sdb` has no partitions so we need to create one.
+The output shows that drive `/dev/sda` has 2 partitaions, `/dev/sda1` and `/dev/sda2`. Our target drive `/dev/sdb` has no partitions so we need to create one.
 
 ## Partition the drive
 
