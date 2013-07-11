@@ -22,8 +22,8 @@ email: hello@tinyfactory.co
 google_analytics:
   account: UA-20145334-1
 
-prose:
-  rooturl: "_posts"
+#prose:
+#  rooturl: "_posts"
 
 authors:
   aaron:
