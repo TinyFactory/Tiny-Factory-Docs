@@ -7,7 +7,7 @@ id: jobs
 
 ## UI Designer - San Diego, CA
 
-We are looking for an Interface Designer to join our team and be responsible for designing beautiful and engaging user interfaces for our real time projects. Preferred canidate loves designing and bringing their interface to life with HTML / CSS.  Familiarity with Compass / Sass is a plus.
+We are looking for an Interface Designer to join our team and be responsible for designing beautiful and engaging user interfaces for our real time applications. Preferred canidate loves designing and bringing their interface to life with HTML / CSS.  Familiarity with Compass / Sass is a plus.
 
 Must be proficient in 
 
