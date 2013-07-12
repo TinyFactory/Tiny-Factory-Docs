@@ -1,8 +1,23 @@
 ---
+published: true
 layout: page
 title: Jobs
 id: jobs
 ---
+
+## UI Designer - San Diego, CA
+
+We are looking for an Interface Designer to join our team and be responsible for designing beautiful and engaging user interfaces for our real time projects. Preferred canidate loves designing and bringing their interface to life with HTML / CSS.  Familiarity with Compass / Sass is a plus.
+
+Must be proficient in 
+- Photoshop
+- Mobile & Web based applications
+- Responsive Design
+- Basic understand of UX principals 
+
+If you are interested in applying, shoot us an email with a sinle link to your portfolio (Dribbble, Behance, etc) and tell us about about the most interesting project you've worked on and let us know your contribution to it.  
+
+Send your portfolio and answer to [hello@tinyfactory.co](mailto:hello@tinyfactory.co), and we'll be in touch.
 
 ## Node.js System Engineer - San Diego, CA
 
@@ -29,4 +44,4 @@ function foo(a, b){
 
 Send your answer to [hello@tinyfactory.co](mailto:hello@tinyfactory.co), and we'll be in touch.
 
-Tiny Factory 
+Tiny Factory
