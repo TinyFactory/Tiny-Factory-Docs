@@ -27,7 +27,7 @@ We are looking for a Node.js hacker to work with us on our real time products.  
 Our realtime stack consists of:
 
 - Amazon EC2 (CentOS)
-- MonogoDB
+- MongoDB
 - Node.js
 - Socket.io
 
